@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- Basic page needs
+		============================================ -->
+		<title>Hoàng Khang - Gian hàng sản phẩm</title>
+		<meta charset="utf-8">
+		<meta name="author" content="">
+		<meta name="description" content="Trang chủ,Máy vi tính giá rẻ, sửa chữa máy tính, bảo hành máy tính, bảo trì máy tính, xử lý sự cố máy tính, máy scaner, máy chiếu, máy fax, tổng đài, máy văn phòng, máy đa chức năng, máy in laser, máy in màu">
+		<meta name="keywords" content="">
+
+		<!-- Mobile specific metas
+		============================================ -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<!-- Favicon
+		============================================ -->
+		<%= favicon_link_tag '/frontend/images/fav_icon.ico', rel: 'shortcut icon', type: 'image/x-icon' %>
+
+		<!-- Google web fonts
+		============================================ -->
+		<%= stylesheet_link_tag '/frontend/css/css.css' %>
+
+		<!-- Libs CSS
+		============================================ -->
+		<%= stylesheet_link_tag '/frontend/css/animate.css' %>
+		<%= stylesheet_link_tag '/frontend/css/fontello.css' %>
+		<%= stylesheet_link_tag '/frontend/css/bootstrap.min.css' %>
+		
+		<!-- Theme CSS
+		============================================ -->
+		<%= stylesheet_link_tag '/frontend/js/layerslider/css/layerslider.css' %>
+		<%= stylesheet_link_tag '/frontend/js/owlcarousel/owl.carousel.css' %>
+		<%= stylesheet_link_tag '/frontend/js/arcticmodal/jquery.arcticmodal.css' %>
+		<%= stylesheet_link_tag '/frontend/css/style.css' %>
+
+		<!-- JS Libs
+		============================================ -->
+		<%= javascript_include_tag '/frontend/js/modernizr.js' %>
+
+		<!-- Old IE stylesheet
+		============================================ -->
+		<!--[if lte IE 9]>
+			<%= stylesheet_link_tag '/frontend/css/oldie.css' %>
+		<![endif]-->
+	</head>
+	<body class="<%= @class_frontend %>">
+		
+		<%= yield %>
+		
+	</body>
+</html>
