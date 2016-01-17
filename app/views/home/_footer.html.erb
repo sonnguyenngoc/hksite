@@ -156,9 +156,9 @@
     
                         <ul class="c_info_list">
     
-                            <li class="c_info_location">188 Đường số 1,<br>Phường 16, Quận Gò Vấp, TP.Hồ Chí Minh, Việt Nam</li>
-                            <li class="c_info_phone">(84-8) 3984 7690</li>
-                            <li class="c_info_mail"><a href="mailto:#">info@hoangkhang.com.vn</a></li>
+                            <li class="c_info_location"><%= @contact.address %></li>
+                            <li class="c_info_phone"><%= @contact.phone %></li>
+                            <li class="c_info_mail"><a href="mailto:<%= @contact.email %>"><%= @contact.email %></a></li>
                             <li class="c_info_schedule">
     
                                 <ul>
@@ -231,7 +231,7 @@
             <!-- - - - - - - - - - - - - - End of footer navigation - - - - - - - - - - - - - - - - -->
 
             <p class="copyright">
-                Bản quyền &copy; 2016 thuộc về <%= link_to "Hoàng Khang Incotech", '#' %><br/>
+                Bản quyền &copy; 2016 thuộc về <%= link_to "Hoàng Khang Incotech", root_path %><br/>
                 Thiết kế bởi Hoàng Khang Incotech
             </p>
 

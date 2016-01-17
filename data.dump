@@ -1,0 +1,1221 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: agents_contacts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY agents_contacts (id, agent_id, contact_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: agents_contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('agents_contacts_id_seq', 1, false);
+
+
+--
+-- Data for Name: assignments; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY assignments (id, user_id, role_id, created_at, updated_at) FROM stdin;
+1	7	1	2016-01-16 23:25:00.011147	2016-01-16 23:25:00.011147
+2	7	3	2016-01-16 23:25:00.020297	2016-01-16 23:25:00.020297
+3	2	3	2016-01-16 23:25:00.029637	2016-01-16 23:25:00.029637
+4	1	2	2016-01-16 23:25:00.103252	2016-01-16 23:25:00.103252
+5	7	2	2016-01-16 23:25:00.112142	2016-01-16 23:25:00.112142
+6	2	2	2016-01-16 23:25:00.134089	2016-01-16 23:25:00.134089
+7	3	2	2016-01-16 23:25:00.144809	2016-01-16 23:25:00.144809
+8	4	2	2016-01-16 23:25:00.157124	2016-01-16 23:25:00.157124
+9	6	2	2016-01-16 23:25:00.171333	2016-01-16 23:25:00.171333
+10	8	2	2016-01-16 23:25:00.176653	2016-01-16 23:25:00.176653
+11	9	2	2016-01-16 23:25:00.18155	2016-01-16 23:25:00.18155
+12	10	2	2016-01-16 23:25:00.185828	2016-01-16 23:25:00.185828
+13	11	2	2016-01-16 23:25:00.189987	2016-01-16 23:25:00.189987
+14	12	2	2016-01-16 23:25:00.194656	2016-01-16 23:25:00.194656
+15	14	2	2016-01-16 23:25:00.199046	2016-01-16 23:25:00.199046
+16	13	2	2016-01-16 23:25:00.203409	2016-01-16 23:25:00.203409
+17	1	1	2016-01-16 23:25:00.209319	2016-01-16 23:25:00.209319
+18	13	4	2016-01-17 06:24:42.906016	2016-01-17 06:24:42.906016
+\.
+
+
+--
+-- Name: assignments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('assignments_id_seq', 18, true);
+
+
+--
+-- Data for Name: autotask_details; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY autotask_details (id, autotask_id, item_count, created_at, updated_at) FROM stdin;
+1	1	0	2016-01-17 06:23:22.664267	2016-01-17 06:23:22.664267
+2	1	0	2016-01-17 23:07:51.933085	2016-01-17 23:07:51.933085
+\.
+
+
+--
+-- Name: autotask_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('autotask_details_id_seq', 2, true);
+
+
+--
+-- Data for Name: autotasks; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY autotasks (id, name, time_interval, created_at, updated_at) FROM stdin;
+1	order_debt_outdate	43200	2016-01-16 23:25:00.256501	2016-01-16 23:25:00.256501
+\.
+
+
+--
+-- Name: autotasks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('autotasks_id_seq', 1, true);
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY categories (id, name, description, created_at, updated_at, tmpcat, level, user_id) FROM stdin;
+1	Thiết bị tin học		2016-01-17 06:26:11.668322	2016-01-17 06:28:15.97813	\N	1	13
+6	Sản phẩm Apple, Tablet		2016-01-17 06:27:09.138681	2016-01-17 06:28:16.019677	\N	2	13
+7	Máy vi tính		2016-01-17 06:27:17.354616	2016-01-17 06:28:16.03495	\N	2	13
+8	Linh kiện máy tính		2016-01-17 06:27:27.726363	2016-01-17 06:28:16.043229	\N	2	13
+9	Phần mềm		2016-01-17 06:27:35.898505	2016-01-17 06:28:16.068532	\N	2	13
+2	Thiết bị văn phòng		2016-01-17 06:26:19.736104	2016-01-17 06:28:16.083035	\N	1	13
+10	Máy văn phòng		2016-01-17 06:27:47.460851	2016-01-17 06:28:16.094834	\N	2	13
+11	Vật tư thiết bị		2016-01-17 06:27:56.091157	2016-01-17 06:28:16.104781	\N	2	13
+3	Thiết bị hệ thống mạng		2016-01-17 06:26:31.179098	2016-01-17 06:28:16.11864	\N	1	13
+4	Thiết bị viễn thông		2016-01-17 06:26:39.687793	2016-01-17 06:28:16.136588	\N	1	13
+5	An ninh kiểm soát		2016-01-17 06:26:48.187176	2016-01-17 06:28:16.150521	\N	1	13
+15	Máy in		2016-01-17 06:35:59.448748	2016-01-17 06:36:14.041167	\N	3	13
+16	Máy fax		2016-01-17 06:36:06.708571	2016-01-17 06:36:14.050938	\N	3	13
+13	Ngành ngân hàng, siêu thị		2016-01-17 06:35:29.851109	2016-01-17 06:36:14.071431	\N	2	13
+14	Thiết bị kỹ thuật số		2016-01-17 06:35:44.793292	2016-01-17 06:36:14.084694	\N	2	13
+\.
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('categories_id_seq', 16, true);
+
+
+--
+-- Data for Name: categories_products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY categories_products (category_id, product_id) FROM stdin;
+15	1
+15	2
+15	3
+15	4
+15	5
+15	6
+15	7
+15	8
+15	9
+15	10
+15	11
+15	12
+\.
+
+
+--
+-- Data for Name: checkinout_requests; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY checkinout_requests (id, user_id, check_time, content, status, created_at, updated_at, manager_id) FROM stdin;
+\.
+
+
+--
+-- Name: checkinout_requests_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('checkinout_requests_id_seq', 1, false);
+
+
+--
+-- Data for Name: checkinouts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY checkinouts (id, user_id, check_time, created_at, updated_at, check_date, note, checkinout_request_id) FROM stdin;
+\.
+
+
+--
+-- Name: checkinouts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('checkinouts_id_seq', 1, false);
+
+
+--
+-- Data for Name: cities; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY cities (id, name, state_id, city_type_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: cities_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('cities_id_seq', 1, false);
+
+
+--
+-- Data for Name: city_types; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY city_types (id, name, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: city_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('city_types_id_seq', 1, false);
+
+
+--
+-- Data for Name: combination_details; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY combination_details (id, combination_id, product_id, stock_before, quantity, stock_after, created_at, updated_at, serial_numbers) FROM stdin;
+\.
+
+
+--
+-- Name: combination_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('combination_details_id_seq', 1, false);
+
+
+--
+-- Data for Name: combinations; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY combinations (id, product_id, stock_before, quantity, stock_after, created_at, updated_at, serial_numbers, user_id, combined) FROM stdin;
+\.
+
+
+--
+-- Name: combinations_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('combinations_id_seq', 1, false);
+
+
+--
+-- Data for Name: commission_programs; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY commission_programs (id, name, interval_type, min_amount, max_amount, commission_rate, published_at, unpublished_at, status, description, user_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: commission_programs_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('commission_programs_id_seq', 1, false);
+
+
+--
+-- Data for Name: contact_types; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY contact_types (id, name, created_at, updated_at) FROM stdin;
+1	Customer	2016-01-16 23:24:57.968128	2016-01-16 23:24:57.968128
+2	Supplier	2016-01-16 23:24:57.975988	2016-01-16 23:24:57.975988
+3	Agent	2016-01-16 23:24:57.986594	2016-01-16 23:24:57.986594
+\.
+
+
+--
+-- Data for Name: contact_types_contacts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY contact_types_contacts (id, contact_id, contact_type_id, created_at, updated_at) FROM stdin;
+1	1	2	2016-01-16 23:24:59.909998	2016-01-16 23:24:59.909998
+\.
+
+
+--
+-- Name: contact_types_contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('contact_types_contacts_id_seq', 1, true);
+
+
+--
+-- Name: contact_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('contact_types_id_seq', 3, true);
+
+
+--
+-- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY contacts (id, name, phone, mobile, fax, email, address, created_at, updated_at, tax_code, note, contact_type_id, website, account_number, bank, representative, representative_role, representative_phone, is_mine, hotline, user_id, city_id, contact_types_cache, image) FROM stdin;
+1	CN Công Ty TNHH Giải Pháp CNTT & Truyền Thông Hoàng Khang	(08) 3984 7690	\N	(08) 3984 7691	info@hoangkhang.com.vn	188 Đường số 1, P. 16, Q. Gò Vấp, TP. HCM	2016-01-16 23:24:59.907584	2016-01-16 23:24:59.907584	0306146736	\N	2	www.hoangkhang.com.vn	\N	\N	\N	\N	\N	t	(08) 2212 9454	\N	\N	[2]	\N
+\.
+
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('contacts_id_seq', 1, true);
+
+
+--
+-- Data for Name: countries; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY countries (id, name, created_at, updated_at) FROM stdin;
+1	Việt Nam	2016-01-16 23:24:59.836284	2016-01-16 23:24:59.836284
+\.
+
+
+--
+-- Name: countries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('countries_id_seq', 1, true);
+
+
+--
+-- Data for Name: deliveries; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY deliveries (id, order_id, user_id, created_at, updated_at, creator_id, delivery_person_id, is_return, status, delivery_date) FROM stdin;
+\.
+
+
+--
+-- Name: deliveries_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('deliveries_id_seq', 1, false);
+
+
+--
+-- Data for Name: delivery_details; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY delivery_details (id, delivery_id, order_detail_id, quantity, created_at, updated_at, serial_numbers, product_id) FROM stdin;
+\.
+
+
+--
+-- Name: delivery_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('delivery_details_id_seq', 1, false);
+
+
+--
+-- Data for Name: feedbacks; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY feedbacks (id, user_id, title, content, image, status, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: feedbacks_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('feedbacks_id_seq', 1, false);
+
+
+--
+-- Data for Name: manufacturers; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY manufacturers (id, name, description, created_at, updated_at, tmpmenu, user_id) FROM stdin;
+1	OKI		2016-01-17 06:25:35.540672	2016-01-17 06:25:35.540672	\N	13
+\.
+
+
+--
+-- Name: manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('manufacturers_id_seq', 1, true);
+
+
+--
+-- Data for Name: notifications; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY notifications (id, user_id, sender_id, title, description, viewed, url, icon, type_name, item_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: notifications_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('notifications_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_details; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY order_details (id, order_id, product_id, quantity, price, product_name, warranty, created_at, updated_at, unit, product_description, product_price_id, discount_amount, tip_amount, shipment_amount) FROM stdin;
+\.
+
+
+--
+-- Name: order_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('order_details_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_statuses; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY order_statuses (id, name, description, created_at, updated_at) FROM stdin;
+1	draft	Draft	2016-01-16 23:25:00.222401	2016-01-16 23:25:00.222401
+2	new	New	2016-01-16 23:25:00.225779	2016-01-16 23:25:00.225779
+3	items_confirmed	Items Confirmed	2016-01-16 23:25:00.228789	2016-01-16 23:25:00.228789
+4	price_confirmed	Price Confirmed	2016-01-16 23:25:00.231846	2016-01-16 23:25:00.231846
+5	quotation	Quotation	2016-01-16 23:25:00.23503	2016-01-16 23:25:00.23503
+6	confirmed	Order Confirmed	2016-01-16 23:25:00.237829	2016-01-16 23:25:00.237829
+7	outdated	Outdated	2016-01-16 23:25:00.240559	2016-01-16 23:25:00.240559
+8	canceled	Canceled	2016-01-16 23:25:00.243324	2016-01-16 23:25:00.243324
+9	finished	Finished	2016-01-16 23:25:00.246155	2016-01-16 23:25:00.246155
+\.
+
+
+--
+-- Name: order_statuses_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('order_statuses_id_seq', 9, true);
+
+
+--
+-- Data for Name: order_statuses_orders; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY order_statuses_orders (id, order_id, order_status_id, created_at, updated_at, user_id) FROM stdin;
+\.
+
+
+--
+-- Name: order_statuses_orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('order_statuses_orders_id_seq', 1, false);
+
+
+--
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY orders (id, customer_id, supplier_id, agent_id, shipping_place, payment_method_id, payment_deadline, created_at, updated_at, buyer_name, buyer_company, buyer_tax_code, buyer_address, buyer_email, buyer_phone, buyer_fax, tax_id, order_date, order_deadline, quotation_code, salesperson_id, deposit, shipping_date, shipping_time, warranty_place, warranty_cost, older_id, watermark, order_status_id, newer_id, parent_id, purchase_manager_id, debt_date, delivery_status_name, payment_status_name, customer_po, printed_order_number, supplier_agent_id, order_status_name, price_status_name, user_id, tip_status_name, purchaser_id, tip_contact_id, shipment_contact_id, cache_total) FROM stdin;
+\.
+
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('orders_id_seq', 1, false);
+
+
+--
+-- Data for Name: parent_categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY parent_categories (id, category_id, parent_id) FROM stdin;
+1	6	1
+2	7	1
+3	8	1
+4	9	1
+5	10	2
+6	11	2
+7	13	2
+8	14	2
+9	15	10
+10	16	10
+\.
+
+
+--
+-- Name: parent_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('parent_categories_id_seq', 10, true);
+
+
+--
+-- Data for Name: parent_contacts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY parent_contacts (id, contact_id, parent_id) FROM stdin;
+\.
+
+
+--
+-- Name: parent_contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('parent_contacts_id_seq', 1, false);
+
+
+--
+-- Data for Name: payment_methods; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY payment_methods (id, name, created_at, updated_at, print_name) FROM stdin;
+1	Tiền mặt	2016-01-16 23:24:59.793646	2016-01-16 23:24:59.793646	TM
+2	Chuyển khoản	2016-01-16 23:24:59.800086	2016-01-16 23:24:59.800086	CK
+\.
+
+
+--
+-- Name: payment_methods_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('payment_methods_id_seq', 2, true);
+
+
+--
+-- Data for Name: payment_records; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY payment_records (id, order_id, accountant_id, amount, debt_days, created_at, updated_at, note, paid_person, paid_address, debt_date, payment_method_id, is_tip, paid_date, status, is_custom, is_recieved, type_name) FROM stdin;
+\.
+
+
+--
+-- Name: payment_records_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('payment_records_id_seq', 1, false);
+
+
+--
+-- Data for Name: product_images; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY product_images (id, product_id, filename, created_at, updated_at, display_order) FROM stdin;
+2	1	\N	2016-01-17 23:12:39.705476	2016-01-17 23:12:39.705476	2
+3	1	\N	2016-01-17 23:12:39.706943	2016-01-17 23:12:39.706943	3
+4	1	\N	2016-01-17 23:12:39.714708	2016-01-17 23:12:39.714708	4
+5	1	\N	2016-01-17 23:12:39.729859	2016-01-17 23:12:39.729859	5
+6	1	\N	2016-01-17 23:12:39.731268	2016-01-17 23:12:39.731268	6
+7	1	\N	2016-01-17 23:12:39.740718	2016-01-17 23:12:39.740718	7
+8	1	\N	2016-01-17 23:12:39.745408	2016-01-17 23:12:39.745408	8
+9	1	\N	2016-01-17 23:12:39.748987	2016-01-17 23:12:39.748987	9
+10	1	\N	2016-01-17 23:12:39.757123	2016-01-17 23:12:39.757123	10
+11	1	\N	2016-01-17 23:12:39.758728	2016-01-17 23:12:39.758728	11
+12	1	\N	2016-01-17 23:12:39.76004	2016-01-17 23:12:39.76004	12
+14	2	\N	2016-01-17 23:13:51.093717	2016-01-17 23:13:51.093717	2
+15	2	\N	2016-01-17 23:13:51.095055	2016-01-17 23:13:51.095055	3
+16	2	\N	2016-01-17 23:13:51.096257	2016-01-17 23:13:51.096257	4
+17	2	\N	2016-01-17 23:13:51.101913	2016-01-17 23:13:51.101913	5
+18	2	\N	2016-01-17 23:13:51.103391	2016-01-17 23:13:51.103391	6
+19	2	\N	2016-01-17 23:13:51.104904	2016-01-17 23:13:51.104904	7
+20	2	\N	2016-01-17 23:13:51.10723	2016-01-17 23:13:51.10723	8
+21	2	\N	2016-01-17 23:13:51.113488	2016-01-17 23:13:51.113488	9
+22	2	\N	2016-01-17 23:13:51.125641	2016-01-17 23:13:51.125641	10
+23	2	\N	2016-01-17 23:13:51.126956	2016-01-17 23:13:51.126956	11
+24	2	\N	2016-01-17 23:13:51.13374	2016-01-17 23:13:51.13374	12
+26	3	\N	2016-01-17 23:14:49.436099	2016-01-17 23:14:49.436099	2
+27	3	\N	2016-01-17 23:14:49.437628	2016-01-17 23:14:49.437628	3
+28	3	\N	2016-01-17 23:14:49.449362	2016-01-17 23:14:49.449362	4
+29	3	\N	2016-01-17 23:14:49.457414	2016-01-17 23:14:49.457414	5
+30	3	\N	2016-01-17 23:14:49.46662	2016-01-17 23:14:49.46662	6
+31	3	\N	2016-01-17 23:14:49.468245	2016-01-17 23:14:49.468245	7
+32	3	\N	2016-01-17 23:14:49.469796	2016-01-17 23:14:49.469796	8
+33	3	\N	2016-01-17 23:14:49.472497	2016-01-17 23:14:49.472497	9
+34	3	\N	2016-01-17 23:14:49.477184	2016-01-17 23:14:49.477184	10
+35	3	\N	2016-01-17 23:14:49.478537	2016-01-17 23:14:49.478537	11
+36	3	\N	2016-01-17 23:14:49.479841	2016-01-17 23:14:49.479841	12
+38	4	\N	2016-01-17 23:16:05.297767	2016-01-17 23:16:05.297767	2
+39	4	\N	2016-01-17 23:16:05.305102	2016-01-17 23:16:05.305102	3
+40	4	\N	2016-01-17 23:16:05.313334	2016-01-17 23:16:05.313334	4
+41	4	\N	2016-01-17 23:16:05.314844	2016-01-17 23:16:05.314844	5
+42	4	\N	2016-01-17 23:16:05.316129	2016-01-17 23:16:05.316129	6
+43	4	\N	2016-01-17 23:16:05.317592	2016-01-17 23:16:05.317592	7
+44	4	\N	2016-01-17 23:16:05.318893	2016-01-17 23:16:05.318893	8
+45	4	\N	2016-01-17 23:16:05.322529	2016-01-17 23:16:05.322529	9
+46	4	\N	2016-01-17 23:16:05.329176	2016-01-17 23:16:05.329176	10
+47	4	\N	2016-01-17 23:16:05.340958	2016-01-17 23:16:05.340958	11
+48	4	\N	2016-01-17 23:16:05.342384	2016-01-17 23:16:05.342384	12
+50	5	\N	2016-01-17 23:17:10.909289	2016-01-17 23:17:10.909289	2
+51	5	\N	2016-01-17 23:17:10.917481	2016-01-17 23:17:10.917481	3
+52	5	\N	2016-01-17 23:17:10.91904	2016-01-17 23:17:10.91904	4
+53	5	\N	2016-01-17 23:17:10.920369	2016-01-17 23:17:10.920369	5
+54	5	\N	2016-01-17 23:17:10.921643	2016-01-17 23:17:10.921643	6
+55	5	\N	2016-01-17 23:17:10.922816	2016-01-17 23:17:10.922816	7
+56	5	\N	2016-01-17 23:17:10.926351	2016-01-17 23:17:10.926351	8
+57	5	\N	2016-01-17 23:17:10.933115	2016-01-17 23:17:10.933115	9
+58	5	\N	2016-01-17 23:17:10.934814	2016-01-17 23:17:10.934814	10
+59	5	\N	2016-01-17 23:17:10.93619	2016-01-17 23:17:10.93619	11
+60	5	\N	2016-01-17 23:17:10.937504	2016-01-17 23:17:10.937504	12
+62	6	\N	2016-01-17 23:18:08.898564	2016-01-17 23:18:08.898564	2
+63	6	\N	2016-01-17 23:18:08.901521	2016-01-17 23:18:08.901521	3
+64	6	\N	2016-01-17 23:18:08.904537	2016-01-17 23:18:08.904537	4
+65	6	\N	2016-01-17 23:18:08.91433	2016-01-17 23:18:08.91433	5
+66	6	\N	2016-01-17 23:18:08.921319	2016-01-17 23:18:08.921319	6
+67	6	\N	2016-01-17 23:18:08.931231	2016-01-17 23:18:08.931231	7
+68	6	\N	2016-01-17 23:18:08.932824	2016-01-17 23:18:08.932824	8
+69	6	\N	2016-01-17 23:18:08.934239	2016-01-17 23:18:08.934239	9
+70	6	\N	2016-01-17 23:18:08.937751	2016-01-17 23:18:08.937751	10
+71	6	\N	2016-01-17 23:18:08.941044	2016-01-17 23:18:08.941044	11
+72	6	\N	2016-01-17 23:18:08.945075	2016-01-17 23:18:08.945075	12
+74	7	\N	2016-01-17 23:19:07.313107	2016-01-17 23:19:07.313107	2
+75	7	\N	2016-01-17 23:19:07.31442	2016-01-17 23:19:07.31442	3
+76	7	\N	2016-01-17 23:19:07.318639	2016-01-17 23:19:07.318639	4
+77	7	\N	2016-01-17 23:19:07.333112	2016-01-17 23:19:07.333112	5
+78	7	\N	2016-01-17 23:19:07.341824	2016-01-17 23:19:07.341824	6
+79	7	\N	2016-01-17 23:19:07.34352	2016-01-17 23:19:07.34352	7
+80	7	\N	2016-01-17 23:19:07.345117	2016-01-17 23:19:07.345117	8
+81	7	\N	2016-01-17 23:19:07.346316	2016-01-17 23:19:07.346316	9
+82	7	\N	2016-01-17 23:19:07.353724	2016-01-17 23:19:07.353724	10
+83	7	\N	2016-01-17 23:19:07.355102	2016-01-17 23:19:07.355102	11
+84	7	\N	2016-01-17 23:19:07.356216	2016-01-17 23:19:07.356216	12
+86	8	\N	2016-01-17 23:20:26.792619	2016-01-17 23:20:26.792619	2
+87	8	\N	2016-01-17 23:20:26.801077	2016-01-17 23:20:26.801077	3
+88	8	\N	2016-01-17 23:20:26.812951	2016-01-17 23:20:26.812951	4
+89	8	\N	2016-01-17 23:20:26.814385	2016-01-17 23:20:26.814385	5
+90	8	\N	2016-01-17 23:20:26.815966	2016-01-17 23:20:26.815966	6
+91	8	\N	2016-01-17 23:20:26.821632	2016-01-17 23:20:26.821632	7
+92	8	\N	2016-01-17 23:20:26.823077	2016-01-17 23:20:26.823077	8
+93	8	\N	2016-01-17 23:20:26.827362	2016-01-17 23:20:26.827362	9
+94	8	\N	2016-01-17 23:20:26.828742	2016-01-17 23:20:26.828742	10
+95	8	\N	2016-01-17 23:20:26.833531	2016-01-17 23:20:26.833531	11
+96	8	\N	2016-01-17 23:20:26.83535	2016-01-17 23:20:26.83535	12
+98	9	\N	2016-01-17 23:21:19.292911	2016-01-17 23:21:19.292911	2
+99	9	\N	2016-01-17 23:21:19.294303	2016-01-17 23:21:19.294303	3
+100	9	\N	2016-01-17 23:21:19.309413	2016-01-17 23:21:19.309413	4
+101	9	\N	2016-01-17 23:21:19.310781	2016-01-17 23:21:19.310781	5
+102	9	\N	2016-01-17 23:21:19.317637	2016-01-17 23:21:19.317637	6
+103	9	\N	2016-01-17 23:21:19.319895	2016-01-17 23:21:19.319895	7
+104	9	\N	2016-01-17 23:21:19.321096	2016-01-17 23:21:19.321096	8
+105	9	\N	2016-01-17 23:21:19.325072	2016-01-17 23:21:19.325072	9
+106	9	\N	2016-01-17 23:21:19.326666	2016-01-17 23:21:19.326666	10
+107	9	\N	2016-01-17 23:21:19.334156	2016-01-17 23:21:19.334156	11
+108	9	\N	2016-01-17 23:21:19.33602	2016-01-17 23:21:19.33602	12
+110	10	\N	2016-01-17 23:22:20.37567	2016-01-17 23:22:20.37567	2
+111	10	\N	2016-01-17 23:22:20.377054	2016-01-17 23:22:20.377054	3
+112	10	\N	2016-01-17 23:22:20.378291	2016-01-17 23:22:20.378291	4
+113	10	\N	2016-01-17 23:22:20.384474	2016-01-17 23:22:20.384474	5
+114	10	\N	2016-01-17 23:22:20.386108	2016-01-17 23:22:20.386108	6
+115	10	\N	2016-01-17 23:22:20.387368	2016-01-17 23:22:20.387368	7
+116	10	\N	2016-01-17 23:22:20.393719	2016-01-17 23:22:20.393719	8
+117	10	\N	2016-01-17 23:22:20.395141	2016-01-17 23:22:20.395141	9
+118	10	\N	2016-01-17 23:22:20.40506	2016-01-17 23:22:20.40506	10
+119	10	\N	2016-01-17 23:22:20.410035	2016-01-17 23:22:20.410035	11
+120	10	\N	2016-01-17 23:22:20.413315	2016-01-17 23:22:20.413315	12
+122	11	\N	2016-01-17 23:23:20.321119	2016-01-17 23:23:20.321119	2
+123	11	\N	2016-01-17 23:23:20.322581	2016-01-17 23:23:20.322581	3
+124	11	\N	2016-01-17 23:23:20.325355	2016-01-17 23:23:20.325355	4
+125	11	\N	2016-01-17 23:23:20.333161	2016-01-17 23:23:20.333161	5
+126	11	\N	2016-01-17 23:23:20.334445	2016-01-17 23:23:20.334445	6
+127	11	\N	2016-01-17 23:23:20.335685	2016-01-17 23:23:20.335685	7
+128	11	\N	2016-01-17 23:23:20.337111	2016-01-17 23:23:20.337111	8
+129	11	\N	2016-01-17 23:23:20.338503	2016-01-17 23:23:20.338503	9
+130	11	\N	2016-01-17 23:23:20.353094	2016-01-17 23:23:20.353094	10
+131	11	\N	2016-01-17 23:23:20.361864	2016-01-17 23:23:20.361864	11
+132	11	\N	2016-01-17 23:23:20.363262	2016-01-17 23:23:20.363262	12
+134	12	\N	2016-01-17 23:24:05.161493	2016-01-17 23:24:05.161493	2
+135	12	\N	2016-01-17 23:24:05.173238	2016-01-17 23:24:05.173238	3
+136	12	\N	2016-01-17 23:24:05.180214	2016-01-17 23:24:05.180214	4
+137	12	\N	2016-01-17 23:24:05.181715	2016-01-17 23:24:05.181715	5
+138	12	\N	2016-01-17 23:24:05.185685	2016-01-17 23:24:05.185685	6
+139	12	\N	2016-01-17 23:24:05.18888	2016-01-17 23:24:05.18888	7
+140	12	\N	2016-01-17 23:24:05.191439	2016-01-17 23:24:05.191439	8
+141	12	\N	2016-01-17 23:24:05.19778	2016-01-17 23:24:05.19778	9
+142	12	\N	2016-01-17 23:24:05.199157	2016-01-17 23:24:05.199157	10
+143	12	\N	2016-01-17 23:24:05.200421	2016-01-17 23:24:05.200421	11
+144	12	\N	2016-01-17 23:24:05.201728	2016-01-17 23:24:05.201728	12
+1	1	oki-ml-1120-plus.jpg	2016-01-17 23:12:39.665249	2016-01-17 23:30:43.038593	1
+13	2	oki-ml-184.jpg	2016-01-17 23:13:51.088041	2016-01-17 23:31:26.367684	1
+37	4	oki-ml-5720.gif	2016-01-17 23:16:05.294017	2016-01-17 23:32:49.881682	1
+49	5	oki-ml-8810.jpg	2016-01-17 23:17:10.901624	2016-01-17 23:33:37.147113	1
+73	7	oki-ml-1190-plus.jpg	2016-01-17 23:19:07.311562	2016-01-17 23:34:38.133856	1
+85	8	oki-ml-390.jpg	2016-01-17 23:20:26.790955	2016-01-17 23:35:07.418342	1
+97	9	oki-ml-5790.gif	2016-01-17 23:21:19.288041	2016-01-17 23:35:38.166565	1
+121	11	oki-ml-5791.gif	2016-01-17 23:23:20.312188	2016-01-17 23:36:40.41574	1
+133	12	oki-ml-791.jpg	2016-01-17 23:24:05.156169	2016-01-17 23:37:10.203315	1
+25	3	oki-ml-320.jpg	2016-01-17 23:14:49.430826	2016-01-17 23:32:14.211812	1
+61	6	oki-ml-4410.jpg	2016-01-17 23:18:08.896661	2016-01-17 23:34:07.147096	1
+109	10	oki-ml-6300.jpg	2016-01-17 23:22:20.374115	2016-01-17 23:36:09.55818	1
+\.
+
+
+--
+-- Name: product_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('product_images_id_seq', 144, true);
+
+
+--
+-- Data for Name: product_parts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY product_parts (id, product_id, part_id, quantity, created_at, updated_at) FROM stdin;
+1	1	\N	1	2016-01-17 23:12:39.590607	2016-01-17 23:12:39.590607
+2	1	\N	1	2016-01-17 23:12:39.629335	2016-01-17 23:12:39.629335
+3	1	\N	1	2016-01-17 23:12:39.632787	2016-01-17 23:12:39.632787
+4	1	\N	1	2016-01-17 23:12:39.636628	2016-01-17 23:12:39.636628
+5	1	\N	1	2016-01-17 23:12:39.647996	2016-01-17 23:12:39.647996
+6	1	\N	1	2016-01-17 23:12:39.649333	2016-01-17 23:12:39.649333
+7	1	\N	1	2016-01-17 23:12:39.650556	2016-01-17 23:12:39.650556
+8	1	\N	1	2016-01-17 23:12:39.651957	2016-01-17 23:12:39.651957
+9	1	\N	1	2016-01-17 23:12:39.653353	2016-01-17 23:12:39.653353
+10	1	\N	1	2016-01-17 23:12:39.657555	2016-01-17 23:12:39.657555
+11	2	\N	1	2016-01-17 23:13:51.053749	2016-01-17 23:13:51.053749
+12	2	\N	1	2016-01-17 23:13:51.055637	2016-01-17 23:13:51.055637
+13	2	\N	1	2016-01-17 23:13:51.057249	2016-01-17 23:13:51.057249
+14	2	\N	1	2016-01-17 23:13:51.061671	2016-01-17 23:13:51.061671
+15	2	\N	1	2016-01-17 23:13:51.069408	2016-01-17 23:13:51.069408
+16	2	\N	1	2016-01-17 23:13:51.071336	2016-01-17 23:13:51.071336
+17	2	\N	1	2016-01-17 23:13:51.073092	2016-01-17 23:13:51.073092
+18	2	\N	1	2016-01-17 23:13:51.074414	2016-01-17 23:13:51.074414
+19	2	\N	1	2016-01-17 23:13:51.079649	2016-01-17 23:13:51.079649
+20	2	\N	1	2016-01-17 23:13:51.081012	2016-01-17 23:13:51.081012
+21	3	\N	1	2016-01-17 23:14:49.397866	2016-01-17 23:14:49.397866
+22	3	\N	1	2016-01-17 23:14:49.399305	2016-01-17 23:14:49.399305
+23	3	\N	1	2016-01-17 23:14:49.400497	2016-01-17 23:14:49.400497
+24	3	\N	1	2016-01-17 23:14:49.404368	2016-01-17 23:14:49.404368
+25	3	\N	1	2016-01-17 23:14:49.410889	2016-01-17 23:14:49.410889
+26	3	\N	1	2016-01-17 23:14:49.413399	2016-01-17 23:14:49.413399
+27	3	\N	1	2016-01-17 23:14:49.421249	2016-01-17 23:14:49.421249
+28	3	\N	1	2016-01-17 23:14:49.422618	2016-01-17 23:14:49.422618
+29	3	\N	1	2016-01-17 23:14:49.42408	2016-01-17 23:14:49.42408
+30	3	\N	1	2016-01-17 23:14:49.429256	2016-01-17 23:14:49.429256
+31	4	\N	1	2016-01-17 23:16:05.263346	2016-01-17 23:16:05.263346
+32	4	\N	1	2016-01-17 23:16:05.26452	2016-01-17 23:16:05.26452
+33	4	\N	1	2016-01-17 23:16:05.270088	2016-01-17 23:16:05.270088
+34	4	\N	1	2016-01-17 23:16:05.271293	2016-01-17 23:16:05.271293
+35	4	\N	1	2016-01-17 23:16:05.277551	2016-01-17 23:16:05.277551
+36	4	\N	1	2016-01-17 23:16:05.278864	2016-01-17 23:16:05.278864
+37	4	\N	1	2016-01-17 23:16:05.279967	2016-01-17 23:16:05.279967
+38	4	\N	1	2016-01-17 23:16:05.281227	2016-01-17 23:16:05.281227
+39	4	\N	1	2016-01-17 23:16:05.290371	2016-01-17 23:16:05.290371
+40	4	\N	1	2016-01-17 23:16:05.292299	2016-01-17 23:16:05.292299
+41	5	\N	1	2016-01-17 23:17:10.872092	2016-01-17 23:17:10.872092
+42	5	\N	1	2016-01-17 23:17:10.877033	2016-01-17 23:17:10.877033
+43	5	\N	1	2016-01-17 23:17:10.878243	2016-01-17 23:17:10.878243
+44	5	\N	1	2016-01-17 23:17:10.885786	2016-01-17 23:17:10.885786
+45	5	\N	1	2016-01-17 23:17:10.887217	2016-01-17 23:17:10.887217
+46	5	\N	1	2016-01-17 23:17:10.888335	2016-01-17 23:17:10.888335
+47	5	\N	1	2016-01-17 23:17:10.889465	2016-01-17 23:17:10.889465
+48	5	\N	1	2016-01-17 23:17:10.897222	2016-01-17 23:17:10.897222
+49	5	\N	1	2016-01-17 23:17:10.898439	2016-01-17 23:17:10.898439
+50	5	\N	1	2016-01-17 23:17:10.899704	2016-01-17 23:17:10.899704
+51	6	\N	1	2016-01-17 23:18:08.864121	2016-01-17 23:18:08.864121
+52	6	\N	1	2016-01-17 23:18:08.865463	2016-01-17 23:18:08.865463
+53	6	\N	1	2016-01-17 23:18:08.872356	2016-01-17 23:18:08.872356
+54	6	\N	1	2016-01-17 23:18:08.873711	2016-01-17 23:18:08.873711
+55	6	\N	1	2016-01-17 23:18:08.874885	2016-01-17 23:18:08.874885
+56	6	\N	1	2016-01-17 23:18:08.876317	2016-01-17 23:18:08.876317
+57	6	\N	1	2016-01-17 23:18:08.885172	2016-01-17 23:18:08.885172
+58	6	\N	1	2016-01-17 23:18:08.886589	2016-01-17 23:18:08.886589
+59	6	\N	1	2016-01-17 23:18:08.893924	2016-01-17 23:18:08.893924
+60	6	\N	1	2016-01-17 23:18:08.89526	2016-01-17 23:18:08.89526
+61	7	\N	1	2016-01-17 23:19:07.272354	2016-01-17 23:19:07.272354
+62	7	\N	1	2016-01-17 23:19:07.273843	2016-01-17 23:19:07.273843
+63	7	\N	1	2016-01-17 23:19:07.278379	2016-01-17 23:19:07.278379
+64	7	\N	1	2016-01-17 23:19:07.281767	2016-01-17 23:19:07.281767
+65	7	\N	1	2016-01-17 23:19:07.282995	2016-01-17 23:19:07.282995
+66	7	\N	1	2016-01-17 23:19:07.289232	2016-01-17 23:19:07.289232
+67	7	\N	1	2016-01-17 23:19:07.291486	2016-01-17 23:19:07.291486
+68	7	\N	1	2016-01-17 23:19:07.30111	2016-01-17 23:19:07.30111
+69	7	\N	1	2016-01-17 23:19:07.303275	2016-01-17 23:19:07.303275
+70	7	\N	1	2016-01-17 23:19:07.309886	2016-01-17 23:19:07.309886
+71	8	\N	1	2016-01-17 23:20:26.755712	2016-01-17 23:20:26.755712
+72	8	\N	1	2016-01-17 23:20:26.757212	2016-01-17 23:20:26.757212
+73	8	\N	1	2016-01-17 23:20:26.759479	2016-01-17 23:20:26.759479
+74	8	\N	1	2016-01-17 23:20:26.76572	2016-01-17 23:20:26.76572
+75	8	\N	1	2016-01-17 23:20:26.767129	2016-01-17 23:20:26.767129
+76	8	\N	1	2016-01-17 23:20:26.772279	2016-01-17 23:20:26.772279
+77	8	\N	1	2016-01-17 23:20:26.781192	2016-01-17 23:20:26.781192
+78	8	\N	1	2016-01-17 23:20:26.782612	2016-01-17 23:20:26.782612
+79	8	\N	1	2016-01-17 23:20:26.783843	2016-01-17 23:20:26.783843
+80	8	\N	1	2016-01-17 23:20:26.789204	2016-01-17 23:20:26.789204
+81	9	\N	1	2016-01-17 23:21:19.255503	2016-01-17 23:21:19.255503
+82	9	\N	1	2016-01-17 23:21:19.256792	2016-01-17 23:21:19.256792
+83	9	\N	1	2016-01-17 23:21:19.263595	2016-01-17 23:21:19.263595
+84	9	\N	1	2016-01-17 23:21:19.265617	2016-01-17 23:21:19.265617
+85	9	\N	1	2016-01-17 23:21:19.26968	2016-01-17 23:21:19.26968
+86	9	\N	1	2016-01-17 23:21:19.277445	2016-01-17 23:21:19.277445
+87	9	\N	1	2016-01-17 23:21:19.278848	2016-01-17 23:21:19.278848
+88	9	\N	1	2016-01-17 23:21:19.280024	2016-01-17 23:21:19.280024
+89	9	\N	1	2016-01-17 23:21:19.28528	2016-01-17 23:21:19.28528
+90	9	\N	1	2016-01-17 23:21:19.286644	2016-01-17 23:21:19.286644
+91	10	\N	1	2016-01-17 23:22:20.334664	2016-01-17 23:22:20.334664
+92	10	\N	1	2016-01-17 23:22:20.342042	2016-01-17 23:22:20.342042
+93	10	\N	1	2016-01-17 23:22:20.343385	2016-01-17 23:22:20.343385
+94	10	\N	1	2016-01-17 23:22:20.344472	2016-01-17 23:22:20.344472
+95	10	\N	1	2016-01-17 23:22:20.345635	2016-01-17 23:22:20.345635
+96	10	\N	1	2016-01-17 23:22:20.346938	2016-01-17 23:22:20.346938
+97	10	\N	1	2016-01-17 23:22:20.354228	2016-01-17 23:22:20.354228
+98	10	\N	1	2016-01-17 23:22:20.355866	2016-01-17 23:22:20.355866
+99	10	\N	1	2016-01-17 23:22:20.357832	2016-01-17 23:22:20.357832
+100	10	\N	1	2016-01-17 23:22:20.362408	2016-01-17 23:22:20.362408
+101	11	\N	1	2016-01-17 23:23:20.285691	2016-01-17 23:23:20.285691
+102	11	\N	1	2016-01-17 23:23:20.287001	2016-01-17 23:23:20.287001
+103	11	\N	1	2016-01-17 23:23:20.28806	2016-01-17 23:23:20.28806
+104	11	\N	1	2016-01-17 23:23:20.293748	2016-01-17 23:23:20.293748
+105	11	\N	1	2016-01-17 23:23:20.295122	2016-01-17 23:23:20.295122
+106	11	\N	1	2016-01-17 23:23:20.30192	2016-01-17 23:23:20.30192
+107	11	\N	1	2016-01-17 23:23:20.303192	2016-01-17 23:23:20.303192
+108	11	\N	1	2016-01-17 23:23:20.30417	2016-01-17 23:23:20.30417
+109	11	\N	1	2016-01-17 23:23:20.305338	2016-01-17 23:23:20.305338
+110	11	\N	1	2016-01-17 23:23:20.310758	2016-01-17 23:23:20.310758
+111	12	\N	1	2016-01-17 23:24:05.119749	2016-01-17 23:24:05.119749
+112	12	\N	1	2016-01-17 23:24:05.121327	2016-01-17 23:24:05.121327
+113	12	\N	1	2016-01-17 23:24:05.125897	2016-01-17 23:24:05.125897
+114	12	\N	1	2016-01-17 23:24:05.137482	2016-01-17 23:24:05.137482
+115	12	\N	1	2016-01-17 23:24:05.138978	2016-01-17 23:24:05.138978
+116	12	\N	1	2016-01-17 23:24:05.14564	2016-01-17 23:24:05.14564
+117	12	\N	1	2016-01-17 23:24:05.147317	2016-01-17 23:24:05.147317
+118	12	\N	1	2016-01-17 23:24:05.148578	2016-01-17 23:24:05.148578
+119	12	\N	1	2016-01-17 23:24:05.149795	2016-01-17 23:24:05.149795
+120	12	\N	1	2016-01-17 23:24:05.15459	2016-01-17 23:24:05.15459
+\.
+
+
+--
+-- Name: product_parts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('product_parts_id_seq', 120, true);
+
+
+--
+-- Data for Name: product_prices; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY product_prices (id, product_id, price, supplier_price, supplier_id, created_at, updated_at, user_id, customer_id, public_price) FROM stdin;
+1	1	3870000.0	\N	\N	2016-01-17 23:12:39.805857	2016-01-17 23:30:43.081284	13	\N	0.0
+2	2	6644000.0	\N	\N	2016-01-17 23:13:51.158348	2016-01-17 23:31:26.446263	13	\N	0.0
+3	3	7031000.0	\N	\N	2016-01-17 23:14:49.504866	2016-01-17 23:32:14.299587	13	\N	0.0
+4	4	11825000.0	\N	\N	2016-01-17 23:16:05.362953	2016-01-17 23:32:49.925446	13	\N	0.0
+5	5	40420000.0	\N	\N	2016-01-17 23:17:10.966299	2016-01-17 23:33:37.205455	13	\N	0.0
+6	6	64479000.0	\N	\N	2016-01-17 23:18:09.028847	2016-01-17 23:34:07.236659	13	\N	0.0
+7	7	3990000.0	\N	\N	2016-01-17 23:19:07.374757	2016-01-17 23:34:38.186532	13	\N	0.0
+8	8	9568000.0	\N	\N	2016-01-17 23:20:26.88939	2016-01-17 23:35:07.494073	13	\N	0.0
+9	9	11825000.0	\N	\N	2016-01-17 23:21:19.365532	2016-01-17 23:35:38.207784	13	\N	0.0
+10	10	16254000.0	\N	\N	2016-01-17 23:22:20.437005	2016-01-17 23:36:09.640973	13	\N	0.0
+11	11	15136000.0	\N	\N	2016-01-17 23:23:20.38176	2016-01-17 23:36:40.459881	13	\N	0.0
+12	12	14630000.0	\N	\N	2016-01-17 23:24:05.222526	2016-01-17 23:37:10.252693	13	\N	0.0
+\.
+
+
+--
+-- Name: product_prices_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('product_prices_id_seq', 12, true);
+
+
+--
+-- Data for Name: product_stock_updates; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY product_stock_updates (id, product_id, quantity, serial_numbers, created_at, updated_at, is_import, user_id, note) FROM stdin;
+\.
+
+
+--
+-- Name: product_stock_updates_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('product_stock_updates_id_seq', 1, false);
+
+
+--
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY products (id, name, description, price, created_at, updated_at, product_code, warranty, manufacturer_id, unit, user_id, tmpproduct, stock, serial_numbers, status, note) FROM stdin;
+1	Máy in 9 kim OKI ML-1120 Plus	A4/ Tốc độ: 375CPS/ 1+4 copies/ 64KB/ Rib: 4 triệu ký tự \r\nĐường load giấy: Top, Rear. Kết nối: USB 2.0, Parallel, Serial\t\t\t\t\t\t\t\t\t\t\t\t	\N	2016-01-17 23:12:39.549631	2016-01-17 23:12:39.549631			1	Cái	13	\N	0		1	
+2	Máy in 9 kim OKI ML-184	A4/ Tốc độ: 375CPS/ 1+3 copies/ 128KB / Ribbon: 3 triệu ký tự\r\nĐường load giấy: Top, Rear, Bottom (Optional), Pull (Optional). \r\nKết nối: USB 2.0, Parallel, Serial (Optional)\t\t\t\t\t\t\t\t\t\t	\N	2016-01-17 23:13:51.044954	2016-01-17 23:13:51.044954			1	Cái	13	\N	0		1	
+3	Máy in 9 kim OKI ML-320T Plus	A4/ Tốc độ: 435CPS/ 1+4 copies/ 88KB/ Ribbon: 3 triệu ký tự\r\nĐường load giấy: Top, Rear, Bottom (Optional), Pull (Optional). \r\nKết nối: USB 2.0, Parallel, Serial (Optional)"\t\t\t\t\t\t\t\t\t\t\t\t\t\t	\N	2016-01-17 23:14:49.389055	2016-01-17 23:14:49.389055			1	Cái	13	\N	0		1	
+4	Máy in 9 kim OKI ML-5720	A4/ Tốc độ: 700CPS/ 1+6 copies/ 128KB/ Ribbon: 8 triệu ký tự\r\nĐường load giấy: Top, Rear, Bottom (Optional), Pull (Optional). \r\nKết nối: USB 2.0, Parallel, Serial (Optional)\t\t\t\t\t\t\t\t\t\t\t\t	\N	2016-01-17 23:16:05.255341	2016-01-17 23:16:05.255341			1	Cái	13	\N	0		1	
+5	Máy in 18 kim OKI ML-8810	A3/ Tốc độ: 810CPS/ 1+7 copies/ 256KB/ Ribbon: 10 triệu ký tự\r\nĐường load giấy: Rear, Front Push. Kết nối: USB, Pa, Serial (Option)\r\nHeavy duty - Phù hợp sử dụng trong Kho Bạc, Ngân Hàng\t\t\t\t\t\t\t\t\t\t\t	\N	2016-01-17 23:17:10.863658	2016-01-17 23:17:10.863658			1	Cái	13	\N	0		1	
+6	Máy in 18 kim OKI ML-4410	A3/ Tốc độ: 1066CPS/ 1+9 copies/ 512KB/ Ribbon: 15 triệu ký tự\r\nĐường load giấy: Rear, Front Push. Kết nối: Parallel, Serial\r\nHeavy duty - Phù hợp sử dụng trong Kho Bạc, Ngân Hàng\t\t\t\t\t\t\t\t\t\t	\N	2016-01-17 23:18:08.852867	2016-01-17 23:18:08.852867			1	Cái	13	\N	0		1	
+7	Máy in 24 kim OKI ML-1190 Plus	A4/ Tốc độ: 333CPS/ 1+4 copies/ 64KB/ Rib: 4 triệu ký tự \r\nĐường load giấy: Top, Rear. Kết nối: USB 2.0, Parallel, Serial\t\t\t\t\t\t\t\t\t\t\t\t	\N	2016-01-17 23:19:07.262706	2016-01-17 23:19:07.262706			1	Cái	13	\N	0		1	
+8	Máy in 24 kim OKI ML-390T Plus	A4/ Tốc độ: 390CPS/ 1+4 copies/ 128KB/ Ribbon: 2 triệu ký tự\r\nĐường load giấy: Top, Rear, Bottom (Optional), Pull (Optional). \r\nKết nối: USB 2.0, Parallel, Serial (Optional)\t\t\t\t\t\t\t\t\t\t	\N	2016-01-17 23:20:26.745011	2016-01-17 23:20:26.745011			1	Cái	13	\N	0		1	
+9	Máy in 24 kim OKI ML-5790	A4/ Tốc độ: 576CPS/ 1+5 copies/ 128KB/ Ribbon: 8 triệu ký tự\r\nĐường load giấy: Top, Rear, Bottom (Optional), Pull (Optional). \r\nKết nối: USB 2.0, Parallel, Serial (Optional)\t\t\t\t\t\t\t\t\t\t\t\t	\N	2016-01-17 23:21:19.245041	2016-01-17 23:21:19.245041			1	Cái	13	\N	0		1	
+10	Máy in 24 kim OKI ML-6300FB	A4/ Tốc độ: 450CPS/ 1+5 copies/ 64KB/ Ribbon: 4 triệu ký tự\r\nĐường load giấy: Front Manual, Push Tractor. Pa, USB, Serial (op)\r\nFlatbed printer - Phù hợp sử dụng trong Ngân Hàng, in sổ.\t\t\t\t\t\t\t\t\t\t\t\t	\N	2016-01-17 23:22:20.326481	2016-01-17 23:22:20.326481			1	Cái	13	\N	0		1	
+11	Máy in 24 kim OKI ML-5791	A3/ Tốc độ: 576CPS/ 1+5 copies/ 128KB/ Ribbon: 13 triệu ký tự\r\nĐường load giấy: Top, Rear, Bottom (Optional), Pull (Optional). \r\nKết nối: USB 2.0, Parallel, Serial (Optional)\t\t\t\t\t\t\t\t\t\t\t\t	\N	2016-01-17 23:23:20.276509	2016-01-17 23:23:20.276509			1	Cái	13	\N	0		1	
+12	Máy in 24 kim OKI ML-791	A3/ Tốc độ: 473CPS/ 1+4 copies/ 128KB/ Ribbon: 4 triệu ký tự\r\nĐường load giấy: Top, Rear, Bottom (Optional), Pull (Optional). \r\nKết nối: USB 2.0, Parallel, Serial (Optional)\t\t\t\t\t\t\t\t\t\t\t\t\t\t	\N	2016-01-17 23:24:05.111085	2016-01-17 23:24:05.111085			1	Cái	13	\N	0		1	
+\.
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('products_id_seq', 12, true);
+
+
+--
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY roles (id, name, created_at, updated_at) FROM stdin;
+1	admin	2016-01-16 23:24:59.922274	2016-01-16 23:24:59.922274
+2	user	2016-01-16 23:24:59.925449	2016-01-16 23:24:59.925449
+3	attendance_manager	2016-01-16 23:24:59.927982	2016-01-16 23:24:59.927982
+4	salesperson	2016-01-16 23:24:59.930507	2016-01-16 23:24:59.930507
+5	company_salesperson	2016-01-16 23:24:59.933086	2016-01-16 23:24:59.933086
+6	sales_manager	2016-01-16 23:24:59.935611	2016-01-16 23:24:59.935611
+7	accountant	2016-01-16 23:24:59.938137	2016-01-16 23:24:59.938137
+8	accounting_manager	2016-01-16 23:24:59.940827	2016-01-16 23:24:59.940827
+9	purchaser	2016-01-16 23:24:59.9438	2016-01-16 23:24:59.9438
+10	purchase_manager	2016-01-16 23:24:59.980964	2016-01-16 23:24:59.980964
+11	storageman	2016-01-16 23:24:59.98354	2016-01-16 23:24:59.98354
+12	storage_manager	2016-01-16 23:24:59.986047	2016-01-16 23:24:59.986047
+\.
+
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('roles_id_seq', 12, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY schema_migrations (version) FROM stdin;
+20131109010419
+20131122061114
+20131122062816
+20131122063850
+20131122075302
+20140213022040
+20140213061224
+20140213063536
+20140214075905
+20140215020028
+20140215020559
+20140221012104
+20140221012610
+20140221013129
+20140221041317
+20140221070917
+20140222045115
+20140222045217
+20140222045430
+20140222045454
+20140222045516
+20140222052130
+20140301015947
+20140301025307
+20140301025340
+20140301025419
+20140301025510
+20140301025538
+20140301025553
+20140301025615
+20140301030531
+20140304014613
+20140304030340
+20140304031305
+20140304040449
+20140304042941
+20140304050802
+20140307061621
+20140307063529
+20140307071540
+20140307075906
+20140307081641
+20140308021800
+20140308063652
+20140308072352
+20140308072415
+20140313080139
+20140313080223
+20140313090114
+20140313091940
+20140314070155
+20140320014111
+20140320014913
+20140320023702
+20140320085550
+20140320093203
+20140322044214
+20140322044616
+20140324023313
+20140324033911
+20140324055837
+20140324084629
+20140731010224
+20140731064555
+20140731080017
+20140801003248
+20140801094257
+20140802025945
+20140802030357
+20140807031530
+20140811081940
+20140815013938
+20150116023630
+20150304075707
+20150305085608
+20150313042522
+20150316011514
+20150316092543
+20150316094333
+20150316094602
+20150317071952
+20150318061926
+20150318063306
+20150318072611
+20150320040238
+20150320040805
+20150320040824
+20150320092026
+20150323064242
+20150324063209
+20150324063654
+20150324094732
+20150325074310
+20150326071123
+20150326090135
+20150327035733
+20150327153102
+20150328012949
+20150330060446
+20150330070035
+20150401052148
+20150401094819
+20150402065427
+20150402130957
+20150403024049
+20150403024601
+20150403072850
+20150403072907
+20150403110105
+20150403121428
+20150403125715
+20150403125725
+20150404013053
+20150404033213
+20150405111259
+20150405112039
+20150406032026
+20150406042111
+20150406042130
+20150407033111
+20150408140146
+20150408155624
+20150409015540
+20150415043518
+20150416043832
+20150417034742
+20150417041617
+20150417080712
+20150420012246
+20150420013051
+20150420014251
+20150420021244
+20150420023041
+20150420023153
+20150420050835
+20150420065002
+20150423011049
+20150423012413
+20150424094205
+20150427010451
+20150505075859
+20150507033018
+20150507034707
+20150507064831
+20150507083737
+20150509030123
+20150511063535
+20150512015924
+20150512015947
+20150512020020
+20150512020037
+20150512025921
+20150512035117
+20150512063536
+20150513061215
+20150513061639
+20150513062332
+20150513070607
+20150515014950
+20150519023308
+20150521030440
+20150527033129
+20150528015743
+20150604092249
+20150610035056
+20150716075807
+20150721042319
+\.
+
+
+--
+-- Data for Name: states; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY states (id, name, country_id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: states_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('states_id_seq', 1, false);
+
+
+--
+-- Data for Name: taxes; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY taxes (id, name, rate, created_at, updated_at) FROM stdin;
+1	VAT 0%	0.0	2016-01-16 23:24:59.822773	2016-01-16 23:24:59.822773
+2	VAT 10%	10.0	2016-01-16 23:24:59.826293	2016-01-16 23:24:59.826293
+\.
+
+
+--
+-- Name: taxes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('taxes_id_seq', 2, true);
+
+
+--
+-- Data for Name: tmpcats; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY tmpcats (id, category_id, category_image, category_parent_id, category_publish, category_ordertype, category_template, category_ordering, category_add_date, products_page, products_row, "name_en_GB", "alias_en_GB", "short_description_en_GB", "description_en_GB", "meta_title_en_GB", "meta_description_en_GB", "meta_keyword_en_GB", "name_vi_VN", "alias_vi_VN", "short_description_vi_VN", "description_vi_VN", "meta_title_vi_VN", "meta_description_vi_VN", "meta_keyword_vi_VN") FROM stdin;
+\.
+
+
+--
+-- Name: tmpcats_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('tmpcats_id_seq', 1, false);
+
+
+--
+-- Data for Name: tmpmanus; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY tmpmanus (id, manufacturer_id, manufacturer_url, manufacturer_logo, manufacturer_publish, products_page, products_row, ordering, name_en_gb, alias_en_gb, short_description_en_gb, description_en_gb, meta_title_en_gb, meta_description_en_gb, meta_keyword_en_gb, name_vi_vn, alias_vi_vn, short_description_vi_vn, description_vi_vn, meta_title_vi_vn, meta_description_vi_vn, meta_keyword_vi_vn, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: tmpmanus_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('tmpmanus_id_seq', 1, false);
+
+
+--
+-- Data for Name: tmpproducts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY tmpproducts (id, product_id, product_ean, product_quantity, unlimited, product_availability, product_date_added, date_modify, product_publish, product_tax_id, product_template, product_url, product_old_price, product_buy_price, product_price, min_price, different_prices, product_weight, product_thumb_image, product_name_image, product_full_image, product_manufacturer_id, product_is_add_price, average_rating, reviews_count, delivery_times_id, hits, weight_volume_units, basic_price_unit_id, label_id, vendor_id, name_en_gb, alias_en_gb, short_description_en_gb, description_en_gb, meta_title_en_gb, meta_description_en_gb, meta_keyword_en_gb, product_warranty, name_vi_vn, alias_vi_vn, short_description_vi_vn, description_vi_vn, meta_title_vi_vn, meta_description_vi_vn, meta_keyword_vi_vn, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: tmpproducts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('tmpproducts_id_seq', 1, false);
+
+
+--
+-- Data for Name: tmpproducttocats; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY tmpproducttocats (id, product_id, category_id, product_ordering, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: tmpproducttocats_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('tmpproducttocats_id_seq', 1, false);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, first_name, last_name, phone_ext, mobile, "ATT_No", image) FROM stdin;
+7	luanpm@hoangkhang.com.vn	$2a$10$U7nmWWS58FZAUHry2LDxnefvA6OSLBYsETs1eS6TEw5UsPdA6hhN.	\N	\N	\N	0	\N	\N	\N	\N	2016-01-16 23:24:58.922062	2016-01-16 23:24:59.990914	Luan	Pham	\N	\N	123	\N
+2	nguyendtd@hoangkhang.com.vn	$2a$10$jGvvjJl6HGl4samilSA4bOQeKzZNh9/jKWYT3ONGhk9aSFZabkcCK	\N	\N	\N	0	\N	\N	\N	\N	2016-01-16 23:24:58.311639	2016-01-16 23:25:00.024751	Nguyen	Do Thi Da	\N	\N	22	\N
+3	tuanthm@hoangkhang.com.vn	$2a$10$QMLSczcI6SIl2mFPEHp0UecFm1ZXDDHhjFv4Y9XYZxjSo4RJ.kQNO	\N	\N	\N	0	\N	\N	\N	\N	2016-01-16 23:24:58.431334	2016-01-16 23:25:00.034202	Tuan	Thai Hoang Minh	\N	\N	124	\N
+4	vietdq@hoangkhang.com.vn	$2a$10$ti3/g5JTev46OvOlVtwsQuc39tDm1v4vYbJ2RiJa9XjIzlbwJF6hm	\N	\N	\N	0	\N	\N	\N	\N	2016-01-16 23:24:58.629308	2016-01-16 23:25:00.038638	Viet	Do Quoc	\N	\N	21	\N
+6	thuydp@hoangkhang.com.vn	$2a$10$4lxJtWnCLFf6uPKgfXPD1OA/lGbxOg1OzZYq7vzKP68jzVjuo15.W	\N	\N	\N	0	\N	\N	\N	\N	2016-01-16 23:24:58.82749	2016-01-16 23:25:00.043053	Thuy	Do Thi Phuong	\N	\N	40	\N
+8	tiennv@hoangkhang.com.vn	$2a$10$be6gj4zoW38QyBLjr5BPKOMQ0YIvWopx6rZNrW3ImY.tiVGALqGU6	\N	\N	\N	0	\N	\N	\N	\N	2016-01-16 23:24:59.07139	2016-01-16 23:25:00.047444	Tien	Nguyen Van	\N	\N	52	\N
+9	trinhptt@hoangkhang.com.vn	$2a$10$O8goq9DUbWkWBtbGfmxCNesv8Qh.JcvBLeXGUI1ZVcqCYcCg28vr.	\N	\N	\N	0	\N	\N	\N	\N	2016-01-16 23:24:59.255186	2016-01-16 23:25:00.05163	Trinh	Phan Thi Tuyet	\N	\N	128	\N
+10	bangdh@hoangkhang.com.vn	$2a$10$cn.PlaCJB2fPWIVjV/f7PeSV/hGGS.GYz0H2VIEE.elqLwghv5DOG	\N	\N	\N	0	\N	\N	\N	\N	2016-01-16 23:24:59.350861	2016-01-16 23:25:00.056393	Bang	Do Hai	\N	\N	70	\N
+11	phuongnt@hoangkhang.com.vn	$2a$10$XyPs62lwEGM/rJ1h47XAYeCAHClagwCsABrM5jz0RHYskSVq4nNBi	\N	\N	\N	0	\N	\N	\N	\N	2016-01-16 23:24:59.4475	2016-01-16 23:25:00.060766	Phuong	Nguyen Tien	\N	\N	127	\N
+12	quannt@hoangkhang.com.vn	$2a$10$4H0y/TVteiyt6XuYjJ5eeOBfzbuT2afJjiko1SLJK646i02x9IWS6	\N	\N	\N	0	\N	\N	\N	\N	2016-01-16 23:24:59.545482	2016-01-16 23:25:00.064912	Quan	Nguyen The	\N	\N	25	\N
+14	tantd@hoangkhang.com.vn	$2a$10$BcAoC.XYYETwDV.UGHiydeINCuLmfmKOqaSEXZ4Y.HjWis2peHgEW	\N	\N	\N	0	\N	\N	\N	\N	2016-01-16 23:24:59.764597	2016-01-16 23:25:00.069109	Tan	Tran Duy	\N	\N	131	\N
+1	admin@hoangkhang.com.vn	$2a$10$fuWd54pTDRZqwIGghU71sOvwO64D.CwhkshISgXmfmEqUc6BQPg4i	\N	\N	\N	1	2016-01-17 06:23:54.445963	2016-01-17 06:23:54.445963	192.168.0.103	192.168.0.103	2016-01-16 23:24:58.131296	2016-01-17 06:24:45.661874	Super	Admin	\N	\N	\N	\N
+13	tamvm@hoangkhang.com.vn	$2a$10$LpaklyP3S/4/XXGWg4iwPeh8TUd8bp5KMGGoeSSQBugDoTC3mNQki	\N	\N	2016-01-17 23:08:17.848013	2	2016-01-17 23:08:17.854162	2016-01-17 06:25:10.900956	192.168.1.52	192.168.0.103	2016-01-16 23:24:59.638486	2016-01-17 23:08:17.855097	Tam	Vo Minh	\N		129	\N
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('users_id_seq', 14, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
