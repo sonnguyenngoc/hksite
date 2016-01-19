@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :category
+  resources :product
   root 'home#index'
   get "blog" => "blog#index", as: :blog
   get "blog_post" => "blog_post#index", as: :blog_post
