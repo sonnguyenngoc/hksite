@@ -45,3 +45,7 @@ group :development do
   gem 'spring'
 end
 
+gem 'mini_magick'
+gem 'carrierwave'
+
+

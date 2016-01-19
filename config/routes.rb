@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   root 'home#index'
+  get "blog" => "blog#index", as: :blog
+  namespace :admin, :path => "hoangkhangincotech" do
+      resources :articles
+      resources :tags
+      resources :slide_shows
+      resources :newsletters
+      resources :messages
+      resources :manages
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

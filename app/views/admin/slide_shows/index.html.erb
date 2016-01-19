@@ -1,0 +1,105 @@
+<!-- Main content -->
+<div class="content-wrapper">
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-header-content">
+            <div class="page-title">
+                <h4><a href="#" class="btn-back"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Quản lý</span> - Slide</h4>
+            </div>
+        </div>
+    
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><%= link_to '<i class="icon-home2 position-left"></i> Trang chủ'.html_safe, admin_manages_path %></li>
+                <li><%= link_to 'Quản lý', admin_slide_shows_path %></li>
+                <li class="active">Quản lý SlideShow</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /page header -->
+    
+    <!-- Content area -->
+    <div class="content">
+    
+        <!-- Basic datatable -->
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <%= link_to 'Tạo Slideshow mới', new_admin_slide_show_path, class: 'btn btn-primary' %>
+                <hr/>
+                <h5 class="panel-title">Danh sách <span class="text-semibold">Slideshow</span></h5>
+                <div class="heading-elements">
+                    <ul class="icons-list">
+                        <li><a data-action="collapse"></a></li>
+                        <li><a data-action="reload"></a></li>
+                        <li><a data-action="close"></a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <table class="table datatable-article">
+                <thead>
+                    <tr>
+                        <th>Hình ảnh</th>
+                        <th>Tiêu đề</th>
+                        <th>Nội dung</th>
+                        <th>Liên kết</th>
+                        <th>Ngày tạo</th>
+                        <th class="text-center">Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @slide_shows.each do |item| %>
+                        <tr>
+                            <td><div class="media-left">
+                                <img src="<%= item.image_url if item.image_url? %>" style="width: 82px; height: 56px;" class="img-rounded" alt="">
+                            </div></td>
+                            <td>
+                                <%= link_to (truncate(strip_tags(item.title), length: 40)), [:admin, item] %>
+                            </td>
+                            <td><%= truncate(strip_tags(item.description), length: 50) %></td>
+                            <td><%= item.link_to %></td>
+                            <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                            <td class="text-center">
+                                <ul class="icons-list">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="icon-menu9"></i>
+                                        </a>
+        
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li>
+                                                <%= link_to '<i class="glyphicon glyphicon-edit"></i> Sửa'.html_safe, edit_admin_slide_show_path(item) %>
+                                            </li>
+                                            <li>
+                                                <%= link_to '<i class="icon-cross2"></i> Xóa'.html_safe, [:admin, item], method: :delete, data: {confirm: 'Are you sure?'} %>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+        <!-- /basic datatable -->
+    
+        <!-- Footer -->
+        <%= render '/admin/manages/footer' %>
+        <!-- /footer -->
+    
+    </div>
+    <!-- /content area -->
+
+</div>
+<!-- /main content -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/javascripts/datatables_article.js' %>
+<!-- /theme JS files -->

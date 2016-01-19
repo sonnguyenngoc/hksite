@@ -1,0 +1,94 @@
+<!-- Main content -->
+<div class="content-wrapper">
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-header-content">
+            <div class="page-title">
+                <h4><a href="<%= admin_tags_path %>" class="btn-back"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Tags</span> - Management</h4>
+            </div>
+        </div>
+    
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><a href="#"><i class="icon-home2 position-left"></i> Trang chủ</a></li>
+                <li><a href="<%= admin_tags_path %>">Quản lý</a></li>
+                <li><a href="<%= admin_tags_path %>">Quản lý loại bài viết</a></li>
+                <li class="active"><%= @slide_show.title %></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /page header -->
+    
+    <!-- Content area -->
+    <div class="content">
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h5 class="panel-title"><span class="text-semibold"><%= @slide_show.title %></span></h5><br/>
+                
+                <%= content_tag(:p, class: "color-red") do %>
+                  <%= notice %>
+                <% end %>
+            
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <%= label "", "Hình ảnh: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= image_tag(@slide_show.image_url, size: "250x150", alt: "Hình ảnh của slide", class: "img-rouded") %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= label "", "Tiêu đề: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static") do %>
+                              <%= @slide_show.title %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= label "", "Mô tả: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static ") do %>
+                              <%= @slide_show.description %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= label "", "Liên kết: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static ") do %>
+                              <%= @slide_show.link_to %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= label "", "Created At: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static ") do %>
+                              <%= @slide_show.created_at.strftime("%d/%m/%Y") %>
+                            <% end %>
+                        </div>
+                    </div>
+                </form>
+            
+                <%= link_to '<i class="icon-backward2 position-left"></i> Trở về'.html_safe, admin_slide_shows_path, class: "btn btn-primary" %>
+                
+            </div>
+        </div>
+    
+        <!-- Footer -->
+        <%= render '/admin/manages/footer' %>
+        <!-- /footer -->
+    
+    </div>
+    <!-- /content area -->
+
+</div>
+<!-- /main content -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<!-- /theme JS files -->
