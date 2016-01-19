@@ -520,7 +520,7 @@
 
                             <blockquote>
 
-                                <div class="author_info"><b>Thiết bị mạng, thiết bị camera IP EDIMAX</b></div>
+                                <div class="author_info"><b><%= link_to "Thiết bị mạng, thiết bị camera IP EDIMAX", { controller: "blog_post", action: "index" } %></b></div>
 
                                 <p>Lời giới thiệu ngắn của tin tức....</p>
 
@@ -2370,96 +2370,39 @@
                         <div class="table_layout">
 
                             <div class="table_row">
+                                
+                                <% @blog.each do |blog| %>
 
-                                <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                                <div class="table_cell">
-
-                                    <article class="entry">
-
-                                        <a href="#" class="thumbnail entry_image">
-
-                                            <img src="images/edimax.jpg" alt="">
-
-                                        </a>
-
-                                        <h5 class="entry_title"><a href="#"><b>Thiết bị mạng, thiết bị camera IP EDIMAX</b></a></h5>
-
-                                        <div class="entry_meta">
-
-                                            <span><i class="icon-calendar"></i> 18-12-2015 21:33:00</span>
-
-                                            <span><a href="#" class="comments"><i class="icon-comment"></i> 11</a></span>
-
-                                        </div><!--/ .byline-->
-
-                                        <p>Chứng nhận thương hiệu hàng đầu của Đài Loan. Là 1 trong 17 thương hiệu hàng đầu Đài Loan.....</p>
-
-                                    </article><!--/ .entry-->
-
-                                </div>
-
-                                <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
-                                <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                                <div class="table_cell">
-
-                                    <article class="entry">
-
-                                        <a href="#" class="thumbnail entry_image">
-
-                                            <img src="images/edimax.jpg" alt="">
-
-                                        </a>
-
-                                        <h5 class="entry_title"><a href="#"><b>Thiết bị mạng, thiết bị camera IP EDIMAX</b></a></h5>
-
-                                        <div class="entry_meta">
-
-                                            <span><i class="icon-calendar"></i> 18-12-2015 21:33:00</span>
-
-                                            <span><a href="#" class="comments"><i class="icon-comment"></i> 11</a></span>
-
-                                        </div><!--/ .byline-->
-
-                                        <p>Chứng nhận thương hiệu hàng đầu của Đài Loan. Là 1 trong 17 thương hiệu hàng đầu Đài Loan.....</p>
-
-                                    </article><!--/ .entry-->
-
-                                </div>
-
-                                <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
-                                <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                                <div class="table_cell">
-
-                                    <article class="entry">
-
-                                        <a href="#" class="thumbnail entry_image">
-
-                                            <img src="images/edimax.jpg" alt="">
-
-                                        </a>
-
-                                        <h5 class="entry_title"><a href="#"><b>Thiết bị mạng, thiết bị camera IP EDIMAX</b></a></h5>
-
-                                        <div class="entry_meta">
-
-                                            <span><i class="icon-calendar"></i> 18-12-2015 21:33:00</span>
-
-                                            <span><a href="#" class="comments"><i class="icon-comment"></i> 11</a></span>
-
-                                        </div><!--/ .byline-->
-
-                                        <p>Chứng nhận thương hiệu hàng đầu của Đài Loan. Là 1 trong 17 thương hiệu hàng đầu Đài Loan.....</p>
-
-                                    </article><!--/ .entry-->
-
-                                </div>
-
-                                <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+                                    <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
+    
+                                    <div class="table_cell">
+    
+                                        <article class="entry">
+    
+                                            <a href="#" class="thumbnail entry_image">
+    
+                                                <img src="<%= blog.image_url.article_home if blog.image_url? %>" width="244" height="154" alt="">
+    
+                                            </a>
+    
+                                            <h5 class="entry_title"><b><%= link_to blog.title, { controller: "blog_post", action: "index" } %></b></h5>
+    
+                                            <div class="entry_meta">
+    
+                                                <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
+    
+                                                <span><a href="#" class="comments"><i class="icon-comment"></i> 11</a></span>
+    
+                                            </div><!--/ .byline-->
+    
+                                            <p><%= blog.content.html_safe %></p>
+    
+                                        </article><!--/ .entry-->
+    
+                                    </div>
+    
+                                    <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+                                <% end %>
 
                             </div>
 
@@ -2469,8 +2412,8 @@
 
                         <footer class="bottom_box">
 
-                            <a href="#" class="button_grey middle_btn">Xem thêm</a>
-
+                            <%= link_to "Xem thêm", { controller: "blog", action: "index" }, { class: "button_grey middle_btn" } %>
+                            
                         </footer>
 
                         <!-- - - - - - - - - - - - - - End of view all entries - - - - - - - - - - - - - - - - -->

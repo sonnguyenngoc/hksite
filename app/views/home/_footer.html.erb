@@ -131,14 +131,14 @@
                         <h4>Đăng ký nhận tin mới</h4>
     
                         <p class="form_caption">Đăng ký để nhận thông tin mới từ chúng tôi!</p>
+                        
+                        <%= form_for @newsletter, url: admin_newsletters_path,html: {class: 'newsletter subscribe clearfix'} do |f| %>
     
-                        <form class="newsletter subscribe clearfix" novalidate>
-    
-                            <input type="email" name="sc_email" placeholder="Nhập email của bạn tại đây...">
-    
-                            <button class="button_blue def_icon_btn"></button>
-    
-                        </form>
+                            <%= f.email_field :email, placeholder: 'Nhập email của bạn tại đây...', required: true %>
+                            
+                            <button class="button_blue def_icon_btn" type="submit"></button>
+
+                        <% end %>
     
                     </section><!--/ .widget-->
     
@@ -156,9 +156,9 @@
     
                         <ul class="c_info_list">
     
-                            <li class="c_info_location"><%= @contact.address %></li>
-                            <li class="c_info_phone"><%= @contact.phone %></li>
-                            <li class="c_info_mail"><a href="mailto:<%= @contact.email %>"><%= @contact.email %></a></li>
+                            <li class="c_info_location"><%= @company_info.address %></li>
+                            <li class="c_info_phone"><%= @company_info.phone %></li>
+                            <li class="c_info_mail"><a href="mailto:<%= @company_info.email %>"><%= @company_info.email %></a></li>
                             <li class="c_info_schedule">
     
                                 <ul>

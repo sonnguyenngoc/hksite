@@ -1,0 +1,68 @@
+<!-- Main content -->
+<div class="content-wrapper">
+
+	<!-- Page header -->
+	<div class="page-header">
+		<div class="page-header-content">
+			<div class="page-title">
+				<h4><a href="<%= admin_tags_path %>" class="btn-back"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Tạo mới</span> - Loại bài viết</h4>
+			</div>
+		</div>
+	
+		<div class="breadcrumb-line">
+			<ul class="breadcrumb">
+				<li><a href="#"><i class="icon-home2 position-left"></i> Trang chủ</a></li>
+				<li><a href="<%= admin_tags_path %>">Quản lý</a></li>
+				<li><a href="<%= admin_tags_path %>">Quản lý loại bài viết</a></li>
+				<li class="active">Tạo mới</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /page header -->
+	
+	<!-- Content area -->
+	<div class="content">
+	
+		<!-- Horizontal form options -->
+		<div class="row">
+			<div class="col-md-12">
+	
+				<!-- Basic layout-->
+				<div class="panel panel-flat">
+					<div class="panel-heading">
+						<h5 class="panel-title">Tạo mới loại bài viết</h5>
+						<div class="heading-elements">
+							<ul class="icons-list">
+								<li><a data-action="collapse"></a></li>
+								<li><a data-action="reload"></a></li>
+								<li><a data-action="close"></a></li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="panel-body">
+						<%= render 'form' %>
+					</div>
+	
+				</div>
+				<!-- /basic layout -->
+			</div>
+		</div>
+	
+		<!-- Footer -->
+		<%= render '/admin/manages/footer' %>
+		<!-- /footer -->
+	
+	</div>
+	<!-- /content area -->
+
+</div>
+<!-- /main content -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/assets/js/pages/form_layouts.js' %>
+<!-- /theme JS files -->

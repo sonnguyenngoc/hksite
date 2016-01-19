@@ -1,0 +1,49 @@
+<% if @slide_show.errors.any? %>
+  <div id="error_explanation">
+    <h6><%= pluralize(@slide_show.errors.count, "error") %> prohibited this tag from being saved:</h6>
+
+    <% @slide_show.errors.full_messages.each do |message| %>
+      <p class="label label-warning"><%= message %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_for [:admin, @slide_show], html: {class: "form-horizontal"} do |f| %>
+
+    <div class="panel-body">
+      
+        <div class="form-group">
+            <%= f.label "Hình ảnh: ", class: "col-lg-2 control-label" %>
+            <div class="col-lg-10">
+              <%= f.file_field :image_url, class: "file-styled" %>
+              <span class="help-block">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
+              <%= image_tag(@slide_show.image_url, size: "250x150", alt: "Picture/logo's Manufacturer", class: "img-rouded") %>
+            </div>
+        </div>
+        
+        <div class="form-group field">
+            <%= f.label "Tiêu đề: ", class: "col-lg-2 control-label" %>
+            <div class="col-lg-10">
+              <%= f.text_field :title, placeholder: "Tiêu đề loại bài viết...", class: "form-control" %>
+            </div>
+        </div>
+
+        <div class="form-group field">
+            <%= f.label "Mô tả: ", class: "col-lg-2 control-label" %>
+            <div class="col-lg-10">
+              <%= f.text_area :description, rows: "5", cols: "5", placeholder: "Mô tả loại bài viết...", class: "form-control" %>
+            </div>
+        </div>
+            
+        <div class="form-group field">
+            <%= f.label "Liên kết: ", class: "col-lg-2 control-label" %>
+            <div class="col-lg-10">
+              <%= f.text_field :link_to, placeholder: "Link liên kết tới trang khác...", class: "form-control" %>
+            </div>
+        </div>
+
+        <div class="text-right">
+          <%= button_tag 'Lưu <i class="icon-plus22 position-right"></i>'.html_safe, class: "btn btn-primary"%>
+        </div>
+    </div>
+<% end %>

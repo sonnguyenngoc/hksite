@@ -1,0 +1,121 @@
+<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+<div class="wide_layout">
+
+    <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+    <%= render 'blog/header' %>
+    
+    <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="secondary_page_wrapper">
+
+        <div class="container">
+
+            <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+            <ul class="breadcrumbs">
+
+                <li><a href="index.html">Trang chủ</a></li>
+                <li>Giới thiệu</li>
+
+            </ul>
+
+            <div class="row">
+
+                <aside class="col-md-3 col-sm-4">
+
+                    <!-- - - - - - - - - - - - - - Information - - - - - - - - - - - - - - - - -->
+
+                    <section class="section_offset">
+
+                        <h3>Thông tin</h3>
+
+                        <ul class="theme_menu">
+
+                            <li><a href="#">Giới thiệu</a></li>
+                            <li><a href="#">Thông tin giao hàng</a></li>
+                            <li><a href="#">Chính sách riêng tư</a></li>
+                            <li><a href="#">Điều khoản &amp; Các điều kiện</a></li>
+                            <li><a href="#">Liên hệ</a></li>
+                            <li><a href="#">Hỏi đáp</a></li>
+                            <li><a href="#">Sơ đồ website</a></li>
+
+                        </ul>
+
+                    </section><!--/ .section_offset -->
+
+                    <div class="section_offset">
+
+                        <a href="#" class="banner">
+                            
+                            <img src="images/logo-company.jpg" alt="">
+
+                        </a>
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of information - - - - - - - - - - - - - - - - -->
+
+                </aside><!--/ [col]-->
+
+                <main class="col-md-9 col-sm-8">
+
+                    <h1>Giới thiệu</h1>
+
+                    <div class="theme_box clearfix">
+
+                        <img src="images/logo-company.jpg" class="alignleft" width="310" alt="">
+
+                        <p style="text-align: justify"><strong>Công Ty TNHH Giải Pháp Công Nghệ Thông Tin & Truyền Thông Hoàng Khang (Hoang Khang Incotech) xin gửi đến Quý khách hàng đã – đang và sẽ là niềm tự hào của công ty Hoàng Khang lời chúc sức khỏe và lời chào trân trọng.</strong></p>
+
+                        <p style="text-align: justify">Công ty được thành lập theo tiêu chí cung cấp các giải pháp ứng dụng liên quan công nghệ thông tin và truyền thông tín hiệu cho khách hàng là doanh nghiệp, tổ chức, cá nhân. Công ty từng bước khẳng định là một nhà tích hợp hệ thống và cung cấp dịch vụ đầu cuối uy tính trong lĩnh vực Công nghệ thông tin (CNTT) và Truyền Thông (TT) theo hướng chuyên nghiệp đáp ứng đầy đủ nhu cầu khách hàng và đảm bảo chất lượng dịch vụ.</p>
+
+                        <p style="text-align: justify">Sau nhiều năm nghiên cứu tìm hiểu thị trường, xây dựng đội ngũ nhân viên kỹ thuật tốt nghiệp chuyên ngành CNTT được đào tạo các khóa chuyên sâu về quản trị CNTT và đạt chứng chỉ, chứng nhận quốc tế về kỹ thuật, đến nay, Công ty Hoang Khang Incotech đã nhận được sự tín nhiệm của các Công ty trong và ngoài nước, các tổ chức phi chính phủ, thực hiện các công trình thuộc khối nhà nước như: Sở thanh tra xây dựng, Bệnh viện TW, Trường học, Bảo Hiểm Xã Hội, Viện Kiểm Sát, Ủy Ban Nhân Dân, Trung Tâm Dạy Nghề, Ban dự án cao tốc đường thủy, khối Ngân Hàng… Hoàng Khang được đánh giá cao khả năng hợp tác và làm việc qua các dự án hỗ trợ tư vấn kỹ thuật và cung cấp sản phẩm lĩnh vực CNTT, an ninh và thông tin liên lạc đúng tiêu chuẩn theo yêu cầu đơn hàng.</p>
+
+                    </div><!--/ .theme_box-->
+
+                </main><!--/ [col]-->
+
+            </div><!--/ .row-->
+
+        </div><!--/ .container-->
+
+    </div><!--/ .page_wrapper-->
+    
+    <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+    <%= render 'blog/footer' %>
+    
+    <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+</div><!--/ [layout]-->
+
+<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+
+
+<!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+
+<!-- Include Libs & Plugins
+============================================ -->
+<%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+<%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+<%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+<%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+<%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+<%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+<%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+<%= javascript_include_tag '/frontend/js/retina.min.js' %>
+<%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+
+<!-- Theme files
+============================================ -->
+<%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+<%= javascript_include_tag '/frontend/js/theme.core.js' %>

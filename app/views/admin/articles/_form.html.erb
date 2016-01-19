@@ -1,0 +1,42 @@
+<% if @article.errors.any? %>
+    <div id="error_explanation">
+        <% @article.errors.full_messages.each do |message| %>
+            <span class="label label-warning"><%= message %></span>
+        <% end %>
+        <hr/>
+    </div>
+<% end %>
+
+<%= form_for [:admin, @article], html: {class: "form-horizontal"} do |f| %>
+
+    <div class="form-group">
+        <%= f.label "Hình ảnh: ", class: "col-lg-2 control-label" %>
+        <div class="col-lg-10">
+          <%= f.file_field :image_url, class: "file-styled" %>
+          <span class="help-block">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
+          <%= image_tag(@article.image_url.article_home, size: "244x244",alt: "Picture/logo's Manufacturer", class: "img-rouded") %>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <%= f.label "Tiêu đề: ", class: "col-lg-2 control-label" %>
+        <div class="col-lg-10">
+            <%= f.text_field :title, placeholder: "Post's title (required)", class: "form-control" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <%= f.label "Loại: ", class: "col-lg-2 control-label" %>
+        <div class="col-lg-10">
+            <%= f.collection_select(:tag_id, Tag.all, :id, :title, {:prompt => "Chọn loại bài viết..."}, {class: "select"}) %>
+        </div>
+    </div>
+
+    <div class="mb-15">
+        <%= f.text_area :content, rows: "4", cols: "4", id: "editor-full" %>
+    </div>
+
+    <div class="text-right">
+        <button type="submit" class="btn btn-success">Lưu <i class="icon-plus22 position-right"></i></button>
+    </div>
+<% end %>

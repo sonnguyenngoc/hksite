@@ -1,0 +1,33 @@
+<% if @tag.errors.any? %>
+  <div id="error_explanation">
+    <h6><%= pluralize(@tag.errors.count, "error") %> prohibited this tag from being saved:</h6>
+
+    <% @tag.errors.full_messages.each do |message| %>
+      <p class="label label-warning"><%= message %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_for [:admin, @tag], html: {class: "form-horizontal"} do |f| %>
+
+    <div class="panel-body">
+        
+        <div class="form-group field">
+            <%= f.label "Tiêu đề: ", class: "col-lg-3 control-label" %>
+            <div class="col-lg-9">
+              <%= f.text_field :title, placeholder: "Tiêu đề loại bài viết...", class: "form-control" %>
+            </div>
+        </div>
+
+        <div class="form-group field">
+            <%= f.label "Mô tả: ", class: "col-lg-3 control-label" %>
+            <div class="col-lg-9">
+              <%= f.text_area :description, rows: "5", cols: "5", placeholder: "Mô tả loại bài viết...", class: "form-control" %>
+            </div>
+        </div>
+
+        <div class="text-right">
+          <%= button_tag 'Lưu <i class="icon-plus22 position-right"></i>'.html_safe, class: "btn btn-primary"%>
+        </div>
+    </div>
+<% end %>

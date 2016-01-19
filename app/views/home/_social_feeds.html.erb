@@ -17,8 +17,8 @@
             <div class="animated_item">
 
                 <p class="form_caption">Nhập nội dung thông tin cần liên hệ.</p>
-
-                <form class="contactform" novalidate>
+                
+                <%= form_for @message, url: admin_messages_path,html: {class: "contactform"} do |f| %>
 
                     <ul>
 
@@ -26,7 +26,17 @@
 
                             <div class="col-xs-12">
 
-                                <input type="text" required title="Tên" name="cf_name" placeholder="Tên">
+                                <%= f.text_field :name, placeholder: 'Họ & Tên (Bắt buộc)', required: true %>
+                                
+                            </div>
+
+                        </li>
+                        
+                        <li class="row">
+
+                            <div class="col-xs-12">
+                                
+                                <%= f.telephone_field :phone, placeholder: 'Số điện thoại (Bắt buộc)', required: true %>
 
                             </div>
 
@@ -35,8 +45,8 @@
                         <li class="row">
 
                             <div class="col-xs-12">
-
-                                <input type="email" required title="Địa chỉ" name="cf_email" placeholder="Địa chỉ">
+                                
+                                <%= f.email_field :email, placeholder: 'Địa chỉ email' %>
 
                             </div>
 
@@ -45,8 +55,8 @@
                         <li class="row">
 
                             <div class="col-xs-12">
-
-                                <textarea placeholder="Lời nhắn" required title="Lời nhắn" name="cf_message" rows="6"></textarea>
+                                
+                                <%= f.text_area :messages, placeholder: 'Lời nhắn (Bắt buộc)', rows: '6', required: true %>
 
                             </div>
 
@@ -55,8 +65,8 @@
                         <li class="row">
 
                             <div class="col-xs-12">
-
-                                <button class="button_grey middle_btn">Gửi</button>
+                                
+                                <%= f.submit 'Gửi lời nhắn', class: 'button_grey middle_btn' %>
 
                             </div>
 
@@ -64,7 +74,7 @@
 
                     </ul>
 
-                </form>
+                <% end %>
 
             </div><!--/ .animated_item-->
 
@@ -92,7 +102,7 @@
              
             <div class="animated_item">
                 
-                <p class="c_info_location">188 Đường số 1,<br>Phường 16, Quận Gò Vấp, TP.Hồ Chí Minh, Việt Nam</p>
+                <p class="c_info_location"><%= @company_info.address %></p>
 
                 <div class="proportional_frame">
 
@@ -102,8 +112,8 @@
 
                 <ul class="c_info_list">
 
-                    <li class="c_info_phone">(84-8) 3984 7690</li>
-                    <li class="c_info_mail"><a href="mailto:info@hoangkhang.com.vn">info@hoangkhang.com.vn</a></li>
+                    <li class="c_info_phone"><%= @company_info.phone %></li>
+                    <li class="c_info_mail"><a href="mailto:<%= @company_info.email %>"><%= @company_info.email %></a></li>
                     <li class="c_info_schedule">
 
                         <ul>

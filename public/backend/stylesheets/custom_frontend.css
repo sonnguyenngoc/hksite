@@ -1,0 +1,108 @@
+.text-justify {
+    text-align: justify;
+}
+.text-center {
+    text-align: center;
+}
+.font-smaller {
+    font-size: smaller;
+}
+.font-small {
+    font-size: small;
+}
+.font-medium {
+    font-size: medium;
+}
+.font-large {
+    font-size: large;
+}
+.font-larger {
+    font-size: larger;
+}
+.line-bottom {
+    margin-bottom: 13px;
+}
+#c_scheme {
+    display: none;
+}
+.image-large-post {
+    width: 800px;
+    height: 600px;
+}
+.image-post {
+    width: 360px;
+    height: 150px;
+}
+.image-slideshow-small {
+    width: 250px;
+    height: 150px;
+    border-radius: 15px;
+    border: 3px solid #ff9900;
+}
+.page-content .product-image {
+    width: 236px;
+    height: 140px;
+    border-radius: 15px;
+    border: 3px solid #ff9900;
+}
+.border-logo {
+    border-radius: 15px;
+    border: 2px solid #ff9900;
+}
+.border-image {
+    border-radius: 5px;
+    border: 2px solid #ff9900;
+}
+.height-select-position {
+    height: 44px;
+}
+.picture-custom {
+    width: 360px;
+    height: 150px;
+    text-align: center;
+}
+.width50 {
+    width: 50% !important;
+}
+.margin-line-menu li {
+    margin-bottom: 80px;
+}
+.size-quantity {
+    width: 50%;
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+.title-margin {
+    margin-bottom: 8px;
+}
+.slogan {
+    font-family: "Georgia";
+    font-size: 2em;
+    resize: both;
+    position: absolute;
+    margin-left: 25%;
+    margin-top: 2%;
+}
+#google_translate_element {
+    position: absolute;
+    margin-left: 70%;
+    margin-top: 1%;
+}
+
+@media screen and (max-width: 480px) {
+    .slogan {
+        font-family: "Georgia";
+        font-size: 1.1em;
+        margin-left: 22%;
+        margin-top: 2%;
+        position: absolute;
+        resize: both;
+        width: 47%;
+    }
+    #google_translate_element {
+        position: absolute;
+        margin-left: 70%;
+        margin-top: 1%;
+    }
+}
