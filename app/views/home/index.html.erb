@@ -724,10 +724,8 @@
                                                 <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
                                                 
                                                 <div class="image_wrap">
-                                                    <% @product_image.each do |img_pro| %>
-                                                    <img src="<%= img_pro.product_id %>" alt="" alt="">
-                                                    <% end %>
-                                                                                                      <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+                                                        <img src="images/macbook-pro-15.jpeg" alt="Product Image">
+                                                    <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
                 
                                                     <div class="actions_wrap">
 
@@ -762,13 +760,9 @@
                                                 <div class="description">
                                                     
                                                     <a href="#"><%= prod.name %></a>
-
                                                     <div class="clearfix product_info">
-
-                                                        <p class="product_price alignleft"><b><%= prod.price %> VNĐ</b></p>
-
+                                                            <p class="product_price alignleft"><b><%= Product.first.product_price.price.to_f %> VNĐ</b></p>
                                                     </div>
-
                                                 </div>
                                                 
                                                 <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
@@ -1817,7 +1811,7 @@
 
                     <section class="section_offset animated transparent" data-animation="fadeInDown">
 
-                        <h3 class="offset_title">Quảng cáo</h3>
+                        <h3 class="offset_title">Đối tác cung cấp</h3>
 
                         <!-- - - - - - - - - - - - - - Carousel of brands - - - - - - - - - - - - - - - - -->
 
