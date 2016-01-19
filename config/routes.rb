@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'home#index'
   get "blog" => "blog#index", as: :blog
+  get "blog_post" => "blog_post#index", as: :blog_post
+  get "contact" => "contact#index", as: :contact
+  get "about_us" => "about_us#index", as: :about_us
   namespace :admin, :path => "hoangkhangincotech" do
       resources :articles
       resources :tags

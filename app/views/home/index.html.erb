@@ -504,7 +504,7 @@
 
                             <blockquote>
 
-                                <div class="author_info"><b>Thiết bị mạng, thiết bị camera IP EDIMAX</b></div>
+                                <div class="author_info"><b><%= link_to "Thiết bị mạng, thiết bị camera IP EDIMAX", { controller: "blog_post", action: "index" } %></b></div>
 
                                 <p>Lời giới thiệu ngắn của tin tức....</p>
 
@@ -3083,15 +3083,15 @@
     
                                             <a href="#" class="thumbnail entry_image">
     
-                                                <img src="<%= blog.image_url.article_picture %>" alt="">
+                                                <img src="<%= blog.image_url.article_home if blog.image_url? %>" width="244" height="154" alt="">
     
                                             </a>
     
-                                            <h5 class="entry_title"><a href="#"><b><%= blog.title %></b></a></h5>
+                                            <h5 class="entry_title"><b><%= link_to blog.title, { controller: "blog_post", action: "index" } %></b></h5>
     
                                             <div class="entry_meta">
     
-                                                <span><i class="icon-calendar"></i> <%= blog.created_at %></span>
+                                                <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
     
                                                 <span><a href="#" class="comments"><i class="icon-comment"></i> 11</a></span>
     

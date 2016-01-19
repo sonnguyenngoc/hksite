@@ -102,7 +102,7 @@
              
             <div class="animated_item">
                 
-                <p class="c_info_location">188 Đường số 1,<br>Phường 16, Quận Gò Vấp, TP.Hồ Chí Minh, Việt Nam</p>
+                <p class="c_info_location"><%= @company_info.address %></p>
 
                 <div class="proportional_frame">
 
@@ -112,8 +112,8 @@
 
                 <ul class="c_info_list">
 
-                    <li class="c_info_phone">(84-8) 3984 7690</li>
-                    <li class="c_info_mail"><a href="mailto:info@hoangkhang.com.vn">info@hoangkhang.com.vn</a></li>
+                    <li class="c_info_phone"><%= @company_info.phone %></li>
+                    <li class="c_info_mail"><a href="mailto:<%= @company_info.email %>"><%= @company_info.email %></a></li>
                     <li class="c_info_schedule">
 
                         <ul>
