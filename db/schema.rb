@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150721042319) do
-=======
-ActiveRecord::Schema.define(version: 20160118062716) do
->>>>>>> coding_project_18012016
+ActiveRecord::Schema.define(version: 20160120074549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,8 +23,6 @@ ActiveRecord::Schema.define(version: 20160118062716) do
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
-=======
   create_table "articles", force: :cascade do |t|
     t.string   "image_url"
     t.string   "title"
@@ -38,7 +32,6 @@ ActiveRecord::Schema.define(version: 20160118062716) do
     t.datetime "updated_at", null: false
   end
 
->>>>>>> coding_project_18012016
   create_table "assignments", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "role_id"
@@ -58,6 +51,11 @@ ActiveRecord::Schema.define(version: 20160118062716) do
     t.integer  "time_interval"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -224,14 +222,22 @@ ActiveRecord::Schema.define(version: 20160118062716) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
-=======
+  create_table "line_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "cart_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "quantity",   default: 1
+  end
+
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
+  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
+
   create_table "manages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
->>>>>>> coding_project_18012016
   create_table "manufacturers", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -241,8 +247,13 @@ ActiveRecord::Schema.define(version: 20160118062716) do
     t.integer  "user_id"
   end
 
-<<<<<<< HEAD
-=======
+  create_table "menus", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -258,7 +269,6 @@ ActiveRecord::Schema.define(version: 20160118062716) do
     t.datetime "updated_at", null: false
   end
 
->>>>>>> coding_project_18012016
   create_table "notifications", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "sender_id"
@@ -363,6 +373,13 @@ ActiveRecord::Schema.define(version: 20160118062716) do
     t.integer "parent_id"
   end
 
+  create_table "parent_menus", force: :cascade do |t|
+    t.integer  "parent_id"
+    t.integer  "menu_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "payment_methods", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -453,8 +470,6 @@ ActiveRecord::Schema.define(version: 20160118062716) do
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
-=======
   create_table "slide_shows", force: :cascade do |t|
     t.string   "image_url"
     t.text     "description"
@@ -464,7 +479,6 @@ ActiveRecord::Schema.define(version: 20160118062716) do
     t.string   "title"
   end
 
->>>>>>> coding_project_18012016
   create_table "states", force: :cascade do |t|
     t.string   "name"
     t.integer  "country_id"
@@ -472,8 +486,6 @@ ActiveRecord::Schema.define(version: 20160118062716) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
-=======
   create_table "tags", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -481,7 +493,6 @@ ActiveRecord::Schema.define(version: 20160118062716) do
     t.datetime "updated_at",  null: false
   end
 
->>>>>>> coding_project_18012016
   create_table "taxes", force: :cascade do |t|
     t.string   "name"
     t.decimal  "rate"
@@ -624,4 +635,6 @@ ActiveRecord::Schema.define(version: 20160118062716) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "products"
 end

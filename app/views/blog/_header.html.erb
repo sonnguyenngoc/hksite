@@ -673,12 +673,12 @@
 
                                 <ul>
 
-                                    <li><a href="index.html">Trang chủ</a></li>
-                                    <li><a href="shop_my_account.html">Tài khoản</a></li>
-                                    <li><a href="shop_shopping_cart.html">Giỏ hàng</a></li>
-                                    <li><a href="shop_checkout.html">Thanh toán</a></li>
-                                    <li><a href="blog_v1.html">Bài viết</a></li>
-                                    <li><a href="additional_page_contact.html">Liên hệ</a></li>
+                                    <li><%= link_to "Trang chủ", root_path %></li>
+                                    <li><%= link_to "Tài khoản", "" %></li>
+                                    <li><%= link_to "Giỏ hàng", {controller: "shopping_cart", action: "index"} %></li>
+                                    <li><%= link_to "Thanh toán", {controller: "check_out", action: "index"} %></li>
+                                    <li><%= link_to "Bài viết", {controller: "blog", action: "index"} %></li>
+                                    <li><%= link_to "Liên hệ", {controller: "contact", action: "index"} %></li>
 
                                 </ul>
 
@@ -712,9 +712,9 @@
 
                         <div class="nav_item size_3">
 
-                            <button id="open_shopping_cart" class="open_button" data-amount="3">
+                            <button id="open_shopping_cart" class="open_button" data-amount="<%= @cart.line_items.count %>">
                                 <b class="title">Giỏ hàng</b>
-                                <b class="total_price">21.050.000</b>
+                                <p class="total_price">21,050,000</p>
                             </button>
 
                             <!-- - - - - - - - - - - - - - Products list - - - - - - - - - - - - - - - - -->
@@ -725,63 +725,32 @@
 
                                         <p class="title">Các sản phẩm đã thêm vào giỏ hàng</p>
 
-                                        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                        <div class="clearfix sc_product">
-
-                                            <a href="#" class="product_thumb"><img src="images/sc_img_1.jpg" alt=""></a>
-
-                                            <a href="#" class="product_name">Win Pro 8.1 64Bit Eng -  FQC-06987</a>
-
-                                            <p>2 x 3.500.000 VNĐ</p>
-
-                                            <button class="close"></button>
-
-                                        </div><!--/ .clearfix.sc_product-->
-                                        
-                                        <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
 
                                     </div><!--/ .animated_item-->
+                                    
+                                    <% @cart.line_items.each do |item| %>
 
-                                    <div class="animated_item">
-
-                                        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                        <div class="clearfix sc_product">
-
-                                            <a href="#" class="product_thumb"><img src="images/sc_img_1.jpg" alt=""></a>
-
-                                            <a href="#" class="product_name">Win Pro 8.1 64Bit Eng -  FQC-06987</a>
-
-                                            <p>2 x 3.500.000 VNĐ</p>
-
-                                            <button class="close"></button>
-
-                                        </div><!--/ .clearfix.sc_product-->
+                                        <div class="animated_item">
+    
+                                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+    
+                                            <div class="clearfix sc_product">
+    
+                                                <a href="#" class="product_thumb"><img src="images/sc_img_1.jpg" alt=""></a>
+    
+                                                <a href="#" class="product_name"><%= item.product.name %></a>
+    
+                                                <p><%= item.quantity %> x 3.500.000 VNĐ</p>
+    
+                                                <button class="close"></button>
+    
+                                            </div><!--/ .clearfix.sc_product-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+    
+                                        </div><!--/ .animated_item-->
                                         
-                                        <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                                    </div><!--/ .animated_item-->
-
-                                    <div class="animated_item">
-
-                                        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                        <div class="clearfix sc_product">
-
-                                            <a href="#" class="product_thumb"><img src="images/sc_img_1.jpg" alt=""></a>
-
-                                            <a href="#" class="product_name">Win Pro 8.1 64Bit Eng -  FQC-06987</a>
-
-                                            <p>2 x 3.500.000 VNĐ</p>
-
-                                            <button class="close"></button>
-
-                                        </div><!--/ .clearfix.sc_product-->
-                                        
-                                        <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                                    </div><!--/ .animated_item-->
+                                    <% end %>
 
                                     <div class="animated_item">
 

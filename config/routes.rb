@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :line_items
+  resources :carts
   resources :category
   resources :product
   root 'home#index'
@@ -6,6 +8,8 @@ Rails.application.routes.draw do
   get "blog_post" => "blog_post#index", as: :blog_post
   get "contact" => "contact#index", as: :contact
   get "about_us" => "about_us#index", as: :about_us
+  get "shopping_cart" => "shopping_cart#index", as: :shopping_cart
+  get "check_out" => "check_out#index", as: :check_out
   namespace :admin, :path => "hoangkhangincotech" do
       resources :articles
       resources :tags
@@ -13,6 +17,7 @@ Rails.application.routes.draw do
       resources :newsletters
       resources :messages
       resources :manages
+      resources :menus
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

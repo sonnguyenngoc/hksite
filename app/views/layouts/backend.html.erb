@@ -184,8 +184,8 @@
 							<ul class="navigation navigation-main navigation-accordion">
 
 								<!-- Main -->
-								<li class="navigation-header"><span>Menu chính</span> <i class="icon-menu" title="Main pages"></i></li>
-								<li class="active"><a href="<%= admin_manages_path %>"><i class="icon-home4"></i> <span>Bảng điều khiển</span></a></li>
+								<li class="navigation-header"><span>MENU QUẢN TRỊ</span> <i class="icon-menu" title="Main pages"></i></li>
+								<li><a><i class="icon-home4"></i> <span>BẢNG ĐIỀU KHIỂN</span></a></li>
 								<li>
 									<a href="#"><i class="icon-stack2"></i> <span>Quản lý trang chủ</span></a>
 									<ul>
@@ -195,10 +195,22 @@
 									</ul>
 								</li>
 								<li>
+									<a href="#"><i class="icon-tree5"></i> <span>Quản lý chuyên mục</span></a>
+									<ul>
+										<li><%= link_to 'Danh sách chuyên mục', admin_menus_path %></li>
+									</ul>
+								</li>
+								<li>
 									<a href="#"><i class="icon-pencil3"></i> <span>Quản lý bài viết</span></a>
 									<ul>
 										<li><%= link_to 'Danh sách tin tức', admin_articles_path %></li>
 										<li><%= link_to 'Loại tin tức', admin_tags_path %></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#"><i class="icon-stack"></i> <span>Quản lý đơn hàng</span></a>
+									<ul>
+										<li><%= link_to 'Danh sách đơn hàng', carts_path %></li>
 									</ul>
 								</li>
 								<!-- /main -->

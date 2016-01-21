@@ -185,38 +185,46 @@
 
                             <div class="shopping_cart_wrap">
 
-                                <button id="open_shopping_cart" class="open_button" data-amount="0">
+                                <button id="open_shopping_cart" class="open_button" data-amount="<%= @cart.line_items.count %>">
                                     <b class="title">Giỏ hàng</b>
-                                    <b class="total_price">0 VNĐ</b>
+                                    <p class="total_price">0 VNĐ</p>
                                 </button>
 
                                 <!-- - - - - - - - - - - - - - Products list - - - - - - - - - - - - - - - - -->
 
-                                <div class="shopping_cart dropdown">
+                            <div class="shopping_cart dropdown">
 
                                     <div class="animated_item">
 
                                         <p class="title">Sản phẩm đã thêm vào giỏ hàng</p>
 
-                                        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-
-                                        <!--<div class="clearfix sc_product">
-
-                                            <a href="#" class="product_thumb"><img src="images/sc_img_1.jpg" alt=""></a>
-
-                                            <a href="#" class="product_name">Win Pro 8.1 64Bit Eng -  FQC-06987</a>
-
-                                            <p>2 x 3.500.000 VNĐ</p>
-
-                                            <button class="close"></button>
-
-                                        </div>--><!--/ .clearfix.sc_product-->
-                                        
-                                        <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                                        <p>Giỏ hàng trống!</p>
-
                                     </div><!--/ .animated_item-->
+                                    
+                                    <% @cart.line_items.each do |item| %>
+                                    
+                                        <input type="hidden" name="line_items[id]" value="<%= item.id %>">
+
+                                        <div class="animated_item">
+    
+                                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+    
+                                            <div class="clearfix sc_product">
+    
+                                                <a href="#" class="product_thumb"><img src="images/sc_img_1.jpg" alt=""></a>
+    
+                                                <a href="#" class="product_name"><%= item.product.name %></a>
+    
+                                                <p><%= item.quantity %> x 3.500.000 VNĐ</p>
+    
+                                                <button class="close"></button>
+    
+                                            </div><!--/ .clearfix.sc_product-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+    
+                                        </div><!--/ .animated_item-->
+                                    
+                                    <% end %>
 
                                     <div class="animated_item">
 
@@ -224,11 +232,11 @@
 
                                         <ul class="total_info">
 
-                                            <li><span class="price">Thuế:</span> 0 VNĐ</li>
+                                            <li><span class="price">Thuế:</span> 100.000 VNĐ</li>
 
-                                            <li><span class="price">Giảm giá:</span> 0 VNĐ</li>
+                                            <li><span class="price">Giảm giá:</span> 50.000 VNĐ</li>
 
-                                            <li class="total"><b><span class="price">Tổng:</span> 0 VNĐ</b></li>
+                                            <li class="total"><span class="price">Tổng:</span> 21.050.000 VNĐ</li>
 
                                         </ul>
                                         
@@ -237,16 +245,16 @@
                                     </div><!--/ .animated_item-->
 
                                     <div class="animated_item">
-
-                                        <a href="#" class="button_grey">Giỏ hàng</a>
+                                        
+                                        <%= link_to "Giỏ hàng", {controller: "shopping_cart", action: "index"}, {class: "button_grey"} %>
 
                                         <a href="#" class="button_blue">Thanh toán</a>
 
                                     </div><!--/ .animated_item-->
 
                                 </div><!--/ .shopping_cart.dropdown-->
-
-                                <!-- - - - - - - - - - - - - - End of products list - - - - - - - - - - - - - - - - -->
+                            
+                            <!-- - - - - - - - - - - - - - End of products list - - - - - - - - - - - - - - - - -->
 
                             </div><!--/ .shopping_cart_wrap.align_left-->
                             

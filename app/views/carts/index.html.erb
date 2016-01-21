@@ -1,0 +1,69 @@
+<!-- Main content -->
+<div class="content-wrapper">
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-header-content">
+            <div class="page-title">
+                <h4><a href="#" class="btn-back"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Danh sách</span> - Đơn hàng</h4>
+            </div>
+        </div>
+    
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><%= link_to '<i class="icon-home2 position-left"></i> Trang chủ'.html_safe, admin_manages_path %></li>
+                <li><%= link_to 'Quản lý đơn hàng', admin_tags_path %></li>
+                <li class="active">Danh sách đơn hàng</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /page header -->
+    
+    
+    <!-- Content area -->
+    <div class="content">
+    
+        <!-- Basic TableTools example -->
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h5 class="panel-title">Danh sách <span class="text-semibold">đơn hàng</span></h5>
+                <div class="heading-elements">
+                    <ul class="icons-list">
+                        <li><a data-action="collapse"></a></li>
+                        <li><a data-action="reload"></a></li>
+                        <li><a data-action="close"></a></li>
+                    </ul>
+                </div>
+            </div>	
+    
+            <table class="table datatable-order">
+                <thead>
+                    <tr>
+                        <th>Hình ảnh</th>
+                        <th>Tên sản phẩm</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <!-- /basic TableTools example -->
+    
+        <!-- Footer -->
+        <%= render '/admin/manages/footer' %>
+        <!-- /footer -->
+    
+    </div>
+    <!-- /content area -->
+
+</div>
+<!-- /main content -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/javascripts/tools.min.product.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/javascripts/datatables_order.js' %>
+<!-- /theme JS files -->
