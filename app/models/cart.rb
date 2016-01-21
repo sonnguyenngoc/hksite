@@ -14,4 +14,12 @@ class Cart < ActiveRecord::Base
   def remove_item(line_item_id)
     self.line_items.where(id: line_item_id).destroy_all
   end
+  
+  def total_order
+    amount = 0.0
+    self.line_items.each do |od|
+      amount += od.total_item
+    end
+    return amount
+  end
 end

@@ -186,8 +186,8 @@
                             <div class="shopping_cart_wrap">
 
                                 <button id="open_shopping_cart" class="open_button" data-amount="<%= @cart.line_items.count %>">
-                                    <b class="title">Giỏ hàng</b>
-                                    <p class="total_price">0 VNĐ</p>
+                                    <b class="title">Giỏ hàng của bạn</b>
+                                    <b class="total_price"><%= number_with_delimiter @cart.total_order.to_i %> VNĐ</b>
                                 </button>
 
                                 <!-- - - - - - - - - - - - - - Products list - - - - - - - - - - - - - - - - -->
@@ -214,7 +214,7 @@
     
                                                 <a href="#" class="product_name"><%= item.product.name %></a>
     
-                                                <p><%= item.quantity %> x 3.500.000 VNĐ</p>
+                                                <p><%= item.quantity %> x <%= item.product.product_price.price.to_i %> VNĐ</p>
     
                                                 <button class="close"></button>
     
@@ -232,11 +232,11 @@
 
                                         <ul class="total_info">
 
-                                            <li><span class="price">Thuế:</span> 100.000 VNĐ</li>
+                                            <li><span class="price">Thuế:</span> 0 VNĐ</li>
 
-                                            <li><span class="price">Giảm giá:</span> 50.000 VNĐ</li>
+                                            <li><span class="price">Giảm giá:</span> 0 VNĐ</li>
 
-                                            <li class="total"><span class="price">Tổng:</span> 21.050.000 VNĐ</li>
+                                            <li class="total"><span class="price">Tổng:</span> <%= number_with_delimiter @cart.total_order.to_i %> VNĐ</li>
 
                                         </ul>
                                         
@@ -247,8 +247,8 @@
                                     <div class="animated_item">
                                         
                                         <%= link_to "Giỏ hàng", {controller: "shopping_cart", action: "index"}, {class: "button_grey"} %>
-
-                                        <a href="#" class="button_blue">Thanh toán</a>
+                                        
+                                        <%= link_to "Thanh toán", {controller: "check_out", action: "index"}, {class: "button_blue"} %>
 
                                     </div><!--/ .animated_item-->
 

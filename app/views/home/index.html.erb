@@ -742,7 +742,7 @@
                                                     
                                                     <a href="#"><%= prod.name %></a>
                                                     <div class="clearfix product_info">
-                                                            <p class="product_price alignleft"><b><%= Product.first.product_price.price.to_f %> VNĐ</b></p>
+                                                            <p class="product_price alignleft"><b><%= number_with_delimiter prod.product_price.price.to_i %> VNĐ</b></p>
                                                     </div>
                                                 </div>
                                                 

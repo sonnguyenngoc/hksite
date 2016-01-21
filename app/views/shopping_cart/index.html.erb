@@ -96,7 +96,7 @@
     
                                     <td class="subtotal" data-title="Price">
                                         
-                                        18.890.000đ
+                                        <%= number_with_delimiter item.product.product_price.price.to_i %>
     
                                     </td>
     
@@ -122,7 +122,7 @@
     
                                     <td class="total" data-title="Total">
     
-                                        18.890.000đ
+                                        <%= number_with_delimiter item.total_item.to_i %>
     
                                     </td>
     
@@ -300,14 +300,14 @@
                                     <tr>
                                             
                                         <td>Tổng tiền (Chưa giảm giá)</td>
-                                        <td>56.670.000đ</td>
+                                        <td><%= number_with_delimiter @cart.total_order.to_i %> VNĐ</td>
 
                                     </tr>
 
                                     <tr class="total">
                                             
                                         <td>Tổng tiền (Chính thức)</td>
-                                        <td>56.670.000đ</td>
+                                        <td><%= number_with_delimiter @cart.total_order.to_i %> VNĐ</td>
 
                                     </tr>
 
@@ -318,8 +318,8 @@
                         </div>
 
                         <footer class="bottom_box">
-
-                            <a class="button_blue middle_btn" href="#">Tiến hành thanh toán</a>
+                            
+                            <%= link_to "Tiến hành thanh toán", {controller: "check_out", action: "index"}, {class: "button_blue middle_btn"} %>
 
                             <div class="single_link_wrap">
 
