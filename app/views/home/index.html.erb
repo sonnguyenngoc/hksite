@@ -716,7 +716,7 @@
                                     <div class="table_row">
 
                                         <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                                        <% @product.each do |prod| %>
+                                        <% @product.each do |product| %>
                                         <div class="table_cell">
                                             
                                             <div class="product_item">
@@ -759,9 +759,9 @@
                                                 
                                                 <div class="description">
                                                     
-                                                    <a href="#"><%= prod.name %></a>
+                                                    <a href="#"><%= product.name %></a>
                                                     <div class="clearfix product_info">
-                                                            <p class="product_price alignleft"><b><%= Product.first.product_price.price.to_f %> VNĐ</b></p>
+                                                        <p class="product_price alignleft"><b><%= number_with_delimiter(product.product_price.price.to_i, :delimiter => ".") %> VNĐ</b></p>
                                                     </div>
                                                 </div>
                                                 

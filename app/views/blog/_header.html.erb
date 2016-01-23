@@ -673,12 +673,12 @@
 
                                 <ul>
 
-                                    <li><a href="index.html">Trang chủ</a></li>
+                                    <li><%= link_to "Trang chủ", root_path %></li>
                                     <li><a href="shop_my_account.html">Tài khoản</a></li>
                                     <li><a href="shop_shopping_cart.html">Giỏ hàng</a></li>
                                     <li><a href="shop_checkout.html">Thanh toán</a></li>
                                     <li><a href="blog_v1.html">Bài viết</a></li>
-                                    <li><a href="additional_page_contact.html">Liên hệ</a></li>
+                                    <li><%= link_to "Liên hệ", { controller: "contact", action: "index" } %></li>
 
                                 </ul>
 

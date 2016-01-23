@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :product_infos
   resources :category
   resources :product
   root 'home#index'

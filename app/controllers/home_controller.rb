@@ -4,7 +4,9 @@ class HomeController < ApplicationController
     @newsletter = Newsletter.new
     @message = Message.new
     @company_info = Contact.find(1)
-    @product = Product.order("created_at DESC").first(12)
+    #@product = Product.order("created_at DESC").first(12)
     @blog = Article.order("created_at DESC").first(3)
+    @product = Product.all
+    @category = Category.all.where(level: '1')
   end
 end

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @product_info.image_url %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product_info.description %>
+</p>
+
+<p>
+  <strong>Old price:</strong>
+  <%= @product_info.old_price %>
+</p>
+
+<p>
+  <strong>Product hot:</strong>
+  <%= @product_info.product_hot %>
+</p>
+
+<p>
+  <strong>Product sale:</strong>
+  <%= @product_info.product_sale %>
+</p>
+
+<p>
+  <strong>Product bestselled:</strong>
+  <%= @product_info.product_bestselled %>
+</p>
+
+<p>
+  <strong>Product prominent:</strong>
+  <%= @product_info.product_prominent %>
+</p>
+
+<%= link_to 'Edit', edit_product_info_path(@product_info) %> |
+<%= link_to 'Back', product_infos_path %>
