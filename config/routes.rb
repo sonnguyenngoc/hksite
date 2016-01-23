@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :customer_orders
   resources :line_items
   resources :carts
   resources :category
@@ -18,6 +19,7 @@ Rails.application.routes.draw do
       resources :messages
       resources :manages
       resources :menus
+      resources :customer_orders
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

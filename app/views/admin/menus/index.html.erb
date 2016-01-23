@@ -12,7 +12,7 @@
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
                 <li><%= link_to '<i class="icon-home2 position-left"></i> Trang chủ'.html_safe, admin_manages_path %></li>
-                <li><%= link_to 'Quản lý menu chuyên mục', admin_tags_path %></li>
+                <li><%= link_to 'Quản lý menu chuyên mục', admin_menus_path %></li>
                 <li class="active">Danh sách chuyên mục</li>
             </ul>
         </div>
@@ -37,9 +37,10 @@
                 </div>
             </div>
             
-            <table class="table datatable-menu">
+            <table class="table">
                 <thead>
                     <tr>
+                        <th>Cấp Menu</th>
                         <th>Tiêu đề</th>
                         <th>Mô tả</th>
                         <th>Ngày tạo</th>
@@ -49,30 +50,90 @@
                 </thead>
                 <tbody>
                   <% @menus.each do |item| %>
-                        <tr>
-                            <td><%= link_to item.title, [:admin, item] %></td>
-                            <td><%= truncate(strip_tags(item.description), length: 50) %></td>
-                            <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
-                            <td><span class="label label-info">Active</span></td>
-                            <td class="text-center">
-                                <ul class="icons-list">
-                                    <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                            <i class="icon-menu9"></i>
-                                        </a>
-        
-                                        <ul class="dropdown-menu dropdown-menu-right">
-                                            <li>
-                                              <%= link_to '<i class="glyphicon glyphicon-edit"></i> Sửa'.html_safe, edit_admin_menu_path(item) %>
-                                            </li>
-                                            <li>
-                                              <%= link_to '<i class="icon-cross2"></i> Xóa'.html_safe, [:admin, item], method: :delete, data: {confirm: 'Bạn có chắc xóa dòng này?'} %>
+                    <% if item.parent.count == 0 %>
+                        <% item.update_level(1) %>
+                            <tr>
+                                <td>Menu cấp <%= item.level %></td>
+                                <td><%= link_to item.title, [:admin, item] %></td>
+                                <td><%= truncate(strip_tags(item.description), length: 50) %></td>
+                                <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                                <td><span class="label label-info">Active</span></td>
+                                <td class="text-center">
+                                    <ul class="icons-list">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <i class="icon-menu9"></i>
+                                            </a>
+            
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                <li>
+                                                  <%= link_to '<i class="glyphicon glyphicon-edit"></i> Sửa'.html_safe, edit_admin_menu_path(item) %>
+                                                </li>
+                                                <li>
+                                                  <%= link_to '<i class="icon-cross2"></i> Xóa'.html_safe, [:admin, item], method: :delete, data: {confirm: 'Bạn có chắc xóa dòng này?'} %>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        <% item.children.each do |child_1| %>
+                            <% child_1.update_level(2) %>
+                            <tr>
+                                <td>--- Menu cấp <%= child_1.level %></td>
+                                <td><%= link_to child_1.title, [:admin, child_1] %></td>
+                                <td><%= truncate(strip_tags(child_1.description), length: 50) %></td>
+                                <td><%= child_1.created_at.strftime("%d/%m/%Y") %></td>
+                                <td><span class="label label-info">Active</span></td>
+                                <td class="text-center">
+                                    <ul class="icons-list">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                <i class="icon-menu9"></i>
+                                            </a>
+            
+                                            <ul class="dropdown-menu dropdown-menu-right">
+                                                <li>
+                                                  <%= link_to '<i class="glyphicon glyphicon-edit"></i> Sửa'.html_safe, edit_admin_menu_path(child_1) %>
+                                                </li>
+                                                <li>
+                                                  <%= link_to '<i class="icon-cross2"></i> Xóa'.html_safe, [:admin, child_1], method: :delete, data: {confirm: 'Bạn có chắc xóa dòng này?'} %>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+                            <% child_1.children.each do |child_2| %>
+                                <% child_2.update_level(3) %>
+                                <tr>
+                                    <td>-------- Menu cấp <%= child_2.level %></td>
+                                    <td><%= link_to child_2.title, [:admin, child_2] %></td>
+                                    <td><%= truncate(strip_tags(child_2.description), length: 50) %></td>
+                                    <td><%= child_2.created_at.strftime("%d/%m/%Y") %></td>
+                                    <td><span class="label label-info">Active</span></td>
+                                    <td class="text-center">
+                                        <ul class="icons-list">
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                    <i class="icon-menu9"></i>
+                                                </a>
+                
+                                                <ul class="dropdown-menu dropdown-menu-right">
+                                                    <li>
+                                                      <%= link_to '<i class="glyphicon glyphicon-edit"></i> Sửa'.html_safe, edit_admin_menu_path(child_2) %>
+                                                    </li>
+                                                    <li>
+                                                      <%= link_to '<i class="icon-cross2"></i> Xóa'.html_safe, [:admin, child_2], method: :delete, data: {confirm: 'Bạn có chắc xóa dòng này?'} %>
+                                                    </li>
+                                                </ul>
                                             </li>
                                         </ul>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        <% end %>
+                    <% end %>
                   <% end %>
                 </tbody>
             </table>

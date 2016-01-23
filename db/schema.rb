@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160120074549) do
+ActiveRecord::Schema.define(version: 20160123024351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,6 +190,29 @@ ActiveRecord::Schema.define(version: 20160120074549) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "customer_order_details", force: :cascade do |t|
+    t.integer  "customer_order_id"
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.decimal  "price",             precision: 8, scale: 2
+  end
+
+  create_table "customer_orders", force: :cascade do |t|
+    t.string   "orderer_first_name"
+    t.string   "orderer_last_name"
+    t.string   "orderer_company_name"
+    t.string   "orderer_email"
+    t.string   "orderer_address_1"
+    t.string   "orderer_address_2"
+    t.string   "orderer_phone"
+    t.string   "orderer_fax"
+    t.text     "orderer_message"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
   create_table "deliveries", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "user_id"
@@ -252,6 +275,7 @@ ActiveRecord::Schema.define(version: 20160120074549) do
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "level"
   end
 
   create_table "messages", force: :cascade do |t|

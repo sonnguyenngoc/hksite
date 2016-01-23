@@ -1865,7 +1865,7 @@
 		padding-bottom:8px;
 	}
 
-	.logo{ display: inline-block; }
+	.logo{ display: inline-block; max-width: 100% }
 
 	#header .topbar,
 	.top_part p{ font-size:13px; }

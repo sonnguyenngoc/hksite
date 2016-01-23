@@ -31,12 +31,30 @@
             <div class="col-lg-9">
               <% Menu.all.each do |menu| %>
                 <% if @menu.id != menu.id %>
-                  <div class="row-fluid">
-                    <div class="checkbox">
-                      <%= check_box_tag 'menu[parent_ids][]', menu.id, @menu.parent.include?(menu), :id => "menu_#{menu.id}" %>
-                      <%= f.label menu.title, :for => "menu_#{menu.id}" %>
-                    </div>
-                  </div>
+                  <% if menu.level == 1 %>
+                    <p><div class="row-fluid">
+                      <div class="checkbox">
+                        <%= check_box_tag 'menu[parent_ids][]', menu.id, @menu.parent.include?(menu), :id => "menu_#{menu.id}" %>
+                        <%= f.label menu.title, :for => "menu_#{menu.id}" %>
+                      </div>
+                    </div></p>
+                    <% menu.children.each do |child_1| %>
+                        <div class="row-fluid">
+                          <div class="checkbox">
+                            <%= check_box_tag 'menu[parent_ids][]', child_1.id, @menu.parent.include?(child_1), :id => "menu_#{child_1.id}" %>
+                            <%= f.label child_1.title, :for => "menu_#{child_1.id}" %>
+                          </div>
+                        </div>
+                        <% child_1.children.each do |child_2| %>
+                            <div class="row-fluid">
+                              <div class="checkbox">
+                                <%= check_box_tag 'menu[parent_ids][]', child_2.id, @menu.parent.include?(child_2), :id => "menu_#{child_2.id}" %>
+                                <%= f.label child_2.title, :for => "menu_#{child_2.id}" %>
+                              </div>
+                            </div>
+                        <% end %>
+                    <% end %>
+                  <% end %>
                 <% end %>
               <% end %>
             </div>

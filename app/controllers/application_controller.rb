@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include CurrentCart
-  before_action :set_cart, only: [:index]
+  before_action :set_cart, only: [:index, :confirm_order, :create]
   
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

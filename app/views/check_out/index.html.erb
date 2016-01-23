@@ -29,13 +29,13 @@
 
             <section class="section_offset">
 
-                <h3>1. Thông tin người đặt</h3>
+                <h3>1. Gửi đơn đặt hàng</h3>
 
                 <div class="theme_box">
 
                     <a class="icon_btn button_dark_grey edit_button" href="#"><i class="icon-pencil"></i></a>
-
-                    <form class="type_2">
+                    
+                     <%= form_for @customer_order, html: {class: "type_2"} do |f| %>
                         
                         <ul>
                             
@@ -44,14 +44,14 @@
                                 <div class="col-sm-6">
                                     
                                     <label for="first_name" class="required">Họ</label>
-                                    <input type="text" name="" id="first_name">
+                                    <%= f.text_field :orderer_first_name, required: true %>
 
                                 </div><!--/ [col] -->
 
                                 <div class="col-sm-6">
                                     
                                     <label for="last_name" class="required">Tên</label>
-                                    <input type="text" name="" id="last_name">
+                                    <%= f.text_field :orderer_last_name, required: true %>
 
                                 </div><!--/ [col] -->
 
@@ -62,14 +62,14 @@
                                 <div class="col-sm-6">
                                     
                                     <label for="company_name">Tên công ty</label>
-                                    <input type="text" name="" id="company_name">
+                                    <%= f.text_field :orderer_company_name %>
 
                                 </div><!--/ [col] -->
 
                                 <div class="col-sm-6">
                                     
-                                    <label for="email_address" class="required">Địa chỉ email</label>
-                                    <input type="text" name="" id="email_address">
+                                    <label for="email_address">Địa chỉ email</label>
+                                    <%= f.text_field :orderer_email %>
 
                                 </div><!--/ [col] -->
 
@@ -80,7 +80,7 @@
                                 <div class="col-xs-12">
 
                                     <label for="address" class="required">Địa chỉ</label>
-                                    <input type="text" name="" id="address">
+                                    <%= f.text_field :orderer_address_1, required: true %>
 
                                 </div><!--/ [col] -->
 
@@ -90,7 +90,7 @@
 
                                 <div class="col-xs-12">
 
-                                    <input type="text" name="">
+                                    <%= f.text_field :orderer_address_2 %>
 
                                 </div><!--/ [col] -->
 
@@ -101,117 +101,45 @@
                                 <div class="col-sm-6">
 
                                     <label for="telephone" class="required">Số điện thoại</label>
-                                    <input type="text" name="" id="telephone">
+                                    <%= f.text_field :orderer_phone, required: true %>
 
                                 </div><!--/ [col] -->
 
                                 <div class="col-sm-6">
 
                                     <label for="fax">Số fax</label>
-                                    <input type="text" name="" id="fax">
+                                    <%= f.text_field :orderer_fax %>
 
                                 </div><!--/ [col] -->
 
                             </li><!--/ .row -->
-
-                        </ul>
-
-                    </form>
-
-                </div>
-
-                <footer class="bottom_box on_the_sides">
-
-                    <div class="right_side">
-
-                        <span class="prompt">Bắt buộc nhập.</span>
-
-                    </div>
-
-                </footer>
-
-            </section><!--/ .section_offset -->
-
-            <!-- - - - - - - - - - - - - - End of billing information - - - - - - - - - - - - - - - - -->
-
-            <!-- - - - - - - - - - - - - - Shipping information - - - - - - - - - - - - - - - - -->
-
-            <section class="section_offset">
-
-                <h3>2. Thông tin nhận hàng</h3>
-
-                <div class="theme_box">
-
-                    <a class="icon_btn button_dark_grey edit_button" href="#"><i class="icon-pencil"></i></a>
-
-                    <form class="type_2">
-                        
-                        <ul>
                             
                             <li class="row">
-                                
-                                <div class="col-sm-6">
-                                    
-                                    <label for="first_name" class="required">Họ & Tên người nhận</label>
-                                    <input type="text" name="" id="first_name">
 
-                                </div><!--/ [col] -->
+                                <div class="col-sm-12">
 
-                                <div class="col-sm-6">
-                                    
-                                    <label for="company_name">Tên công ty</label>
-                                    <input type="text" name="" id="company_name">
+                                    <label for="telephone" class="required">Lời nhắn</label>
+                                    <%= f.text_area :orderer_message, rows: '6', required: true %>
 
                                 </div><!--/ [col] -->
 
                             </li><!--/ .row -->
-
+                            
                             <li class="row">
-                                
-                                
-                                
-                                <div class="col-sm-6">
-
-                                    <label for="telephone" class="required">Số điện thoại</label>
-                                    <input type="text" name="" id="telephone">
-
-                                </div><!--/ [col] -->
 
                                 <div class="col-sm-6">
                                     
-                                    <label for="email_address" class="required">Địa chỉ email</label>
-                                    <input type="text" name="" id="email_address">
+                                    <%= f.submit "Gửi đơn hàng", class: "button_blue middle_btn" %>
 
                                 </div><!--/ [col] -->
 
                             </li><!--/ .row -->
-
-                            <li class="row">	
-
-                                <div class="col-xs-12">
-
-                                    <label for="address" class="required">Địa chỉ nhận hàng</label>
-                                    <input type="text" name="" id="address">
-
-                                </div><!--/ [col] -->
-
-                            </li><!-- / .row -->
 
                         </ul>
 
-                    </form>
+                    <% end %>
 
                 </div>
-
-                <footer class="bottom_box on_the_sides">
-
-                    <div class="right_side">
-
-                        <span class="prompt">Bắt buộc nhập.</span>
-
-                    </div>
-
-                </footer>
 
             </section><!--/ .section_offset -->
 
@@ -221,7 +149,7 @@
 
             <section class="section_offset">
 
-                <h3>3. Xem lại đơn hàng</h3>
+                <h3>2. Xem lại đơn hàng</h3>
 
                 <div class="table_wrap">
 
@@ -306,7 +234,7 @@
 
                     <div class="left_side v_centered">
 
-                        <span>Giỏ hàng bị thiếu sản phẩm?</span>
+                        <span>Thiếu sản phẩm?</span>
                         
                         <%= link_to "Chỉnh sửa giỏ hàng", {controller: "shopping_cart", action: "index"}, {class: "button_grey middle_btn"} %>
 
@@ -314,7 +242,7 @@
 
                     <div class="right_side">
 
-                        <button class="button_blue middle_btn">Gửi đơn hàng</button>
+                        <button class="button_blue middle_btn">Tiếp tục mua hàng</button>
 
                     </div>
 
