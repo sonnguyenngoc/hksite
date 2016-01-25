@@ -1219,3 +1219,505 @@ SELECT pg_catalog.setval('users_id_seq', 14, true);
 -- PostgreSQL database dump complete
 --
 
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: carts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY carts (id, created_at, updated_at) FROM stdin;
+1	2016-01-07 08:25:21.315436	2016-01-07 08:25:21.315436
+2	2016-01-07 15:34:02.676154	2016-01-07 15:34:02.676154
+3	2016-01-08 01:08:46.852248	2016-01-08 01:08:46.852248
+4	2016-01-08 02:31:28.583801	2016-01-08 02:31:28.583801
+5	2016-01-08 03:06:05.491463	2016-01-08 03:06:05.491463
+6	2016-01-08 03:53:48.296691	2016-01-08 03:53:48.296691
+7	2016-01-09 01:08:36.639721	2016-01-09 01:08:36.639721
+8	2016-01-09 01:15:22.678378	2016-01-09 01:15:22.678378
+9	2016-01-09 02:50:23.544473	2016-01-09 02:50:23.544473
+10	2016-01-11 01:58:07.635401	2016-01-11 01:58:07.635401
+11	2016-01-12 01:43:54.745805	2016-01-12 01:43:54.745805
+12	2016-01-12 07:23:20.315098	2016-01-12 07:23:20.315098
+13	2016-01-13 01:59:04.020516	2016-01-13 01:59:04.020516
+14	2016-01-13 04:01:28.036107	2016-01-13 04:01:28.036107
+15	2016-01-15 06:39:46.735823	2016-01-15 06:39:46.735823
+16	2016-01-16 04:23:05.030137	2016-01-16 04:23:05.030137
+17	2016-01-19 01:18:28.035264	2016-01-19 01:18:28.035264
+18	2016-01-19 01:22:21.441606	2016-01-19 01:22:21.441606
+19	2016-01-23 02:56:37.356712	2016-01-23 02:56:37.356712
+\.
+
+
+--
+-- Name: carts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('carts_id_seq', 19, true);
+
+
+--
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY categories (id, title, description, created_at, updated_at, level) FROM stdin;
+1	Thực đơn chính		2016-01-07 07:23:29.653054	2016-01-07 07:23:29.653054	1
+2	Thức uống		2016-01-07 07:23:29.657447	2016-01-07 07:23:29.657447	1
+3	Cà phê		2016-01-07 07:39:46.976337	2016-01-07 07:39:46.976337	2
+4	Nước giải khát		2016-01-07 07:39:59.759116	2016-01-07 07:39:59.759116	2
+5	Món chính		2016-01-07 07:40:06.747437	2016-01-07 07:40:06.747437	2
+6	Món phụ		2016-01-07 07:40:13.777485	2016-01-07 07:40:13.777485	2
+7	Tráng miệng		2016-01-07 07:40:32.802185	2016-01-07 07:40:32.802185	2
+\.
+
+
+--
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('categories_id_seq', 7, true);
+
+
+--
+-- Data for Name: contacts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY contacts (id, name, email, phone, website, message, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: contacts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('contacts_id_seq', 1, false);
+
+
+--
+-- Data for Name: homes; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY homes (id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: homes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('homes_id_seq', 1, false);
+
+
+--
+-- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY products (id, image_url, name, price, category_id, manufacturer_id, description, created_at, updated_at) FROM stdin;
+1	ca-phe.jpg	Cà phê sữa	12000.00	3	1	sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad 	2016-01-07 07:43:56.982877	2016-01-07 07:43:56.982877
+2	ca-phe-3-tang.jpg	Cà phê 3 tầng	15000.00	3	1	sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad 	2016-01-07 07:44:22.307277	2016-01-07 07:44:22.307277
+3	tra-bi-dao.jpg	Trà bí đao	8000.00	4	1	sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad 	2016-01-07 07:45:20.758181	2016-01-07 07:45:20.758181
+4	chay-rau-nam.jpg	Bún chay rau nấm	20000.00	5	1	sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad 	2016-01-07 07:46:57.749726	2016-01-07 07:46:57.749726
+6	trai-cay-dia.jpg	Trái cây dĩa	25000.00	7	1	sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad 	2016-01-07 07:47:42.260128	2016-01-07 07:47:50.607516
+5	cha-gio-chay.jpg	Chả giò chay	20000.00	6	1	sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad	2016-01-07 07:47:20.975407	2016-01-07 07:55:37.333091
+7	goi-cuon.jpg	Gỏi cuốn chay	30000.00	6	1	sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad	2016-01-07 09:33:19.21474	2016-01-07 09:33:19.21474
+8	sua-chua.jpg	Sửa chua	8000.00	7	2	sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad	2016-01-11 06:46:10.482952	2016-01-11 07:04:54.530701
+\.
+
+
+--
+-- Data for Name: line_items; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY line_items (id, product_id, cart_id, created_at, updated_at, quantity) FROM stdin;
+1	3	1	2016-01-07 08:25:21.353637	2016-01-07 08:25:28.246914	3
+2	1	1	2016-01-07 09:37:56.012153	2016-01-07 09:38:00.115737	5
+5	1	2	2016-01-07 15:43:54.510999	2016-01-07 15:44:02.064906	3
+6	4	2	2016-01-07 15:43:58.333721	2016-01-07 15:44:02.087206	5
+7	4	3	2016-01-08 01:57:54.473316	2016-01-08 01:57:54.473316	1
+8	1	4	2016-01-08 02:31:28.692981	2016-01-08 02:37:56.729543	4
+9	4	5	2016-01-08 03:06:05.556613	2016-01-08 03:17:12.16193	4
+10	5	5	2016-01-08 03:19:20.042681	2016-01-08 03:19:26.423726	2
+12	1	7	2016-01-09 01:10:52.97033	2016-01-09 01:10:58.187284	3
+42	7	12	2016-01-12 07:37:29.381705	2016-01-12 07:37:43.920458	2
+43	8	12	2016-01-12 07:37:38.999536	2016-01-12 07:37:43.957879	3
+15	1	8	2016-01-09 02:22:34.370964	2016-01-09 02:22:38.162792	5
+44	4	13	2016-01-13 02:01:24.012523	2016-01-13 02:14:49.22448	4
+46	1	13	2016-01-13 02:21:53.385463	2016-01-13 02:21:53.385463	1
+45	7	13	2016-01-13 02:14:31.654394	2016-01-13 02:21:58.904981	2
+19	1	9	2016-01-09 03:49:35.525308	2016-01-09 03:49:39.445822	5
+49	1	16	2016-01-16 04:23:05.082443	2016-01-16 04:23:52.698736	5
+50	8	16	2016-01-16 04:23:10.047358	2016-01-16 04:23:52.73158	3
+51	6	18	2016-01-19 01:22:41.824185	2016-01-19 01:22:50.058787	3
+52	4	19	2016-01-23 02:56:37.478809	2016-01-23 02:56:37.478809	1
+25	1	10	2016-01-11 06:29:43.187684	2016-01-11 06:47:40.88106	5
+26	8	10	2016-01-11 06:46:16.151105	2016-01-11 06:56:07.110544	5
+36	5	11	2016-01-12 02:50:30.133453	2016-01-12 02:50:35.870799	4
+34	8	11	2016-01-12 02:49:57.627204	2016-01-12 02:50:35.919843	5
+37	2	11	2016-01-12 02:51:09.814223	2016-01-12 02:51:13.804323	8
+\.
+
+
+--
+-- Name: line_items_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('line_items_id_seq', 52, true);
+
+
+--
+-- Data for Name: listing_menu_products; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY listing_menu_products (id, menu_content_id, product_id, created_at, updated_at) FROM stdin;
+1	1	1	2016-01-07 15:32:50.941978	2016-01-07 15:32:50.941978
+2	1	2	2016-01-07 15:32:50.944615	2016-01-07 15:32:50.944615
+3	1	3	2016-01-07 15:32:50.946715	2016-01-07 15:32:50.946715
+4	1	4	2016-01-07 15:32:50.948731	2016-01-07 15:32:50.948731
+5	1	6	2016-01-07 15:32:50.950378	2016-01-07 15:32:50.950378
+\.
+
+
+--
+-- Name: listing_menu_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('listing_menu_products_id_seq', 5, true);
+
+
+--
+-- Data for Name: mains; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY mains (id, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: mains_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('mains_id_seq', 1, false);
+
+
+--
+-- Data for Name: manufacturer_images; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY manufacturer_images (id, manufacturer_id, listing_image_url, created_at, updated_at) FROM stdin;
+1	1	cha-gio-chay.jpg	2016-01-07 07:36:54.525418	2016-01-07 07:36:54.525418
+2	1	chay-rau-nam.jpg	2016-01-07 07:36:54.603602	2016-01-07 07:36:54.603602
+3	1	CQC8897.jpg	2016-01-07 07:36:54.634537	2016-01-07 07:36:54.634537
+4	1	goi-cuon.jpg	2016-01-07 07:36:54.684285	2016-01-07 07:36:54.684285
+5	1	mi-xao-chay.jpg	2016-01-07 07:36:54.708565	2016-01-07 07:36:54.708565
+6	2	banner-2.JPG	2016-01-11 06:45:28.382327	2016-01-11 06:45:28.382327
+7	2	banner-3.jpg	2016-01-11 06:45:28.511556	2016-01-11 06:45:28.511556
+8	2	banner-1.jpg	2016-01-11 06:45:28.550737	2016-01-11 06:45:28.550737
+\.
+
+
+--
+-- Name: manufacturer_images_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('manufacturer_images_id_seq', 8, true);
+
+
+--
+-- Data for Name: manufacturers; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY manufacturers (id, image_url, name, address, phone, email, intro, created_at, updated_at) FROM stdin;
+1	banner-1.jpg	Chay vì sức khỏe	108/25 Trần Quang Diệu, Phường 14, Quận 3, TP. Hồ Chí Minh	0918 214 859	info@chayvisuckhoe.com	<p>sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;sad sad&nbsp;</p>\r\n	2016-01-07 07:23:29.634625	2016-01-09 02:16:01.595051
+2	ca-phe.jpg	Quán chay Thiện Nhân	TP.HCM	0123456789	info@thiennhan.com	<p>abc xyz</p>\r\n	2016-01-11 06:45:28.362739	2016-01-11 06:45:28.362739
+\.
+
+
+--
+-- Name: manufacturers_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('manufacturers_id_seq', 2, true);
+
+
+--
+-- Data for Name: menu_contents; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY menu_contents (id, title, content, created_at, updated_at) FROM stdin;
+1	Món ăn trong ngày	<p>Thực đơn trong ng&agrave;y bao gồm: 1 m&oacute;n cơm, 1 m&oacute;n kho, 1 m&oacute;n canh, 1 m&oacute;n x&agrave;o,....</p>\r\n	2016-01-07 15:32:50.876612	2016-01-07 15:32:50.876612
+\.
+
+
+--
+-- Name: menu_contents_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('menu_contents_id_seq', 1, true);
+
+
+--
+-- Data for Name: newsletters; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY newsletters (id, email, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: newsletters_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('newsletters_id_seq', 1, false);
+
+
+--
+-- Data for Name: order_details; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY order_details (id, order_id, product_id, quantity, created_at, updated_at, price) FROM stdin;
+3	4	1	4	2016-01-08 02:40:07.29374	2016-01-08 02:40:07.29374	12000.00
+12	12	4	1	2016-01-23 02:56:53.701207	2016-01-23 02:56:53.701207	20000.00
+\.
+
+
+--
+-- Name: order_details_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('order_details_id_seq', 12, true);
+
+
+--
+-- Data for Name: orders; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY orders (id, type_id, customer_name, customer_email, customer_phone, many_people, message, created_at, updated_at, order_time, order_date) FROM stdin;
+4	1	Nguyễn Ngọc Sơn	sonnn@hoangkhang.com.vn	01644046123	5	abc xyz	2016-01-08 02:40:07.195366	2016-01-08 02:40:07.195366	\N	2016-01-10 22:00:00
+12	2	dasd		asdas	1	dasdas	2016-01-23 02:56:53.571335	2016-01-23 02:56:53.571335	\N	2016-01-23 09:56:00
+\.
+
+
+--
+-- Name: orders_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('orders_id_seq', 12, true);
+
+
+--
+-- Data for Name: parent_categories; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY parent_categories (id, parent_id, category_id, created_at, updated_at) FROM stdin;
+1	2	3	2016-01-07 07:39:46.978744	2016-01-07 07:39:46.978744
+2	2	4	2016-01-07 07:39:59.761352	2016-01-07 07:39:59.761352
+3	1	5	2016-01-07 07:40:06.755909	2016-01-07 07:40:06.755909
+4	1	6	2016-01-07 07:40:13.795767	2016-01-07 07:40:13.795767
+5	1	7	2016-01-07 07:40:32.804145	2016-01-07 07:40:32.804145
+\.
+
+
+--
+-- Name: parent_categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('parent_categories_id_seq', 5, true);
+
+
+--
+-- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY posts (id, tag_id, title, content, general_benefit, created_at, updated_at, image_url, run_check) FROM stdin;
+1	3	Abc Xyz	<p>sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad</p>\r\n		2016-01-07 08:01:57.39301	2016-01-07 08:01:57.39301	tra-bi-dao.jpg	False
+2	2	Sự kiện tiệc chay tại Nhà hàng Chay vì sức khỏe	<p>sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad</p>\r\n	sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad.	2016-01-07 08:03:14.598767	2016-01-07 08:03:14.598767	CQC8897.jpg	False
+3	6	Hình ảnh món chay	<p style="text-align: center;"><img alt="" src="https://farm2.staticflickr.com/1547/23857983259_17aabbfa89_m.jpg" style="border-style:solid; border-width:2px; height:180px; width:240px" />&nbsp;&nbsp;<img src="https://farm2.staticflickr.com/1545/24225829175_f389f47b2b_b.jpg" style="border-style:solid; border-width:2px; height:180px; width:240px" />&nbsp;&nbsp;<img src="https://farm2.staticflickr.com/1688/24225828285_fe31944f7c_c.jpg" style="border-style:solid; border-width:2px; height:180px; width:260px" /></p>\r\n		2016-01-07 08:07:40.065239	2016-01-07 08:07:40.065239	banner-1.jpg	False
+4	1	Lợi ích của việc ăn chay	<p>sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad</p>\r\n		2016-01-07 08:10:04.734646	2016-01-07 08:10:04.734646	goi-cuon.jpg	False
+5	1	Món chay ngon	<p>sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad</p>\r\n		2016-01-07 08:10:39.643727	2016-01-07 08:10:39.643727	cha-gio-chay.jpg	False
+6	1	Cách làm món mì xào	<p>sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad</p>\r\n		2016-01-07 08:11:00.243116	2016-01-07 08:11:00.243116	banner-1.jpg	False
+7	5	Giờ hoạt động của nhà hàng	<h4><strong>THỨ 2 - THỨ 6&nbsp;</strong></h4>\r\n\r\n<p><strong>S&aacute;ng:</strong>&nbsp;<em>08:00 - 12:00</em></p>\r\n\r\n<p><strong>Chiều:</strong>&nbsp;<em>12:00&nbsp;- 22:00</em></p>\r\n\r\n<h4><strong>THỨ 7&nbsp;- CHỦ NHẬT</strong></h4>\r\n\r\n<p><strong>S&aacute;ng:</strong>&nbsp;<em>08:00 - 12:00</em></p>\r\n\r\n<p><strong>Chiều:</strong>&nbsp;<em>12:00&nbsp;- 22:00</em></p>\r\n		2016-01-07 09:20:39.389557	2016-01-07 09:22:57.622966	\N	False
+8	4	Triết lý kinh doanh	<p>sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad</p>\r\n		2016-01-07 09:49:55.7458	2016-01-07 09:49:55.7458	banner-3.jpg	False
+10	3	dasdsadasdsa	<p>dsadsadasdsa</p>\r\n		2016-01-11 03:03:39.111399	2016-01-11 03:03:39.111399	banner-2.JPG	False
+11	3	vcvcxvxcvxcv	<p>xcvxcvxc</p>\r\n		2016-01-11 03:04:22.924158	2016-01-11 03:04:22.924158	goi-cuon.jpg	False
+12	3	Video Test	<p style="text-align:justify">sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad</p>\r\n\r\n<p style="text-align:center"><iframe frameborder="0" height="360" scrolling="no" src="https://www.youtube.com/embed/idxZ4ihqYfc" width="640"></iframe></p>\r\n\r\n<p>sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad&nbsp;sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad</p>\r\n\r\n<p>&nbsp;</p>\r\n		2016-01-12 01:19:37.11898	2016-01-12 01:35:03.816617	banner-3.jpg	False
+13	1	sadsa	<p>sadasdsa</p>\r\n		2016-01-19 12:11:55.723532	2016-01-19 12:11:55.723532	banner-2.JPG	False
+\.
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('posts_id_seq', 13, true);
+
+
+--
+-- Data for Name: product_of_events; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY product_of_events (id, post_id, product_id, created_at, updated_at) FROM stdin;
+1	2	1	2016-01-07 08:03:14.611465	2016-01-07 08:03:14.611465
+2	2	2	2016-01-07 08:03:14.624469	2016-01-07 08:03:14.624469
+3	2	3	2016-01-07 08:03:14.632162	2016-01-07 08:03:14.632162
+4	2	4	2016-01-07 08:03:14.639939	2016-01-07 08:03:14.639939
+\.
+
+
+--
+-- Name: product_of_events_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('product_of_events_id_seq', 4, true);
+
+
+--
+-- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('products_id_seq', 8, true);
+
+
+--
+-- Data for Name: roles; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY roles (id, name, created_at, updated_at) FROM stdin;
+1	admin	2016-01-07 07:23:29.95712	2016-01-07 07:23:29.95712
+2	chef	2016-01-07 07:23:29.961537	2016-01-07 07:23:29.961537
+\.
+
+
+--
+-- Name: roles_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('roles_id_seq', 2, true);
+
+
+--
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY schema_migrations (version) FROM stdin;
+20151130002340
+20151130004953
+20151130010211
+20151130010428
+20151130010526
+20151130010720
+20151130010742
+20151130011114
+20151130011146
+20151202032247
+20151207013559
+20151208071646
+20151208095159
+20151209015909
+20151211021103
+20151211040554
+20151211064257
+20151212011854
+20151212021329
+20151212024419
+20151212045213
+20151214022034
+20151214085128
+20151215012454
+20151215012653
+20151215134025
+20151218022609
+20151219023652
+20151219050222
+20151219145820
+20151229035206
+20151229083144
+20151229083203
+\.
+
+
+--
+-- Data for Name: slide_shows; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY slide_shows (id, image_url, title_1, title_2, description, created_at, updated_at, tag_name, link) FROM stdin;
+3	goi-cuon.jpg	MÓN CHAY	GỎI CUỐN CHAY	sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad	2016-01-07 09:08:02.223375	2016-01-07 09:33:49.753497	Products	http://chayvisuckhoe.com/homes/product_detail?id=7
+1	CQC8897.jpg	DANH SÁCH	 NHÀ HÀNG CHAY	sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad sad	2016-01-07 07:59:30.410528	2016-01-07 09:34:05.423743	General Manufacturers	http://chayvisuckhoe.com/homes/general_manufacturer
+\.
+
+
+--
+-- Name: slide_shows_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('slide_shows_id_seq', 3, true);
+
+
+--
+-- Data for Name: tags; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY tags (id, title, description, created_at, updated_at) FROM stdin;
+1	Tin tức	Tạo các bài viết có nội dung là tin tức (Trang tin tức).	2016-01-07 07:23:29.552227	2016-01-07 07:23:29.552227
+2	Sự kiện	Tạo các bài viết có nội dung là sự kiện (Trang tin tức).	2016-01-07 07:23:29.558533	2016-01-07 07:23:29.558533
+3	Dịch vụ	Tạo các bài viết có nội dung là dịch vụ (Trang dịch vụ).	2016-01-07 07:23:29.561535	2016-01-07 07:23:29.561535
+4	Lời giới thiệu	Tạo các bài viết có nội dung là lời giới thiệu (Lời giới thiệu ở cuối trang).	2016-01-07 07:23:29.564936	2016-01-07 07:23:29.564936
+5	Giờ mở cửa	Cập nhật thông tin thời gian hoạt động của nhà hàng.	2016-01-07 07:23:29.568686	2016-01-07 07:23:29.568686
+6	Hình ảnh	Tạo các bài viết có nội dung là hình ảnh (Trang hình ảnh).	2016-01-07 07:23:29.57218	2016-01-07 07:23:29.57218
+\.
+
+
+--
+-- Name: tags_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('tags_id_seq', 6, true);
+
+
+--
+-- Data for Name: types; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY types (id, title, description, created_at, updated_at) FROM stdin;
+1	Giao hàng	Loại của đơn hàng là Giao hàng.	2016-01-07 07:23:29.582182	2016-01-07 07:23:29.582182
+2	Đặt món	Loại của đơn hàng là Đặt món.	2016-01-07 07:23:29.585278	2016-01-07 07:23:29.585278
+\.
+
+
+--
+-- Name: types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('types_id_seq', 2, true);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at, user_name, role_id) FROM stdin;
+2	chef@chayvisuckhoe.com	$2a$10$XXR0vAWZ2/lIpBnZmRv1/ubv8nqWhefWB5naPRihe.QqSyjca.vMS	\N	\N	\N	1	2016-01-09 02:34:54.408123	2016-01-09 02:34:54.408123	192.168.1.8	192.168.1.8	2016-01-07 07:23:29.923202	2016-01-09 02:34:54.409537	Chef	\N
+1	admin@chayvisuckhoe.com	$2a$10$8ek6y6d9KUMm5uA7PYT/V.MpceBmqeHgmAbtO7ZyQPfkN5gIq7NS.	\N	\N	\N	13	2016-01-19 12:11:12.139909	2016-01-18 16:38:22.438405	192.168.1.90	192.168.1.90	2016-01-07 07:23:29.819997	2016-01-19 12:11:12.14166	Administrator	\N
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('users_id_seq', 2, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
