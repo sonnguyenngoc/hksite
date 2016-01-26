@@ -4,7 +4,7 @@ class HomeController < ApplicationController
     @message = Message.new
     @menu = Menu.all
     @company_info = Contact.find(1)
-    @product = Product.order("created_at DESC").first(3)
+    @product = Product.order("created_at DESC").first(12)
     @blog = Article.order("created_at DESC").first(3)
   end
 end

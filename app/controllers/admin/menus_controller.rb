@@ -28,7 +28,7 @@ class Admin::MenusController < ApplicationController
 
     respond_to do |format|
       if @menu.save
-        format.html { redirect_to [:admin, @menu], notice: 'Menu was successfully created.' }
+        format.html { redirect_to [:admin, @menu], notice: 'Tạo mới menu thành công.' }
         format.json { render :show, status: :created, location: @menu }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class Admin::MenusController < ApplicationController
   def update
     respond_to do |format|
       if @menu.update(menu_params)
-        format.html { redirect_to [:admin, @menu], notice: 'Menu was successfully updated.' }
+        format.html { redirect_to [:admin, @menu], notice: 'Cập nhật thông tin menu thành công.' }
         format.json { render :show, status: :ok, location: @menu }
       else
         format.html { render :edit }

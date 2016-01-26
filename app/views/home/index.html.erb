@@ -697,60 +697,64 @@
                                     <div class="table_row">
 
                                         <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                                        <% @product.each do |prod| %>
-                                        <div class="table_cell">
-                                            
-                                            <div class="product_item">
-
-                                                <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+                                        <% @product.each_with_index do |product| %>
+                                        
+                                            <div class="table_cell">
                                                 
-                                                <div class="image_wrap">
-                                                        <img src="images/macbook-pro-15.jpeg" alt="Product Image">
-                                                    <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-                
-                                                    <div class="actions_wrap">
-
-                                                        <div class="centered_buttons">
-
-                                                            <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="">Xem nhanh</a>
-
-                                                            <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: prod), class: "button_blue middle_btn add_to_cart" %>
-
-                                                        </div><!--/ .centered_buttons -->
-
-                                                        <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
-
-                                                        <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
-
-                                                    </div><!--/ .actions_wrap-->
+                                                <div class="product_item">
+    
+                                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
                                                     
-                                                    <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                                                    <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-
-                                                    <div class="label_new">Mới</div>
-
-                                                    <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-
-                                                </div><!--/. image_wrap-->
-
-                                                <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-
-                                                <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-                                                
-                                                <div class="description">
+                                                    <div class="image_wrap">
+                                                            <img src="images/macbook-pro-15.jpeg" alt="Product Image">
+                                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+                    
+                                                        <div class="actions_wrap">
+    
+                                                            <div class="centered_buttons">
+    
+                                                                <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="">Xem nhanh</a>
+    
+                                                                <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
+    
+                                                            </div><!--/ .centered_buttons -->
+    
+                                                            <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+    
+                                                            <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+    
+                                                        </div><!--/ .actions_wrap-->
+                                                        
+                                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+    
+                                                        <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+    
+                                                        <div class="label_new">Mới</div>
+    
+                                                        <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+    
+                                                    </div><!--/. image_wrap-->
+    
+                                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+    
+                                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
                                                     
-                                                    <a href="#"><%= prod.name %></a>
-                                                    <div class="clearfix product_info">
-                                                            <p class="product_price alignleft"><b><%= number_with_delimiter prod.product_price.price.to_i %> VNĐ</b></p>
+                                                    <div class="description">
+                                                        
+                                                        <a href="#"><%= product.name %></a>
+                                                        <div class="clearfix product_info">
+                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                                    
+                                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+    
+                                                </div><!--/ .product_item-->
                                                 
-                                                <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-
-                                            </div><!--/ .product_item-->
+                                            </div>
                                             
-                                        </div>
+                                            <%= "</div></div class=\"table_row\">".html_safe if index%3 == 2 %>
+                                            
                                         <% end %>
                                         <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
                                     </div>

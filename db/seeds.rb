@@ -5,3 +5,32 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Menu.delete_all
+#....
+Menu.create(
+  title: 'Thiết bị tin học',
+  level: 1,
+  description: ''
+)
+Menu.create(
+  title: 'Thiết bị văn phòng',
+  level: 1,
+  description: ''
+)
+Menu.create(
+  title: 'Thiết bị hệ thống mạng',
+  level: 1,
+  description: ''
+)
+Menu.create(
+  title: 'Thiết bị viễn thông',
+  level: 1,
+  description: ''
+)
+Menu.create(
+  title: 'An ninh kiểm soát',
+  level: 1,
+  description: ''
+)
+#....
