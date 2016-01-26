@@ -3,8 +3,6 @@ class LineItem < ActiveRecord::Base
   belongs_to :cart
   
   def total_item
-    if product.price != ""
-        product.price*quantity
-    end
+      product.product_price.price*quantity
   end
 end

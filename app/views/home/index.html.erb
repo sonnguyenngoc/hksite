@@ -697,7 +697,7 @@
                                     <div class="table_row">
 
                                         <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                                        <% @product.each_with_index do |product| %>
+                                        <% @product.each_with_index do |product, index| %>
                                         
                                             <div class="table_cell">
                                                 
@@ -741,7 +741,7 @@
                                                     
                                                     <div class="description">
                                                         
-                                                        <a href="#"><%= product.name %></a>
+                                                        <a href="#"><%= truncate(strip_tags(product.name), length: 30) %></a>
                                                         <div class="clearfix product_info">
                                                                 <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
                                                         </div>
@@ -753,7 +753,7 @@
                                                 
                                             </div>
                                             
-                                            <%= "</div></div class=\"table_row\">".html_safe if index%3 == 2 %>
+                                            <%= "</div><div class=\"table_row\">".html_safe if index%3 == 2 %>
                                             
                                         <% end %>
                                         <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
