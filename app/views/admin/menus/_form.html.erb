@@ -1,0 +1,67 @@
+<% if @menu.errors.any? %>
+  <div id="error_explanation">
+    <h6><%= pluralize(@menu.errors.count, "error") %> prohibited this tag from being saved:</h6>
+
+    <% @menu.errors.full_messages.each do |message| %>
+      <p class="label label-warning"><%= message %></p>
+    <% end %>
+  </div>
+<% end %>
+
+<%= form_for [:admin, @menu], html: {class: "form-horizontal"} do |f| %>
+
+    <div class="panel-body">
+        
+        <div class="form-group field">
+            <%= f.label "Tiêu đề: ", class: "col-lg-3 control-label" %>
+            <div class="col-lg-9">
+              <%= f.text_field :title, placeholder: "Tiêu đề loại bài viết...", class: "form-control" %>
+            </div>
+        </div>
+
+        <div class="form-group field">
+            <%= f.label "Mô tả: ", class: "col-lg-3 control-label" %>
+            <div class="col-lg-9">
+              <%= f.text_area :description, rows: "5", cols: "5", placeholder: "Mô tả loại bài viết...", class: "form-control" %>
+            </div>
+        </div>
+            
+        <div class="form-group field">
+            <%= f.label "Chuyên mục: ", class: "col-lg-3 control-label" %>
+            <div class="col-lg-9">
+              <% Menu.all.each do |menu| %>
+                <% if @menu.id != menu.id %>
+                  <% if menu.level == 1 %>
+                    <p><div class="row-fluid">
+                      <div class="checkbox">
+                        <%= check_box_tag 'menu[parent_ids][]', menu.id, @menu.parent.include?(menu), :id => "menu_#{menu.id}" %>
+                        <%= f.label menu.title, :for => "menu_#{menu.id}" %>
+                      </div>
+                    </div></p>
+                    <% menu.children.each do |child_1| %>
+                        <div class="row-fluid">
+                          <div class="checkbox">
+                            <%= check_box_tag 'menu[parent_ids][]', child_1.id, @menu.parent.include?(child_1), :id => "menu_#{child_1.id}" %>
+                            <%= f.label child_1.title, :for => "menu_#{child_1.id}" %>
+                          </div>
+                        </div>
+                        <% child_1.children.each do |child_2| %>
+                            <div class="row-fluid">
+                              <div class="checkbox">
+                                <%= check_box_tag 'menu[parent_ids][]', child_2.id, @menu.parent.include?(child_2), :id => "menu_#{child_2.id}" %>
+                                <%= f.label child_2.title, :for => "menu_#{child_2.id}" %>
+                              </div>
+                            </div>
+                        <% end %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+        </div>
+
+        <div class="text-right">
+          <%= button_tag 'Lưu <i class="icon-plus22 position-right"></i>'.html_safe, class: "btn btn-primary"%>
+        </div>
+    </div>
+<% end %>

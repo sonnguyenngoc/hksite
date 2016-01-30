@@ -10,10 +10,5 @@ class CreateProductInfos < ActiveRecord::Migration
       t.string :product_prominent
       t.timestamps null: false
     end
-    create_table :products do |t|
-      t.belongs_to :product_infos, index: true
-      t.integer :product_id
-      t.timestamps null: false
-    end
   end
 end

@@ -1,9 +1,14 @@
 class ProductInfosController < ApplicationController
   before_action :set_product_info, only: [:show, :edit, :update, :destroy]
-
+  
+  def update_info
+    
+  end
+  
   # GET /product_infos
   # GET /product_infos.json
   def index
+    @products = Product.all
     @product_infos = ProductInfo.all
   end
 
@@ -14,17 +19,23 @@ class ProductInfosController < ApplicationController
 
   # GET /product_infos/new
   def new
-    @product_info = ProductInfo.new
+    @product_info = ProductInfo.new(product_id: params[:product_id])    
   end
 
   # GET /product_infos/1/edit
   def edit
+
   end
 
   # POST /product_infos
   # POST /product_infos.json
-  def create
+  def create    
     @product_info = ProductInfo.new(product_info_params)
+    @product_info.product_hot = nil if !product_info_params[:product_hot].present?
+    @product_info.product_sale = nil if !product_info_params[:product_sale].present?
+    @product_info.product_bestselled = nil if !product_info_params[:product_bestselled].present?
+    @product_info.product_prominent = nil if !product_info_params[:product_prominent].present?
+
 
     respond_to do |format|
       if @product_info.save
@@ -40,6 +51,11 @@ class ProductInfosController < ApplicationController
   # PATCH/PUT /product_infos/1
   # PATCH/PUT /product_infos/1.json
   def update
+    @product_info.product_hot = nil if !product_info_params[:product_hot].present?
+    @product_info.product_sale = nil if !product_info_params[:product_sale].present?
+    @product_info.product_bestselled = nil if !product_info_params[:product_bestselled].present?
+    @product_info.product_prominent = nil if !product_info_params[:product_prominent].present?
+    
     respond_to do |format|
       if @product_info.update(product_info_params)
         format.html { redirect_to @product_info, notice: 'Product info was successfully updated.' }
@@ -69,6 +85,6 @@ class ProductInfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_info_params
-      params.require(:product_info).permit(:image_url, :description, :old_price, :product_hot, :product_sale, :product_bestselled, :product_prominent)
+      params.require(:product_info).permit(:image_url, :description, :old_price, :product_hot, :product_sale, :product_bestselled, :product_prominent, :product_id, :note)
     end
 end

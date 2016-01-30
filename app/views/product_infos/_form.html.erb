@@ -1,4 +1,3 @@
-
 <% if @product_info.errors.any? %>
     <div id="error_explanation">
         <% @product_info.errors.full_messages.each do |message| %>
@@ -9,39 +8,141 @@
 <% end %>
 
 <%= form_for @product_info, html: {class: "form-horizontal"} do |f| %>
-
-    <div class="form-group">
-        <%= f.label "Hình ảnh: ", class: "col-lg-2 control-label" %>
-        <div class="col-lg-10">
-          <%= f.file_field :image_url, class: "file-styled" %>
-          <span class="help-block">Chấp nhận tập tin hình ảnh dịnh dạng: gif, png, jpg.Tối đa 2Mb</span>
-          <%= image_tag(@product_info.image_url, size: "250x150", alt: "Hình ảnh", class: "img-rouded") %>
-        </div>
-    </div>
-    
-    <div class="form-group">
-        <%= f.label "Mô tả: ", class: "col-lg-2 control-label" %>
-        <div class="col-lg-10">
-            <%= f.text_area :description, rows: "4", cols: "4", id: "editor-full" %>
-        </div>
-    </div>
+<!-- /2 columns form-->
+    <div class="panel panel-flat">
         
-    <div class="form-group">
-        <%= f.label "Giá cũ: ", class: "col-lg-2 control-label" %>
-        <div class="col-lg-10">
-            <%= f.text_field :old_price, placeholder: "Nhập giá cũ...", class: "form-control" %>
-        </div>
-    </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <fieldset>
+                        <legend class="text-semibold"><i class="icon-reading position-left"></i> Product</legend>
+                        
+                        <div class="form-group">
+                            <%= f.label "Tên sản phẩm: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-10">
+                                <b><%=  @product_info.product.name %></b>
+                                <%= f.hidden_field :product_id %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label "Mã sản phẩm: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-10">
+                                <b><%= @product_info.product.product_code %></b>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label "Giá bán: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-10">
+                                <b><%= number_with_delimiter @product_info.product.product_price.price.to_i %> VNĐ</b>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <%= f.label "Đơn vị: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-10">
+                                <b><%= @product_info.product.unit %></b>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
 
-    <div class="text-right">
-        <button type="submit" class="btn btn-success">Lưu <i class="icon-plus22 position-right"></i></button>
+                <div class="col-md-6">
+                    <fieldset>
+                        <legend class="text-semibold"><i class="icon-truck position-left"></i> Product Info</legend>
+                        
+                        <div class="form-group">
+                            <%= f.label "Hình ảnh: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-9">
+                              <%= f.file_field :image_url, class: "file-styled" %>
+                              <%= image_tag(@product_info.image_url, size: "100x100", alt: "Hình ảnh", class: "img-rouded") %>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <%= f.label "Mô tả: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-9">
+                                <%= f.text_field :note, rows: "5", cols: "5", class: "form-control" %>
+                            </div>
+                        </div>
+                            
+                        <div class="form-group">
+                            <%= f.label "Giá cũ (vnđ): ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-9">
+                                <%= f.text_field :old_price, :value => number_with_delimiter(@product_info.old_price.to_i), rows: "5", cols: "5", class: "form-control" %>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <%= f.label "Giới thiệu: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-9">
+                                <%= f.text_area :description, rows: "5", cols: "5", class: "form-control" %>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="form-group">
+                            <%= f.label "Phân loại module sản phẩm: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-9">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-15">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <div class="checker">
+                                                            <input type="checkbox" class="styled" name="product_info[product_hot]" <%= 'checked' if @product_info.product_hot == "on" %>>
+                                                    </div>
+                                                    Sản phẩm 'HOT'
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-15">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <div class="checker">
+                                                            <input type="checkbox" class="styled" name="product_info[product_sale]" <%= 'checked' if @product_info.product_sale == "on" %>>
+                                                    </div>
+                                                    Sản phẩm 'Khuyến mãi'
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="mb-15">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <div class="checker">
+                                                        <input type="checkbox" class="styled" name="product_info[product_bestselled]" <%= 'checked' if @product_info.product_bestselled == "on" %>>
+                                                    </div>
+                                                    Sản phẩm 'Bán chạy'
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-15">
+                                            <div class="checkbox">
+                                                <label>
+                                                    <div class="checker">
+                                                            <input type="checkbox" class="styled" name="product_info[product_prominent]" <%= 'checked' if @product_info.product_prominent == "on" %>>
+                                                    </div>
+                                                    Sản phẩm 'Nổi bật'
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                            
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="text-right">
+                <!-- <button type="submit" class="btn btn-primary">Save <i class="icon-arrow-right14 position-right"></i></button> -->
+                <%= button_tag 'Save <i class="icon-plus22 position-right"></i>'.html_safe, class: "btn btn-primary"%>
+            </div>
+        </div>
     </div>
 <% end %>
-
-<!-- Theme JS files -->
-<%= javascript_include_tag '/assets_backend/js/plugins/forms/styling/uniform.min.js' %>
-<%= javascript_include_tag '/assets_backend/js/core/app.js' %>
-
-<%= javascript_include_tag '/assets_backend/js/pages/form_layouts.js' %>
-<%= javascript_include_tag '/assets_backend/js/plugins/forms/selects/select2.min.js' %>
-<!-- /theme JS files -->
+<!-- /2 columns form -->

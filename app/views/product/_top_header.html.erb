@@ -1,0 +1,78 @@
+<div class="top_part">
+
+  <div class="container">
+
+      <div class="row">
+
+          <div class="col-lg-6 col-md-7 col-sm-8">
+
+              <!-- - - - - - - - - - - - - - Navigation of shop - - - - - - - - - - - - - - - - -->
+
+              <nav>
+
+                  <ul class="topbar">
+
+                      <li><%= link_to "Trang chủ", root_path %></li>
+                      <li><%= link_to "Giới thiệu", { controller: "about_us", action: "index" } %></li>
+                      <li><a href="#">Khuyến mãi</a></li>
+                      <li><a href="#">Tài khoản</a></li>
+                      <li><a href="#">Hướng dẩn</a></li>
+                      <li><%= link_to "Liên hệ", { controller: "contact", action: "index" } %></li>
+                      
+                  </ul>
+
+              </nav>
+
+              <!-- - - - - - - - - - - - - - End navigation of shop - - - - - - - - - - - - - - - - -->
+
+          </div> <!--/ [col]-->
+
+          <div class="col-lg-6 col-md-5 col-sm-4">
+
+              <div class="clearfix">
+
+                  <!-- - - - - - - - - - - - - - Language change - - - - - - - - - - - - - - - - -->
+
+                  <div class="alignright site_settings">
+
+                      <span class="current open_"><img src="images/flag_vn.gif" alt="">Vietnam</span>
+
+                      <ul class="dropdown site_setting_list language">
+
+                          <li class="animated_item"><a href="#"><img src="images/flag_vn.gif" alt=""> Vietnam</a></li>
+
+                          <li class="animated_item"><a href="#"><img src="images/flag_en.jpg" alt=""> English</a></li>
+                          
+
+                      </ul>
+
+                  </div><!--/ .alignright.site_settings-->
+
+                  <!-- - - - - - - - - - - - - - End of language change - - - - - - - - - - - - - - - - -->
+                  
+                  <!-- - - - - - - - - - - - - - Currency change - - - - - - - - - - - - - - - - -->
+
+                  <div class="alignright site_settings currency">
+
+                      <span class="current open_">VNĐ</span>
+
+                      <ul class="dropdown site_setting_list">
+
+                          <li class="animated_item"><a href="#">VNĐ</a></li>
+                          <li class="animated_item"><a href="#">USD</a></li>
+
+                      </ul>
+
+                  </div><!--/ .alignright.site_settings.currency-->
+
+                  <!-- - - - - - - - - - - - - - End of currency change - - - - - - - - - - - - - - - - -->
+
+              </div><!--/ .clearfix-->
+
+          </div><!--/ [col]-->
+
+      </div><!--/ .row-->
+
+  </div><!--/ .container -->
+
+</div><!--/ .top_part -->

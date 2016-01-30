@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160123030046) do
+ActiveRecord::Schema.define(version: 20160126021420) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,11 @@ ActiveRecord::Schema.define(version: 20160123030046) do
     t.integer  "time_interval"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories", force: :cascade do |t|
@@ -185,6 +190,29 @@ ActiveRecord::Schema.define(version: 20160123030046) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "customer_order_details", force: :cascade do |t|
+    t.integer  "customer_order_id"
+    t.integer  "product_id"
+    t.integer  "quantity"
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.decimal  "price",             precision: 8, scale: 2
+  end
+
+  create_table "customer_orders", force: :cascade do |t|
+    t.string   "orderer_first_name"
+    t.string   "orderer_last_name"
+    t.string   "orderer_company_name"
+    t.string   "orderer_email"
+    t.string   "orderer_address_1"
+    t.string   "orderer_address_2"
+    t.string   "orderer_phone"
+    t.string   "orderer_fax"
+    t.text     "orderer_message"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
   create_table "deliveries", force: :cascade do |t|
     t.integer  "order_id"
     t.integer  "user_id"
@@ -217,6 +245,17 @@ ActiveRecord::Schema.define(version: 20160123030046) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "line_items", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "cart_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "quantity",   default: 1
+  end
+
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
+  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
+
   create_table "manages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -229,6 +268,14 @@ ActiveRecord::Schema.define(version: 20160123030046) do
     t.datetime "updated_at"
     t.integer  "tmpmenu"
     t.integer  "user_id"
+  end
+
+  create_table "menus", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "level"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -350,6 +397,13 @@ ActiveRecord::Schema.define(version: 20160123030046) do
     t.integer "parent_id"
   end
 
+  create_table "parent_menus", force: :cascade do |t|
+    t.integer  "parent_id"
+    t.integer  "menu_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "payment_methods", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -396,6 +450,7 @@ ActiveRecord::Schema.define(version: 20160123030046) do
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "product_id"
+    t.text     "note"
   end
 
   create_table "product_parts", force: :cascade do |t|
@@ -618,4 +673,6 @@ ActiveRecord::Schema.define(version: 20160123030046) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "line_items", "carts"
+  add_foreign_key "line_items", "products"
 end

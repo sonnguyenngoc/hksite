@@ -1,81 +1,20 @@
-<!--<p id="notice"><%= notice %></p>
-
-<h1>Listing Product Infos</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Image url</th>
-      <th>Description</th>
-      <th>Old price</th>
-      <th>Product hot</th>
-      <th>Product sale</th>
-      <th>Product bestselled</th>
-      <th>Product prominent</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @product_infos.each do |product_info| %>
-      <tr>
-        <td><%= product_info.image_url %></td>
-        <td><%= product_info.description %></td>
-        <td><%= product_info.old_price %></td>
-        <td><%= product_info.product_hot %></td>
-        <td><%= product_info.product_sale %></td>
-        <td><%= product_info.product_bestselled %></td>
-        <td><%= product_info.product_prominent %></td>
-        <td><%= link_to 'Show', product_info %></td>
-        <td><%= link_to 'Edit', edit_product_info_path(product_info) %></td>
-        <td><%= link_to 'Destroy', product_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Product info', new_product_info_path %>-->
-
-<!-- Global stylesheets -->
-	<%= stylesheet_link_tag '/assets_backend/css/icons/icomoon/styles.css' %>
-	<%= stylesheet_link_tag '/assets_backend/css/bootstrap.min.css' %>
-	<%= stylesheet_link_tag '/assets_backend/css/core.min.css' %>
-	<%= stylesheet_link_tag '/assets_backend/css/components.min.css' %>
-	<%= stylesheet_link_tag '/assets_backend/css/colors.min.css' %>
-	<!-- /global stylesheets -->
 	
-	<!-- JS and meta for Rails -->
-	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	<%= csrf_meta_tags %>
-	<!-- /js and meta for rails -->
-	
-	<!-- Core JS files -->
-	<%= javascript_include_tag '/assets_backend/js/plugins/loaders/pace.min.js' %>
-	<%= javascript_include_tag '/assets_backend/js/core/libraries/jquery.min.js' %>
-	<%= javascript_include_tag '/assets_backend/js/core/libraries/bootstrap.min.js' %>
-	<%= javascript_include_tag '/assets_backend/js/plugins/loaders/blockui.min.js' %>
-	<!-- /core JS files -->
-	
-	<!-- Customize -->
-	<%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' %>
-	<%= stylesheet_link_tag 'custom_backend.css' %>
-	<!-- /customize -->
+<!-- Main content -->
+<div class="content-wrapper">
 
-<!-- Page header -->
+    <!-- Page header -->
 <div class="page-header">
     <div class="page-header-content">
         <div class="page-title">
-            <h4><a href="" class="btn-back"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Quản lý</span> - Hình ảnh</h4>
+            <h4><a href="" class="btn-back"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Management</span> - Product Infomation</h4>
         </div>
     </div>
 
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
-            <li><a href=""><i class="icon-home2 position-left"></i> Trang chủ</a></li>
-            <li><a href="">Hình ảnh</a></li>
-            <li class="active">Quản lý hình ảnh</li>
+            <li><a href=""><i class="icon-home2 position-left"></i> Home</a></li>
+            <li><a href="">Pictures</a></li>
+            <li class="active">Product - Management</li>
         </ul>
     </div>
 </div>
@@ -87,9 +26,8 @@
     <!-- Basic datatable -->
     <div class="panel panel-flat">
         <div class="panel-heading">
-            <%= link_to 'Thêm hình ảnh mới', new_product_info_path, class: 'btn btn-primary' %>
             <hr/>
-            <h5 class="panel-title">Danh sách <span class="text-semibold">HÌNH ẢNH</span></h5>
+            <h5 class="panel-title">Product - <span class="text-semibold">Management</span></h5>
             <div class="heading-elements">
                 <ul class="icons-list">
                     <li><a data-action="collapse"></a></li>
@@ -102,37 +40,38 @@
         <table class="table datatable-picture">
             <thead>
                 <tr>
-					<th>Hình ảnh</th>
-                    <th>Mô tả</th>
-                    <th>Giá cũ</th>
-                    <th>HOT</th>
-                    <th>KM</th>
-                    <th>Bán chạy</th>
-                    <th>Nổi bật</th>
-                    <th>Mới</th>
+                    <th>Hình Ảnh</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Giá N/Y (VNĐ)</th>
+					<th>Giới thiệu</th>
+                    <th>Người tạo</th>
                     <th class="text-center">Thao tác</th>
                 </tr>
             </thead>
             <tbody>
-                  <% @product_infos.each do |item| %>
+				<% @products.each do |product| %>
                     <tr>
 						<td>
 							<div class="media-left">
-								<img src="<%= item.image_url if item.image_url? %>" style="width: 82px; height: 56px;" class="img-rounded" alt="">
+								<% if product.product_info.nil? %>
+									<img src="#" style="width: 82px; height: 56px;" class="img-rounded" alt="Product-Image">
+								<% else %>
+									<img src="<%= product.product_info.image_url if product.product_info.image_url? %>" style="width: 82px; height: 56px;" class="img-rounded" alt="Product-Image">
+								<% end %>
 							</div>
 						</td>
                         <td>
-						  <%= link_to (truncate(strip_tags(item.description), length: 40)), item %>
-						</td>
+							<%= link_to (truncate(strip_tags(product.name), length: 40)), product %>
 						</td>
                         <td>
-							<span class="label label-success"><%= item.old_price %></span>
+							<%= number_with_delimiter product.product_price.price.to_i %>
 						</td>
-                        <td><input id="product_hot" name="hot" type="checkbox" value="1" /></td>
-                        <td><input id="product_sale" name="khuyến mãi" type="checkbox" value="1" /></td>
-                        <td><input id="product_bestselled" name="Bán chạy" type="checkbox" value="1" /></td>
-                        <td><input id="product_prominent" name="Nổi bật" type="checkbox" value="1" /></td>
-                        <td><input id="new" name="Mới" type="checkbox" value="1" /></td>
+						<td>
+							<%= truncate(strip_tags(product.description), length: 40) %>
+						</td>
+						<td>
+							
+						</td>
                         <td class="text-center">
                             <ul class="icons-list">
                                 <li class="dropdown">
@@ -142,35 +81,40 @@
     
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li>
-                                            <%= link_to '<i class="glyphicon glyphicon-edit"></i> Chỉnh sửa'.html_safe, edit_product_info_path(item) %>
-                                        </li>
-                                        <li>
-                                            <%= link_to '<i class="icon-cross2"></i> Xóa'.html_safe, item, method: :delete, data: {confirm: 'Bạn có chắc muốn xóa?'} %>
-                                        </li>
+											<% if product.product_info.nil? %>
+												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Update Product Info'.html_safe, new_product_info_path(product_id: product.id) %>
+											<% else %>
+												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Update Product Info'.html_safe, edit_product_info_path(product.product_info) %>
+											<% end %>
+
+										</li>
                                     </ul>
                                 </li>
                             </ul>
                         </td>
                     </tr>
                 <% end %>
+			
             </tbody>
         </table>
     </div>
-    <!-- /basic datatable -->
-
-    <!-- Footer -->
-	<div class="footer text-muted">
-		Copyright &copy; 2016
-	</div>
-	<!-- /footer -->
+        <!-- /basic datatable -->
+    
+        <!-- Footer -->
+        <%= render '/admin/manages/footer' %>
+        <!-- /footer -->
+    
+    </div>
+    <!-- /content area -->
 
 </div>
-<!-- /content area -->
+<!-- /main content -->
 
 <!-- Theme JS files -->
-<%= javascript_include_tag '/assets_backend/js/plugins/forms/styling/uniform.min.js' %>
-<%= javascript_include_tag '/assets_backend/js/plugins/tables/datatables/datatables.min.js' %>
-<%= javascript_include_tag '/assets_backend/js/plugins/forms/selects/select2.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
 
-<%= javascript_include_tag '/assets_backend/js/core/app.js' %>
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/javascripts/datatables_productinfo.js' %>
 <!-- /theme JS files -->

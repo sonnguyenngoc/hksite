@@ -1,3 +1,30 @@
+<!-- Global stylesheets -->
+	<%= stylesheet_link_tag '/assets_backend/css/icons/icomoon/styles.css' %>
+	<%= stylesheet_link_tag '/assets_backend/css/bootstrap.min.css' %>
+	<%= stylesheet_link_tag '/assets_backend/css/core.min.css' %>
+	<%= stylesheet_link_tag '/assets_backend/css/components.min.css' %>
+	<%= stylesheet_link_tag '/assets_backend/css/colors.min.css' %>
+	<!-- /global stylesheets -->
+	
+	<!-- JS and meta for Rails -->
+	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	<%= csrf_meta_tags %>
+	<!-- /js and meta for rails -->
+	
+	<!-- Core JS files -->
+	<%= javascript_include_tag '/assets_backend/js/plugins/loaders/pace.min.js' %>
+	<%= javascript_include_tag '/assets_backend/js/core/libraries/jquery.min.js' %>
+	<%= javascript_include_tag '/assets_backend/js/core/libraries/bootstrap.min.js' %>
+	<%= javascript_include_tag '/assets_backend/js/plugins/loaders/blockui.min.js' %>
+    <%= stylesheet_link_tag 'assets_backend/js/pages/form_checkboxes_radios.js' %>
+	<!-- /core JS files -->
+	
+	<!-- Customize -->
+	<%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' %>
+	<%= stylesheet_link_tag 'custom_backend.css' %>
+	<!-- /customize -->
+
+
 <!-- Page header -->
 <div class="page-header">
     <div class="page-header-content">
@@ -8,9 +35,9 @@
 
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
-            <li><a href="#"><i class="icon-home2 position-left"></i> Trang chủ</a></li>
-            <li><a href="#">Hình ảnh</a></li>
-            <li class="active">Quản lý hình ảnh</li>
+            <li><a href="#"><i class="icon-home2 position-left"></i> Home</a></li>
+            <li><a href="#">Info..</a></li>
+            <li class="active">Product Info - Management</li>
         </ul>
     </div>
 </div>
@@ -26,7 +53,7 @@
             <!-- Basic layout-->
             <div class="panel panel-flat">
                 <div class="panel-heading">
-                    <h5 class="panel-title">Chỉnh sửa hình ảnh</h5>
+                    <h5 class="panel-title">Update Product Info</h5>
                     <div class="heading-elements">
                         <ul class="icons-list">
                             <li><a data-action="collapse"></a></li>
@@ -47,9 +74,16 @@
 
     <!-- Footer -->
 	<div class="footer text-muted">
-		Copyright &copy; 2016
 	</div>
 	<!-- /footer -->
 
 </div>
 <!-- /content area -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/assets_backend/js/plugins/forms/styling/uniform.min.js' %>
+<%= javascript_include_tag '/assets_backend/js/core/app.js' %>
+
+<%= javascript_include_tag '/assets_backend/js/pages/form_layouts.js' %>
+<%= javascript_include_tag '/assets_backend/js/plugins/forms/selects/select2.min.js' %>
+<!-- /theme JS files -->

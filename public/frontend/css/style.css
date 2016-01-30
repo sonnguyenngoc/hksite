@@ -1866,7 +1866,7 @@
 		padding-bottom:8px;
 	}
 
-	.logo{ display: inline-block; }
+	.logo{ display: inline-block; max-width: 100% }
 
 	#header .topbar,
 	.top_part p{ font-size:13px; }
@@ -2606,7 +2606,7 @@ transition-duration:0.1s;
 
 			.nav_item.size_1{ width: 68px; }
 			.nav_item.size_2{ width: 168px; }
-			.nav_item.size_3{ width: 155px; }
+			.nav_item.size_3{ width: 170px; }
 			.nav_item.size_4{ width: 55px; }
 
 			.nav_item.inner_offset{ padding: 11px 20px; }
