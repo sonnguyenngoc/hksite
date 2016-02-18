@@ -35,12 +35,10 @@
                         <h3>Danh mục tin tức</h3>
 
                         <ul class="theme_menu">
-
-                            <li><a href="#">Thiết bị tin học</a></li>
-                            <li><a href="#">Thiết bị văn phòng</a></li>
-                            <li><a href="#">Thiết bị hệ thống mạng</a></li>
-                            <li><a href="#">Thiết bị viễn thông</a></li>
-                            <li><a href="#">An ninh kiểm soát</a></li>
+                            
+                            <% @tag.each do |tag| %>
+                                <li><a href="#"><%= tag.title %></a></li>
+                            <% end %>
 
                         </ul>
 
@@ -191,19 +189,13 @@
 
                         <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
 
-                        <footer class="bottom_box">
-
-                            Nhãn: <a href="#">thiết bị tin học</a>
-
-                        </footer>
-
                     </section>
 
                     <!-- - - - - - - - - - - - - - Related posts - - - - - - - - - - - - - - - - -->
 
                     <section class="section_offset">
                         
-                        <h3>Tin tức cùng chuyên mục</h3>
+                        <h3>Tin tức mới cùng chuyên mục</h3>
 
                         <div class="table_layout related_posts">
 
