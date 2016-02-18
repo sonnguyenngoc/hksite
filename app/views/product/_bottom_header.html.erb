@@ -45,10 +45,14 @@
                           <div class="open_categories">DANH MỤC</div>
 
                           <ul class="categories_list dropdown">
-                              <% @category.each do |category| %>
-                              <li class="animated_item">
-                                  <a href="#"><%= category.name %></a>
-                              </li>
+                              <% @menu.each do |item| %>
+                            
+                                <% if item.level == 1 %>
+                                    
+                                    <li class="animated_item"><a href="#"><%= item.title %></a></li>
+                                    
+                                <% end %>
+                              
                               <% end %>
                           </ul>
 
