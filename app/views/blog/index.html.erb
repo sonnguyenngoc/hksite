@@ -34,12 +34,10 @@
                         <h3>Danh mục</h3>
 
                         <ul class="theme_menu">
-
-                            <li><a href="#">Máy tính</a></li>
-                            <li><a href="#">Laptop</a></li>
-                            <li><a href="#">Điện thoại</a></li>
-                            <li><a href="#">Thiết bị công nghệ</a></li>
-                            <li><a href="#">Thiết bị kỹ thuật số</a></li>
+                            
+                            <% @tag.each do |tag| %>
+                                <li><a href="#"><%= tag.title %></a></li>
+                            <% end %>
 
                         </ul>
 
