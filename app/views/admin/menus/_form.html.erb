@@ -18,6 +18,17 @@
               <%= f.text_field :title, placeholder: "Tiêu đề loại bài viết...", class: "form-control" %>
             </div>
         </div>
+            
+        <div class="form-group field">
+            <%= f.label "Add chuyên mục liên quan: ", class: "col-lg-3 control-label" %>
+            <div class="col-lg-9">
+                <select name="category_ids[]" class="select-item-color" data-placeholder="Chọn chuyên mục liên quan..." multiple="multiple">
+                    <% @categories.each do |item| %>
+                        <option <%= "selected" if @menu.categories.include?(item) %> value="<%= item.id %>"><%= item.name %></option>
+                    <% end %>
+                </select>
+            </div>
+        </div>
 
         <div class="form-group field">
             <%= f.label "Mô tả: ", class: "col-lg-3 control-label" %>
@@ -27,8 +38,8 @@
         </div>
             
         <div class="form-group field">
-            <%= f.label "Chuyên mục: ", class: "col-lg-3 control-label" %>
-            <div class="col-lg-9">
+            <%= f.label "Chuyên mục cha: ", class: "col-lg-3 control-label" %>
+            <div class="col-lg-6">
               <% Menu.all.each do |menu| %>
                 <% if @menu.id != menu.id %>
                   <% if menu.level == 1 %>
@@ -58,10 +69,11 @@
                 <% end %>
               <% end %>
             </div>
-        </div>
-
-        <div class="text-right">
-          <%= button_tag 'Lưu <i class="icon-plus22 position-right"></i>'.html_safe, class: "btn btn-primary"%>
+            <div class="col-lg-3">
+                <div class="text-left">
+                  <%= button_tag 'Lưu <i class="icon-plus22 position-right"></i>'.html_safe, class: "btn btn-primary"%>
+                </div>
+            </div>
         </div>
     </div>
 <% end %>

@@ -1,0 +1,3045 @@
+<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+<div class="wide_layout">
+
+    <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+    <%= render 'blog/header' %>
+    
+    <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="secondary_page_wrapper">
+
+        <div class="container">
+
+            <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+            <ul class="breadcrumbs">
+
+                <li><%= link_to "Trang chủ", root_path %></li>
+                <li><%= @category.title %></li>
+
+            </ul>
+
+            <div class="row">
+
+                <aside class="col-md-3 col-sm-4 has_mega_menu">
+
+                    <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+
+                    <%= render 'category_left_page' %>
+
+                    <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+
+                    <!-- - - - - - - - - - - - - - Filter - - - - - - - - - - - - - - - - -->
+
+                    <section class="section_offset">
+
+                        <h3>Bộ lọc</h3>
+
+                        <form class="type_2">
+
+                            <div class="table_layout list_view">
+
+                                <div class="table_row">
+
+                                    <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
+
+                                    <div class="table_cell">
+
+                                        <label>Danh mục</label>
+
+                                        <div class="custom_select">
+
+                                            <select name="">
+                                                
+                                                <option value="Thiết bị tin học">Thiết bị tin học</option>
+                                                <option value="Thiết bị văn phòng">Thiết bị văn phòng</option>
+                                                <option value="Thiết bị hệ thống mạng">Thiết bị hệ thống mạng</option>
+                                                <option value="Thiết bị viễn thông">Thiết bị viễn thông</option>
+                                                <option value="An ninh kiểm soát">An ninh kiểm soát</option>
+
+                                            </select>
+
+                                        </div>
+
+                                    </div><!--/ .table_cell -->
+
+                                    <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
+
+                                    <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
+
+                                    <div class="table_cell">
+
+                                        <fieldset>
+
+                                            <legend>Nhà cung cấp</legend>
+
+                                            <ul class="checkboxes_list">
+
+                                                <li>
+                                                    
+                                                    <input type="checkbox" checked name="manufacturer" id="manufacturer_1">
+                                                    <label for="manufacturer_1">Microsoft</label>
+
+                                                </li>
+
+                                                <li>
+                                                    
+                                                    <input type="checkbox" name="manufacturer" id="manufacturer_2">
+                                                    <label for="manufacturer_2">HP</label>
+
+                                                </li>
+
+                                                <li>
+                                                    
+                                                    <input type="checkbox" name="manufacturer" id="manufacturer_3">
+                                                    <label for="manufacturer_3">Apple</label>
+
+                                                </li>
+                                                
+                                                <li>
+                                                    
+                                                    <input type="checkbox" name="manufacturer" id="manufacturer_3">
+                                                    <label for="manufacturer_3">Kaspersky</label>
+
+                                                </li>
+
+                                            </ul>
+
+                                        </fieldset>
+
+                                    </div><!--/ .table_cell -->
+
+                                    <!-- - - - - - - - - - - - - - End manufacturer - - - - - - - - - - - - - - - - -->
+
+                                </div><!--/ .table_row -->
+
+                            </div><!--/ .table_layout -->
+
+                            <footer class="bottom_box">
+
+                                <div class="buttons_row">
+
+                                    <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>
+
+                                    <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>
+
+                                </div>
+
+                            </footer>
+
+                        </form>
+
+                    </section>
+
+                    <!-- - - - - - - - - - - - - - End of filter - - - - - - - - - - - - - - - - -->
+
+                    <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
+
+                    <div class="section_offset">
+
+                        <a href="#" class="banner">
+                            
+                            <img src="images/box-win-10.jpg" alt="" width="243" height="262">
+
+                        </a>
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+
+                    <!-- - - - - - - - - - - - - - Tags - - - - - - - - - - - - - - - - -->
+
+                    <section class="section_offset">
+
+                        <h3>Nhãn</h3>
+
+                        <div class="tags_container">
+
+                            <ul class="tags_cloud">
+                                
+                                <li><a href="#" class="button_grey">Thiết bị tin học</a></li>
+                                <li><a href="#" class="button_grey">Thiết bị văn phòng</a></li>
+                                <li><a href="#" class="button_grey">Thiết bị hệ thống mạng</a></li>
+                                <li><a href="#" class="button_grey">Thiết bị viễn thông</a></li>
+                                <li><a href="#" class="button_grey">An ninh kiểm soát</a></li>
+
+                            </ul><!--/ .tags_cloud-->
+                            
+                        </div><!--/ .tags_container-->
+
+                    </section>
+
+                    <!-- - - - - - - - - - - - - - End of tags - - - - - - - - - - - - - - - - -->
+
+                </aside>
+
+                <main class="col-md-9 col-sm-8">
+
+                    <section class="section_offset">
+
+                        <h1><%= @category.title %></h1>
+
+                        <p><%= @category.description %></p>
+
+                    </section>
+
+                    <!-- - - - - - - - - - - - - - Products - - - - - - - - - - - - - - - - -->
+
+                    <div class="section_offset">
+
+                        <header class="top_box on_the_sides">
+
+                            <div class="left_side clearfix v_centered">
+
+                                <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
+
+                                <div class="v_centered">
+
+                                    <span>Sắp xếp theo:</span>
+
+                                    <div class="custom_select sort_select">
+                                        
+                                        <select name="">
+                                                
+                                            <option value="Mặc định">Mặc định</option>
+                                            <option value="Giá">Giá</option>
+                                            <option value="Tên">Tên</option>
+                                            <option value="Ngày">Ngày</option>
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of sort by - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Number of products shown - - - - - - - - - - - - - - - - -->
+
+                                <div class="v_centered">
+
+                                    <span>Hiển thị:</span>
+
+                                    <div class="custom_select">
+
+                                        <select name="">
+
+                                            <option value="15">15</option>
+                                            <option value="12">12</option>
+                                            <option value="9">9</option>
+                                            <option value="6">6</option>
+                                            <option value="3">3</option>
+                                            
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of number of products shown - - - - - - - - - - - - - - - - -->
+
+                            </div>
+
+                            <div class="right_side">
+
+                                <!-- - - - - - - - - - - - - - Product layout type - - - - - - - - - - - - - - - - -->
+
+                                <div class="layout_type buttons_row" data-table-container="#products_container">
+
+                                    <a href="#" data-table-layout="grid_view" class="button_grey middle_btn icon_btn active tooltip_container"><i class="icon-th"></i><span class="tooltip top">Grid View</span></a>
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product layout type - - - - - - - - - - - - - - - - -->
+
+                            </div>
+
+                        </header>
+
+                        <div class="table_layout" id="products_container">
+
+                            <div class="table_row">
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions list-view-width">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="out_of_stock">Đang nhập hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="out_of_stock">Đang nhập hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="out_of_stock">Đang nhập hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                            </div><!--/ .table_row -->
+
+                            <div class="table_row">
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions list-view-width">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="out_of_stock">Đang nhập hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="out_of_stock">Đang nhập hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="out_of_stock">Đang nhập hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                            </div><!--/ .table_row -->
+
+                            <div class="table_row">
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions list-view-width">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="out_of_stock">Đang nhập hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="out_of_stock">Đang nhập hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="out_of_stock">Đang nhập hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                            </div><!--/ .table_row -->
+
+                            <div class="table_row">
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions list-view-width">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="out_of_stock">Đang nhập hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="out_of_stock">Đang nhập hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="out_of_stock">Đang nhập hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                            </div><!--/ .table_row -->
+
+                            <div class="table_row">
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions list-view-width">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="out_of_stock">Đang nhập hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="out_of_stock">Đang nhập hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                <div class="table_cell">
+
+                                    <div class="product_item">
+
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <div class="image_wrap">
+
+                                            <img src="images/product-lumia-950.jpg" alt="">
+
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                            <div class="actions_wrap">
+
+                                                <div class="centered_buttons">
+
+                                                    <a href="#" class="button_dark_grey middle_btn quick_view" data-modal-url="modals/quick_view.html">Xem nhanh</a>
+
+                                                    <a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a>
+
+                                                </div><!--/ .centered_buttons -->
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_wishlist tooltip_container"><span class="tooltip right">Thêm vào danh sách yêu thích</span></a>
+
+                                                <a href="#" class="button_dark_grey def_icon_btn middle_btn add_to_compare tooltip_container"><span class="tooltip left">Thêm vào danh sách quan tâm</span></a>
+
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                        </div><!--/. image_wrap-->
+
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <div class="description">
+
+                                            <a href="#">Microsoft Lumia 950 XL</a>
+
+                                            <div class="clearfix product_info">
+
+                                                <p class="product_price alignleft"><b>15.990.000 đ</b></p>
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="rating alignright">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="full_description">
+
+                                            <a href="#" class="product_title">Microsoft Lumia 950 XL</a>
+
+                                            <a href="#" class="product_category">Thiết bị tin học</a>
+
+                                            <div class="v_centered product_reviews">
+
+                                                <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+                                            
+                                                <ul class="rating">
+
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li class="active"></li>
+                                                    <li></li>
+
+                                                </ul>
+                                                    
+                                                <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+
+                                                <!-- - - - - - - - - - - - - - Reviews menu - - - - - - - - - - - - - - - - -->
+
+                                                <ul class="topbar">
+
+                                                    <li><a href="#">3 bình luận</a></li>
+                                                    <li><a href="#">Thêm bình luận</a></li>
+
+                                                </ul>
+
+                                                <!-- - - - - - - - - - - - - - End of reviews menu - - - - - - - - - - - - - - - - -->
+
+                                            </div>
+
+                                            <p>Với màn hình Quad HD 5,7” và chip xử lý 8 nhân mạnh mẽ, đây chính là chiếc Lumia bạn đang mong đợi. Sắm ngay cho mình chiếc điện thoại hoạt động như PC để bứt phá mọi giới hạn.</p>
+
+                                            <a href="#" class="learn_more">Xem thêm</a>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - End of full description (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                        <div class="actions">
+
+                                            <p class="product_price bold">15.990.000 đ</p>
+
+                                            <ul class="seller_stats">
+
+                                                <li>Giao hàng: <span class="success">Miễn phí</span></li>
+                                                <li>Tình trạng: <span class="success">Còn hàng</span></li>
+                                                <li class="seller_info_wrap">
+
+                                                    Nhân viên: <span class="seller_name">Mr.Sơn</span>
+
+                                                    <div class="seller_info_dropdown">
+
+                                                        <ul class="seller_stats">
+
+                                                            <li>
+                                                                
+                                                                <ul class="topbar">
+                                                                    
+                                                                    <li>Việt Nam</li>
+
+                                                                    <li><a href="#">Thông tin nhân viên</a></li>
+
+                                                                </ul>
+
+                                                            </li>
+
+                                                            <li><span class="bold">99.8%</span> Phản hồi liên hệ</li>
+
+                                                        </ul>
+
+                                                        <div class="v_centered">
+
+                                                            <a href="#" class="button_blue mini_btn">Liên hệ</a>
+
+                                                            <a href="#" class="small_link">Trò chuyện</a>
+
+                                                        </div>
+
+                                                    </div>
+
+                                                </li>
+
+                                            </ul>
+
+                                            <ul class="buttons_col">
+
+                                                <li><a href="#" class="button_blue middle_btn add_to_cart">Thêm vào giỏ hàng</a></li>
+                                                
+                                                <li><a href="#" class="icon_link"><i class="icon-heart-5"></i>Danh sách yêu thích</a></li>
+
+                                                <li><a href="#" class="icon_link"><i class="icon-resize-small"></i>Danh sách quan tâm</a></li>
+                                                
+                                            </ul>
+
+                                        </div>
+
+                                        <!-- - - - - - - - - - - - - - Product price & actions (only for list view) - - - - - - - - - - - - - - - - -->
+
+                                    </div><!--/ .product_item-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                            </div><!--/ .table_row -->
+
+                        </div><!--/ .table_layout -->
+
+                        <footer class="bottom_box on_the_sides">
+
+                            <div class="left_side">
+
+                                <p>Trang 1/3 (15/45 sản phẩm)</p>
+
+                            </div>
+
+                            <div class="right_side">
+
+                                <ul class="pags">
+
+                                    <li><a href="#"></a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#"></a></li>
+
+                                </ul>
+
+                            </div>
+
+                        </footer>
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of products - - - - - - - - - - - - - - - - -->
+
+                </main>
+
+            </div><!--/ .row -->
+
+        </div><!--/ .container-->
+
+    </div><!--/ .page_wrapper-->
+    
+    <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+    <%= render 'blog/footer' %>
+    
+    <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+</div><!--/ [layout]-->
+
+<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+<%= render "home/social_feeds" %>
+
+<!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+
+<!-- Include Libs & Plugins
+============================================ -->
+<%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+<%= javascript_include_tag '/frontend/js/jquery-ui.min.js' %>
+<%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+<%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+<%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
+<%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
+<%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+<%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+<%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+<%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+<%= javascript_include_tag '/frontend/js/retina.min.js' %>
+<%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+
+<!-- Theme files
+============================================ -->
+<%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+<%= javascript_include_tag '/frontend/js/theme.core.js' %>

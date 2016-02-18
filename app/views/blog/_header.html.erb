@@ -10,11 +10,22 @@
 
                 <div class="col-lg-6 col-md-7 col-sm-8">
 
-                    <!-- - - - - - - - - - - - - - Login - - - - - - - - - - - - - - - - -->
+                    <!-- - - - - - - - - - - - - - Navigation of shop - - - - - - - - - - - - - - - - -->
 
-                    <p>Xin chào, <a href="#" data-modal-url="modals/login.html">Đăng nhập</a> hay <a href="#">Đăng ký</a></p>
+                    <nav>
 
-                    <!-- - - - - - - - - - - - - - End login - - - - - - - - - - - - - - - - -->
+                        <ul class="topbar">
+
+                            <li><%= link_to "Trang chủ", root_path %></li>
+                            <li><%= link_to "Giới thiệu", { controller: "about_us", action: "index" } %></li>
+                            <li><%= link_to "Tin tức", { controller: "blog", action: "index" } %></li>
+                            <li><%= link_to "Liên hệ", { controller: "contact", action: "index" } %></li>
+                            
+                        </ul>
+
+                    </nav>
+
+                    <!-- - - - - - - - - - - - - - End navigation of shop - - - - - - - - - - - - - - - - -->
 
                 </div> <!--/ [col]-->
 
@@ -26,16 +37,7 @@
 
                         <div class="alignright site_settings">
 
-                            <span class="current open_"><img src="images/flag_vn.gif" alt="">Vietnam</span>
-
-                            <ul class="dropdown site_setting_list language">
-
-                                <li class="animated_item"><a href="#"><img src="images/flag_vn.gif" alt=""> Vietnam</a></li>
-
-                                <li class="animated_item"><a href="#"><img src="images/flag_en.jpg" alt=""> English</a></li>
-                                
-
-                            </ul>
+                            <img src="images/flag_vn.gif" alt="">Vietnam
 
                         </div><!--/ .alignright.site_settings-->
 
@@ -45,14 +47,7 @@
 
                         <div class="alignright site_settings currency">
 
-                            <span class="current open_">VND</span>
-
-                            <ul class="dropdown site_setting_list">
-
-                                <li class="animated_item"><a href="#">VND</a></li>
-                                <li class="animated_item"><a href="#">USD</a></li>
-
-                            </ul>
+                            VND
 
                         </div><!--/ .alignright.site_settings.currency-->
 
@@ -268,26 +263,6 @@
                         </div>
 
                         <!-- - - - - - - - - - - - - - End of navigation item - - - - - - - - - - - - - - - - -->
-
-                        <!-- - - - - - - - - - - - - - Navigation item - - - - - - - - - - - - - - - - -->
-
-                        <div class="nav_item size_4">
-
-                            <a href="#" class="wishlist_button" data-amount="7"></a>
-                            
-                        </div><!--/ .nav_item-->
-
-                        <!-- - - - - - - - - - - - - - End of main navigation - - - - - - - - - - - - - - - - -->
-
-                        <!-- - - - - - - - - - - - - - Navigation item - - - - - - - - - - - - - - - - -->
-
-                        <div class="nav_item size_4">
-
-                            <a href="#" class="compare_button" data-amount="3"></a>
-                            
-                        </div><!--/ .nav_item-->
-
-                        <!-- - - - - - - - - - - - - - End of main navigation - - - - - - - - - - - - - - - - -->
 
                         <!-- - - - - - - - - - - - - - Navigation item - - - - - - - - - - - - - - - - -->
 

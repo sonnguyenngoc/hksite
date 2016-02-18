@@ -31,7 +31,7 @@
                 <form class="form-horizontal" role="form">
                    
                     <div class="form-group">
-                        <%= label "", "Title: ", class: "control-label col-sm-2 text-semibold" %>
+                        <%= label "", "Tiêu đề: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
                             <%= content_tag(:p, class: "form-control-static") do %>
                               <%= @menu.title %>
@@ -39,7 +39,17 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <%= label "", "Description: ", class: "control-label col-sm-2 text-semibold" %>
+                        <%= label "", "Chuyên mục liên quan: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <% @menu.categories.each do |item| %>
+                                <%= content_tag(:p, class: "form-control-static") do %>
+                                    <%= item.name %>
+                                <% end %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= label "", "Mô tả: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
                             <%= content_tag(:p, class: "form-control-static text-justify") do %>
                               <%= @menu.description %>

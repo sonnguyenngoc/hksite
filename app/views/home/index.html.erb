@@ -173,18 +173,6 @@
 
                             <blockquote>
 
-                                <div class="author_info"><b><%= link_to "Thiết bị mạng, thiết bị camera IP EDIMAX", { controller: "blog_post", action: "index" } %></b></div>
-
-                                <p>Lời giới thiệu ngắn của tin tức....</p>
-
-                            </blockquote>
-                            
-                            <!-- - - - - - - - - - - - - - End testimonial - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Testimonial - - - - - - - - - - - - - - - - -->
-
-                            <blockquote>
-
                                 <div class="author_info"><b>Giới thiệu sản phẩm máy in phun - k100, k200</b></div>
 
                                 <p>Lời giới thiệu ngắn của tin tức....</p>
@@ -212,8 +200,8 @@
                         <!-- - - - - - - - - - - - - - View all testimonials - - - - - - - - - - - - - - - - -->
 
                         <footer class="bottom_box">
-
-                            <a href="#" class="button_grey middle_btn">Xem thêm</a>
+                            
+                            <%= link_to "Xem thêm", {controller: "blog", action: "index"}, class: "button_grey middle_btn" %>
 
                         </footer>
 
@@ -416,9 +404,6 @@
                                 <!-- - - - - - - - - - - - - - End of view all products - - - - - - - - - - - - - - - - -->
 
                             </div>
-
-                            <!-- - - - - - - - - - - - - - End of featured products - - - - - - - - - - - - - - - - -->
-
 
                             <!-- - - - - - - - - - - - - - New products - - - - - - - - - - - - - - - - -->
                             

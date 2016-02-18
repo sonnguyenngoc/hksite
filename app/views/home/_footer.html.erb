@@ -200,35 +200,21 @@
 
         <div class="container">
 
-            <!-- - - - - - - - - - - - - - Payments - - - - - - - - - - - - - - - - -->
-
-            <ul class="payments">
-
-                <li><img src="images/payment_1.png" alt=""></li>
-                <li><img src="images/payment_2.png" alt=""></li>
-                <li><img src="images/payment_3.png" alt=""></li>
-                <li><img src="images/payment_4.png" alt=""></li>
-                <li><img src="images/payment_5.png" alt=""></li>
-                <li><img src="images/payment_6.png" alt=""></li>
-                <li><img src="images/payment_7.png" alt=""></li>
-                <li><img src="images/payment_8.png" alt=""></li>
-
-            </ul>
-            
-            <!-- - - - - - - - - - - - - - End of payments - - - - - - - - - - - - - - - - -->
-
             <!-- - - - - - - - - - - - - - Footer navigation - - - - - - - - - - - - - - - - -->
 
             <nav class="footer_nav">
 
                 <ul class="bottombar">
 
-                    <li><a href="#">Thiết Bị Tin Học</a></li>
-                    <li><a href="#">Thiết Bị Văn Phòng</a></li>
-                    <li><a href="#">Thiết Bị Hệ Thống Mạng</a></li>
-                    <li><a href="#">Thiết Bị Viễn Thông</a></li>
-                    <li><a href="#">An Ninh Kiểm Soát</a></li>
-
+                    <% @menu.each do |item| %>
+                            
+                        <% if item.level == 1 %>
+                            
+                            <li><a href="#"><%= item.title %></a></li>
+                            
+                        <% end %>
+                    
+                    <% end %>
                 </ul>
 
             </nav>

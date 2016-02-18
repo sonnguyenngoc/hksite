@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "about_us" => "about_us#index", as: :about_us
   get "shopping_cart" => "shopping_cart#index", as: :shopping_cart
   get "check_out" => "check_out#index", as: :check_out
+  get "category_page" => "category_page#index", as: :category_page
   namespace :admin, :path => "hoangkhangincotech" do
       resources :articles
       resources :tags

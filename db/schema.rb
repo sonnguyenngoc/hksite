@@ -68,6 +68,11 @@ ActiveRecord::Schema.define(version: 20160131182950) do
     t.integer  "user_id"
   end
 
+  create_table "categories_menus", id: false, force: :cascade do |t|
+    t.integer "category_id", null: false
+    t.integer "menu_id",     null: false
+  end
+
   create_table "categories_products", id: false, force: :cascade do |t|
     t.integer "category_id"
     t.integer "product_id"
