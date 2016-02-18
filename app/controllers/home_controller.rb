@@ -7,6 +7,7 @@ class HomeController < ApplicationController
     @product = Product.order("created_at DESC").first(12)
     @blog = Article.order("created_at DESC").first(3)
     @product = Product.last(12)
+    @new_blog_footer = Article.order("created_at DESC").first(3)
     
     @hot_products = Product.get_hot_products
     @sale_products = Product.get_sale_products
