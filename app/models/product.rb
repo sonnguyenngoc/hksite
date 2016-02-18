@@ -40,7 +40,7 @@ class Product < ActiveRecord::Base
   end
   
   def self.get_new_products
-    self.last(12)
+    self.joins(:product_info).where(product_infos: {product_new: "on"})
   end
   
   def self.get_favorite_products

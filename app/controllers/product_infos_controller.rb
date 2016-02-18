@@ -35,6 +35,7 @@ class ProductInfosController < ApplicationController
     @product_info.product_sale = nil if !product_info_params[:product_sale].present?
     @product_info.product_bestselled = nil if !product_info_params[:product_bestselled].present?
     @product_info.product_prominent = nil if !product_info_params[:product_prominent].present?
+    @product_info.product_new = nil if !product_info_params[:product_new].present?
 
 
     respond_to do |format|
@@ -55,6 +56,7 @@ class ProductInfosController < ApplicationController
     @product_info.product_sale = nil if !product_info_params[:product_sale].present?
     @product_info.product_bestselled = nil if !product_info_params[:product_bestselled].present?
     @product_info.product_prominent = nil if !product_info_params[:product_prominent].present?
+    @product_info.product_new = nil if !product_info_params[:product_new].present?
     
     respond_to do |format|
       if @product_info.update(product_info_params)
@@ -85,6 +87,6 @@ class ProductInfosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_info_params
-      params.require(:product_info).permit(:image_url, :description, :old_price, :product_hot, :product_sale, :product_bestselled, :product_prominent, :product_id, :note)
+      params.require(:product_info).permit(:image_url, :description, :old_price, :product_hot, :product_sale, :product_bestselled, :product_prominent, :product_new, :product_id, :note)
     end
 end

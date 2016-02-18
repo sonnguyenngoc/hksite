@@ -7,7 +7,7 @@ class ProductController < ApplicationController
     @message = Message.new
     @company_info = Contact.find(1)
     @product = Product.last(12)
-    @product_info = ProductInfo.all
+    @product_infos = ProductInfo.all
     
     @favorite_products = Product.get_favorite_products
     @related_products = Product.get_related_products

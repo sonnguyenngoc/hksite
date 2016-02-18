@@ -43,7 +43,7 @@
 					<li><a href="index.html">Trang chủ</a></li>
 					<li><a href="category_page.html">Thiết bị tin học</a></li>
 					<li class="active"><%= link_to truncate(strip_tags(@pro_detail.name), length: 20), {controller: "product", action: "index", id: @pro_detail.id} %></li>
-					<%=  %>
+					
 				</ul>
 
 				<!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
@@ -199,7 +199,7 @@
 
 									<div class="buttons_row">
 
-										<button class="button_blue middle_btn">Thêm vào giỏ hàng</button>
+										<%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: @pro_detail), class: "button_blue middle_btn add_to_cart" %>
 										
 									</div>
 
@@ -283,7 +283,7 @@
 	
 												<div class="centered_buttons">
 	
-													<a href="#" class="button_blue add_to_cart">Thêm vào giỏ hàng</a>
+													<%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
 	
 												</div><!--/ .centered_buttons -->
 	

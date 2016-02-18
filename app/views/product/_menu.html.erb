@@ -10,53 +10,13 @@
       
                       <ul>
                           
-                          <% @menu.each do |item| %>
-                          
+                        <% @menu.each do |item| %>
+                            
                               <% if item.level == 1 %>
-      
-                                  <li class="has_megamenu">
-      
-                                      <a href="#"><%= item.title %></a>
-      
-                                      <!-- - - - - - - - - - - - - - Mega menu - - - - - - - - - - - - - - - - -->
-      
-                                      <div class="mega_menu type_2 clearfix">
-      
-                                      <!-- - - - - - - - - - - - - - Mega menu item - - - - - - - - - - - - - - - - -->
-      
-                                      <% item.children.each do |child_1| %>
-                                          
-                                          <% if child_1.level == 2 %>
-                                                  
-                                              <div class="mega_menu_item">
-                                              
-                                                      <h6><b><%= child_1.title %></b></h6>
-                                                  
-                                                      <ul class="list_of_links">
-                                                          
-                                                          <% child_1.children.each do |child_2| %>
-                                          
-                                                              <% if child_2.level == 3 %>
-              
-                                                                  <li><a href="#"><%= child_2.title %></a></li>
-                                                          
-                                                              <% end %>
-                                                          
-                                                          <% end %>
-                                                          
-                                                      </ul>
-                                                          
-                                              </div><!--/ .mega_menu_item-->
-                                              
-                                          <% end %>
                                   
-                                      <% end %>
-      
-                                      <!-- - - - - - - - - - - - - - End of mega menu item - - - - - - - - - - - - - - - - -->
-      
-                                  <% end %>
-                              
-                              </li>
+                                  <li class="animated_item"><a href="#"><%= item.title %></a></li>
+                                  
+                              <% end %>
                           
                           <% end %>
       

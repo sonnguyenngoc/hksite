@@ -37,37 +37,7 @@
 
                         <!-- - - - - - - - - - - - - - Language change - - - - - - - - - - - - - - - - -->
 
-                        <div class="alignright site_settings">
-
-                            <span class="current open_"><img src="images/flag_vn.gif" alt="">Vietnam</span>
-
-                            <ul class="dropdown site_setting_list language">
-
-                                <li class="animated_item"><a href="#"><img src="images/flag_vn.gif" alt=""> Vietnam</a></li>
-
-                                <li class="animated_item"><a href="#"><img src="images/flag_en.jpg" alt=""> English</a></li>
-                                
-
-                            </ul>
-
-                        </div><!--/ .alignright.site_settings-->
-
-                        <!-- - - - - - - - - - - - - - End of language change - - - - - - - - - - - - - - - - -->
                         
-                        <!-- - - - - - - - - - - - - - Currency change - - - - - - - - - - - - - - - - -->
-
-                        <div class="alignright site_settings currency">
-
-                            <span class="current open_">VNĐ</span>
-
-                            <ul class="dropdown site_setting_list">
-
-                                <li class="animated_item"><a href="#">VNĐ</a></li>
-                                <li class="animated_item"><a href="#">USD</a></li>
-
-                            </ul>
-
-                        </div><!--/ .alignright.site_settings.currency-->
 
                         <!-- - - - - - - - - - - - - - End of currency change - - - - - - - - - - - - - - - - -->
 
@@ -134,10 +104,14 @@
                                 <div class="open_categories">DANH MỤC</div>
 
                                 <ul class="categories_list dropdown">
-                                    <% @category.each do |category| %>
-                                    <li class="animated_item">
-                                        <a href="#"><%= category.name %></a>
-                                    </li>
+                                    <% @menu.each do |item| %>
+                            
+                                        <% if item.level == 1 %>
+                                            
+                                            <li class="animated_item"><a href="#"><%= item.title %></a></li>
+                                            
+                                        <% end %>
+                                    
                                     <% end %>
 
                                 </ul>
@@ -160,8 +134,8 @@
 
                         <div class="align_right shop_links">
                             
-                            <a href="#" class="small_link"><i class="icon-heart-5"></i> Sản phẩm yêu thích (7)</a>
-                            <a href="#" class="small_link"><i class="icon-resize-small"></i> Sản phẩm quan tâm (2)</a>
+                            <a href="#" class="small_link"></a>
+                            <a href="#" class="small_link"></a>
 
                         </div><!--/ .align_right.shop_links-->
                         
