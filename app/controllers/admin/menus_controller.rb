@@ -14,18 +14,26 @@ class Admin::MenusController < ApplicationController
 
   # GET /menus/new
   def new
+    @categories = Category.all
     @menu = Menu.new
   end
 
   # GET /menus/1/edit
   def edit
+    @categories = Category.all
   end
 
   # POST /menus
   # POST /menus.json
   def create
-    @menu = Menu.new(menu_params)
-
+    @menu = Menu.new(menu_params)      
+    @menu.categories.clear
+    if params[:category_ids].present?
+      params[:category_ids].each do |id|      
+        @menu.categories << Category.find(id)
+      end
+    end
+    
     respond_to do |format|
       if @menu.save
         format.html { redirect_to [:admin, @menu], notice: 'Tạo mới menu thành công.' }
@@ -40,6 +48,12 @@ class Admin::MenusController < ApplicationController
   # PATCH/PUT /menus/1
   # PATCH/PUT /menus/1.json
   def update
+    @menu.categories.clear
+    if params[:category_ids].present?
+        params[:category_ids].each do |id|      
+          @menu.categories << Category.find(id)
+        end
+    end
     respond_to do |format|
       if @menu.update(menu_params)
         format.html { redirect_to [:admin, @menu], notice: 'Cập nhật thông tin menu thành công.' }

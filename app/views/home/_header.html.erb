@@ -18,9 +18,6 @@
 
                             <li><%= link_to "Trang chủ", root_path %></li>
                             <li><%= link_to "Giới thiệu", { controller: "about_us", action: "index" } %></li>
-                            <li><a href="#">Khuyến mãi</a></li>
-                            <li><a href="#">Tài khoản</a></li>
-                            <li><a href="#">Hướng dẩn</a></li>
                             <li><%= link_to "Liên hệ", { controller: "contact", action: "index" } %></li>
                             
                         </ul>
@@ -39,16 +36,7 @@
 
                         <div class="alignright site_settings">
 
-                            <span class="current open_"><img src="images/flag_vn.gif" alt="">Vietnam</span>
-
-                            <ul class="dropdown site_setting_list language">
-
-                                <li class="animated_item"><a href="#"><img src="images/flag_vn.gif" alt=""> Vietnam</a></li>
-
-                                <li class="animated_item"><a href="#"><img src="images/flag_en.jpg" alt=""> English</a></li>
-                                
-
-                            </ul>
+                            <span><img src="images/flag_vn.gif" alt="">Vietnam</span>
 
                         </div><!--/ .alignright.site_settings-->
 
@@ -58,14 +46,7 @@
 
                         <div class="alignright site_settings currency">
 
-                            <span class="current open_">VND</span>
-
-                            <ul class="dropdown site_setting_list">
-
-                                <li class="animated_item"><a href="#">VND</a></li>
-                                <li class="animated_item"><a href="#">USD</a></li>
-
-                            </ul>
+                            <span>VNĐ</span>
 
                         </div><!--/ .alignright.site_settings.currency-->
 
@@ -162,24 +143,14 @@
 
                         <div class="align_right shop_links">
                             
-                            <a href="#" class="small_link"><i class="icon-heart-5"></i> Sản phẩm yêu thích (7)</a>
-                            <a href="#" class="small_link"><i class="icon-resize-small"></i> Sản phẩm quan tâm (2)</a>
+                            <!--<a href="#" class="small_link"><i class="icon-heart-5"></i> Sản phẩm yêu thích (0)</a>
+                            <a href="#" class="small_link"><i class="icon-resize-small"></i> Sản phẩm quan tâm (0)</a>-->
 
                         </div><!--/ .align_right.shop_links-->
                         
                         <!-- - - - - - - - - - - - - - End of wishlist & compare counters - - - - - - - - - - - - - - - - -->
 
                         <div class="align_right">
-
-                            <!-- - - - - - - - - - - - - - Login / register - - - - - - - - - - - - - - - - -->
-
-                            <div class="login">
-
-                                <a class="small_link" href="#" data-modal-url="modals/login.html">Đăng nhập</a> / <a class="small_link" href="#">Đăng ký</a>
-
-                            </div><!--/ .login-->
-
-                            <!-- - - - - - - - - - - - - - End of Login / register - - - - - - - - - - - - - - - - -->
 
                             <!-- - - - - - - - - - - - - - Shopping cart - - - - - - - - - - - - - - - - -->
 
@@ -294,7 +265,7 @@
 
                                     <li class="has_megamenu">
     
-                                        <a href="#"><%= item.title %></a>
+                                        <%= link_to item.title, {:controller => "category_page", :action => "index", id: item.id } %></a>
         
                                         <!-- - - - - - - - - - - - - - Mega menu - - - - - - - - - - - - - - - - -->
         
@@ -316,7 +287,7 @@
                                             
                                                                 <% if child_2.level == 3 %>
                 
-                                                                    <li><a href="#"><%= child_2.title %></a></li>
+                                                                    <li><%= link_to child_2.title, {:controller => "category_page", :action => "index", id: child_2.id } %></a></li>
                                                             
                                                                 <% end %>
                                                             

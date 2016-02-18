@@ -1,0 +1,62 @@
+<section class="section_offset">
+
+    <h3>Categories</h3>
+
+    <ul class="theme_menu cats">
+
+        <% @menu.each do |item| %>
+                            
+            <% if item.level == 1 %>
+
+                <li class="has_megamenu animated_item">
+
+                    <%= link_to item.title, {:controller => "category_page", :action => "index", id: item.id } %>
+
+                    <!-- - - - - - - - - - - - - - Mega menu - - - - - - - - - - - - - - - - -->
+
+                    <div class="mega_menu clearfix">
+                        
+                        <% item.children.each do |child_1| %>
+                    
+                            <% if child_1.level == 2 %>
+
+                                <!-- - - - - - - - - - - - - - Mega menu item - - - - - - - - - - - - - - - - -->
+
+                                <div class="mega_menu_item">
+                                
+                                    <h6><b><%= child_1.title %></b></h6>
+                            
+                                    <ul class="list_of_links">
+                                        
+                                        <% child_1.children.each do |child_2| %>
+                    
+                                            <% if child_2.level == 3 %>
+                                                
+                                                <li><%= link_to child_2.title, {:controller => "category_page", :action => "index", id: child_2.id } %></a></li>
+                                                
+                                            <% end %>
+                                        
+                                        <% end %>
+
+                                    </ul>
+
+                                </div><!--/ .mega_menu_item-->
+                            
+                            <% end %>
+                        
+                        <% end %>
+                        
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of mega menu item - - - - - - - - - - - - - - - - -->
+
+                </li>
+            
+            <% end %>
+        
+        <% end %>
+        <li class="has_megamenu"><a href="#" class="all"><b>Toàn bộ danh mục</b></a></li>
+
+    </ul>
+
+</section><!--/ .animated.transparent-->
