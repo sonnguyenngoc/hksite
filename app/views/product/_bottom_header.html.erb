@@ -1,0 +1,181 @@
+<div class="bottom_part">
+
+  <div class="container">
+
+      <div class="row">
+
+          <div class="main_header_row">
+
+              <div class="col-sm-3">
+
+                  <!-- - - - - - - - - - - - - - Logo - - - - - - - - - - - - - - - - -->
+
+                  <a href="<%= root_path %>" class="logo">
+
+                      <img src="images/logo_HK.png" alt="">
+
+                  </a>
+
+                  <!-- - - - - - - - - - - - - - End of logo - - - - - - - - - - - - - - - - -->
+
+              </div><!--/ [col]-->
+
+              <div class="col-lg-5 col-md-5 col-sm-5">
+
+                  <!-- - - - - - - - - - - - - - Call to action - - - - - - - - - - - - - - - - -->
+
+                  <div class="call_us">
+
+                      <span>Gọi cho chúng tôi:</span> <b><%= @company_info.phone %></b>
+
+                  </div><!--/ .call_us-->
+
+                  <!-- - - - - - - - - - - - - - End call to action - - - - - - - - - - - - - - - - -->
+
+                  <!-- - - - - - - - - - - - - - Search form - - - - - - - - - - - - - - - - -->
+
+                  <form class="clearfix search">
+
+                      <input type="text" name="" tabindex="1" placeholder="Tìm kiếm..." class="alignleft">
+                      
+                      <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+
+                      <div class="search_category alignleft">
+
+                          <div class="open_categories">DANH MỤC</div>
+
+                          <ul class="categories_list dropdown">
+                              <% @category.each do |category| %>
+                              <li class="animated_item">
+                                  <a href="#"><%= category.name %></a>
+                              </li>
+                              <% end %>
+                          </ul>
+
+                      </div><!--/ .search_category.alignleft-->
+
+                      <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+
+                      <button class="button_blue def_icon_btn alignleft"></button>
+
+                  </form><!--/ #search-->
+                  
+                  <!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->
+
+              </div><!--/ [col]-->
+
+              <div class="col-lg-4 col-sm-4">
+                  
+                  <!-- - - - - - - - - - - - - - Wishlist & compare counters - - - - - - - - - - - - - - - - -->
+
+                  <div class="align_right shop_links">
+                      
+                      <a href="#" class="small_link"></a>
+                      <a href="#" class="small_link"></a>
+
+                  </div><!--/ .align_right.shop_links-->
+                  
+                  <!-- - - - - - - - - - - - - - End of wishlist & compare counters - - - - - - - - - - - - - - - - -->
+
+                  <div class="align_right">
+
+                      <!-- - - - - - - - - - - - - - Login / register - - - - - - - - - - - - - - - - -->
+
+                      <div class="login">
+
+                          <a class="small_link" href="#" data-modal-url="modals/login.html">Đăng nhập</a> / <a class="small_link" href="#">Đăng ký</a>
+
+                      </div><!--/ .login-->
+
+                      <!-- - - - - - - - - - - - - - End of Login / register - - - - - - - - - - - - - - - - -->
+
+                      <!-- - - - - - - - - - - - - - Shopping cart - - - - - - - - - - - - - - - - -->
+
+                      <div class="shopping_cart_wrap">
+
+                          <button id="open_shopping_cart" class="open_button" data-amount="<%= @cart.line_items.count %>">
+                              <b class="title">Giỏ hàng của bạn</b>
+                              <b class="total_price"><%= number_with_delimiter @cart.total_order.to_i %> VNĐ</b>
+                          </button>
+
+                          <!-- - - - - - - - - - - - - - Products list - - - - - - - - - - - - - - - - -->
+
+                      <div class="shopping_cart dropdown">
+
+                              <div class="animated_item">
+
+                                  <p class="title">Sản phẩm đã thêm vào giỏ hàng</p>
+
+                              </div><!--/ .animated_item-->
+                              
+                              <% @cart.line_items.each do |item| %>
+                              
+                                  <input type="hidden" name="line_items[id]" value="<%= item.id %>">
+
+                                  <div class="animated_item">
+
+                                      <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+
+                                      <div class="clearfix sc_product">
+
+                                          <a href="#" class="product_thumb"><img src="images/sc_img_1.jpg" alt=""></a>
+
+                                          <a href="#" class="product_name"><%= item.product.name %></a>
+
+                                          <p><%= item.quantity %> x <%= item.product.product_price.price.to_i %> VNĐ</p>
+
+                                          <%= link_to "" , {controller: "shopping_cart", action: "index", do: 'remove_item', line_item_id: item.id }, {class: "close"}  %>
+
+                                      </div><!--/ .clearfix.sc_product-->
+                                      
+                                      <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+                                  </div><!--/ .animated_item-->
+                              
+                              <% end %>
+
+                              <div class="animated_item">
+
+                                  <!-- - - - - - - - - - - - - - Total info - - - - - - - - - - - - - - - - -->
+
+                                  <ul class="total_info">
+
+                                      <li><span class="price">Thuế:</span> 0 VNĐ</li>
+
+                                      <li><span class="price">Giảm giá:</span> 0 VNĐ</li>
+
+                                      <li class="total"><span class="price">Tổng:</span> <%= number_with_delimiter @cart.total_order.to_i %> VNĐ</li>
+
+                                  </ul>
+                                  
+                                  <!-- - - - - - - - - - - - - - End of total info - - - - - - - - - - - - - - - - -->
+
+                              </div><!--/ .animated_item-->
+
+                              <div class="animated_item">
+                                  
+                                  <%= link_to "Giỏ hàng", {controller: "shopping_cart", action: "index"}, {class: "button_grey"} %>
+                                  
+                                  <%= link_to "Thanh toán", {controller: "check_out", action: "index"}, {class: "button_blue"} %>
+
+                              </div><!--/ .animated_item-->
+
+                          </div><!--/ .shopping_cart.dropdown-->
+                      
+                      <!-- - - - - - - - - - - - - - End of products list - - - - - - - - - - - - - - - - -->
+
+                      </div><!--/ .shopping_cart_wrap.align_left-->
+                      
+                      <!-- - - - - - - - - - - - - - End of shopping cart - - - - - - - - - - - - - - - - -->
+
+                  </div><!--/ .align_right-->
+
+              </div><!--/ [col]-->
+
+          </div><!--/ .main_header_row-->
+
+      </div><!--/ .row-->
+
+  </div><!--/ .container-->
+
+</div><!--/ .bottom_part -->

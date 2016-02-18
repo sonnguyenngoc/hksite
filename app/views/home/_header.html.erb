@@ -33,7 +33,7 @@
                     <div class="clearfix">
 
                         <!-- - - - - - - - - - - - - - Language change - - - - - - - - - - - - - - - - -->
-
+                        
                         <div class="alignright site_settings">
 
                             <span><img src="images/flag_vn.gif" alt="">Vietnam</span>
@@ -115,13 +115,15 @@
                                 <div class="open_categories">DANH MỤC</div>
 
                                 <ul class="categories_list dropdown">
-
-                                    <li class="animated_item">
-                                    <a href="#">Thiết bị tin học</a></li>
-                                    <li class="animated_item"><a href="/category">Thiết bị văn phòng</a></li>
-                                    <li class="animated_item"><a href="#">Thiết bị hệ thống mạng</a></li>
-                                    <li class="animated_item"><a href="#">Thiết bị viễn thông</a></li>
-                                    <li class="animated_item"><a href="#">An ninh kiểm soát</a></li>
+                                    <% @menu.each do |item| %>
+                            
+                                        <% if item.level == 1 %>
+                                            
+                                            <li class="animated_item"><a href="#"><%= item.title %></a></li>
+                                            
+                                        <% end %>
+                                    
+                                    <% end %>
 
                                 </ul>
 
@@ -143,8 +145,13 @@
 
                         <div class="align_right shop_links">
                             
+<<<<<<< HEAD
                             <!--<a href="#" class="small_link"><i class="icon-heart-5"></i> Sản phẩm yêu thích (0)</a>
                             <a href="#" class="small_link"><i class="icon-resize-small"></i> Sản phẩm quan tâm (0)</a>-->
+=======
+                            <a href="#" class="small_link"></a>
+                            <a href="#" class="small_link"></a>
+>>>>>>> ea0783b639270944000010486dcb91beab3a8b98
 
                         </div><!--/ .align_right.shop_links-->
                         

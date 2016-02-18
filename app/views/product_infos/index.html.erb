@@ -1,0 +1,120 @@
+	
+<!-- Main content -->
+<div class="content-wrapper">
+
+    <!-- Page header -->
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title">
+            <h4><a href="" class="btn-back"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Management</span> - Product Infomation</h4>
+        </div>
+    </div>
+
+    <div class="breadcrumb-line">
+        <ul class="breadcrumb">
+            <li><a href=""><i class="icon-home2 position-left"></i> Home</a></li>
+            <li><a href="">Pictures</a></li>
+            <li class="active">Product - Management</li>
+        </ul>
+    </div>
+</div>
+<!-- /page header -->
+
+<!-- Content area -->
+<div class="content">
+
+    <!-- Basic datatable -->
+    <div class="panel panel-flat">
+        <div class="panel-heading">
+            <hr/>
+            <h5 class="panel-title">Product - <span class="text-semibold">Management</span></h5>
+            <div class="heading-elements">
+                <ul class="icons-list">
+                    <li><a data-action="collapse"></a></li>
+                    <li><a data-action="reload"></a></li>
+                    <li><a data-action="close"></a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <table class="table datatable-picture">
+            <thead>
+                <tr>
+                    <th>Hình Ảnh</th>
+                    <th>Tên Sản Phẩm</th>
+                    <th>Giá N/Y (VNĐ)</th>
+					<th>Giới thiệu</th>
+                    <th>Người tạo</th>
+                    <th class="text-center">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>
+				<% @products.each do |product| %>
+                    <tr>
+						<td>
+							<div class="media-left">
+								<% if product.product_info.nil? %>
+									<img src="#" style="width: 82px; height: 56px;" class="img-rounded" alt="Product-Image">
+								<% else %>
+									<img src="<%= product.product_info.image_url if product.product_info.image_url? %>" style="width: 82px; height: 56px;" class="img-rounded" alt="Product-Image">
+								<% end %>
+							</div>
+						</td>
+                        <td>
+							<%= link_to (truncate(strip_tags(product.name), length: 40)), product %>
+						</td>
+                        <td>
+							<%= number_with_delimiter product.product_price.price.to_i %>
+						</td>
+						<td>
+							<%= truncate(strip_tags(product.description), length: 40) %>
+						</td>
+						<td>
+							
+						</td>
+                        <td class="text-center">
+                            <ul class="icons-list">
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                        <i class="icon-menu9"></i>
+                                    </a>
+    
+                                    <ul class="dropdown-menu dropdown-menu-right">
+                                        <li>
+											<% if product.product_info.nil? %>
+												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Update Product Info'.html_safe, new_product_info_path(product_id: product.id) %>
+											<% else %>
+												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Update Product Info'.html_safe, edit_product_info_path(product.product_info) %>
+											<% end %>
+
+										</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                <% end %>
+			
+            </tbody>
+        </table>
+    </div>
+        <!-- /basic datatable -->
+    
+        <!-- Footer -->
+        <%= render '/admin/manages/footer' %>
+        <!-- /footer -->
+    
+    </div>
+    <!-- /content area -->
+
+</div>
+<!-- /main content -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/javascripts/datatables_productinfo.js' %>
+<!-- /theme JS files -->
