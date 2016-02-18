@@ -206,12 +206,15 @@
 
                 <ul class="bottombar">
 
-                    <li><a href="#">Thiết Bị Tin Học</a></li>
-                    <li><a href="#">Thiết Bị Văn Phòng</a></li>
-                    <li><a href="#">Thiết Bị Hệ Thống Mạng</a></li>
-                    <li><a href="#">Thiết Bị Viễn Thông</a></li>
-                    <li><a href="#">An Ninh Kiểm Soát</a></li>
-
+                    <% @menu.each do |item| %>
+                            
+                        <% if item.level == 1 %>
+                            
+                            <li><a href="#"><%= item.title %></a></li>
+                            
+                        <% end %>
+                    
+                    <% end %>
                 </ul>
 
             </nav>
