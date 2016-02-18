@@ -357,10 +357,10 @@
 
 							<div class="owl_carousel widgets_carousel">
 								
-								<% @favorite_products.each do |product| %>
+								
 								
 									<ul class="products_list_widget">
-	
+								<% @favorite_products.each_with_index do |product,index| %>
 										<!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
 									
 										<li>
@@ -389,9 +389,11 @@
 										</li>
 	
 										<!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-										
+										<%= "</ul><ul class=\"products_list_widget\">".html_safe if index%3 == 2 %>
+                                    
+                                <% end %>
 									</ul><!--/ .list_of_products-->
-								<% end %>
+								
 								
 							</div>
 
