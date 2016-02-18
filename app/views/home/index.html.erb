@@ -33,7 +33,7 @@
 
                                 <div class="ls-l layer_1" style="left: 80px; top:128px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack;"><%= product.title %></div>
                                 <div class="ls-l layer_2" style="left: 80px; top: 188px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 150;">DELL</div>
-                                <div class="ls-l layer_3" style="left: 80px; top: 252px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 300;"></div>
+                                <div class="ls-l layer_3" style="left: 80px; top: 252px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 300;">AAA</div>
 
                                 <a href="#" class="ls-l button_blue huge_btn" style="left: 80px; top: 330px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 450;">CHI TIẾT</a>
 
@@ -290,11 +290,15 @@
 
                             <ul class="tags_cloud">
                                 
-                                <li><a href="#" class="button_grey">Thiết bị tin học</a></li>
-                                <li><a href="#" class="button_grey">Thiết bị văn phòng</a></li>
-                                <li><a href="#" class="button_grey">Thiết bị hệ thống mạng</a></li>
-                                <li><a href="#" class="button_grey">Thiết bị viễn thông</a></li>
-                                <li><a href="#" class="button_grey">An ninh kiểm soát</a></li>
+                                <% @menu.each do |item| %>
+                            
+                                    <% if item.level == 1 %>
+                                        
+                                        <li><a href="#" class="button_grey"><%= item.title %></a></li>
+                                        
+                                    <% end %>
+                                
+                                <% end %>
 
                             </ul><!--/ .tags_cloud-->
                             
