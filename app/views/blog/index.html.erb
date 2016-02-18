@@ -51,130 +51,52 @@
 
                     <section class="section_offset">
 
-                        <h3>Xem nhiều nhất</h3>
+                        <h3>Tin mới nhất</h3>
 
                         <ul class="list_of_entries">
+                            
+                            <% @new_blog_footer.each do |blog| %>
 
-                            <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                            <li>
-                                    
-                                <article class="entry">
-                                    
-                                    <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-
-                                    <a href="#" class="entry_thumb">
-
-                                        <img src="images/product-iphone6s.jpg" alt="" width="83" height="83">
-
-                                    </a>
-
-                                    <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
-
-                                    <div class="wrapper">
-
-                                        <h6 class="entry_title"><a href="#">Tiêu đề tin tức</a></h6>
-
-                                        <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
-
-                                        <div class="entry_meta">
-
-                                            <span><i class="icon-calendar"></i> 15-01-2016</span>
-
-                                            <span><a href="#" class="comments"><i class="icon-comment"></i> 3</a></span>
-
-                                        </div><!--/ .byline-->
-
-                                        <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
-
-                                    </div><!--/ .wrapper-->
-
-                                </article><!--/ .clearfix-->
-
-                            </li>
-
-                            <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                            <li>
-                                    
-                                <article class="entry">
-                                    
-                                    <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-
-                                    <a href="#" class="entry_thumb">
-
-                                        <img src="images/product-iphone6s.jpg" alt="" width="83" height="83">
-
-                                    </a>
-
-                                    <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
-
-                                    <div class="wrapper">
-
-                                        <h6 class="entry_title"><a href="#">Tiêu đề tin tức</a></h6>
-
-                                        <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
-
-                                        <div class="entry_meta">
-
-                                            <span><i class="icon-calendar"></i> 15-01-2016</span>
-
-                                            <span><a href="#" class="comments"><i class="icon-comment"></i> 3</a></span>
-
-                                        </div><!--/ .byline-->
-
-                                        <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
-
-                                    </div><!--/ .wrapper-->
-
-                                </article><!--/ .clearfix-->
-
-                            </li>
-
-                            <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                            <li>
-                                    
-                                <article class="entry">
-                                    
-                                    <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-
-                                    <a href="#" class="entry_thumb">
-
-                                        <img src="images/product-iphone6s.jpg" alt="" width="83" height="83">
-
-                                    </a>
-
-                                    <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
-
-                                    <div class="wrapper">
-
-                                        <h6 class="entry_title"><a href="#">Tiêu đề tin tức</a></h6>
-
-                                        <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
-
-                                        <div class="entry_meta">
-
-                                            <span><i class="icon-calendar"></i> 15-01-2016</span>
-
-                                            <span><a href="#" class="comments"><i class="icon-comment"></i> 3</a></span>
-
-                                        </div><!--/ .byline-->
-
-                                        <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
-
-                                    </div><!--/ .wrapper-->
-
-                                </article><!--/ .clearfix-->
-
-                            </li>
-
-                            <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
+                                <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
+    
+                                <li>
+                                        
+                                    <article class="entry">
+                                        
+                                        <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
+    
+                                        <a href="#" class="entry_thumb">
+    
+                                            <img src="<%= blog.image_url.article_home if blog.image_url? %>" width="83" height="83" alt="">
+    
+                                        </a>
+    
+                                        <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
+    
+                                        <div class="wrapper">
+    
+                                            <h6 class="entry_title"><%= link_to blog.title, { controller: "blog_post", action: "index", id: blog.id } %></h6>
+    
+                                            <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
+    
+                                            <div class="entry_meta">
+    
+                                                <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
+    
+                                            </div><!--/ .byline-->
+    
+                                            <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
+    
+                                        </div><!--/ .wrapper-->
+    
+                                    </article><!--/ .clearfix-->
+    
+                                </li>
+    
+                                <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+                            
+                            <% end %>
+                            
                         </ul>
 
                     </section><!--/ .section_offset -->
@@ -195,172 +117,6 @@
 
                     <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
 
-                    <!-- - - - - - - - - - - - - - Recent comments - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Bình luận gần đây</h3>
-
-                        <ul class="recentcomments_list">
-
-                            <!-- - - - - - - - - - - - - - Comment - - - - - - - - - - - - - - - - -->
-
-                            <li class="recentcomment">
-                                
-                                <div class="posted_by">Đăng bởi: <a href="#">Quản trị viên</a>:</div>
-
-                                <a href="#">Tiêu đề bình luận...</a>
-
-                                <p class="comment">Nội dung bình luận...</p>
-
-                            </li>
-
-
-                            <!-- - - - - - - - - - - - - - End of comment - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Comment - - - - - - - - - - - - - - - - -->
-
-                            <li class="recentcomment">
-                                
-                                <div class="posted_by">Đăng bởi: <a href="#">Quản trị viên</a>:</div>
-
-                                <a href="#">Tiêu đề bình luận...</a>
-
-                                <p class="comment">Nội dung bình luận...</p>
-
-                            </li>
-
-
-                            <!-- - - - - - - - - - - - - - End of comment - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Comment - - - - - - - - - - - - - - - - -->
-
-                            <li class="recentcomment">
-                                
-                                <div class="posted_by">Đăng bởi: <a href="#">Quản trị viên</a>:</div>
-
-                                <a href="#">Tiêu đề bình luận...</a>
-
-                                <p class="comment">Nội dung bình luận...</p>
-
-                            </li>
-
-
-                            <!-- - - - - - - - - - - - - - End of comment - - - - - - - - - - - - - - - - -->
-
-                        </ul>
-
-                    </section>
-
-                    <!-- - - - - - - - - - - - - - End recent comments - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Blog Tags - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Nhãn</h3>
-
-                        <div class="tags_container">
-
-                            <ul class="tags_cloud">
-                                
-                                <li><a href="#" class="button_grey">Thiết bị tin học</a></li>
-                                <li><a href="#" class="button_grey">Thiết bị văn phòng</a></li>
-                                <li><a href="#" class="button_grey">Thiết bị hệ thống mạng</a></li>
-                                <li><a href="#" class="button_grey">Thiết bị viễn thông</a></li>
-                                <li><a href="#" class="button_grey">An ninh kiểm soát</a></li>
-
-                            </ul><!--/ .tags_cloud-->
-                            
-                        </div><!--/ .tags_container-->
-
-                    </section>
-
-                    <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
-
-                    <div class="section_offset">
-
-                        <a href="#" class="banner">
-                            
-                            <img src="images/banner_img_11.png" alt="">
-
-                        </a>
-
-                    </div>
-
-                    <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Community poll - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Đánh giá</h3>
-
-                        <div class="theme_box">
-
-                            <p class="form_caption_2">Đánh giá nội dung của các bài viết?</p>
-
-                            <form id="community_poll" class="type_2">
-
-                                <ul>
-
-                                    <li>
-
-                                        <div class="form_el">
-                                            <input type="radio" name="radio_1" id="radio_1" checked>
-                                            <label for="radio_1">Good</label>
-                                        </div>
-
-                                    </li>
-
-                                    <li>
-
-                                        <div class="form_el">
-                                            <input type="radio" name="radio_1" id="radio_2">
-                                            <label for="radio_2">Medium</label>
-                                        </div>
-
-                                    </li>
-
-                                    <li>
-
-                                        <div class="form_el">
-                                            <input type="radio" name="radio_1" id="radio_3">
-                                            <label for="radio_3">Bad</label>
-                                        </div>
-
-                                    </li>
-
-                                </ul>
-
-                            </form>
-
-                        </div>
-
-                        <footer class="bottom_box">
-
-                            <button form="community_poll" class="button_blue middle_btn">Đánh giá</button>
-
-                        </footer>
-
-                    </section>
-
-                    <!-- - - - - - - - - - - - - - End of community poll - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
-
-                    <div class="section_offset">
-
-                        <a href="#" class="banner">
-                            
-                            <img src="images/banner_img_12.png" alt="">
-
-                        </a>
-
-                    </div>
-
-                    <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
-
                 </aside><!--/ [col]-->
 
                 <main class="col-md-9 col-sm-8">
@@ -371,15 +127,11 @@
 
                         <div class="left_side v_centered">
 
-                            <a href="#" class="middle_btn icon_btn social_rss tooltip_container"><i class="icon-rss"></i><span class="tooltip top">RSS</span></a>
-
                             <!-- - - - - - - - - - - - - - Blog layout type - - - - - - - - - - - - - - - - -->
 
                             <div class="layout_type buttons_row" data-table-container="#main_blog_list">
 
                                 <a href="#" data-table-layout="grid_view" class="button_grey middle_btn icon_btn tooltip_container"><i class="icon-th"></i><span class="tooltip top">Grid View</span></a>
-
-                                <a href="#" data-table-layout="list_view" class="button_grey middle_btn icon_btn active tooltip_container"><i class="icon-th-list"></i><span class="tooltip top">List View</span></a>
 
                             </div>
 
@@ -436,8 +188,6 @@
 
                                             <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
 
-                                            <span><a href="#" class="comments"><i class="icon-comment"></i> 3</a></span>
-
                                             <span><i class="icon-user-8"></i> đăng bởi <a href="#">Quản trị viên</a></span>
 
                                             <span><i class="icon-folder-open-empty-1"></i> <a href="#"><%= blog.tag.title %></a></span>
@@ -462,8 +212,6 @@
                                             
                                             <!-- - - - - - - - - - - - - - End of entry rating - - - - - - - - - - - - - - - - -->
 
-                                            (17 bình chọn)
-
                                         </div>
 
                                     </div><!--/ .byline-->
@@ -472,7 +220,7 @@
 
                                     <p><%= blog.content.html_safe %></p>
                                     
-                                    <%= link_to "Xem thêm", { controller: "blog_post", action: "index", id: blog.id }, { class: "button_grey middle_btn" } %>
+                                    <%= link_to "Xem tiếp", { controller: "blog_post", action: "index", id: blog.id }, { class: "button_grey middle_btn" } %>
 
                                 </article>
 

@@ -8,6 +8,7 @@ class ProductController < ApplicationController
     @company_info = Contact.find(1)
     @product = Product.last(12)
     @product_infos = ProductInfo.all
+    @new_blog_footer = Article.order("created_at DESC").first(3)
     
     @favorite_products = Product.get_favorite_products
     @related_products = Product.get_related_products

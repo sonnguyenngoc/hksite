@@ -103,9 +103,7 @@
                         <ul class="list_of_links">
 
                             <li><a href="#">Giới thiệu</a></li>
-                            <li><a href="#">Thông tin giao hàng</a></li>
-                            <li><a href="#">Chính sách riêng tư</a></li>
-                            <li><a href="#">Điều khoản &amp; Các điều kiện</a></li>
+                            <li><a href="#">Tin tức</a></li>
                             <li><a href="#">Liên hệ</a></li>
 
                         </ul>
@@ -122,15 +120,15 @@
 
                     <section class="widget">
 
-                        <h4>Thông tin phụ</h4>
+                        <h4>Danh mục</h4>
 
                         <ul class="list_of_links">
 
-                            <li><a href="#">Thương hiệu</a></li>
-                            <li><a href="#">Phiếu quà tặng</a></li>
-                            <li><a href="#">Đại lý</a></li>
-                            <li><a href="#">Đặc biệt</a></li>
-                            <li><a href="#">Khuyến mãi</a></li>
+                            <li><a href="#">Thiết bị tin học</a></li>
+                            <li><a href="#">Thiết bị văn phòng</a></li>
+                            <li><a href="#">Thiết bị hệ thống mạng</a></li>
+                            <li><a href="#">Thiết bị viễn thông</a></li>
+                            <li><a href="#">An ninh kiểm soát</a></li>
 
                         </ul>
 
@@ -146,14 +144,12 @@
 
                     <section class="widget">
 
-                        <h4>Tài khoản</h4>
+                        <h4>Đơn hàng</h4>
 
                         <ul class="list_of_links">
 
-                            <li><a href="#">Tài khoản của tôi</a></li>
-                            <li><a href="#">Lịch sử đặt hàng</a></li>
-                            <li><a href="#">Hàng trả về</a></li>
-                            <li><a href="#">Sản phẩm yêu thích</a></li>
+                            <li><a href="#">Xem đơn hàng</a></li>
+                            <li><a href="#">Đặt hàng</a></li>
                             <li><a href="#">Nhận tin tức mới</a></li>
 
                         </ul>
@@ -173,121 +169,49 @@
                         <h4>Tin tức mới</h4>
 
                         <ul class="list_of_entries">
+                            
+                            <% @new_blog_footer.each do |blog| %>
 
-                            <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                            <li>
-                                    
-                                <article class="entry">
-                                    
-                                    <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-
-                                    <a href="#" class="entry_thumb">
-
-                                        <img src="images/product-iphone6s.jpg" alt="" width="83" height="53">
-
-                                    </a>
-
-                                    <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
-
-                                    <div class="wrapper">
-
-                                        <h6 class="entry_title"><a href="#">Iphone 6S Plus</a></h6>
-
-                                        <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
-
-                                        <div class="entry_meta">
-
-                                            <span><i class="icon-calendar"></i> 21-12-2015 16:00:00</span>
-
-                                        </div><!--/ .entry_meta-->
-
-                                        <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
-
-                                    </div><!--/ .wrapper-->
-
-                                </article><!--/ .clearfix-->
-
-                            </li>
-
-                            <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                            <li>
-                                    
-                                <article class="entry">
-                                    
-                                    <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-
-                                    <a href="#" class="entry_thumb">
-
-                                        <img src="images/product-iphone6s.jpg" alt="" width="83" height="53">
-
-                                    </a>
-
-                                    <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
-
-                                    <div class="wrapper">
-
-                                        <h6 class="entry_title"><a href="#">Iphone 6S Plus</a></h6>
-
-                                        <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
-
-                                        <div class="entry_meta">
-
-                                            <span><i class="icon-calendar"></i> 21-12-2015 16:00:00</span>
-
-                                        </div><!--/ .entry_meta-->
-
-                                        <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
-
-                                    </div><!--/ .wrapper-->
-
-                                </article><!--/ .clearfix-->
-
-                            </li>
-
-                            <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                            <li>
-                                    
-                                <article class="entry">
-                                    
-                                    <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-
-                                    <a href="#" class="entry_thumb">
-
-                                        <img src="images/product-iphone6s.jpg" alt="" width="83" height="53">
-
-                                    </a>
-
-                                    <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
-
-                                    <div class="wrapper">
-
-                                        <h6 class="entry_title"><a href="#">Iphone 6S Plus</a></h6>
-
-                                        <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
-
-                                        <div class="entry_meta">
-
-                                            <span><i class="icon-calendar"></i> 21-12-2015 16:00:00</span>
-
-                                        </div><!--/ .entry_meta-->
-
-                                        <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
-
-                                    </div><!--/ .wrapper-->
-
-                                </article><!--/ .clearfix-->
-
-                            </li>
-
-                            <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
+                                <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
+    
+                                <li>
+                                        
+                                    <article class="entry">
+                                        
+                                        <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
+    
+                                        <a href="#" class="entry_thumb">
+    
+                                            <img src="<%= blog.image_url.article_home if blog.image_url? %>" width="83" height="83" alt="">
+    
+                                        </a>
+    
+                                        <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
+    
+                                        <div class="wrapper">
+    
+                                            <h6 class="entry_title"><%= link_to blog.title, { controller: "blog_post", action: "index", id: blog.id } %></h6>
+    
+                                            <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
+    
+                                            <div class="entry_meta">
+    
+                                                <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
+    
+                                            </div><!--/ .entry_meta-->
+    
+                                            <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
+    
+                                        </div><!--/ .wrapper-->
+    
+                                    </article><!--/ .clearfix-->
+    
+                                </li>
+    
+                                <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+                            
+                            <% end %>
+                            
                         </ul>
 
                     </section><!--/ .widget-->
@@ -311,23 +235,6 @@
     <div class="footer_section_3 align_center">
 
         <div class="container">
-
-            <!-- - - - - - - - - - - - - - Payments - - - - - - - - - - - - - - - - -->
-
-            <ul class="payments">
-
-                <li><img src="images/payment_1.png" alt=""></li>
-                <li><img src="images/payment_2.png" alt=""></li>
-                <li><img src="images/payment_3.png" alt=""></li>
-                <li><img src="images/payment_4.png" alt=""></li>
-                <li><img src="images/payment_5.png" alt=""></li>
-                <li><img src="images/payment_6.png" alt=""></li>
-                <li><img src="images/payment_7.png" alt=""></li>
-                <li><img src="images/payment_8.png" alt=""></li>
-
-            </ul>
-            
-            <!-- - - - - - - - - - - - - - End of payments - - - - - - - - - - - - - - - - -->
 
             <!-- - - - - - - - - - - - - - Footer navigation - - - - - - - - - - - - - - - - -->
 

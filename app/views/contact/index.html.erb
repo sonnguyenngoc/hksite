@@ -87,48 +87,6 @@
 
                     <!-- - - - - - - - - - - - - - End of Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
 
-                    <!-- - - - - - - - - - - - - - Testimonials - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3 class="offset_title">Tin tức mới</h3>
-
-                        <!-- - - - - - - - - - - - - - Carousel of testimonials - - - - - - - - - - - - - - - - -->
-
-                        <div class="owl_carousel widgets_carousel">
-                            
-                            <% @blog.each do |blog| %>
-                                <!-- - - - - - - - - - - - - - Testimonial - - - - - - - - - - - - - - - - -->
-    
-                                <blockquote>
-    
-                                    <div class="author_info"><b><%= blog.title %></b></div>
-    
-                                    <p><%= blog.content.html_safe %></p>
-    
-                                </blockquote>
-                                
-                                <!-- - - - - - - - - - - - - - End testimonial - - - - - - - - - - - - - - - - -->
-                            <% end %>
-
-                        </div><!--/ .widgets_carousel-->
-
-                        <!-- - - - - - - - - - - - - - End of carousel of testimonials - - - - - - - - - - - - - - - - -->
-
-                        <!-- - - - - - - - - - - - - - View all testimonials - - - - - - - - - - - - - - - - -->
-
-                        <footer class="bottom_box">
-                            
-                            <%= link_to "Xem thêm", { controller: "blog", action: "index" }, { class: "button_grey middle_btn" } %>
-
-                        </footer>
-
-                        <!-- - - - - - - - - - - - - - End of view all testimonials - - - - - - - - - - - - - - - - -->
-
-                    </section><!--/ .section_offset.animated.transparent-->
-
-                    <!-- - - - - - - - - - - - - - End of testimonials - - - - - - - - - - - - - - - - -->
-
                 </aside><!--/ [col]-->
 
                 <main class="col-md-9 col-sm-8">
@@ -246,7 +204,7 @@
 
                                                 <li>Thứ 2-Thứ 6: 7.30-17.00</li>
                                                 <li>Thứ 7: 7.30-12.00</li>
-                                                <li>Chủ nhật: Không làm việc/li>
+                                                <li>Chủ nhật: Không làm việc</li>
 
                                             </ul>
 
