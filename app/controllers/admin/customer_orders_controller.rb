@@ -69,6 +69,6 @@ class Admin::CustomerOrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def customer_order_params
-      params.require(:customer_order).permit(:orderer_first_name, :orderer_last_name, :orderer_company_name, :orderer_email, :orderer_address_1, :orderer_address_2, :orderer_phone, :orderer_fax, :orderer_message, order_details_attributes: [:id, :order_id, :product_id, :quantity, :_destroy])
+      params.require(:customer_order).permit(:orderer_first_name, :orderer_last_name, :orderer_company_name, :orderer_email, :orderer_address_1, :orderer_address_2, :orderer_phone, :orderer_fax, :orderer_message, customer_order_details_attributes: [:id, :customer_order_id, :product_id, :price,:quantity, :_destroy])
     end
 end

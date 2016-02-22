@@ -22,236 +22,250 @@
                 <li>Thanh toán</li>
 
             </ul>
+            
+            <% if @cart.line_items.count > 0 %>
 
-            <h1 class="page_title">Thanh toán</h1>
-
-            <!-- - - - - - - - - - - - - - Billing information - - - - - - - - - - - - - - - - -->
-
-            <section class="section_offset">
-
-                <h3>1. Gửi đơn đặt hàng</h3>
-
-                <div class="theme_box">
-
-                    <a class="icon_btn button_dark_grey edit_button" href="#"><i class="icon-pencil"></i></a>
-                    
-                     <%= form_for @customer_order, html: {class: "type_2"} do |f| %>
+                <h1 class="page_title">Thanh toán</h1>
+    
+                <!-- - - - - - - - - - - - - - Billing information - - - - - - - - - - - - - - - - -->
+    
+                <section class="section_offset">
+    
+                    <h3 class="offset_title">1. Gửi đơn đặt hàng</h3>
+    
+                    <div class="theme_box">
                         
-                        <ul>
+                         <%= form_for @customer_order, html: {class: "type_2"} do |f| %>
                             
-                            <li class="row">
+                            <ul>
                                 
-                                <div class="col-sm-6">
+                                <li class="row">
                                     
-                                    <label for="first_name" class="required">Họ</label>
-                                    <%= f.text_field :orderer_first_name, required: true %>
-
-                                </div><!--/ [col] -->
-
-                                <div class="col-sm-6">
+                                    <div class="col-sm-6">
+                                        
+                                        <label for="first_name" class="required">Họ</label>
+                                        <%= f.text_field :orderer_first_name, required: true %>
+    
+                                    </div><!--/ [col] -->
+    
+                                    <div class="col-sm-6">
+                                        
+                                        <label for="last_name" class="required">Tên</label>
+                                        <%= f.text_field :orderer_last_name, required: true %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!--/ .row -->
+    
+                                <li class="row">
                                     
-                                    <label for="last_name" class="required">Tên</label>
-                                    <%= f.text_field :orderer_last_name, required: true %>
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
+                                    <div class="col-sm-6">
+                                        
+                                        <label for="company_name">Tên công ty</label>
+                                        <%= f.text_field :orderer_company_name %>
+    
+                                    </div><!--/ [col] -->
+    
+                                    <div class="col-sm-6">
+                                        
+                                        <label for="email_address">Địa chỉ email</label>
+                                        <%= f.text_field :orderer_email %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!--/ .row -->
+    
+                                <li class="row">	
+    
+                                    <div class="col-xs-12">
+    
+                                        <label for="address" class="required">Địa chỉ</label>
+                                        <%= f.text_field :orderer_address_1, required: true %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!-- / .row -->
+    
+                                <li class="row">
+    
+                                    <div class="col-xs-12">
+    
+                                        <%= f.text_field :orderer_address_2 %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!--/ .row -->
+    
+                                <li class="row">
+    
+                                    <div class="col-sm-6">
+    
+                                        <label for="telephone" class="required">Số điện thoại</label>
+                                        <%= f.text_field :orderer_phone, required: true %>
+    
+                                    </div><!--/ [col] -->
+    
+                                    <div class="col-sm-6">
+    
+                                        <label for="fax">Số fax</label>
+                                        <%= f.text_field :orderer_fax %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!--/ .row -->
                                 
-                                <div class="col-sm-6">
-                                    
-                                    <label for="company_name">Tên công ty</label>
-                                    <%= f.text_field :orderer_company_name %>
-
-                                </div><!--/ [col] -->
-
-                                <div class="col-sm-6">
-                                    
-                                    <label for="email_address">Địa chỉ email</label>
-                                    <%= f.text_field :orderer_email %>
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">	
-
-                                <div class="col-xs-12">
-
-                                    <label for="address" class="required">Địa chỉ</label>
-                                    <%= f.text_field :orderer_address_1, required: true %>
-
-                                </div><!--/ [col] -->
-
-                            </li><!-- / .row -->
-
-                            <li class="row">
-
-                                <div class="col-xs-12">
-
-                                    <%= f.text_field :orderer_address_2 %>
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
-
-                                <div class="col-sm-6">
-
-                                    <label for="telephone" class="required">Số điện thoại</label>
-                                    <%= f.text_field :orderer_phone, required: true %>
-
-                                </div><!--/ [col] -->
-
-                                <div class="col-sm-6">
-
-                                    <label for="fax">Số fax</label>
-                                    <%= f.text_field :orderer_fax %>
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-                            
-                            <li class="row">
-
-                                <div class="col-sm-12">
-
-                                    <label for="telephone" class="required">Lời nhắn</label>
-                                    <%= f.text_area :orderer_message, rows: '6', required: true %>
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-                            
-                            <li class="row">
-
-                                <div class="col-sm-6">
-                                    
-                                    <%= f.submit "Gửi đơn hàng", class: "button_blue middle_btn" %>
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                        </ul>
-
-                    <% end %>
-
-                </div>
-
-            </section><!--/ .section_offset -->
-
-            <!-- - - - - - - - - - - - - - End of billing information - - - - - - - - - - - - - - - - -->
-
-            <!-- - - - - - - - - - - - - - Order review - - - - - - - - - - - - - - - - -->
-
-            <section class="section_offset">
-
-                <h3>2. Xem lại đơn hàng</h3>
-
-                <div class="table_wrap">
-
-                    <table class="table_type_1 order_review">
-
-                        <thead>
-                            
-                            <tr>
+                                <li class="row">
+    
+                                    <div class="col-sm-12">
+    
+                                        <label for="telephone" class="required">Lời nhắn</label>
+                                        <%= f.text_area :orderer_message, rows: '6', required: true %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!--/ .row -->
                                 
-                                <th class="product_title_col">Tên sản phẩm</th>
-                                <th class="product_sku_col">Mã sản phẩm</th>
-                                <th class="product_total_col">Giá</th>
-                                <th class="product_qty_col">Số lượng</th>
-                                <th class="product_total_col">Tổng tiền</th>
-
-                            </tr>
-
-                        </thead>
-
-                        <tbody>
-                            
-                            <% @cart.line_items.each do |item| %>
-                            
+                                <li class="row">
+    
+                                    <div class="col-sm-6">
+                                        
+                                        <%= f.submit "Gửi đơn hàng", class: "button_blue middle_btn" %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!--/ .row -->
+    
+                            </ul>
+    
+                        <% end %>
+    
+                    </div>
+    
+                </section><!--/ .section_offset -->
+    
+                <!-- - - - - - - - - - - - - - End of billing information - - - - - - - - - - - - - - - - -->
+    
+                <!-- - - - - - - - - - - - - - Order review - - - - - - - - - - - - - - - - -->
+    
+                <section class="section_offset">
+    
+                    <h3>2. Xem lại đơn hàng</h3>
+    
+                    <div class="table_wrap">
+    
+                        <table class="table_type_1 order_review">
+    
+                            <thead>
+                                
                                 <tr>
                                     
-                                    <td data-title="Product Name">
-                                        
-                                        <a href="#" class="product_title"><%= item.product.name %></a>
-    
-                                        <ul class="sc_product_info">
-    
-                                            <li>Ram: 1Gb</li>
-                                            <li>Màu: Hồng</li>
-    
-                                        </ul>
-    
-                                    </td>
-    
-                                    <td data-title="SKU"></td>
-    
-                                    <td data-title="Price" class="subtotal"><%= number_with_delimiter item.product.product_price.price.to_i %>đ</td>
-    
-                                    <td data-title="Quantity"><%= item.quantity %></td>
-    
-                                    <td data-title="Total" class="total"><%= number_with_delimiter item.total_item.to_i %>đ</td>
+                                    <th class="product_title_col">Tên sản phẩm</th>
+                                    <th class="product_sku_col">Mã sản phẩm</th>
+                                    <th class="product_total_col">Giá</th>
+                                    <th class="product_qty_col">Số lượng</th>
+                                    <th class="product_total_col">Tổng tiền</th>
     
                                 </tr>
-                            <% end %>
-
-                        </tbody>
-
-                        <tfoot>
-
-                            <tr>
+    
+                            </thead>
+    
+                            <tbody>
                                 
-                                <td colspan="4" class="bold">Tổng tiền (Chưa giảm giá)</td>
-                                <td class="total"><%= number_with_delimiter @cart.total_order.to_i %>đ</td>
-
-                            </tr>
-
-                            <tr>
+                                <% @cart.line_items.each do |item| %>
                                 
-                                <td colspan="4" class="bold">Phí vận chuyển &amp; Tổng tiền (Chính thức)</td>
-                                <td class="total"><%= number_with_delimiter @cart.total_order.to_i %>đ</td>
+                                    <tr>
+                                        
+                                        <td data-title="Product Name">
+                                            
+                                            <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id}, class: "product_title" %>
+        
+                                            <ul class="sc_product_info">
+        
+                                                <li>Ram: 1Gb</li>
+                                                <li>Màu: Hồng</li>
+        
+                                            </ul>
+        
+                                        </td>
+        
+                                        <td data-title="SKU"></td>
+        
+                                        <td data-title="Price" class="subtotal"><%= number_with_delimiter item.product.product_price.price.to_i %>đ</td>
+        
+                                        <td data-title="Quantity"><%= item.quantity %></td>
+        
+                                        <td data-title="Total" class="total"><%= number_with_delimiter item.total_item.to_i %>đ</td>
+        
+                                    </tr>
+                                <% end %>
+    
+                            </tbody>
+    
+                            <tfoot>
+    
+                                <tr>
+                                    
+                                    <td colspan="4" class="bold">Tổng tiền (Chưa giảm giá)</td>
+                                    <td class="total"><%= number_with_delimiter @cart.total_order.to_i %>đ</td>
+    
+                                </tr>
+    
+                                <tr>
+                                    
+                                    <td colspan="4" class="bold">Phí vận chuyển &amp; Tổng tiền (Chính thức)</td>
+                                    <td class="total"><%= number_with_delimiter @cart.total_order.to_i %>đ</td>
+    
+                                </tr>
+    
+                                <tr>
+                                    
+                                    <td colspan="4" class="grandtotal">Tổng cộng</td>
+                                    <td class="grandtotal"><%= number_with_delimiter @cart.total_order.to_i %>đ</td>
+    
+                                </tr>
+    
+                            </tfoot>
+    
+                        </table>
+    
+                    </div><!--/ .table_wrap -->
+    
+                    <footer class="bottom_box on_the_sides">
+    
+                        <div class="left_side v_centered">
+    
+                            <span>Thiếu sản phẩm?</span>
+                            
+                            <%= link_to "Chỉnh sửa giỏ hàng", {controller: "shopping_cart", action: "index"}, {class: "button_grey middle_btn"} %>
+    
+                        </div>
+    
+                    </footer>
+    
+    
+                </section>
+    
+                <!-- - - - - - - - - - - - - - End of order review - - - - - - - - - - - - - - - - -->
+                
+            <% else %>
+                
+                <div class="row">
 
-                            </tr>
+                    <div class="col-xs-12">
 
-                            <tr>
-                                
-                                <td colspan="4" class="grandtotal">Tổng cộng</td>
-                                <td class="grandtotal"><%= number_with_delimiter @cart.total_order.to_i %>đ</td>
+                        <div class="container_404">
 
-                            </tr>
+                            <p class="not_found">GIỎ HÀNG TRỐNG</p>
 
-                        </tfoot>
+                            <%= link_to "Quay về trang chủ", root_path, class: "button_dark_grey middle_btn" %>
 
-                    </table>
+                        </div><!--/ .align_center -->
 
-                </div><!--/ .table_wrap -->
+                    </div><!--/ [col]-->
 
-                <footer class="bottom_box on_the_sides">
-
-                    <div class="left_side v_centered">
-
-                        <span>Thiếu sản phẩm?</span>
-                        
-                        <%= link_to "Chỉnh sửa giỏ hàng", {controller: "shopping_cart", action: "index"}, {class: "button_grey middle_btn"} %>
-
-                    </div>
-
-                    <div class="right_side">
-
-                        <button class="button_blue middle_btn">Tiếp tục mua hàng</button>
-
-                    </div>
-
-                </footer>
-
-
-            </section>
-
-            <!-- - - - - - - - - - - - - - End of order review - - - - - - - - - - - - - - - - -->
+				</div>
+            
+            <% end %>
 
         </div><!--/ .container-->
 

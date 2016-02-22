@@ -7,4 +7,12 @@ class CustomerOrder < ActiveRecord::Base
       self.customer_order_details.create(product_id: item.product_id, quantity: item.quantity)
     end
   end
+  
+  def total
+    amount = 0.0
+    customer_order_details.each do |od|
+      amount += od.total
+    end
+    return amount
+  end
 end

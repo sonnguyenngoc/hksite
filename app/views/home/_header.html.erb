@@ -183,10 +183,10 @@
                                             <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
     
                                             <div class="clearfix sc_product">
+                                                
+                                                <%= link_to(image_tag(item.product.product_info.image_url, width: 60, height: 60), {controller: "product", action: "index", id: item.product_id}, class: "product_thumb") %>
     
-                                                <a href="#" class="product_thumb"><img src="images/sc_img_1.jpg" alt=""></a>
-    
-                                                <a href="#" class="product_name"><%= item.product.name %></a>
+                                                <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id}, class: "product_name" %>
     
                                                 <p><%= item.quantity %> x <%= item.product.product_price.price.to_i %> VNĐ</p>
     
@@ -206,10 +206,6 @@
 
                                         <ul class="total_info">
 
-                                            <li><span class="price">Thuế:</span> 0 VNĐ</li>
-
-                                            <li><span class="price">Giảm giá:</span> 0 VNĐ</li>
-
                                             <li class="total"><span class="price">Tổng:</span> <%= number_with_delimiter @cart.total_order.to_i %> VNĐ</li>
 
                                         </ul>
@@ -222,8 +218,9 @@
                                         
                                         <%= link_to "Giỏ hàng", {controller: "shopping_cart", action: "index"}, {class: "button_grey"} %>
                                         
-                                        <%= link_to "Thanh toán", {controller: "check_out", action: "index"}, {class: "button_blue"} %>
-
+                                        <% if @cart.line_items.count > 0 %>
+                                            <%= link_to "Thanh toán", {controller: "check_out", action: "index"}, {class: "button_blue"} %>
+                                        <% end %>
                                     </div><!--/ .animated_item-->
 
                                 </div><!--/ .shopping_cart.dropdown-->

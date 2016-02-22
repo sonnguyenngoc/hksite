@@ -11,4 +11,9 @@ class Menu < ActiveRecord::Base
     self.level = lvl
     self.save
   end
+  
+  def all_products(params)
+    Product.all.limit(15)
+  end
+  
 end

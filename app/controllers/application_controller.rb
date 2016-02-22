@@ -8,13 +8,13 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
   
   def layout_by_resource
-    if controller_name == 'home' || controller_name == 'category' || controller_name == 'blog' || controller_name == 'blog_post' ||
+    if controller_name == 'home' || controller_name == 'category' || controller_name == 'blog' || controller_name == 'blog_detail' || controller_name == 'blog_post' ||
        controller_name == 'contact' || controller_name == 'about_us' || controller_name == 'shopping_cart' ||
        controller_name == 'check_out' || controller_name == 'product' || controller_name == 'category_page'
       'frontend'
     elsif controller_name == 'manages' || controller_name == 'messages' || controller_name == 'newsletters' ||
           controller_name == 'tags' || controller_name == 'articles' || controller_name == 'slide_shows' || controller_name == 'carts' ||
-          controller_name == 'menus' || controller_name == 'product_infos'
+          controller_name == 'menus' || controller_name == 'product_infos' || controller_name == 'customer_orders'
       'backend'
     end
   end

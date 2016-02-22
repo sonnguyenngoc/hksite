@@ -1,0 +1,101 @@
+<!-- Main content -->
+<div class="content-wrapper">
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-header-content">
+            <div class="page-title">
+                <h4><a href="#" class="btn-back"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Danh sách</span> - Đơn hàng</h4>
+            </div>
+        </div>
+    
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><%= link_to '<i class="icon-home2 position-left"></i> Trang chủ'.html_safe, admin_manages_path %></li>
+                <li><%= link_to 'Quản lý đơn hàng', admin_customer_orders_path %></li>
+                <li class="active">Danh sách đơn hàng</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /page header -->
+    
+    
+    <!-- Content area -->
+    <div class="content">
+    
+        <!-- Basic TableTools example -->
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h5 class="panel-title">Danh sách <span class="text-semibold">đơn hàng</span></h5>
+                <div class="heading-elements">
+                    <ul class="icons-list">
+                        <li><a data-action="collapse"></a></li>
+                        <li><a data-action="reload"></a></li>
+                        <li><a data-action="close"></a></li>
+                    </ul>
+                </div>
+            </div>	
+    
+            <table class="table datatable-order">
+                <thead>
+                    <tr>
+                        <th>Họ Tên</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Lời nhắn</th>
+                        <th>Ngày gửi</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @customer_orders.each do |item| %>
+                        <tr>
+                            <td>
+                                <%= link_to item.orderer_first_name + " " + item.orderer_last_name, [:admin, item] %>
+                            </td>
+                            <td><%= item.orderer_email %></td>
+                            <td><%= item.orderer_phone %></td>
+                            <td><%= item.orderer_address_1 %></td>
+                            <td><%= item.orderer_message %></td>
+                            <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                            <td class="text-center">
+                                <ul class="icons-list">
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                            <i class="icon-menu9"></i>
+                                        </a>
+        
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li>
+                                                <%= link_to '<i class="icon-cross2"></i> Xóa'.html_safe, [:admin, item], method: :delete, data: {confirm: 'Are you sure?'} %>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+        </div>
+        <!-- /basic TableTools example -->
+    
+        <!-- Footer -->
+        <%= render '/admin/manages/footer' %>
+        <!-- /footer -->
+    
+    </div>
+    <!-- /content area -->
+
+</div>
+<!-- /main content -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/javascripts/tools.min.product.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/javascripts/datatables_order.js' %>
+<!-- /theme JS files -->

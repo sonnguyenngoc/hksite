@@ -1,0 +1,27 @@
+.video_wrap > iframe, .proportional_frame > iframe {
+    height: 250px;
+}
+.proportional_frame {
+    padding-bottom: 50%;
+}
+.info-contact {
+    padding-bottom: 15px;
+}
+table > *:last-child > tr:last-child th, table > *:last-child > tr:last-child td {
+    text-align: center;
+}
+.product_qty_col {
+    width: 162px;
+}
+.display_inline {
+    display: inline;
+}
+.qty > input[type="text"] {
+    width: calc(100% - 76px);
+}
+.min {
+    width: 124px;
+}
+.font-small {
+    font-size: 12px;
+}

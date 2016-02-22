@@ -744,7 +744,7 @@
     
                                             </div><!--/ .byline-->
     
-                                            <p><%= blog.content.html_safe %></p>
+                                            <p><%= truncate(strip_tags(blog.content.html_safe), length: 150) %></p>
     
                                         </article><!--/ .entry-->
     

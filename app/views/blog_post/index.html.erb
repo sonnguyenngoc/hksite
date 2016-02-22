@@ -18,8 +18,8 @@
 
             <ul class="breadcrumbs">
 
-                <li><a href="index.html">Trang chủ</a></li>
-                <li><a href="blog_v1.html">Tin công nghệ</a></li>
+                <li><%= link_to "Trang chủ", root_path %></li>
+                <li><a href="blog_v1.html"><%= @blog_post.tag.title %></a></li>
                 <li><%= @blog_post.title %></li>
 
             </ul>
@@ -81,8 +81,6 @@
                                             <div class="entry_meta">
     
                                                 <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
-    
-                                                <span><a href="#" class="comments"><i class="icon-comment"></i> 3</a></span>
     
                                             </div><!--/ .byline-->
     
@@ -196,130 +194,56 @@
                     <section class="section_offset">
                         
                         <h3>Tin tức mới cùng chuyên mục</h3>
-
+                        
                         <div class="table_layout related_posts">
 
                             <div class="table_row">
+                                
+                                <% count = 0 %>
+                                
+                                <% @related_post.each do |post| %>
+                                    <% if post.tag_id == @blog_post.tag_id && count < 4 %>
+                                        <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
 
-                                <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                                <div class="table_cell">
-
-                                    <article class="entry">
+                                        <div class="table_cell">
+        
+                                            <article class="entry">
+                                                
+                                                <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
+        
+                                                <a href="#" class="entry_thumb">
+        
+                                                    <img src="<%= post.image_url.article_home if post.image_url? %>" width="83" height="83" alt="">
+        
+                                                </a>
+        
+                                                <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
+        
+                                                <div class="wrapper">
+        
+                                                    <h6 class="entry_title"><%= link_to post.title, { controller: "blog_post", action: "index", id: post.id } %></h6>
+        
+                                                    <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
+        
+                                                    <div class="entry_meta">
+        
+                                                        <span><i class="icon-calendar"></i> <%= post.created_at.strftime("%d/%m/%Y") %></span>
+        
+                                                    </div><!--/ .byline-->
+        
+                                                    <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
+        
+                                                </div><!--/ .wrapper-->
+        
+                                            </article><!--/ .clearfix-->
+        
+                                        </div>
+        
+                                        <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
                                         
-                                        <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-
-                                        <a href="#" class="entry_thumb">
-
-                                            <img src="images/blog_thumb_4.jpg" alt="">
-
-                                        </a>
-
-                                        <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
-
-                                        <div class="wrapper">
-
-                                            <h6 class="entry_title"><a href="#">Lorem ipsum dolor sit amet, consectetuer adipis</a></h6>
-
-                                            <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
-
-                                            <div class="entry_meta">
-
-                                                <span><i class="icon-calendar"></i> 2014-08-05</span>
-
-                                                <span><a href="#" class="comments"><i class="icon-comment"></i> 3</a></span>
-
-                                            </div><!--/ .byline-->
-
-                                            <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .wrapper-->
-
-                                    </article><!--/ .clearfix-->
-
-                                </div>
-
-                                <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
-                                <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                                <div class="table_cell">
-
-                                    <article class="entry">
-                                        
-                                        <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-
-                                        <a href="#" class="entry_thumb">
-
-                                            <img src="images/blog_thumb_5.jpg" alt="">
-
-                                        </a>
-
-                                        <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
-
-                                        <div class="wrapper">
-
-                                            <h6 class="entry_title"><a href="#">Neque porro quis- quam est, qui</a></h6>
-
-                                            <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
-
-                                            <div class="entry_meta">
-
-                                                <span><i class="icon-calendar"></i> 2014-11-06</span>
-
-                                                <span><a href="#" class="comments"><i class="icon-comment"></i> 7</a></span>
-
-                                            </div><!--/ .byline-->
-
-                                            <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .wrapper-->
-
-                                    </article><!--/ .clearfix-->
-
-                                </div>
-
-                                <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-
-                                <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-
-                                <div class="table_cell">
-
-                                    <article class="entry">
-                                        
-                                        <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-
-                                        <a href="#" class="entry_thumb">
-
-                                            <img src="images/blog_thumb_6.jpg" alt="">
-
-                                        </a>
-
-                                        <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
-
-                                        <div class="wrapper">
-
-                                            <h6 class="entry_title"><a href="#">Mauris fermentum dictum magna</a></h6>
-
-                                            <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
-
-                                            <div class="entry_meta">
-
-                                                <span><i class="icon-calendar"></i> 2014-03-12</span>
-
-                                                <span><a href="#" class="comments"><i class="icon-comment"></i> 4</a></span>
-
-                                            </div><!--/ .byline-->
-
-                                            <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
-
-                                        </div><!--/ .wrapper-->
-
-                                    </article><!--/ .clearfix-->
-
-                                </div>
-
-                                <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+                                        <% count += 1 %>
+                                    <% end %>
+                                <% end %>
 
                             </div>
 

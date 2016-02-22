@@ -1,0 +1,2 @@
+module BlogDetailHelper
+end

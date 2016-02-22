@@ -1,49 +1,171 @@
-<p id="notice"><%= notice %></p>
+<!-- Main content -->
+<div class="content-wrapper">
+  
+    <div class="page-header">
+        <div class="page-header-content">
+            <div class="page-title">
+                <h4><a href="<%= admin_customer_orders_path %>" class="btn-back"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Quản lý</span> - Đơn hàng</h4>
+            </div>
+        </div>
+    
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><a href="<%= admin_manages_path %>"><i class="icon-home2 position-left"></i> Trang chủ</a></li>
+                <li><a href="<%= admin_customer_orders_path %>">Quản lý đơn hàng</a></li>
+                <li><a href="<%= admin_customer_orders_path %>">Danh sách đơn hàng</a></li>
+                <li class="active">Đơn hàng của: <%= @customer_order.orderer_first_name + " " + @customer_order.orderer_last_name %></li>
+            </ul>
+        </div>
+    </div>
+    <!-- /page header -->
+    
+    <!-- Content area -->
+    <div class="content">
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h5 class="panel-title"><span class="text-semibold">Chi tiết đơn đặt hàng</span></h5>
+            
+                <form class="form-horizontal" role="form">
+                   
+                    <div class="form-group">
+                        <%= label "", "Họ tên: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static text-justify") do %>
+                              <%= @customer_order.orderer_first_name + " " + @customer_order.orderer_last_name %>
+                            <% end %>
+                        </div>
+                    </div>
+                        
+                    <div class="form-group">
+                        <%= label "", "Email: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static text-justify") do %>
+                              <%= @customer_order.orderer_email %>
+                            <% end %>
+                        </div>
+                    </div>
+                        
+                    <div class="form-group">
+                        <%= label "", "Số điện thoại: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static") do %>
+                              <%= @customer_order.orderer_phone %>
+                            <% end %>
+                        </div>
+                    </div>
+                        
+                    <div class="form-group">
+                        <%= label "", "Fax: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static") do %>
+                              <%= @customer_order.orderer_fax %>
+                            <% end %>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <%= label "", "Địa chỉ 1: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static") do %>
+                              <%= @customer_order.orderer_address_1 %>
+                            <% end %>
+                        </div>
+                    </div>
+                        
+                    <div class="form-group">
+                        <%= label "", "Địa chỉ 2: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static") do %>
+                              <%= @customer_order.orderer_address_2 %>
+                            <% end %>
+                        </div>
+                    </div>
+                        
+                    <div class="form-group">
+                        <%= label "", "Công ty: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static") do %>
+                              <%= @customer_order.orderer_company_name %>
+                            <% end %>
+                        </div>
+                    </div>
+                        
+                    <div class="form-group">
+                        <%= label "", "Lời nhắn: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static") do %>
+                              <%= @customer_order.orderer_message %>
+                            <% end %>
+                        </div>
+                    </div>
+                        
+                    <div class="form-group">
+                        <%= label "", "Ngày gửi: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static") do %>
+                              <%= @customer_order.created_at.strftime("%d/%m/%Y") %>
+                            <% end %>
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <%= label "", "Danh sách sản phẩm: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                                <article>
+                                    <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Tên sản phẩm</th>
+                                            <th>Giá</th>
+                                            <th class="text-center">Số lượng</th>
+                                            <th>Thành tiền</th>
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        <% if @customer_order.customer_order_details.any? %>
+                                            <% @customer_order.customer_order_details.each_with_index do |item,index| %>
+                                                <tr class="<%= (index%2 == 1 ? "" : "alpha-teal") %>">
+                                                    <td><%= item.product.name %></td>
+                                                    <td><%= number_with_delimiter item.price.to_i %> đ</td>
+                                                    <td class="text-center"><%= item.quantity %></td>
+                                                    <td><span class="label label-flat border-success text-success-600 font-small"><%= number_with_delimiter item.total.to_i %> đ</span></td>
+                                                </tr>
+                                            <% end %>
+                                        <% else %>	
+                                    </tbody>	
+                                         
+                                      <%= content_tag(:p, class: "form-control-static") do %>
+                                          Đơn hàng trống....
+                                        <% end %>
+                                    <% end %>
+                                    </table>
+                                    <div class="pull-right">
+                                        <strong>Tổng tiền: </strong><span class="label label-flat border-info text-info-600 font-medium"><%= number_with_delimiter @customer_order.total.to_i %> đ</span></p>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>			
+                </form>
+            
+                <%= link_to '<i class="icon-backward2 position-left"></i> Trở về'.html_safe, admin_customer_orders_path, class: "btn btn-primary" %>
+                
+            </div>
+        </div>
+    
+        <!-- Footer -->
+            <%= render '/admin/manages/footer' %>
+        <!-- /footer -->
+    
+    </div>
+    <!-- /content area -->
 
-<p>
-  <strong>Orderer first name:</strong>
-  <%= @customer_order.orderer_first_name %>
-</p>
+</div>
+<!-- /main content -->
 
-<p>
-  <strong>Orderer last name:</strong>
-  <%= @customer_order.orderer_last_name %>
-</p>
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
 
-<p>
-  <strong>Orderer company name:</strong>
-  <%= @customer_order.orderer_company_name %>
-</p>
-
-<p>
-  <strong>Orderer email:</strong>
-  <%= @customer_order.orderer_email %>
-</p>
-
-<p>
-  <strong>Orderer address 1:</strong>
-  <%= @customer_order.orderer_address_1 %>
-</p>
-
-<p>
-  <strong>Orderer address 2:</strong>
-  <%= @customer_order.orderer_address_2 %>
-</p>
-
-<p>
-  <strong>Orderer phone:</strong>
-  <%= @customer_order.orderer_phone %>
-</p>
-
-<p>
-  <strong>Orderer fax:</strong>
-  <%= @customer_order.orderer_fax %>
-</p>
-
-<p>
-  <strong>Orderer message:</strong>
-  <%= @customer_order.orderer_message %>
-</p>
-
-<%= link_to 'Edit', edit_customer_order_path(@customer_order) %> |
-<%= link_to 'Back', customer_orders_path %>
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<!-- /theme JS files -->
