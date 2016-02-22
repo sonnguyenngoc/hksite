@@ -31,11 +31,11 @@
 
                                 <img src="<%= product.image_url.slide_show if product.image_url? %>" class="ls-bg" alt="">
 
-                                <div class="ls-l layer_1" style="left: 80px; top:128px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack;"><%= product.title %></div>
-                                <div class="ls-l layer_2" style="left: 80px; top: 188px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 150;">DELL</div>
-                                <div class="ls-l layer_3" style="left: 80px; top: 252px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 300;"></div>
+                                <div class="ls-l layer_1" style="left: 80px; top:128px; text-transform: uppercase; color: #bd6208;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack;"><%= product.title %></div>
+                                <!--<div class="ls-l layer_3" style="left: 80px; top: 188px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 150;"></div>-->
+                                <div class="ls-l layer_2" style="left: 80px; top: 200px; font-size: 40px; color: #000000" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 300;"><%= product.description %></div>
 
-                                <a href="#" class="ls-l button_blue huge_btn" style="left: 80px; top: 330px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 450;">CHI TIẾT</a>
+                                <!--<a href="#" class="ls-l button_blue huge_btn" style="left: 80px; top: 330px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 450;">CHI TIẾT</a>-->
 
                             </div>
                         <% end %>
@@ -76,9 +76,9 @@
                                 <div class="image_wrap">
 
                                     <% if product.product_info.nil? %>
-                                        <img src="#" style="width: 280px; height: 190px;" class="img-rounded" alt="Product-Image">
+                                        <img src="images/img_product_if_empty.jpg" alt="">
                                     <% else %>
-                                        <img src="<%= product.product_info.image_url.thumb_0 if product.product_info.image_url? %>" style="width: 280px; height: 190px;" class="img-rounded" alt="Product-Image">
+                                        <img src="<%= product.product_info.image_url if product.product_info.image_url? %>" style="width: 223px; height: 200px;" alt="">
                                     <% end %>
 
                                     <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
@@ -119,7 +119,7 @@
 
                                 <div class="description">
                                 
-                                    <p><%= link_to product.name, {controller: "product", action: "index", id: product.id} %></p>
+                                    <p><%= link_to (truncate(strip_tags(product.name), length: 35)), {controller: "product", action: "index", id: product.id} %></p>
 
                                     <div class="clearfix product_info">
                                          <% if product.product_info.nil? %>
@@ -147,11 +147,11 @@
 
                         <!-- - - - - - - - - - - - - - View all deals of the day - - - - - - - - - - - - - - - - -->
 
-                        <footer class="bottom_box">
+                        <!--<<footer class="bottom_box">
 
-                            <a href="#" class="button_grey middle_btn">Xem toàn bộ</a>
+                            a href="#" class="button_grey middle_btn">Xem toàn bộ</a>
 
-                        </footer>
+                        </footer>-->
 
                         <!-- - - - - - - - - - - - - - End of view all deals of the day - - - - - - - - - - - - - - - - -->
 
@@ -266,11 +266,15 @@
 
                             <ul class="tags_cloud">
                                 
-                                <li><a href="#" class="button_grey">Thiết bị tin học</a></li>
-                                <li><a href="#" class="button_grey">Thiết bị văn phòng</a></li>
-                                <li><a href="#" class="button_grey">Thiết bị hệ thống mạng</a></li>
-                                <li><a href="#" class="button_grey">Thiết bị viễn thông</a></li>
-                                <li><a href="#" class="button_grey">An ninh kiểm soát</a></li>
+                                <% @menu.each do |item| %>
+                            
+                                    <% if item.level == 1 %>
+                                        
+                                        <li><a class="button_grey" <%= (link_to item.title, {:controller => "category_page", :action => "index", id: item.id }).html_safe %></a></li>
+                                        
+                                    <% end %>
+                                
+                                <% end %>
 
                             </ul><!--/ .tags_cloud-->
                             
@@ -322,9 +326,9 @@
                                                     
                                                     <div class="image_wrap">
                                                         <% if product.product_info.nil? %>
-                                                            <img src="#" style="width: 280px; height: 190px;" class="img-rounded" alt="Product-Image">
+                                                            <img src="images/img_product_if_empty.jpg" alt="">
                                                         <% else %>
-                                                            <img src="<%= product.product_info.image_url if product.product_info.image_url? %>" style="width: 280px; height: 190px;" class="img-rounded" alt="Product-Image">
+                                                            <img src="<%= product.product_info.image_url if product.product_info.image_url? %>" style="width: 240px; height: 200px;" alt="">
                                                         <% end %>
                                                         <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
                     
@@ -348,7 +352,7 @@
                                                     
                                                     <div class="description">
                                 
-                                                        <%= link_to product.name, {controller: "product", action: "index", id: product.id} %>
+                                                        <%= link_to (truncate(strip_tags(product.name), length: 35)), {controller: "product", action: "index", id: product.id} %>
                                                         <div class="clearfix product_info">
                                                             
                                                             <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
@@ -371,11 +375,11 @@
 
                                 <!-- - - - - - - - - - - - - - View all products - - - - - - - - - - - - - - - - -->
 
-                                <footer class="bottom_box">
+                                <!--<footer class="bottom_box">
 
                                     <a href="#" class="button_grey middle_btn">Xem toàn bộ sản phẩm nổi bật</a>
 
-                                </footer>
+                                </footer>-->
 
                                 <!-- - - - - - - - - - - - - - End of view all products - - - - - - - - - - - - - - - - -->
 
@@ -402,9 +406,9 @@
                                                     <div class="image_wrap">
     
                                                         <% if product.product_info.nil? %>
-                                                            <img src="#" style="width: 280px; height: 190px;" class="img-rounded" alt="Product-Image">
+                                                            <img src="images/img_product_if_empty.jpg" alt="">
                                                         <% else %>
-                                                            <img src="<%= product.product_info.image_url if product.product_info.image_url? %>" style="width: 280px; height: 190px;" class="img-rounded" alt="Product-Image">
+                                                            <img src="<%= product.product_info.image_url if product.product_info.image_url? %>" style="width: 240px; height: 200px;" alt="">
                                                         <% end %>
     
                                                         <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
@@ -435,7 +439,7 @@
     
                                                     <div class="description">
                                                         
-                                                        <%= link_to product.name, {controller: "product", action: "index", id: product.id} %>
+                                                        <%= link_to (truncate(strip_tags(product.name), length: 35)), {controller: "product", action: "index", id: product.id} %>
                                                         
                                                         <div class="clearfix product_info">
                                                             
@@ -461,11 +465,11 @@
 
                                 <!-- - - - - - - - - - - - - - View all products - - - - - - - - - - - - - - - - -->
 
-                                <footer class="bottom_box">
+                                <!--<footer class="bottom_box">
 
-                                    <a href="#" class="button_grey middle_btn">Xem toàn bộ sản phẩm mới</a>
+                                    <a href="#" class="button_grey middle_btn">Xem toàn bộ sản phẩm mới</a
 
-                                </footer>
+                                </footer>>-->
 
                                 <!-- - - - - - - - - - - - - - End of view all products - - - - - - - - - - - - - - - - -->
 
@@ -492,9 +496,9 @@
                                                     <div class="image_wrap">
     
                                                         <% if product.product_info.nil? %>
-                                                            <img src="#" style="width: 280px; height: 190px;" class="img-rounded" alt="Product-Image">
+                                                            <img src="images/img_product_if_empty.jpg" alt="">
                                                         <% else %>
-                                                            <img src="<%= product.product_info.image_url if product.product_info.image_url? %>" style="width: 280px; height: 190px;" class="img-rounded" alt="Product-Image">
+                                                            <img src="<%= product.product_info.image_url if product.product_info.image_url? %>" style="width: 240px; height: 200px;" alt="">
                                                         <% end %>
     
                                                         <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
@@ -525,7 +529,7 @@
     
                                                     <div class="description">
     
-                                                        <%= link_to product.name, {controller: "product", action: "index", id: product.id} %>
+                                                        <%= link_to (truncate(strip_tags(product.name), length: 35)), {controller: "product", action: "index", id: product.id} %>
                                                         
                                                         <div class="clearfix product_info">
                                                             
@@ -551,11 +555,11 @@
 
                                 <!-- - - - - - - - - - - - - - View all products - - - - - - - - - - - - - - - - -->
 
-                                <footer class="bottom_box">
+                                <!--<footer class="bottom_box">
 
                                     <a href="#" class="button_grey middle_btn">Xem toàn bộ sản phẩm HOT</a>
 
-                                </footer>
+                                </footer>-->
 
                                 <!-- - - - - - - - - - - - - - End of view all products - - - - - - - - - - - - - - - - -->
 
@@ -638,9 +642,9 @@
                                             <div class="image_wrap">
     
                                                 <% if product.product_info.nil? %>
-                                                    <img src="#" class="img-rounded" alt="Product-Image">
+                                                    <img src="images/img_product_if_empty.jpg" alt="">
                                                 <% else %>
-                                                    <img src="<%= product.product_info.image_url if product.product_info.image_url? %>" class="img-rounded" alt="Product-Image">
+                                                    <img src="<%= product.product_info.image_url if product.product_info.image_url? %>" style="width: 240px; height: 200px;" alt="">
                                                 <% end %>
     
                                                 <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
@@ -671,7 +675,7 @@
     
                                             <div class="description">
     
-                                                <%= link_to product.name, {controller: "product", action: "index", id: product.id} %>
+                                                <%= link_to (truncate(strip_tags(product.name), length: 35)), {controller: "product", action: "index", id: product.id} %>
                                                         
                                                 <div class="clearfix product_info">
                                                             
@@ -698,11 +702,11 @@
 
                         <!-- - - - - - - - - - - - - - View all products - - - - - - - - - - - - - - - - -->
 
-                        <footer class="bottom_box">
+                        <!--<footer class="bottom_box">
 
                             <a href="#" class="button_grey middle_btn">Xem toàn bộ sản phẩm bán chạy nhất</a>
 
-                        </footer>
+                        </footer>-->
 
                         <!-- - - - - - - - - - - - - - End of view all products - - - - - - - - - - - - - - - - -->
 

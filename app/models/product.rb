@@ -50,6 +50,10 @@ class Product < ActiveRecord::Base
   def self.get_related_products
     self.first(12)
   end
+  
+  def self.search(params)
+    self.first(15)
+  end
  
 
   private

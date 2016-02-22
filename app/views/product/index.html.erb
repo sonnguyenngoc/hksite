@@ -18,8 +18,8 @@
 
         <ul class="breadcrumbs">
 
-            <li><a href="index.html">Trang chủ</a></li>
-            <li><a href="category_page.html">Thiết bị tin học</a></li>
+            <li><%= link_to "Trang chủ", root_path %></li>
+            <li><a href="#">Thiết bị tin học</a></li>
             <li class="active"><%= @pro_detail.name %></li>
             
         </ul>
@@ -68,29 +68,6 @@
                             
                             <!-- - - - - - - - - - - - - - End of prodcut thumbs carousel - - - - - - - - - - - - - - - - -->
 
-                            <!-- - - - - - - - - - - - - - Share - - - - - - - - - - - - - - - - -->
-                            
-                            <div class="v_centered">
-
-                                <span class="title">Chia sẻ:</span>
-
-                                <div class="addthis_widget_container">
-                                    <!-- AddThis Button BEGIN -->
-                                    <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-                                    <a class="addthis_button_preferred_1"></a>
-                                    <a class="addthis_button_preferred_2"></a>
-                                    <a class="addthis_button_preferred_3"></a>
-                                    <a class="addthis_button_preferred_4"></a>
-                                    <a class="addthis_button_compact"></a>
-                                    <a class="addthis_counter addthis_bubble_style"></a>
-                                    </div>
-                                    <!-- AddThis Button END -->
-                                </div>
-                                
-                            </div>
-                            
-                            <!-- - - - - - - - - - - - - - End of share - - - - - - - - - - - - - - - - -->
-
                         </div>
 
                         <!-- - - - - - - - - - - - - - End of product image column - - - - - - - - - - - - - - - - -->
@@ -113,8 +90,8 @@
 
                                         <tr>
 
-                                            <td>Nhà cung cấp: Updating...</td>
-                                            <td><a href="#"></a></td>
+                                            <td>Nhà cung cấp: </td>
+                                            <td><a href="#"><%= @pro_detail.manufacturer.name %></a></td>
 
                                         </tr>
 

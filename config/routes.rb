@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :category
   resources :product
+  resources :product_search
   root 'home#index'
   get "blog" => "blog#index", as: :blog
   get "blog_detail" => "blog_detail#index", as: :blog_detail
