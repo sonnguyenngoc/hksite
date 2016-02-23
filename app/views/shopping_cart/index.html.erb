@@ -18,7 +18,7 @@
 
             <ul class="breadcrumbs">
 
-                <li><a href="index.html">Trang chủ</a></li>
+                <li><%= link_to "Trang chủ", root_path %></li>
                 <li>Giỏ hàng</li>
 
             </ul>
@@ -60,8 +60,12 @@
                                             
                                         <td class="product_image_col" data-title="Product Image">
                                             
-                                            <%= link_to(image_tag(item.product.product_info.image_url, width: 86, height: 86), {controller: "product", action: "index", id: item.product_id}) %>
-        
+                                            <% if item.product.product_info.nil? %>
+                                                <p>Sản phẩm không có hình</p>
+                                            <% else %>
+                                               <%= link_to(image_tag(item.product.product_info.image_url, width: 86, height: 86), {controller: "product", action: "index", id: item.product_id}) %>
+                                            <% end %>
+                                            
                                         </td>
         
                                         <!-- - - - - - - - - - - - - - End of product Image - - - - - - - - - - - - - - - - -->
@@ -73,9 +77,9 @@
                                             <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id}, class: "product_title" %>
         
                                             <ul class="sc_product_info">
-        
-                                                <li><%= item.product.product_info.description %></li>
-        
+                                                
+                                                <li><%= item.product.product_info.description if !item.product.product_info.nil?  %></li>
+                                                
                                             </ul>
         
                                         </td>
@@ -122,7 +126,6 @@
         
                                         <td data-title="Action">
                                             
-                                            
                                             <a href="#" class="button_dark_grey icon_btn edit_product"><i class="icon-pencil"></i></a>
                                             
                                             <%= link_to "<i class='icon-cancel-2'></i>".html_safe , {controller: "shopping_cart", action: "index", do: 'remove_item', line_item_id: item.id }, {class: "button_dark_grey icon_btn remove_product"}  %>
@@ -151,7 +154,7 @@
                             
                             <p>Không có sản phẩm nào trong giỏ hàng.....</p>
                             
-                            <%= link_to "Tiến hành mua hàng", root_path, {class: "button_blue middle_btn"} %>
+                            <%= link_to "Quay về trang chủ", root_path, {class: "button_blue middle_btn"} %>
                             
                         </div>
     

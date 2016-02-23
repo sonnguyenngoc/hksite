@@ -25,3 +25,6 @@ table > *:last-child > tr:last-child th, table > *:last-child > tr:last-child td
 .font-small {
     font-size: 12px;
 }
+.social_feeds .proportional_frame {
+    margin: 15px 0 145px;
+}

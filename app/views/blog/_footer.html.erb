@@ -104,6 +104,7 @@
 
                             <li><%= link_to "Giới thiệu", {controller: "about_us", action: "index"} %></li>
                             <li><%= link_to "Tin tức", {controller: "blog", action: "index"} %></li>
+                            <li><%= link_to "Đối tác", {controller: "manufacturer", action: "index"} %></li>
                             <li><%= link_to "Liên hệ", {controller: "contact", action: "index"} %></li>
 
                         </ul>
@@ -153,9 +154,7 @@
                         <ul class="list_of_links">
 
                             <li><%= link_to "Xem đơn hàng", {controller: "shopping_cart", action: "index"} %></li>
-                            <% if @cart.line_items.count > 0 %>
-                                <li><%= link_to "Mua hàng", {controller: "check_out", action: "index"} %></li>
-                            <% end %>
+                            <li><%= link_to "Đặt hàng", {controller: "check_out", action: "index"} %></li>
                             <li><a href="#">Nhận tin tức mới</a></li>
 
                         </ul>

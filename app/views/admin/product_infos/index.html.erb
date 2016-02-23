@@ -12,9 +12,9 @@
 
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
-			<li><%= link_to '<i class="icon-home2 position-left"></i> Trang chủ'.html_safe, admin_manages_path %></li>
-            <li><%= link_to 'Quản lý thông tin sản phẩm', product_infos_path %></li>
-            <li class="active">Thông tin sản phẩm</li>
+            <li><%= link_to "<i class='icon-home2 position-left'></i> Trang chủ".html_safe, admin_manages_path %></li>
+            <li><%= link_to "Quản lý sản phẩm", admin_product_infos_path %></li>
+            <li class="active">Quản lý thông tin sản phẩm</li>
         </ul>
     </div>
 </div>
@@ -25,18 +25,18 @@
 
     <!-- Basic datatable -->
     <div class="panel panel-flat">
+		
         <div class="panel-heading">
-            <hr/>
-            <h5 class="panel-title">Quản lý - <span class="text-semibold">Thông tin sản phẩm</span></h5>
-            <div class="heading-elements">
-                <ul class="icons-list">
-                    <li><a data-action="collapse"></a></li>
-                    <li><a data-action="reload"></a></li>
-                    <li><a data-action="close"></a></li>
-                </ul>
-            </div>
-        </div>
-        
+			<h5 class="panel-title">Danh sách <span class="text-semibold">sản phẩm</span></h5>
+			<div class="heading-elements">
+				<ul class="icons-list">
+					<li><a data-action="collapse"></a></li>
+					<li><a data-action="reload"></a></li>
+					<li><a data-action="close"></a></li>
+				</ul>
+			</div>
+		</div>
+		
         <table class="table datatable-picture">
             <thead>
                 <tr>
@@ -82,9 +82,9 @@
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li>
 											<% if product.product_info.nil? %>
-												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Update Product Info'.html_safe, new_product_info_path(product_id: product.id) %>
+												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Update Product Info'.html_safe, new_admin_product_info_path(product_id: product.id) %>
 											<% else %>
-												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Update Product Info'.html_safe, edit_product_info_path(product.product_info) %>
+												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Update Product Info'.html_safe, edit_admin_product_info_path(product.product_info) %>
 											<% end %>
 
 										</li>
@@ -94,9 +94,10 @@
                         </td>
                     </tr>
                 <% end %>
-			
             </tbody>
         </table>
+		<hr/>
+		<%= will_paginate(@products) %>
     </div>
         <!-- /basic datatable -->
     

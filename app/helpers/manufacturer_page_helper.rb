@@ -1,0 +1,2 @@
+module ManufacturerPageHelper
+end

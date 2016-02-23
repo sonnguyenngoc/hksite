@@ -1,0 +1,84 @@
+<!-- Main content -->
+<div class="content-wrapper">
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="page-header-content">
+            <div class="page-title">
+                <h4><a href="#" class="btn-back"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Chuyên mục cũ</span></h4>
+            </div>
+        </div>
+    
+        <div class="breadcrumb-line">
+            <ul class="breadcrumb">
+                <li><%= link_to '<i class="icon-home2 position-left"></i> Trang chủ'.html_safe, admin_manages_path %></li>
+                <li><%= link_to 'Quản lý chuyên mục', {controller: "admin/old_category", action: "index"} %></li>
+                <li class="active">Chuyên mục cũ</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /page header -->
+    
+    <!-- Content area -->
+    <div class="content">
+    
+        <!-- Basic datatable -->
+        <div class="panel panel-flat">
+            <div class="panel-heading">
+                <h5 class="panel-title">Danh sách <span class="text-semibold">chuyên mục cũ</span></h5>
+                <div class="heading-elements">
+                    <ul class="icons-list">
+                        <li><a data-action="collapse"></a></li>
+                        <li><a data-action="reload"></a></li>
+                        <li><a data-action="close"></a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Tiêu đề</th>
+                        <th>Thuộc menu</th>
+                        <th>Ngày tạo</th>
+                        <th>Trạng thái</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <% @categories.each do |item| %>
+                      <tr>
+                          <td><%= link_to item.name, "#" %></td>
+                          <td>
+                              <% item.menus.each do |menu| %>
+                                <%= content_tag(:p, class: "form-control-static") do %>
+                                    <%= menu.title %>
+                                <% end %>
+                              <% end %>
+                          </td>
+                          <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
+                          <td><span class="label label-info">Active</span></td>
+                      </tr>
+                  <% end %>
+                </tbody>
+            </table>
+        </div>
+        <!-- /basic datatable -->
+    
+        <!-- Footer -->
+        <%= render '/admin/manages/footer' %>
+        <!-- /footer -->
+    
+    </div>
+    <!-- /content area -->
+
+</div>
+<!-- /main content -->
+
+<!-- Theme JS files -->
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
+
+<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/javascripts/datatables_old_categories.js' %>
+<!-- /theme JS files -->

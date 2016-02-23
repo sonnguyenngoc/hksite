@@ -37,7 +37,11 @@
                         <ul class="theme_menu">
                             
                             <% @tag.each do |tag| %>
-                                <li><a href="#"><%= tag.title %></a></li>
+                                <% if tag.title == "Giới thiệu công ty" %>
+                                    <li><%= link_to tag.title, {controller: "about_us", action: "index"} %></li>
+                                <% else %>
+                                    <li><%= link_to tag.title, {controller: "blog_detail", action: "index", id: tag.id} %></li>
+                                <% end %>
                             <% end %>
 
                         </ul>
@@ -136,8 +140,6 @@
 
                                     <span><i class="icon-calendar"></i> <%= @blog_post.created_at.strftime("%d/%m/%Y") %></span>
 
-                                    <span><a href="#" class="comments"><i class="icon-comment"></i> 3</a></span>
-
                                     <span><i class="icon-user-8"></i> đăng bởi <a href="#">Quản trị viên</a></span>
 
                                     <span><i class="icon-folder-open-empty-1"></i> <a href="#"><%= @blog_post.tag.title %></a></span>
@@ -155,14 +157,12 @@
                                         <li class="active"></li>
                                         <li class="active"></li>
                                         <li class="active"></li>
-                                        <li></li>
+                                        <li class="active"></li>
                                         <li></li>
 
                                     </ul>
                                     
                                     <!-- - - - - - - - - - - - - - End of entry rating - - - - - - - - - - - - - - - - -->
-
-                                    (17 votes)
 
                                 </div>
 

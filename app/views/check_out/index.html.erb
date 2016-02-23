@@ -61,8 +61,8 @@
                                     
                                     <div class="col-sm-6">
                                         
-                                        <label for="company_name">Tên công ty</label>
-                                        <%= f.text_field :orderer_company_name %>
+                                        <label for="company_name" class="required">Số điện thoại</label>
+                                        <%= f.text_field :orderer_phone, required: true %>
     
                                     </div><!--/ [col] -->
     
@@ -74,13 +74,35 @@
                                     </div><!--/ [col] -->
     
                                 </li><!--/ .row -->
+                                
+                                <li class="row">	
+    
+                                    <div class="col-xs-12">
+    
+                                        <label for="address">Tên công ty</label>
+                                        <%= f.text_field :orderer_company_name %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!-- / .row -->
     
                                 <li class="row">	
     
                                     <div class="col-xs-12">
     
-                                        <label for="address" class="required">Địa chỉ</label>
+                                        <label for="address" class="required">Địa chỉ giao hàng</label>
                                         <%= f.text_field :orderer_address_1, required: true %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!-- / .row -->
+                                
+                                <li class="row">	
+    
+                                    <div class="col-xs-12">
+    
+                                        <label for="address" >Địa chỉ xuất hóa đơn</label>
+                                        <%= f.text_field :orderer_address_2 %>
     
                                     </div><!--/ [col] -->
     
@@ -88,26 +110,16 @@
     
                                 <li class="row">
     
-                                    <div class="col-xs-12">
-    
-                                        <%= f.text_field :orderer_address_2 %>
-    
-                                    </div><!--/ [col] -->
-    
-                                </li><!--/ .row -->
-    
-                                <li class="row">
-    
                                     <div class="col-sm-6">
-    
-                                        <label for="telephone" class="required">Số điện thoại</label>
-                                        <%= f.text_field :orderer_phone, required: true %>
+                                        
+                                        <label for="first_name">Mã số thuế</label>
+                                        <%= f.text_field :orderer_tax %>
     
                                     </div><!--/ [col] -->
     
                                     <div class="col-sm-6">
-    
-                                        <label for="fax">Số fax</label>
+                                        
+                                        <label for="last_name">Mã fax</label>
                                         <%= f.text_field :orderer_fax %>
     
                                     </div><!--/ [col] -->

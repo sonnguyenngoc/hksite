@@ -58,67 +58,7 @@
 					<a class="dropdown-toggle" data-toggle="dropdown">
 						<img src="/backend/assets/images/flags/vn.png" class="position-left" alt="">
 						Tiếng Việt
-						<span class="caret"></span>
 					</a>
-
-					<ul class="dropdown-menu">
-						<li><a class="deutsch"><img src="/backend/assets/images/flags/gb.png" alt=""> Tiếng Anh</a></li>
-					</ul>
-				</li>
-
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-bubbles4"></i>
-						<span class="visible-xs-inline-block position-right">Tin nhắn</span>
-						<span class="badge bg-warning-400">2</span>
-					</a>
-					
-					<div class="dropdown-menu dropdown-content width-350">
-						<div class="dropdown-content-heading">
-							Tin nhắn
-							<ul class="icons-list">
-								<li><a href="#"><i class="icon-compose"></i></a></li>
-							</ul>
-						</div>
-
-						<ul class="media-list dropdown-content-body">
-							<li class="media">
-								<div class="media-left">
-									<img src="/backend/assets/images/placeholder.jpg" class="img-circle img-sm" alt="">
-									<span class="badge bg-danger-400 media-badge">5</span>
-								</div>
-
-								<div class="media-body">
-									<a href="#" class="media-heading">
-										<span class="text-semibold">James Alexander</span>
-										<span class="media-annotation pull-right">04:58</span>
-									</a>
-
-									<span class="text-muted">who knows, maybe that would be the best thing for me...</span>
-								</div>
-							</li>
-
-							<li class="media">
-								<div class="media-left">
-									<img src="/backend/assets/images/placeholder.jpg" class="img-circle img-sm" alt="">
-									<span class="badge bg-danger-400 media-badge">4</span>
-								</div>
-
-								<div class="media-body">
-									<a href="#" class="media-heading">
-										<span class="text-semibold">Margo Baker</span>
-										<span class="media-annotation pull-right">12:16</span>
-									</a>
-
-									<span class="text-muted">That was something he was unable to do because...</span>
-								</div>
-							</li>
-						</ul>
-
-						<div class="dropdown-content-footer">
-							<a href="#" data-popup="tooltip" title="All messages"><i class="icon-menu display-block"></i></a>
-						</div>
-					</div>
 				</li>
 
 				<li class="dropdown dropdown-user">
@@ -159,7 +99,7 @@
 							<div class="media">
 								<a href="#" class="media-left"><img src="<%= url_for("/backend/assets/images/logo-company.jpg") %>" class="img-circle img-sm" alt=""></a>
 								<div class="media-body">
-									<span class="media-heading text-semibold">Hoang Khang Incotech</span>
+									<span class="media-heading text-semibold">Hoàng Khang Incotech</span>
 									<div class="text-size-mini text-muted">
 										<i class="icon-pin text-size-small"></i> &nbsp;TP.HCM, VN
 									</div>
@@ -192,12 +132,14 @@
 										<li><%= link_to 'Quản lý tin nhắn', admin_messages_path %></li>
 										<li><%= link_to 'Quản lý email - Newsletter', admin_newsletters_path %></li>
 										<li><%= link_to 'Quản lý SlideShow', admin_slide_shows_path %></li>
+										<li><%= link_to 'Quản lý danh sách đối tác', admin_partners_path %></li>
 									</ul>
 								</li>
 								<li>
 									<a href="#"><i class="icon-tree5"></i> <span>Quản lý chuyên mục</span></a>
 									<ul>
 										<li><%= link_to 'Danh sách chuyên mục', admin_menus_path %></li>
+										<li><%= link_to 'Chuyên mục cũ', {controller: "admin/old_category", action: "index"} %></li>
 									</ul>
 								</li>
 								<li>
@@ -214,9 +156,9 @@
 									</ul>
 								</li>
 								<li>
-									<a href="#"><i class="icon-stack"></i> <span>Quản lý sản phẩm</span></a>
+									<a href="#"><i class="icon-task"></i> <span>Quản lý sản phẩm</span></a>
 									<ul>
-										<li><%= link_to 'Quản lý thông tin sản phẩm', product_infos_path %></li>
+										<li><%= link_to 'Quản lý thông tin sản phẩm', admin_product_infos_path %></li>
 									</ul>
 								</li>
 								<!-- /main -->

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :product_infos
   resources :customer_orders
   resources :line_items
   resources :carts
@@ -15,7 +14,10 @@ Rails.application.routes.draw do
   get "shopping_cart" => "shopping_cart#index", as: :shopping_cart
   get "check_out" => "check_out#index", as: :check_out
   get "category_page" => "category_page#index", as: :category_page
+  get "manufacturer" => "manufacturer#index", as: :manufacturer
+  get "manufacturer_page" => "manufacturer_page#index", as: :manufacturer_page
   namespace :admin, :path => "hoangkhangincotech" do
+      resources :partners
       resources :articles
       resources :tags
       resources :slide_shows
@@ -24,6 +26,8 @@ Rails.application.routes.draw do
       resources :manages
       resources :menus
       resources :customer_orders
+      resources :product_infos
+      get "old_category" => "old_category#index", as: :old_category
   end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

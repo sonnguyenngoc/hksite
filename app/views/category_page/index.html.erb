@@ -26,7 +26,7 @@
             <div class="row">
 
                 <aside class="col-md-3 col-sm-4 has_mega_menu">
-
+                    
                     <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
 
                     <%= render 'category_left_page' %>
@@ -49,21 +49,9 @@
 
                                     <div class="table_cell">
 
-                                        <label>Danh mục</label>
+                                        <label>Tên sản phẩm</label>
 
-                                        <div class="custom_select">
-
-                                            <select name="">
-                                                
-                                                <option value="Thiết bị tin học">Thiết bị tin học</option>
-                                                <option value="Thiết bị văn phòng">Thiết bị văn phòng</option>
-                                                <option value="Thiết bị hệ thống mạng">Thiết bị hệ thống mạng</option>
-                                                <option value="Thiết bị viễn thông">Thiết bị viễn thông</option>
-                                                <option value="An ninh kiểm soát">An ninh kiểm soát</option>
-
-                                            </select>
-
-                                        </div>
+                                        <input type="text" placeholder="Nhập tên sản phẩm cần tìm..." />
 
                                     </div><!--/ .table_cell -->
 
@@ -73,43 +61,15 @@
 
                                     <div class="table_cell">
 
-                                        <fieldset>
+                                        <div class="custom_select">
 
-                                            <legend>Nhà cung cấp</legend>
+                                            <select>
+                                                <% @manufacturers.each do |item| %>
+                                                    <option value="<%= item.name %>"><%= item.name %></option>
+                                                <% end %>
+                                            </select>
 
-                                            <ul class="checkboxes_list">
-
-                                                <li>
-                                                    
-                                                    <input type="checkbox" checked name="manufacturer" id="manufacturer_1">
-                                                    <label for="manufacturer_1">Microsoft</label>
-
-                                                </li>
-
-                                                <li>
-                                                    
-                                                    <input type="checkbox" name="manufacturer" id="manufacturer_2">
-                                                    <label for="manufacturer_2">HP</label>
-
-                                                </li>
-
-                                                <li>
-                                                    
-                                                    <input type="checkbox" name="manufacturer" id="manufacturer_3">
-                                                    <label for="manufacturer_3">Apple</label>
-
-                                                </li>
-                                                
-                                                <li>
-                                                    
-                                                    <input type="checkbox" name="manufacturer" id="manufacturer_3">
-                                                    <label for="manufacturer_3">Kaspersky</label>
-
-                                                </li>
-
-                                            </ul>
-
-                                        </fieldset>
+                                        </div><!--/ .custom_select -->
 
                                     </div><!--/ .table_cell -->
 
@@ -251,7 +211,7 @@
 
                                 <div class="layout_type buttons_row" data-table-container="#products_container">
 
-                                    <a href="#" data-table-layout="grid_view" class="button_grey middle_btn icon_btn active tooltip_container"><i class="icon-th"></i><span class="tooltip top">Grid View</span></a>
+                                    <a href="#" data-table-layout="grid_view" class="button_grey middle_btn icon_btn active tooltip_container"><i class="icon-th"></i><span class="tooltip top">Danh sách</span></a>
 
                                 </div>
 
@@ -333,7 +293,7 @@
     
                                     <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
                                 
-                                <%= "</div><div class=\"table_row\">".html_safe if index%3 == 2 %>
+                                    <%= "</div><div class=\"table_row\">".html_safe if index%3 == 2 %>
                                 
                                 <% end %>
                             
@@ -351,15 +311,7 @@
 
                             <div class="right_side">
 
-                                <ul class="pags">
-
-                                    <li><a href="#"></a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <li><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#"></a></li>
-
-                                </ul>
+                                <%= will_paginate @products, :container => false %>
 
                             </div>
 

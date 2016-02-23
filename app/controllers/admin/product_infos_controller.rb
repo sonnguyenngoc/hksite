@@ -1,4 +1,4 @@
-class ProductInfosController < ApplicationController
+class Admin::ProductInfosController < ApplicationController
   before_action :set_product_info, only: [:show, :edit, :update, :destroy]
   
   def update_info
@@ -8,7 +8,7 @@ class ProductInfosController < ApplicationController
   # GET /product_infos
   # GET /product_infos.json
   def index
-    @products = Product.all
+    @products = Product.paginate(:page => params[:page], :per_page => 15).order("created_at DESC")
     @product_infos = ProductInfo.all
   end
 
@@ -40,7 +40,7 @@ class ProductInfosController < ApplicationController
 
     respond_to do |format|
       if @product_info.save
-        format.html { redirect_to @product_info, notice: 'Product info was successfully created.' }
+        format.html { redirect_to [:admin, @product_info], notice: 'Product info was successfully created.' }
         format.json { render :show, status: :created, location: @product_info }
       else
         format.html { render :new }
@@ -60,7 +60,7 @@ class ProductInfosController < ApplicationController
     
     respond_to do |format|
       if @product_info.update(product_info_params)
-        format.html { redirect_to @product_info, notice: 'Product info was successfully updated.' }
+        format.html { redirect_to [:admin, @product_info], notice: 'Product info was successfully updated.' }
         format.json { render :show, status: :ok, location: @product_info }
       else
         format.html { render :edit }
@@ -74,7 +74,7 @@ class ProductInfosController < ApplicationController
   def destroy
     @product_info.destroy
     respond_to do |format|
-      format.html { redirect_to product_infos_url, notice: 'Product info was successfully destroyed.' }
+      format.html { redirect_to admin_product_infos_url, notice: 'Product info was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
