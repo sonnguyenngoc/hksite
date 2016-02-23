@@ -33,7 +33,7 @@
 
                                 <div class="ls-l layer_1" style="left: 80px; top:128px; text-transform: uppercase; color: #bd6208;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack;"><%= product.title %></div>
                                 <!--<div class="ls-l layer_3" style="left: 80px; top: 188px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 150;"></div>-->
-                                <div class="ls-l layer_2" style="left: 80px; top: 200px; font-size: 40px; color: #000000" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 300;"><%= product.description %></div>
+                                <div class="ls-l layer_2" style="left: 80px; top: 200px; font-size: 40px; color: #b2b2b2" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 300;"><%= product.description %></div>
 
                                 <!--<a href="#" class="ls-l button_blue huge_btn" style="left: 80px; top: 330px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 450;">CHI TIẾT</a>-->
 
@@ -56,7 +56,8 @@
                 <aside class="col-md-3 col-sm-4">
 
                     <!-- - - - - - - - - - - - - - Today's deals - - - - - - - - - - - - - - - - -->
-
+                    
+                    <% if @sale_products.count > 1 %>
                     <section class="section_offset animated transparent" data-animation="fadeInDown">
 
                         <h3 class="widget_title">Đang khuyến mãi</h3>
@@ -64,80 +65,77 @@
                         <!-- - - - - - - - - - - - - - Carousel of today's deals - - - - - - - - - - - - - - - - -->
 
                         <div class="owl_carousel widgets_carousel">
-
+                            
                             <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                            
-                            <% @sale_products.each do |product| %>
-                            
-                            <div class="product_item">
-
-                                <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
                                 
-                                <div class="image_wrap">
+                            <% @sale_products.each_with_index do |product, index| %>
 
-                                    <% if product.product_info.nil? %>
-                                        <img src="images/img_product_if_empty.jpg" alt="">
-                                    <% else %>
-                                        <img src="<%= product.product_info.image_url if product.product_info.image_url? %>" style="width: 223px; height: 200px;" alt="">
-                                    <% end %>
+                                <div class="product_item">
 
-                                    <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-
-                                    <div class="actions_wrap">
-
-                                        <div class="centered_buttons">
-
-                                            <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
-
-                                        </div><!--/ .centered_buttons -->
-                                        
-                                    </div><!--/ .actions_wrap-->
-                                    
-                                    <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-
-                                </div><!--/. image_wrap-->
-
-                                <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-
-                                <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-
-                                <!-- <div class="label_offer percentage">
-
-                                    Giảm<div>50%</div>
-
-                                </div> -->
-
-                                <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-
-                                <!-- - - - - - - - - - - - - - Countdown - - - - - - - - - - - - - - - - -->
-
-                                <!-- <div class="countdown" data-year="2016" data-month="3" data-day="16" data-hours="11" data-minutes="10" data-seconds="10"></div> -->
-
-                                <!-- - - - - - - - - - - - - - End countdown - - - - - - - - - - - - - - - - -->
-
-                                <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-
-                                <div class="description">
-                                
-                                    <p><%= link_to (truncate(strip_tags(product.name), length: 35)), {controller: "product", action: "index", id: product.id} %></p>
-
-                                    <div class="clearfix product_info">
-                                         <% if product.product_info.nil? %>
-                                            <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
+                                    <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
+    
+                                    <div class="image_wrap">
+    
+                                        <% if product.product_info.nil? %>
+                                            <img src="images/img_product_if_empty.jpg" alt="">
                                         <% else %>
-                                            <p class="product_price alignleft"><s><%= number_with_delimiter product.product_info.old_price.to_i %> VNĐ</s> <b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
+                                            <img src="<%= product.product_info.image_url if product.product_info.image_url? %>" style="width: 223px; height: 200px;" alt="">
                                         <% end %>
+    
+                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+    
+                                        <div class="actions_wrap">
+    
+                                            <div class="centered_buttons">
+    
+                                                <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
+    
+                                            </div><!--/ .centered_buttons -->
+    
+                                        </div><!--/ .actions_wrap-->
                                         
-
-                                    </div><!--/ .clearfix.product_info-->
-
-                                </div>
-
-                                <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-
-                            </div><!--/ .product_item-->
-                            
-                            <% end %>
+                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+    
+                                    </div><!--/. image_wrap-->
+    
+                                    <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
+    
+                                    <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+    
+                                    <div class="label_offer percentage">
+    
+                                        Giảm<div>30%</div>
+    
+                                    </div>
+    
+                                    <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+    
+                                    <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
+    
+                                    <div class="description">
+    
+                                        <p><%= link_to (truncate(strip_tags(product.name), length: 35)), {controller: "product", action: "index", id: product.id} %></p>
+    
+                                        <div class="clearfix product_info">
+                                            <% if product.product_price.price.nil? %>
+                                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ</b></p>
+                                            <% else %>
+                                                <% if product.product_info.nil? %>
+                                                    <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
+                                                <% else %>
+                                                    <p class="product_price alignleft"><s><%= number_with_delimiter product.product_info.old_price.to_i %> VNĐ</s> <b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
+                                                <% end %>
+                                            <% end %>
+    
+                                        </div><!--/ .clearfix.product_info-->
+    
+                                    </div>
+    
+                                    <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
+                                
+                                </div><!--/ .product_item-->
+                                
+                            <% end %>                            
                             
                             <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
 
@@ -147,15 +145,16 @@
 
                         <!-- - - - - - - - - - - - - - View all deals of the day - - - - - - - - - - - - - - - - -->
 
-                        <!--<<footer class="bottom_box">
+                        <footer class="bottom_box">
 
-                            a href="#" class="button_grey middle_btn">Xem toàn bộ</a>
+                            
 
-                        </footer>-->
+                        </footer>
 
                         <!-- - - - - - - - - - - - - - End of view all deals of the day - - - - - - - - - - - - - - - - -->
 
                     </section><!--/ .section_offset.animated.transparent-->
+                    <% end %>
 
                     <!-- - - - - - - - - - - - - - End of today's deals - - - - - - - - - - - - - - - - -->
 
@@ -170,27 +169,15 @@
                         <div class="owl_carousel widgets_carousel">
 
                             <!-- - - - - - - - - - - - - - Testimonial - - - - - - - - - - - - - - - - -->
-
-                            <blockquote>
-
-                                <div class="author_info"><b>Giới thiệu sản phẩm máy in phun - k100, k200</b></div>
-
-                                <p>Lời giới thiệu ngắn của tin tức....</p>
-
-                            </blockquote>
-
-                            <!-- - - - - - - - - - - - - - End testimonial - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Testimonial - - - - - - - - - - - - - - - - -->
-
-                            <blockquote>
-
-                                <div class="author_info"><b>Chương trình khuyến mãi đặc biệt dành cho khách hàng cá nhân</b></div>
-
-                                <p>Lời giới thiệu ngắn của tin tức....</p>
-
-                            </blockquote>
-                            
+                            <% @new_blog_footer.each do |blog| %>
+                                <blockquote>
+    
+                                    <div class="author_info"><b><%= link_to blog.title, { controller: "blog_post", action: "index", id: blog.id } %></b></div>
+    
+                                    <p><%= truncate(strip_tags(blog.content), length: 35) %></p>
+    
+                                </blockquote>
+                            <% end %>
                             <!-- - - - - - - - - - - - - - End testimonial - - - - - - - - - - - - - - - - -->
 
                         </div><!--/ .widgets_carousel-->

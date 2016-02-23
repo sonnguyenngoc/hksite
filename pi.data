@@ -1,0 +1,48 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: product_infos; Type: TABLE DATA; Schema: public; Owner: hungnt
+--
+
+COPY product_infos (id, image_url, description, old_price, product_hot, product_sale, product_bestselled, product_prominent, created_at, updated_at, product_id, note, product_new) FROM stdin;
+5	\N	Mô tả product info	\N	\N	\N	\N	\N	2016-01-26 09:58:09.126679	2016-01-26 09:58:09.126679	8	\N	\N
+2	x-3505.jpg	Giới thiệu X3500	\N	\N	\N	\N	\N	2016-01-26 09:55:08.022932	2016-01-26 10:10:18.925978	8	\N	\N
+16	KSOS-10PC-1SERVER-1-YEAR.png		0.0	on	\N	on	\N	2016-02-01 10:01:20.002106	2016-02-19 07:21:42.975379	23	\tTích hợp bảo mật cho máy tính xách tay, máy tính để bàn và máy chủ; Bảo vệ toàn diện trước tất cả các mối đe dọa trực tuyến, hacker và spam...	on
+3	x-3505.jpg	Mô tả product info	0.0	\N	on	\N	on	2016-01-26 09:55:28.685397	2016-02-20 03:43:36.241567	8		\N
+4	x-3505.jpg	Mô tả product info	0.0	\N	on	\N	\N	2016-01-26 09:57:30.045069	2016-02-20 04:04:11.690524	8		\N
+6	\N		\N	\N	on	on	\N	2016-01-27 03:54:28.145638	2016-01-27 04:26:20.030772	1038	\N	\N
+7	\N		\N	\N	\N	on	\N	2016-01-28 03:24:08.950361	2016-01-28 03:24:08.950361	64		\N
+8	Lenovo_X240_CenterLap.jpg	Lenovo ThinkPad X240 dòng Business cao cấp nhỏ gọn cấu hình mạnh. Màn hình 12.5 inch Anti Glare IPS (1366x768)...	\N	\N	\N	on	\N	2016-01-28 03:32:01.068584	2016-01-28 03:50:21.452118	209	Intel Core i5 Haswell 4300U 1.9Ghz (4cpu) Turbo 2.9Ghz Cache 3MB	\N
+1	day-cap-nhay.png	Giới thiệu về dây cáp	140.0	\N	on	on	\N	2016-01-26 09:31:38.65822	2016-01-31 18:42:05.073355	34	Chiều dài: 20m	\N
+9	sua-may-tinh-tai-nha.jpg		0.0	\N	\N	\N	\N	2016-02-01 01:35:15.966563	2016-02-01 01:35:15.966563	22		\N
+10	tn-261bk_1.jpg		0.0	\N	\N	\N	\N	2016-02-01 01:41:46.484004	2016-02-01 01:41:46.484004	50		\N
+11	day-cap-mang-amp.jpg		0.0	\N	\N	\N	\N	2016-02-01 09:00:57.299338	2016-02-01 09:00:57.299338	42		\N
+12	LCD-19M37A-B.jpg	MÀN HÌNH LCD HIỆU ASUS VS228DE. \r\nNếu bạn là người thích trải nghiệm game đồ hoạ cao, thì việc lựa chọn màn hình vi tính không chỉ dựa trên tiêu chí kích thước lớn, mà còn phải có độ phân giải cao. Thể hiện rõ nét và mượt mà từng điểm ảnh, cho hình ảnh luôn giữ được độ trong và sắc nét. Màn hình máy tính LG 19M37A-B thuộc dòng màn hình LCD kích thước lớn, cho trải nghiệm giải trí tuyệt vời cùng màn ảnh rộng. Ngoài ra, màn hình LCD LG 19M37A-B thích hợp cho nhân viên thiết kế bản vẽ, bản vẽ cấu trúc, lẫn 2D và 3D chuyên dụng. Hàng triệu điểm ảnh được thể hiện một cách hoàn hảo, mang lại chất lượng đồ hoạ cao. 	0.0	\N	\N	on	on	2016-02-01 09:24:45.724084	2016-02-01 09:26:37.144632	71	Siêu tiết kiệm năng lượng. Chức năng đọc sách chuyên biệt. Hiển thị kép thông minh.	on
+13	dell_optiplex_3020mt_i3-4130.jpg		0.0	\N	\N	\N	on	2016-02-01 09:48:01.411094	2016-02-01 09:48:01.411094	21	PC Dell Optiplex 3020MT Intel Core i3 4130 (3.4Ghz, 3MB Cache), DDRam III 2GB Bus 1600, 500GB HDD SATA, DVD+/-RW, Intel HD Graphics 4400, Ubuntu Linux 12.04.	\N
+14	HDD-LAPTOP-500GB_2.5.jpg		0.0	\N	\N	on	on	2016-02-01 09:53:47.589144	2016-02-01 09:53:47.589144	45	Ổ cứng MTXT Seagate: Dung lượng 500Gb/ Tốc độ vòng quay 5400rpm/ Chuẩn giao tiếp SATA II 3Gb/s; 8MB Cache/ Kích thước 2.5 inch.	\N
+15	HDD-LAPTOP-500GB_2.5.jpg		0.0	\N	\N	on	on	2016-02-01 09:54:20.193393	2016-02-01 09:54:20.193393	45	Ổ cứng MTXT Seagate: Dung lượng 500Gb/ Tốc độ vòng quay 5400rpm/ Chuẩn giao tiếp SATA II 3Gb/s; 8MB Cache/ Kích thước 2.5 inch.	\N
+\.
+
+
+--
+-- Name: product_infos_id_seq; Type: SEQUENCE SET; Schema: public; Owner: hungnt
+--
+
+SELECT pg_catalog.setval('product_infos_id_seq', 16, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
