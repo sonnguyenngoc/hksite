@@ -12,5 +12,6 @@ class ProductController < ApplicationController
     @favorite_products = Product.get_favorite_products
     @related_products = Product.get_related_products
   end
+
   
 end

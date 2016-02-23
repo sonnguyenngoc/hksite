@@ -583,40 +583,28 @@
 
                         <div class="owl_carousel brands">
                             
-                            <!--Brand-->
-                            <a href="#">
-                                <img src="images/intel.jpg" alt="">
-                            </a>
-                            <!--End brand-->
-
-                            <!--Brand-->
-                            <a href="#">
-                                <img src="images/microsoft.jpg" alt="">
-                            </a>
-                            <!--End brand-->
-
-                            <!--Brand-->
-                            <a href="#">
-                                <img src="images/cisco.jpg" alt="">
-                            </a>
-                            <!--End brand-->
-
-                            <!--Brand-->
-                            <a href="#">
-                                <img src="images/ibm.jpg" alt="">
-                            </a>
-                            <!--End brand-->
-
-                            <!--Brand-->
-                            <a href="#">
-                                <img src="images/hp.jpg" alt="">
-                            </a>
-                            <!--End brand-->
+                            <% @partners.each do |item| %>
+                                
+                                <!--Brand-->
+                                    <%= link_to(image_tag(item.image_url.partner_image, width: 180, height: 150), {controller: "manufacturer_page", action: "index", id: item.manufacturer_id}) %>
+                                <!--End brand-->
+                                
+                            <% end %>
 
                         </div><!--/ .owl_carousel-->
                         
                         <!-- - - - - - - - - - - - - - End of carousel of brands - - - - - - - - - - - - - - - - -->
 
+                        <!-- - - - - - - - - - - - - - View all entries - - - - - - - - - - - - - - - - -->
+
+                        <footer class="bottom_box">
+
+                            <%= link_to "Xem thêm", {controller: "manufacturer", action: "index"}, { class: "button_grey middle_btn" } %>
+                            
+                        </footer>
+
+                        <!-- - - - - - - - - - - - - - End of view all entries - - - - - - - - - - - - - - - - -->
+                    
                     </section><!--/ .section_offset.animated.transparent-->
                     
                     <!-- - - - - - - - - - - - - - End our brands - - - - - - - - - - - - - - - - -->

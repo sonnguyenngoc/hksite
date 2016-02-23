@@ -54,6 +54,10 @@ class Product < ActiveRecord::Base
   def self.search(params)
     self.first(15)
   end
+  
+  def self.get_by_manufacturer(params)
+    self.where(manufacturer_id: params[:id])
+  end
  
 
   private

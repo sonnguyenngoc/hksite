@@ -9,6 +9,7 @@ class HomeController < ApplicationController
     @product = Product.last(12)
     @slideshow = SlideShow.get_slideshows
     @new_blog_footer = Article.order("created_at DESC").first(3)
+    @partners = Partner.all.first(20)
     
     @hot_products = Product.get_hot_products
     @sale_products = Product.get_sale_products

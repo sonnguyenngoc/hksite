@@ -9,13 +9,13 @@ class ApplicationController < ActionController::Base
   
   def layout_by_resource
     if controller_name == 'home' || controller_name == 'category' || controller_name == 'blog' || controller_name == 'blog_detail' || controller_name == 'blog_post' ||
-       controller_name == 'contact' || controller_name == 'about_us' || controller_name == 'shopping_cart' ||
+       controller_name == 'contact' || controller_name == 'about_us' || controller_name == 'shopping_cart' || controller_name == 'manufacturer_page'  || controller_name == 'manufacturer' ||
        controller_name == 'check_out' || controller_name == 'product' || controller_name == 'category_page' || controller_name == 'product_search'
-      'frontend'
+          'frontend'
     elsif controller_name == 'manages' || controller_name == 'messages' || controller_name == 'newsletters' ||
           controller_name == 'tags' || controller_name == 'articles' || controller_name == 'slide_shows' || controller_name == 'carts' ||
-          controller_name == 'menus' || controller_name == 'product_infos' || controller_name == 'customer_orders'
-      'backend'
+          controller_name == 'menus' || controller_name == 'product_infos' || controller_name == 'customer_orders' || controller_name == 'old_category' || controller_name == 'partners'
+              'backend'
     end
   end
 end
