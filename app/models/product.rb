@@ -53,6 +53,11 @@ class Product < ActiveRecord::Base
   
   def self.search(params)
     self.first(15)
+  #  if params
+  #    where('name LIKE ?', "%#{params}%") || where('client LIKE ?', "%#{params}%")
+  #  else
+  #    scoped
+  #  end
   end
   
   def self.get_by_manufacturer(params)
