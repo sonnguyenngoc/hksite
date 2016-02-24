@@ -43,11 +43,13 @@
                             <!-- - - - - - - - - - - - - - Image preview container - - - - - - - - - - - - - - - - -->
 
                             <div class="image_preview_container">
+                                
+                                
 
-                                <% if @pro_detail.product_info.nil? %>
-                                    <img src="images/img_product_detail.jpg" class="img-rounded" alt="">
+                                <% if @pro_detail.product_image.id.nil? %>
+                                    <img src="<%= @pro_detail.product_image.image %>" class="img-rounded" alt="">
                                 <% else %>
-                                    <img id="img_zoom" data-zoom-image="<%= @pro_detail.product_info.image_url if @pro_detail.product_info.image_url? %>" src="<%= @pro_detail.product_info.image_url if @pro_detail.product_info.image_url? %>"
+                                    <img id="img_zoom" data-zoom-image="<%= @pro_detail.product_image.image %>" src="<%= @pro_detail.product_image.image %>"
                                     style="width: 360px; height: 330px;" alt="">
                                 <% end %>
 
