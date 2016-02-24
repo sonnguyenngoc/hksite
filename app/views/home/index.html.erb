@@ -68,7 +68,7 @@
                             
                             <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
                                 
-                            <% @sale_products.each_with_index do |product, index| %>
+                            <% @sale_products.each do |product| %>
 
                                 <div class="product_item">
 
@@ -101,12 +101,14 @@
                                     <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
     
                                     <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-    
-                                    <div class="label_offer percentage">
-    
-                                        <!--Giảm<div>30%</div>-->
-    
-                                    </div>
+                                    
+                                    <% if !product.product_info.sale_off_price.nil? and product.product_info.sale_off_price > 0 %>
+                                        <div class="label_offer percentage">
+                                            
+                                            Giảm<div><%= product.product_info.sale_off_price %>%</div>
+        
+                                        </div>
+                                    <% end %>
     
                                     <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
     
@@ -115,15 +117,19 @@
                                     <div class="description">
     
                                         <p><%= link_to (truncate(strip_tags(product.name), length: 35)), {controller: "product", action: "index", id: product.id} %></p>
+                                        <p><%= truncate(strip_tags(product.product_info.bonus_product), length: 30) %></p>
     
                                         <div class="clearfix product_info">
                                             <% if product.product_price.price.nil? %>
                                                 <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
                                             <% else %>
-                                                <% if product.product_info.nil? %>
-                                                    <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
-                                                <% else %>
-                                                    <p class="product_price alignleft"><s><%= number_with_delimiter product.product_info.old_price.to_i %> VNĐ</s> <b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
+                                                <% if !product.product_info.nil? %>
+                                                    <% if product.product_info.sale_price.nil? || product.product_info.sale_price <= 0 %>
+                                                        <p class="product_price alignleft"><span style="color: #b2b2b2">Giá KM: </span><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
+                                                    <% else %>
+                                                        <p class="product_price alignleft"><s><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</s>
+                                                        <b><%= number_with_delimiter product.product_info.sale_price.to_i %> VNĐ</b></p>
+                                                    <% end %>
                                                 <% end %>
                                             <% end %>
     
@@ -142,16 +148,6 @@
                         </div><!--/ .widgets_carousel-->
 
                         <!-- - - - - - - - - - - - - - End of carousel of today's deals - - - - - - - - - - - - - - - - -->
-
-                        <!-- - - - - - - - - - - - - - View all deals of the day - - - - - - - - - - - - - - - - -->
-
-                        <footer class="bottom_box">
-
-                            
-
-                        </footer>
-
-                        <!-- - - - - - - - - - - - - - End of view all deals of the day - - - - - - - - - - - - - - - - -->
 
                     </section><!--/ .section_offset.animated.transparent-->
                     <% end %>
