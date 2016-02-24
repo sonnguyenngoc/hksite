@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :product_images do
+    collection do
+      get :image
+    end
+  end
+  devise_for :logins
   resources :customer_orders
   resources :line_items
   resources :carts

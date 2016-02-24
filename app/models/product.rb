@@ -18,6 +18,11 @@ class Product < ActiveRecord::Base
       return price
     end    
   end
+  
+  def product_image
+    img = product_images.where.not(filename: nil).order("display_order").first
+    return img.nil? ? ProductImage.new : img
+  end
 
   def product_detail
     pro_detail = products.find(5).name

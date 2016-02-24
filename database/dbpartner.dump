@@ -1,0 +1,47 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+SET search_path = public, pg_catalog;
+
+--
+-- Data for Name: partners; Type: TABLE DATA; Schema: public; Owner: nguyenngocson0811
+--
+
+COPY partners (id, image_url, created_at, updated_at, manufacturer_id) FROM stdin;
+1	dell.gif	2016-02-23 03:37:26.218013	2016-02-23 03:37:26.218013	10
+2	asus.jpg	2016-02-23 03:41:51.476811	2016-02-23 03:41:51.476811	2
+3	canon.jpg	2016-02-23 03:42:03.988628	2016-02-23 03:42:03.988628	14
+4	hitachi.jpg	2016-02-23 03:42:18.285383	2016-02-23 03:42:18.285383	17
+5	kaspersky.jpg	2016-02-23 03:42:29.614518	2016-02-23 03:42:29.614518	42
+6	kingston.png	2016-02-23 03:42:41.297469	2016-02-23 03:46:01.055702	16
+7	lenovo.jpg	2016-02-23 03:46:24.92963	2016-02-23 03:46:24.92963	11
+8	lg.jpg	2016-02-23 03:46:43.617183	2016-02-23 03:46:43.617183	7
+9	motorola.jpg	2016-02-23 03:46:55.668415	2016-02-23 03:46:55.668415	82
+10	msi.jpg	2016-02-23 03:47:06.802146	2016-02-23 03:47:06.802146	6
+11	norton.jpg	2016-02-23 03:47:25.604373	2016-02-23 03:47:25.604373	102
+12	oki.jpg	2016-02-23 03:47:40.378967	2016-02-23 03:47:40.378967	63
+13	samsung.jpg	2016-02-23 03:47:51.500886	2016-02-23 03:47:51.500886	8
+14	sony.jpg	2016-02-23 03:48:46.447792	2016-02-23 03:48:46.447792	50
+15	tp-link.jpg	2016-02-23 03:48:57.284735	2016-02-23 03:48:57.284735	56
+\.
+
+
+--
+-- Name: partners_id_seq; Type: SEQUENCE SET; Schema: public; Owner: nguyenngocson0811
+--
+
+SELECT pg_catalog.setval('partners_id_seq', 15, true);
+
+
+--
+-- PostgreSQL database dump complete
+--
+
