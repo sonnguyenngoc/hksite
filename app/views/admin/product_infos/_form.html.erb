@@ -15,40 +15,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <fieldset>
-                        <legend class="text-semibold"><i class="icon-reading position-left"></i> Product</legend>
-                        
-                        <div class="form-group">
-                            <%= f.label "Tên sản phẩm: ", class: "col-lg-3 control-label" %>
-                            <div class="col-lg-10">
-                                <b><%=  @product_info.product.name %></b>
-                                <%= f.hidden_field :product_id %>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <%= f.label "Mã sản phẩm: ", class: "col-lg-3 control-label" %>
-                            <div class="col-lg-10">
-                                <b><%= @product_info.product.product_code %></b>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <%= f.label "Giá bán: ", class: "col-lg-3 control-label" %>
-                            <div class="col-lg-10">
-                                <b><%= number_with_delimiter @product_info.product.product_price.price.to_i %> VNĐ</b>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <%= f.label "Đơn vị: ", class: "col-lg-3 control-label" %>
-                            <div class="col-lg-10">
-                                <b><%= @product_info.product.unit %></b>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-
-                <div class="col-md-6">
-                    <fieldset>
-                        <legend class="text-semibold"><i class="icon-truck position-left"></i> Product Info</legend>
+                        <legend class="text-semibold"><i class="icon-reading position-left"></i> Product Info</legend>
                         
                         <div class="form-group">
                             <%= f.label "Hình ảnh: ", class: "col-lg-3 control-label" %>
@@ -81,7 +48,7 @@
 
                         <div class="form-group">
                             <div class="form-group">
-                            <%= f.label "Phân loại module sản phẩm: ", class: "col-lg-3 control-label" %>
+                            <%= f.label "Phân loại sản phẩm: ", class: "col-lg-3 control-label" %>
                             <div class="col-lg-9">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -144,6 +111,47 @@
                                     </div>
                                     
                                 </div>
+                            </div>
+                        </div>
+                        
+                        <!--<div class="form-group">
+                            <%= f.label "Trạng thái (Đã ngừng cung cấp?): ", class: "col-lg-6 control-label" %>
+                            <div class="col-lg-6">
+                                <b></b>
+                            </div>
+                        </div>-->
+                        
+                    </fieldset>
+                </div>
+
+                <div class="col-md-6">
+                    <fieldset style="margin-left: 14%">
+                        <legend class="text-semibold"><i class="icon-truck position-left"></i> Product</legend>
+                        
+                        <div class="form-group">
+                            <%= f.label "Tên sản phẩm: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-10">
+                                <b><%=  @product_info.product.name %></b>
+                                <%= f.hidden_field :product_id %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label "Mã sản phẩm: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-10">
+                                <b><%= @product_info.product.product_code %></b>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label "Giá bán: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-10">
+                                <b><%= number_with_delimiter @product_info.product.product_price.price.to_i %> VNĐ</b>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <%= f.label "Đơn vị: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-10">
+                                <b><%= @product_info.product.unit %></b>
                             </div>
                         </div>
                             
