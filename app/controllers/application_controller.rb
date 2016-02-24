@@ -12,9 +12,12 @@ class ApplicationController < ActionController::Base
        controller_name == 'contact' || controller_name == 'about_us' || controller_name == 'shopping_cart' || controller_name == 'manufacturer_page'  || controller_name == 'manufacturer' ||
        controller_name == 'check_out' || controller_name == 'product' || controller_name == 'category_page' || controller_name == 'product_search'
           'frontend'
+    elsif (devise_controller? && resource_name == :login && action_name != 'edit') || controller_name == 'passwords'
+            'login'
     elsif controller_name == 'manages' || controller_name == 'messages' || controller_name == 'newsletters' ||
           controller_name == 'tags' || controller_name == 'articles' || controller_name == 'slide_shows' || controller_name == 'carts' ||
           controller_name == 'menus' || controller_name == 'product_infos' || controller_name == 'customer_orders' || controller_name == 'old_category' || controller_name == 'partners'
+              authenticate_login!
               'backend'
     end
   end

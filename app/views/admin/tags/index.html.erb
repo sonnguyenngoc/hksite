@@ -5,15 +5,15 @@
     <div class="page-header">
         <div class="page-header-content">
             <div class="page-title">
-                <h4><a href="#" class="btn-back"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Tags</span> - Management</h4>
+                <h4><span class="text-semibold">Quản lý loại tin tức</span></h4>
             </div>
         </div>
     
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
-                <li><%= link_to '<i class="icon-home2 position-left"></i> Trang chủ'.html_safe, admin_manages_path %></li>
-                <li><%= link_to 'Quản lý', admin_tags_path %></li>
-                <li class="active">Quản lý loại bài viết</li>
+                <li><%= link_to '<i class="icon-home2 position-left"></i> Trang chủ'.html_safe, admin_tags_path %></li>
+                <li><%= link_to 'Quản lý bài viết', admin_tags_path %></li>
+                <li class="active">Quản lý loại tin tức</li>
             </ul>
         </div>
     </div>
@@ -25,9 +25,9 @@
         <!-- Basic datatable -->
         <div class="panel panel-flat">
             <div class="panel-heading">
-                <%= link_to 'Tạo mới', new_admin_tag_path, class: 'btn btn-primary' %>
+                <%= link_to 'Tạo mới tin tức', new_admin_tag_path, class: 'btn btn-primary' %>
                 <hr/>
-                <h5 class="panel-title">Danh sách <span class="text-semibold">loại bài viết</span></h5>
+                <h5 class="panel-title">Danh sách <span class="text-semibold">loại tin tức</span></h5>
                 <div class="heading-elements">
                     <ul class="icons-list">
                         <li><a data-action="collapse"></a></li>

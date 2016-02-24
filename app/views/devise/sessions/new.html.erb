@@ -1,0 +1,39 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="panel panel-body login-form">
+        <div class="text-center">
+            <div class="icon-object border-slate-300 text-slate-300"><i class="icon-reading"></i></div>
+            <h5 class="content-group">Đăng nhập vào tài khoản của bạn <small class="display-block">Hãy nhập thông tin email và mật khẩu.</small></h5>
+        </div>
+        
+        <% if notice %>
+            <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
+        
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group has-feedback has-feedback-left">
+              <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Địa chỉ email..." %>
+              <div class="form-control-feedback">
+                  <i class="icon-user text-muted"></i>
+              </div>
+          </div>
+          
+          <div class="form-group has-feedback has-feedback-left">
+              <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Mật khẩu..." %>
+              <div class="form-control-feedback">
+                  <i class="icon-lock2 text-muted"></i>
+              </div>
+          </div>
+          
+          <div class="form-group">
+              <%= button_tag 'Đăng nhập <i class="icon-circle-right2 position-right"></i>'.html_safe, class: "btn btn-primary btn-block actions"%>
+          </div>
+        <% end %>
+        
+    </div>
+<% end %>
+
+
+

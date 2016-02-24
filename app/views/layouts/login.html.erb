@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Hoàng Khang - Gian hàng sản phẩm</title><meta name="description" content="Trang chủ,Máy vi tính giá rẻ, sửa chữa máy tính, bảo hành máy tính, bảo trì máy tính, xử lý sự cố máy tính, máy scaner, máy chiếu, máy fax, tổng đài, máy văn phòng, máy đa chức năng, máy in laser, máy in màu">
+
+	<!-- Global stylesheets -->
+	<%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' %>
+	<%= stylesheet_link_tag '/backend/assets/css/icons/icomoon/styles.css' %>
+	<%= stylesheet_link_tag '/backend/assets/css/bootstrap.min.css' %>
+	<%= stylesheet_link_tag '/backend/assets/css/core.min.css' %>
+	<%= stylesheet_link_tag '/backend/assets/css/components.min.css' %>
+	<%= stylesheet_link_tag '/backend/assets/css/colors.min.css' %>
+	<!-- /global stylesheets -->
+
+	<!-- Core JS files -->
+	<%= javascript_include_tag '/backend/assets/js/plugins/loaders/pace.min.js' %>
+	<%= javascript_include_tag '/backend/assets/js/core/libraries/jquery.min.js' %>
+	<%= javascript_include_tag '/backend/assets/js/core/libraries/bootstrap.min.js' %>
+	<%= javascript_include_tag '/backend/assets/js/plugins/loaders/blockui.min.js' %>
+	<!-- /core JS files -->
+
+
+	<!-- Theme JS files -->
+	<%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+	<!-- /theme JS files -->
+
+</head>
+
+<body>
+	<!-- Main navbar -->
+	<div class="navbar navbar-inverse">
+		<div class="navbar-header">
+			<ul class="nav navbar-nav pull-right visible-xs-block">
+				<li><a data-toggle="collapse" data-target="#navbar-mobile"><i class="icon-tree5"></i></a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- /main navbar -->
+
+
+	<!-- Page container -->
+	<div class="page-container login-container">
+
+		<!-- Page content -->
+		<div class="page-content">
+
+			<!-- Main content -->
+			<div class="content-wrapper">
+
+				<!-- Content area -->
+				<div class="content">
+					
+					<!-- Simple login form -->
+						<%= yield %>
+					<!-- /simple login form -->
+				
+					<!-- Footer -->
+					<div class="footer text-muted">
+						Bản quyền &copy; 2016 thuộc về <%= link_to "Hoàng Khang Incotech", root_path %><br/>
+                        Thiết kế bởi Hoàng Khang Incotech
+					</div>
+					<!-- /footer -->
+				</div>
+				<!-- /content area -->
+
+			</div>
+			<!-- /main content -->
+
+		</div>
+		<!-- /page content -->
+
+	</div>
+	<!-- /page container -->
+
+</body>
+</html>
