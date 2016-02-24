@@ -736,8 +736,6 @@
     
                                                 <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
     
-                                                <span><a href="#" class="comments"><i class="icon-comment"></i> 11</a></span>
-    
                                             </div><!--/ .byline-->
     
                                             <p><%= truncate(strip_tags(blog.content.html_safe), length: 150) %></p>
