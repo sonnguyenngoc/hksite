@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <fieldset>
-                        <legend class="text-semibold"><i class="icon-reading position-left"></i> Product Info</legend>
+                        <legend class="text-semibold"><i class="icon-info22 position-left"></i> Cập nhật thông tin sản phẩm</legend>
                         
                         <div class="form-group">
                             <%= f.label "Hình ảnh: ", class: "col-lg-3 control-label" %>
@@ -29,13 +29,6 @@
                             <%= f.label "Mô tả: ", class: "col-lg-3 control-label" %>
                             <div class="col-lg-9">
                                 <%= f.text_field :note, rows: "5", cols: "5", class: "form-control" %>
-                            </div>
-                        </div>
-                            
-                        <div class="form-group">
-                            <%= f.label "Giá cũ (vnđ): ", class: "col-lg-3 control-label" %>
-                            <div class="col-lg-9">
-                                <%= f.text_field :old_price, :value => number_with_delimiter(@product_info.old_price.to_i), rows: "5", cols: "5", class: "form-control" %>
                             </div>
                         </div>
                         
@@ -63,13 +56,15 @@
                                             </div>
                                         </div>
                                         <div class="mb-15">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <div class="checker">
-                                                            <input type="checkbox" class="styled" name="product_info[product_sale]" <%= 'checked' if @product_info.product_sale == "on" %>>
-                                                    </div>
-                                                    Sản phẩm 'Khuyến mãi'
-                                                </label>
+                                            <div class="mb-15">
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <div class="checker">
+                                                            <input type="checkbox" class="styled" name="product_info[product_new]" <%= 'checked' if @product_info.product_new == "on" %>>
+                                                        </div>
+                                                        Sản phẩm 'Mới'
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -95,21 +90,7 @@
                                                 </label>
                                             </div>
                                         </div>
-                                    </div>
-                                        
-                                    <div class="col-md-6">
-                                        <div class="mb-15">
-                                            <div class="checkbox">
-                                                <label>
-                                                    <div class="checker">
-                                                        <input type="checkbox" class="styled" name="product_info[product_new]" <%= 'checked' if @product_info.product_new == "on" %>>
-                                                    </div>
-                                                    Sản phẩm 'Mới'
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>
@@ -125,8 +106,8 @@
                 </div>
 
                 <div class="col-md-6">
-                    <fieldset style="margin-left: 14%">
-                        <legend class="text-semibold"><i class="icon-truck position-left"></i> Product</legend>
+                    <fieldset style="margin-left: 5%">
+                        <legend class="text-semibold"><i class="icon-list position-left"></i> Thông tin sản phẩm</legend>
                         
                         <div class="form-group">
                             <%= f.label "Tên sản phẩm: ", class: "col-lg-3 control-label" %>
@@ -155,6 +136,47 @@
                             </div>
                         </div>
                             
+                    </fieldset>
+                    <fieldset style="margin-left: 5%">
+                        <legend class="text-semibold"><i class="icon-gift position-left"></i> CHUYÊN MỤC KHUYẾN MÃI</legend>
+                        
+                        <div class="form-group">
+                            <%= f.label "Kích hoạt khuyến mãi: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-9">
+                                <div class="row">
+                                    <div class="mb-15">
+                                        <div class="checkbox">
+                                            <label>
+                                                <div class="checker">
+                                                        <input type="checkbox" class="styled" name="product_info[product_sale]" <%= 'checked' if @product_info.product_sale == "on" %>>
+                                                </div>
+                                                Đồng ý
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <%= f.label "Nhập phần trăm giảm giá: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-9">
+                                <%= f.text_field :sale_off_price, :value => number_with_delimiter(@product_info.sale_off_price.to_f), rows: "5", cols: "5", class: "form-control" %>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <%= f.label "Giá khuyến mãi: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-9">
+                                <%= f.text_field :sale_price, :value => number_with_delimiter(@product_info.sale_price.to_i), rows: "5", cols: "5", class: "form-control" %>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <%= f.label "Nhập sản phẩm tặng kèm: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-9">
+                                <%= f.text_area :bonus_product, rows: "5", cols: "5", class: "form-control" %>
+                            </div>
+                        </div>
                     </fieldset>
                 </div>
             </div>

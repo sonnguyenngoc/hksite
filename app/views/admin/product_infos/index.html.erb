@@ -44,7 +44,7 @@
                     <th>Tên Sản Phẩm</th>
                     <th>Giá N/Y (VNĐ)</th>
 					<th>Giới thiệu</th>
-                    <th>Đang cung cấp</th>
+                    <th>Trạng thái</th>
                     <th class="text-center">Thao tác</th>
                 </tr>
             </thead>
@@ -66,7 +66,24 @@
 							<%= truncate(strip_tags(product.description), length: 40) %>
 						</td>
 						<td>
-                            <input type="checkbox" class="styled" name="product_info[product_prominent]">
+							<% if !product.product_info.nil? %>
+								<% if product.product_info.product_hot == "on" %>
+									<ul><li style="list-style-type: none;"><span class="label label-info">hot</span></li></ul>
+								<% end %>
+								<% if product.product_info.product_new == "on" %>
+									<ul><li style="list-style-type: none;"><span class="label label-info">new</span></li></ul>
+								<% end %>
+								<% if product.product_info.product_sale == "on" %>
+									<ul><li style="list-style-type: none;"><span class="label label-info">khuyến-mãi</span></li></ul>
+								<% end %>
+								<% if product.product_info.product_prominent == "on" %>
+									<ul><li style="list-style-type: none;"><span class="label label-info">nổi-bật</span></li></ul>
+								<% end %>
+								<% if product.product_info.product_bestselled == "on" %>
+									<ul><li style="list-style-type: none;"><span class="label label-info">bán-chạy</span></li></ul>
+								<% end %>
+							<% end %>
+							
 						</td>
                         <td class="text-center">
                             <ul class="icons-list">
