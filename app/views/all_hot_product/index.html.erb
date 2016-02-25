@@ -33,6 +33,52 @@
 
                     <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
 
+                    <!-- - - - - - - - - - - - - - Filter - - - - - - - - - - - - - - - - -->
+
+                    <section class="section_offset">
+
+                        <h3>Bộ lọc</h3>
+
+                        <%= form_tag({controller: "product_search", action: "index"}, method: "get", class: "type_2") do %>
+
+                            <div class="table_layout list_view">
+
+                                <div class="table_row">
+
+                                    <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
+
+                                    <div class="table_cell">
+
+                                        <label>Tên sản phẩm</label>
+                                        
+                                        <%= text_field_tag :search_hot_products, params[:search_hot_products], placeholder: "Nhập tên sản phẩm cần tìm..." %>
+
+                                    </div><!--/ .table_cell -->
+
+                                    <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
+
+                                </div><!--/ .table_row -->
+
+                            </div><!--/ .table_layout -->
+
+                            <footer class="bottom_box">
+
+                                <div class="buttons_row">
+
+                                    <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>
+
+                                    <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>
+
+                                </div>
+
+                            </footer>
+
+                        <% end %>
+
+                    </section>
+
+                    <!-- - - - - - - - - - - - - - End of filter - - - - - - - - - - - - - - - - -->
+                    
                     <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
 
                     <div class="section_offset">
@@ -126,12 +172,7 @@
 
                                         <select name="">
 
-                                            <option value="15">15</option>
-                                            <option value="12">12</option>
-                                            <option value="9">9</option>
-                                            <option value="6">6</option>
-                                            <option value="3">3</option>
-                                            
+                                            <option value="15">15</option> 
 
                                         </select>
 
@@ -261,7 +302,7 @@
 
                             <div class="left_side">
 
-                                <p>Trang 1/3 (15/45 sản phẩm)</p>
+                                <p>?/<%= @products.count %> sản phẩm.</p>
 
                             </div>
 

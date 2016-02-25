@@ -29,7 +29,6 @@ class Product < ActiveRecord::Base
     pro_detail = products.find(5).name
   end
   
-  
   def self.get_hot_products
     self.includes(:product_info).where(product_infos: {product_hot: "on"}).order("product_infos.updated_at DESC")
   end
@@ -67,7 +66,27 @@ class Product < ActiveRecord::Base
     if params[:manufacturer_id].present?
       records = records.where('products.manufacturer_id = ?', "#{params[:manufacturer_id]}")
     end
-      
+    
+    if params[:search_new_products].present?
+      records = records.get_new_products.where('LOWER(name) LIKE ?', "%#{params[:search_new_products].strip.downcase}%")
+    end
+    
+    if params[:search_hot_products].present?
+      records = records.get_hot_products.where('LOWER(name) LIKE ?', "%#{params[:search_hot_products].strip.downcase}%")
+    end
+    
+    if params[:search_prominent_products].present?
+      records = records.get_prominent.products.where('LOWER(name) LIKE ?', "%#{params[:search_prominent_products].strip.downcase}%")
+    end
+    
+    if params[:search_bestseller_products].present?
+      records = records.get_bestseller_products.where('LOWER(name) LIKE ?', "%#{params[:search_bestseller_products].strip.downcase}%")
+    end
+    
+    if params[:search_sale_products].present?
+      records = records.get_sale_products.where('LOWER(name) LIKE ?', "%#{params[:search_sale_products].strip.downcase}%")
+    end
+    
     return records
   end
   

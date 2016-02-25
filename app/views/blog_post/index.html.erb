@@ -58,7 +58,7 @@
 
                         <ul class="list_of_entries">
                             
-                            <% @blog.each do |blog| %>
+                            <% @new_blog_footer.each do |blog| %>
 
                                 <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
     
@@ -142,7 +142,7 @@
 
                                     <span><i class="icon-user-8"></i> đăng bởi <a href="#">Quản trị viên</a></span>
 
-                                    <span><i class="icon-folder-open-empty-1"></i> <a href="#"><%= @blog_post.tag.title %></a></span>
+                                    <span><i class="icon-folder-open-empty-1"></i> <%= link_to @blog_post.tag.title, { controller: "blog_detail", action: "index", id: @blog_post.tag_id } %></span>
 
                                 </div>
 

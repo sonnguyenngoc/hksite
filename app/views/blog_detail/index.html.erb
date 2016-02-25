@@ -140,21 +140,13 @@
 
                             <!-- - - - - - - - - - - - - - End of blog layout type - - - - - - - - - - - - - - - - -->
 
-                            <p>Trang 1/3(<%= @blog.count %>/15 bài viết)</p>
+                            <p>?/<%= @blog.count %> bài viết</p>
 
                         </div>
 
                         <div class="right_side">
 
-                            <ul class="pags">
-
-                                <li><a href="#"></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#"></a></li>
-
-                            </ul>
+                            <%= will_paginate @blog, previous_label: '<', next_label: '>', renderer: BootstrapPagination::Rails %>
 
                         </div>
 
@@ -163,6 +155,7 @@
                     <!-- - - - - - - - - - - - - - List of entries - - - - - - - - - - - - - - - - -->
 
                     <ul id="main_blog_list" class="list_of_entries list_view">
+                        
                         <% @blog.each do |blog| %>
                             
                             <% if blog.tag_id == @find_tag.id %>
@@ -195,7 +188,7 @@
     
                                                 <span><i class="icon-user-8"></i> đăng bởi <a href="#">Quản trị viên</a></span>
     
-                                                <span><i class="icon-folder-open-empty-1"></i> <a href="#"><%= blog.tag.title %></a></span>
+                                                <span><i class="icon-folder-open-empty-1"></i> <%= link_to blog.tag.title, { controller: "blog_detail", action: "index", id: blog.tag_id } %></span>
     
                                             </div>
     
@@ -245,21 +238,13 @@
 
                         <div class="left_side">
 
-                            <p>Trang 1/3 (<%= @blog.count %>/15 bài viết)</p>
+                            <p>?/<%= @blog.count %> bài viết</p>
 
                         </div>
 
                         <div class="right_side">
 
-                            <ul class="pags">
-
-                                <li><a href="#"></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#"></a></li>
-
-                            </ul>
+                            <%= will_paginate @blog, previous_label: '<', next_label: '>', renderer: BootstrapPagination::Rails %>
 
                         </div>
 

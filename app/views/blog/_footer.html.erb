@@ -176,44 +176,48 @@
                         <ul class="list_of_entries">
                             
                             <% @new_blog_footer.each do |blog| %>
+                            
+                                <% if blog.tag.title != "Giới thiệu công ty" %>
 
-                                <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-    
-                                <li>
-                                        
-                                    <article class="entry">
-                                        
-                                        <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-    
-                                        <a href="#" class="entry_thumb">
-    
-                                            <img src="<%= blog.image_url.article_home if blog.image_url? %>" width="83" height="83" alt="">
-    
-                                        </a>
-    
-                                        <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
-    
-                                        <div class="wrapper">
-    
-                                            <h6 class="entry_title"><%= link_to blog.title, { controller: "blog_post", action: "index", id: blog.id } %></h6>
-    
-                                            <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
-    
-                                            <div class="entry_meta">
-    
-                                                <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
-    
-                                            </div><!--/ .entry_meta-->
-    
-                                            <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
-    
-                                        </div><!--/ .wrapper-->
-    
-                                    </article><!--/ .clearfix-->
-    
-                                </li>
-    
-                                <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+                                    <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
+        
+                                    <li>
+                                            
+                                        <article class="entry">
+                                            
+                                            <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
+        
+                                            <a href="#" class="entry_thumb">
+        
+                                                <img src="<%= blog.image_url.article_home if blog.image_url? %>" width="83" height="83" alt="">
+        
+                                            </a>
+        
+                                            <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
+        
+                                            <div class="wrapper">
+        
+                                                <h6 class="entry_title"><%= link_to blog.title, { controller: "blog_post", action: "index", id: blog.id } %></h6>
+        
+                                                <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
+        
+                                                <div class="entry_meta">
+        
+                                                    <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
+        
+                                                </div><!--/ .entry_meta-->
+        
+                                                <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
+        
+                                            </div><!--/ .wrapper-->
+        
+                                        </article><!--/ .clearfix-->
+        
+                                    </li>
+        
+                                    <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+                            
+                                <% end %>
                             
                             <% end %>
                             

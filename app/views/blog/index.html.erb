@@ -139,7 +139,7 @@
 
                             <!-- - - - - - - - - - - - - - End of blog layout type - - - - - - - - - - - - - - - - -->
 
-                            <p>Trang 1/2(2/<%= @blog.count %> bài viết)</p>
+                            <p>?/<%= @blog.count %> bài viết</p>
 
                         </div>
 
@@ -154,145 +154,74 @@
                     <!-- - - - - - - - - - - - - - List of entries - - - - - - - - - - - - - - - - -->
 
                     <ul id="main_blog_list" class="list_of_entries list_view">
+                        
                         <% @blog.each do |blog| %>
                         
-                            <% if blog.tag.title == "Giới thiệu công ty" %>
-                                
-                                <li>
+                            <li>
 
-                                    <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-                                    
-                                    <article class="entry">
-    
-                                        <!-- - - - - - - - - - - - - - Entry image - - - - - - - - - - - - - - - - -->
-    
-                                        <a href="#" class="thumbnail entry_image">
-                                            
-                                            <img src="<%= blog.image_url.article_blog if blog.image_url? %>" alt="">
-    
-                                        </a>
-    
-                                        <!-- - - - - - - - - - - - - - End of entry image - - - - - - - - - - - - - - - - -->
-    
-                                        <h4 class="entry_title"><%= link_to blog.title, { controller: "blog_post", action: "index", id: blog.id } %></h4>
-    
-                                        <!-- - - - - - - - - - - - - - Entry meta - - - - - - - - - - - - - - - - -->
-    
-                                        <div class="entry_meta">
-    
-                                            <div class="alignleft">
-    
-                                                <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
-    
-                                                <span><i class="icon-user-8"></i> đăng bởi <a href="#">Quản trị viên</a></span>
-    
-                                                <span><i class="icon-folder-open-empty-1"></i> <a href="#"><%= blog.tag.title %></a></span>
-    
-                                            </div>
-    
-                                            <div class="alignright">
-    
-                                                Đánh giá
-    
-                                                <!-- - - - - - - - - - - - - - Entry rating - - - - - - - - - - - - - - - - -->
-    
-                                                <ul class="rating">
-    
-                                                    <li class="active"></li>
-                                                    <li class="active"></li>
-                                                    <li class="active"></li>
-                                                    <li></li>
-                                                    <li></li>
-    
-                                                </ul>
-                                                
-                                                <!-- - - - - - - - - - - - - - End of entry rating - - - - - - - - - - - - - - - - -->
-    
-                                            </div>
-    
-                                        </div><!--/ .byline-->
-    
-                                        <!-- - - - - - - - - - - - - - End of entry meta - - - - - - - - - - - - - - - - -->
-    
-                                        <p><%= truncate(strip_tags(blog.content.html_safe), length: 250) %></p>
+                                <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
+                                
+                                <article class="entry">
+
+                                    <!-- - - - - - - - - - - - - - Entry image - - - - - - - - - - - - - - - - -->
+
+                                    <a href="#" class="thumbnail entry_image">
                                         
-                                        <%= link_to "Xem tiếp", { controller: "about_us", action: "index"}, { class: "button_grey middle_btn" } %>
-    
-                                    </article>
-    
-                                    <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-    
-                                </li>
-                            
-                            <% else %>
-                        
-                                <li>
-    
-                                    <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-                                    
-                                    <article class="entry">
-    
-                                        <!-- - - - - - - - - - - - - - Entry image - - - - - - - - - - - - - - - - -->
-    
-                                        <a href="#" class="thumbnail entry_image">
+                                        <img src="<%= blog.image_url.article_blog if blog.image_url? %>" alt="">
+
+                                    </a>
+
+                                    <!-- - - - - - - - - - - - - - End of entry image - - - - - - - - - - - - - - - - -->
+
+                                    <h4 class="entry_title"><%= link_to blog.title, { controller: "blog_post", action: "index", id: blog.id } %></h4>
+
+                                    <!-- - - - - - - - - - - - - - Entry meta - - - - - - - - - - - - - - - - -->
+
+                                    <div class="entry_meta">
+
+                                        <div class="alignleft">
+
+                                            <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
+
+                                            <span><i class="icon-user-8"></i> đăng bởi <a href="#">Quản trị viên</a></span>
+
+                                            <span><i class="icon-folder-open-empty-1"></i> <%= link_to blog.tag.title, { controller: "blog_detail", action: "index", id: blog.tag_id } %></span>
+
+                                        </div>
+
+                                        <div class="alignright">
+
+                                            Đánh giá
+
+                                            <!-- - - - - - - - - - - - - - Entry rating - - - - - - - - - - - - - - - - -->
+
+                                            <ul class="rating">
+
+                                                <li class="active"></li>
+                                                <li class="active"></li>
+                                                <li class="active"></li>
+                                                <li></li>
+                                                <li></li>
+
+                                            </ul>
                                             
-                                            <img src="<%= blog.image_url.article_blog if blog.image_url? %>" alt="">
-    
-                                        </a>
-    
-                                        <!-- - - - - - - - - - - - - - End of entry image - - - - - - - - - - - - - - - - -->
-    
-                                        <h4 class="entry_title"><%= link_to blog.title, { controller: "blog_post", action: "index", id: blog.id } %></h4>
-    
-                                        <!-- - - - - - - - - - - - - - Entry meta - - - - - - - - - - - - - - - - -->
-    
-                                        <div class="entry_meta">
-    
-                                            <div class="alignleft">
-    
-                                                <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
-    
-                                                <span><i class="icon-user-8"></i> đăng bởi <a href="#">Quản trị viên</a></span>
-    
-                                                <span><i class="icon-folder-open-empty-1"></i> <a href="#"><%= blog.tag.title %></a></span>
-    
-                                            </div>
-    
-                                            <div class="alignright">
-    
-                                                Đánh giá
-    
-                                                <!-- - - - - - - - - - - - - - Entry rating - - - - - - - - - - - - - - - - -->
-    
-                                                <ul class="rating">
-    
-                                                    <li class="active"></li>
-                                                    <li class="active"></li>
-                                                    <li class="active"></li>
-                                                    <li></li>
-                                                    <li></li>
-    
-                                                </ul>
-                                                
-                                                <!-- - - - - - - - - - - - - - End of entry rating - - - - - - - - - - - - - - - - -->
-    
-                                            </div>
-    
-                                        </div><!--/ .byline-->
-    
-                                        <!-- - - - - - - - - - - - - - End of entry meta - - - - - - - - - - - - - - - - -->
-    
-                                        <p><%= truncate(strip_tags(blog.content.html_safe), length: 250) %></p>
-                                        
-                                        <%= link_to "Xem tiếp", { controller: "blog_post", action: "index", id: blog.id }, { class: "button_grey middle_btn" } %>
-    
-                                    </article>
-    
-                                    <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-    
-                                </li>
-                            
-                            <% end %>
+                                            <!-- - - - - - - - - - - - - - End of entry rating - - - - - - - - - - - - - - - - -->
+
+                                        </div>
+
+                                    </div><!--/ .byline-->
+
+                                    <!-- - - - - - - - - - - - - - End of entry meta - - - - - - - - - - - - - - - - -->
+
+                                    <p><%= truncate(strip_tags(blog.content.html_safe), length: 250) %></p>
+                                    
+                                    <%= link_to "Xem tiếp", { controller: "blog_post", action: "index", id: blog.id }, { class: "button_grey middle_btn" } %>
+
+                                </article>
+
+                                <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+
+                            </li>
                             
                         <% end %>
 
@@ -304,7 +233,7 @@
 
                         <div class="left_side">
 
-                            <p>Trang 1/2 (2/<%= @blog.count %>)</p>
+                            <p>?/<%= @blog.count %> bài viết</p>
 
                         </div>
 
