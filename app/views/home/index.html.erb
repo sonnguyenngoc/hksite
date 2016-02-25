@@ -140,9 +140,9 @@
                                                         
                                                         <% else %>
                                                            
-                                                            <p class="product_price alignleft"><s><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</s>
+                                                            <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</s>
                                                             
-                                                            <b><%= number_with_delimiter product.product_info.sale_price.to_i %> VNĐ</b></p>
+                                                            <b><%= number_with_delimiter product.get_amount_prices.to_i %> VNĐ</b></p>
                                                         
                                                         <% end %>
                                                     

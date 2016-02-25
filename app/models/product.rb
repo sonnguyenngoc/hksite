@@ -29,6 +29,7 @@ class Product < ActiveRecord::Base
     pro_detail = products.find(5).name
   end
   
+  
   def self.get_hot_products
     self.includes(:product_info).where(product_infos: {product_hot: "on"}).order("product_infos.updated_at DESC")
   end
@@ -74,6 +75,11 @@ class Product < ActiveRecord::Base
     self.where(manufacturer_id: params[:id])
   end
  
+  def get_amount_prices
+    if !self.product_info.sale_off_price.nil?
+      product_price.price.to_f*(1 - (self.product_info.sale_off_price/100)) 
+    end
+  end
 
   private
     # ensure that there are no line items referencing this product

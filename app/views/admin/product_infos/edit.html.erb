@@ -35,9 +35,9 @@
 
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
-            <li><a href="#"><i class="icon-home2 position-left"></i> Home</a></li>
-            <li><a href="#">Info..</a></li>
-            <li class="active">Product Info - Management</li>
+			<li><%= link_to "<i class='icon-home2 position-left'></i> Trang chủ".html_safe, admin_manages_path %></li>
+            <li><%= link_to "Danh sách sản phẩm", admin_product_infos_path %></li>
+            <li class="active">Cập nhật thông tin</li>
         </ul>
     </div>
 </div>

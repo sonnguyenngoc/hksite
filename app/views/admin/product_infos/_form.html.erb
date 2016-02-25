@@ -167,7 +167,7 @@
                         <div class="form-group">
                             <%= f.label "Giá khuyến mãi: ", class: "col-lg-3 control-label" %>
                             <div class="col-lg-9">
-                                <%= f.text_field :sale_price, :value => number_with_delimiter(@product_info.sale_price.to_i), rows: "5", cols: "5", class: "form-control" %>
+                                <%= f.text_field :sale_price, :value => number_with_delimiter(@product_info.product.get_amount_prices.to_f), rows: "5", cols: "5", class: "form-control" %>
                             </div>
                         </div>
                         
