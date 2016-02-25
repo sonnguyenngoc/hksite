@@ -195,6 +195,20 @@
                                                 
                                                 <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
     
+                                                <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+                                            
+                                                <% if !product.product_info.sale_off_price.nil? and product.product_info.sale_off_price > 0 %>
+                                                    
+                                                    <div class="label_offer percentage">
+                                                        
+                                                        Giảm<div><%= product.product_info.sale_off_price %>%</div>
+                    
+                                                    </div>
+                                                    
+                                                <% end %>
+                
+                                                <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+                                                
                                             </div><!--/. image_wrap-->
     
                                             <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
