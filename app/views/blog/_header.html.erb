@@ -118,20 +118,22 @@
 
                             <div class="search_category alignleft">
 
-                                <div class="open_categories">DANH MỤC</div>
+                                <div class="custom_select">
 
-                                <ul class="categories_list dropdown">
-                                    <% @menu.each do |item| %>
+                                    <select class="list_category">
+                                        
+                                        <option value="Tất cả" name="category_id">Tất cả</option>
+                                        
+                                        <% @menu.each do |item| %>
                             
-                                        <% if item.level == 1 %>
-                                            
-                                            <li class="animated_item"><a href="#"><%= item.title %></a></li>
-                                            
+                                            <% if item.level == 1 %>
+                                                <option value="<%= item.title %>" name="category_id"><%= item.title %></option>
+                                            <% end %>
+                                        
                                         <% end %>
-                                    
-                                    <% end %>
+                                    </select>
 
-                                </ul>
+                                </div><!--/ .custom_select -->
 
                             </div><!--/ .search_category.alignleft-->
 

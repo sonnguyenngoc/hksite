@@ -145,7 +145,7 @@
 
                         <div class="right_side">
 
-                            <%= will_paginate(@blog) %>
+                            <%= will_paginate @blog, previous_label: '<', next_label: '>', renderer: BootstrapPagination::Rails %>
 
                         </div>
 
@@ -310,15 +310,7 @@
 
                         <div class="right_side">
 
-                            <ul class="pags">
-
-                                <li><a href="#"></a></li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#"></a></li>
-
-                            </ul>
+                            <%= will_paginate @blog, previous_label: '<', next_label: '>', renderer: BootstrapPagination::Rails %>
 
                         </div>
 

@@ -19,7 +19,7 @@
             <ul class="breadcrumbs">
 
                 <li><%= link_to "Trang chủ", root_path %></li>
-                <li class="active">Danh sách đối tác</li>
+                <li>Danh sách sản phẩm nổi bật</li>
 
             </ul>
 
@@ -81,7 +81,7 @@
 
                     <section class="section_offset">
 
-                        <h1>Danh sách đối tác</h1>
+                        <h1>Danh sách sản phẩm nổi bật</h1>
 
                     </section>
 
@@ -92,6 +92,29 @@
                         <header class="top_box on_the_sides">
 
                             <div class="left_side clearfix v_centered">
+
+                                <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
+
+                                <div class="v_centered">
+
+                                    <span>Sắp xếp theo:</span>
+
+                                    <div class="custom_select sort_select">
+                                        
+                                        <select name="">
+                                                
+                                            <option value="Mặc định">Mặc định</option>
+                                            <option value="Giá">Giá</option>
+                                            <option value="Tên">Tên</option>
+                                            <option value="Ngày">Ngày</option>
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of sort by - - - - - - - - - - - - - - - - -->
 
                                 <!-- - - - - - - - - - - - - - Number of products shown - - - - - - - - - - - - - - - - -->
 
@@ -104,7 +127,12 @@
                                         <select name="">
 
                                             <option value="15">15</option>
+                                            <option value="12">12</option>
+                                            <option value="9">9</option>
+                                            <option value="6">6</option>
+                                            <option value="3">3</option>
                                             
+
                                         </select>
 
                                     </div>
@@ -135,7 +163,7 @@
                             
                             <div class="table_row">
                                 
-                                <% @partners.each_with_index do |item, index| %>
+                                <% @products.each_with_index do |product, index| %>
 
                                     <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
     
@@ -146,12 +174,26 @@
                                             <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
     
                                             <div class="image_wrap">
+    
+                                                <img src="<%= product.product_image.image %>" alt="">
+    
+                                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+    
+                                                <div class="actions_wrap">
+    
+                                                    <div class="centered_buttons">
+                                                        
+                                                        <% if !product.product_price.price.nil? %>
+    
+                                                            <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
+                                                        
+                                                        <% end %>
+    
+                                                    </div><!--/ .centered_buttons -->
+    
+                                                </div><!--/ .actions_wrap-->
                                                 
-                                                <% if item.image_url.nil? %>
-                                                    <p>Chưa cập nhật logo...</p>
-                                                <% else %>
-                                                    <%= link_to(image_tag(item.image_url.partner_image, width: 180, height: 150), {controller: "manufacturer_page", action: "index", id: item.manufacturer_id}) %>
-                                                <% end %>
+                                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
     
                                             </div><!--/. image_wrap-->
     
@@ -161,23 +203,33 @@
     
                                             <div class="description">
     
-                                                <%= link_to item.manufacturer.name, {controller: "manufacturer_page", action: "index", id: item.manufacturer_id} %>
+                                                <%= link_to product.name, {controller: "product", action: "index", id: product.id} %>
     
                                                 <div class="clearfix product_info">
-    
-                                                    <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
-    
-                                                    <ul class="rating alignright">
-    
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li class="active"></li>
-                                                        <li></li>
-    
-                                                    </ul>
                                                     
-                                                    <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+                                                    <% if product.product_price.price.nil? %>
+    
+                                                        <p class="product_price alignleft"><b>Liên hệ:(84-8) 3984 7690</b></p>
+                                                    
+                                                    <% else %>
+                                                        
+                                                        <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
+                                                        
+                                                        <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+    
+                                                        <ul class="rating alignright">
+        
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li></li>
+        
+                                                        </ul>
+                                                        
+                                                        <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+                                                    
+                                                    <% end %> 
     
                                                 </div>
     
@@ -208,7 +260,7 @@
                             </div>
 
                             <div class="right_side">
-                                <%= will_paginate @partners, previous_label: '<', next_label: '>', renderer: BootstrapPagination::Rails %>
+                                <%= will_paginate @products, previous_label: '<', next_label: '>', renderer: BootstrapPagination::Rails %>
                             </div>
 
                         </footer>
