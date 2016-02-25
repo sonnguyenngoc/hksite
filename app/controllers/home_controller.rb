@@ -9,12 +9,12 @@ class HomeController < ApplicationController
     @product = Product.last(12)
     @slideshow = SlideShow.get_slideshows
     @new_blog_footer = Article.order("created_at DESC").first(3)
-    @partners = Partner.all.first(20)
+    @partners = Partner.order("created_at DESC").first(20)
     
-    @hot_products = Product.get_hot_products
-    @sale_products = Product.get_sale_products
-    @bestseller_products = Product.get_bestseller_products
-    @prominent_products = Product.get_prominent_products
-    @new_products = Product.get_new_products
+    @hot_products = Product.get_hot_products.limit(9)
+    @sale_products = Product.get_sale_products.limit(6)
+    @bestseller_products = Product.get_bestseller_products.limit(9)
+    @prominent_products = Product.get_prominent_products.limit(9)
+    @new_products = Product.get_new_products.limit(9)
   end
 end

@@ -1,0 +1,322 @@
+<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+<div class="wide_layout">
+
+    <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+    <%= render 'blog/header' %>
+    
+    <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="secondary_page_wrapper">
+
+        <div class="container">
+
+            <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+            <ul class="breadcrumbs">
+
+                <li><%= link_to "Trang chủ", root_path %></li>
+                <li>Danh sách sản phẩm hot</li>
+
+            </ul>
+
+            <div class="row">
+
+                <aside class="col-md-3 col-sm-4 has_mega_menu">
+
+                    <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+
+                    <%= render 'category_page/category_left_page' %>
+
+                    <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+
+                    <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
+
+                    <div class="section_offset">
+
+                        <a href="#" class="banner">
+                            
+                            <img src="images/box-win-10.jpg" alt="" width="243" height="262">
+
+                        </a>
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
+
+                    <!-- - - - - - - - - - - - - - Tags - - - - - - - - - - - - - - - - -->
+
+                    <section class="section_offset">
+
+                        <h3>Nhãn</h3>
+
+                        <div class="tags_container">
+
+                            <ul class="tags_cloud">
+                                
+                                <% @menu.each do |item| %>
+                            
+                                    <% if item.level == 1 %>
+                                        
+                                        <li><a class="button_grey" <%= (link_to item.title, {:controller => "category_page", :action => "index", id: item.id }).html_safe %></a></li>
+                                        
+                                    <% end %>
+                                
+                                <% end %>
+
+                            </ul><!--/ .tags_cloud-->
+                            
+                        </div><!--/ .tags_container-->
+
+                    </section>
+
+                    <!-- - - - - - - - - - - - - - End of tags - - - - - - - - - - - - - - - - -->
+
+                </aside>
+
+                <main class="col-md-9 col-sm-8">
+
+                    <section class="section_offset">
+
+                        <h1>Danh sách sản phẩm hot</h1>
+
+                    </section>
+
+                    <!-- - - - - - - - - - - - - - Products - - - - - - - - - - - - - - - - -->
+
+                    <div class="section_offset">
+
+                        <header class="top_box on_the_sides">
+
+                            <div class="left_side clearfix v_centered">
+
+                                <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
+
+                                <div class="v_centered">
+
+                                    <span>Sắp xếp theo:</span>
+
+                                    <div class="custom_select sort_select">
+                                        
+                                        <select name="">
+                                                
+                                            <option value="Mặc định">Mặc định</option>
+                                            <option value="Giá">Giá</option>
+                                            <option value="Tên">Tên</option>
+                                            <option value="Ngày">Ngày</option>
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of sort by - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Number of products shown - - - - - - - - - - - - - - - - -->
+
+                                <div class="v_centered">
+
+                                    <span>Hiển thị:</span>
+
+                                    <div class="custom_select">
+
+                                        <select name="">
+
+                                            <option value="15">15</option>
+                                            <option value="12">12</option>
+                                            <option value="9">9</option>
+                                            <option value="6">6</option>
+                                            <option value="3">3</option>
+                                            
+
+                                        </select>
+
+                                    </div>
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of number of products shown - - - - - - - - - - - - - - - - -->
+
+                            </div>
+
+                            <div class="right_side">
+
+                                <!-- - - - - - - - - - - - - - Product layout type - - - - - - - - - - - - - - - - -->
+
+                                <div class="layout_type buttons_row" data-table-container="#products_container">
+
+                                    <a href="#" data-table-layout="grid_view" class="button_grey middle_btn icon_btn active tooltip_container"><i class="icon-th"></i><span class="tooltip top">Danh sách</span></a>
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product layout type - - - - - - - - - - - - - - - - -->
+
+                            </div>
+
+                        </header>
+
+                        <div class="table_layout" id="products_container">
+                            
+                            <div class="table_row">
+                                
+                                <% @products.each_with_index do |product, index| %>
+
+                                    <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+    
+                                    <div class="table_cell">
+    
+                                        <div class="product_item">
+    
+                                            <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+    
+                                            <div class="image_wrap">
+    
+                                                <img src="<%= product.product_image.image %>" alt="">
+    
+                                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+    
+                                                <div class="actions_wrap">
+    
+                                                    <div class="centered_buttons">
+                                                        
+                                                        <% if !product.product_price.price.nil? %>
+    
+                                                            <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
+                                                        
+                                                        <% end %>
+    
+                                                    </div><!--/ .centered_buttons -->
+    
+                                                </div><!--/ .actions_wrap-->
+                                                
+                                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+                                            
+                                                <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+        
+                                                    <div class="label_hot">Hot</div>
+    
+                                                <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+                                                
+                                            </div><!--/. image_wrap-->
+    
+                                            <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+    
+                                            <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+    
+                                            <div class="description">
+    
+                                                <%= link_to product.name, {controller: "product", action: "index", id: product.id} %>
+    
+                                                <div class="clearfix product_info">
+                                                    
+                                                    <% if product.product_price.price.nil? %>
+    
+                                                        <p class="product_price alignleft"><b>Liên hệ:(84-8) 3984 7690</b></p>
+                                                    
+                                                    <% else %>
+                                                        
+                                                        <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
+                                                        
+                                                        <!-- - - - - - - - - - - - - - Product rating - - - - - - - - - - - - - - - - -->
+    
+                                                        <ul class="rating alignright">
+        
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li class="active"></li>
+                                                            <li></li>
+        
+                                                        </ul>
+                                                        
+                                                        <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
+                                                    
+                                                    <% end %> 
+    
+                                                </div>
+    
+                                            </div>
+    
+                                            <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+    
+                                        </div><!--/ .product_item-->
+    
+                                    </div>
+    
+                                    <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+                                    
+                                    <%= "</div><div class=\"table_row\">".html_safe if index%3 == 2 %>
+                                
+                                <% end %>
+                            
+                            </div><!--/ .table_row -->
+
+                        </div><!--/ .table_layout -->
+
+                        <footer class="bottom_box on_the_sides">
+
+                            <div class="left_side">
+
+                                <p>Trang 1/3 (15/45 sản phẩm)</p>
+
+                            </div>
+
+                            <div class="right_side">
+                                <%= will_paginate @products, previous_label: '<', next_label: '>', renderer: BootstrapPagination::Rails %>
+                            </div>
+
+                        </footer>
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of products - - - - - - - - - - - - - - - - -->
+
+                </main>
+
+            </div><!--/ .row -->
+
+        </div><!--/ .container-->
+
+    </div><!--/ .page_wrapper-->
+    
+    <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+    <%= render 'blog/footer' %>
+    
+    <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+</div><!--/ [layout]-->
+
+<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+<%= render "home/social_feeds" %>
+
+<!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+
+<!-- Include Libs & Plugins
+============================================ -->
+<%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+<%= javascript_include_tag '/frontend/js/jquery-ui.min.js' %>
+<%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+<%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+<%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
+<%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
+<%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+<%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+<%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+<%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+<%= javascript_include_tag '/frontend/js/retina.min.js' %>
+<%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+
+<!-- Theme files
+============================================ -->
+<%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+<%= javascript_include_tag '/frontend/js/theme.core.js' %>

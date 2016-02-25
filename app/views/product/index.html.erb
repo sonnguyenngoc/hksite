@@ -19,7 +19,7 @@
         <ul class="breadcrumbs">
 
             <li><%= link_to "Trang chủ", root_path %></li>
-            <li><a href="#">Thiết bị tin học</a></li>
+            <li>Chi tiết sản phẩm</li>
             <li class="active"><%= @pro_detail.name %></li>
             
         </ul>
@@ -222,7 +222,7 @@
                                 <div class="image_wrap">
                                     
                                     <% if product.product_info.nil? %>
-                                        <img src="images/product_img_1.jpg" class="img-rounded" alt="">
+                                        <img src="<%= product.product_image.image %>" class="img-rounded" alt="">
                                     <% else %>
                                         <img src="<%= product.product_info.image_url if product.product_info.image_url? %>" class="img-rounded"
                                         style="width: 172px; height: 172px;" alt="">
