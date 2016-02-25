@@ -33,110 +33,6 @@
 
                     <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
 
-                    <!-- - - - - - - - - - - - - - Filter - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Bộ lọc</h3>
-
-                        <form class="type_2">
-
-                            <div class="table_layout list_view">
-
-                                <div class="table_row">
-
-                                    <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
-
-                                    <div class="table_cell">
-
-                                        <label>Danh mục</label>
-
-                                        <div class="custom_select">
-
-                                            <select name="">
-                                                
-                                                <option value="Thiết bị tin học">Thiết bị tin học</option>
-                                                <option value="Thiết bị văn phòng">Thiết bị văn phòng</option>
-                                                <option value="Thiết bị hệ thống mạng">Thiết bị hệ thống mạng</option>
-                                                <option value="Thiết bị viễn thông">Thiết bị viễn thông</option>
-                                                <option value="An ninh kiểm soát">An ninh kiểm soát</option>
-
-                                            </select>
-
-                                        </div>
-
-                                    </div><!--/ .table_cell -->
-
-                                    <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
-
-                                    <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
-
-                                    <div class="table_cell">
-
-                                        <fieldset>
-
-                                            <legend>Nhà cung cấp</legend>
-
-                                            <ul class="checkboxes_list">
-
-                                                <li>
-                                                    
-                                                    <input type="checkbox" checked name="manufacturer" id="manufacturer_1">
-                                                    <label for="manufacturer_1">Microsoft</label>
-
-                                                </li>
-
-                                                <li>
-                                                    
-                                                    <input type="checkbox" name="manufacturer" id="manufacturer_2">
-                                                    <label for="manufacturer_2">HP</label>
-
-                                                </li>
-
-                                                <li>
-                                                    
-                                                    <input type="checkbox" name="manufacturer" id="manufacturer_3">
-                                                    <label for="manufacturer_3">Apple</label>
-
-                                                </li>
-                                                
-                                                <li>
-                                                    
-                                                    <input type="checkbox" name="manufacturer" id="manufacturer_3">
-                                                    <label for="manufacturer_3">Kaspersky</label>
-
-                                                </li>
-
-                                            </ul>
-
-                                        </fieldset>
-
-                                    </div><!--/ .table_cell -->
-
-                                    <!-- - - - - - - - - - - - - - End manufacturer - - - - - - - - - - - - - - - - -->
-
-                                </div><!--/ .table_row -->
-
-                            </div><!--/ .table_layout -->
-
-                            <footer class="bottom_box">
-
-                                <div class="buttons_row">
-
-                                    <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>
-
-                                    <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>
-
-                                </div>
-
-                            </footer>
-
-                        </form>
-
-                    </section>
-
-                    <!-- - - - - - - - - - - - - - End of filter - - - - - - - - - - - - - - - - -->
-
                     <!-- - - - - - - - - - - - - - Tags - - - - - - - - - - - - - - - - -->
 
                     <section class="section_offset">
@@ -173,7 +69,7 @@
 
                         <h1>Tìm kiếm sản phẩm</h1>
 
-                        <p>Từ khóa: máy tính xách tay</p>
+                        Từ khóa: <p></p>
 
                     </section>
 
@@ -195,9 +91,8 @@
                                         
                                         <select name="">
                                                 
-                                            <option value="Mặc định">Mặc định</option>
-                                            <option value="Giá">Giá</option>
                                             <option value="Tên">Tên</option>
+                                            <option value="Giá">Giá</option>
                                             <option value="Ngày">Ngày</option>
 
                                         </select>
@@ -219,11 +114,6 @@
                                         <select name="">
 
                                             <option value="15">15</option>
-                                            <option value="12">12</option>
-                                            <option value="9">9</option>
-                                            <option value="6">6</option>
-                                            <option value="3">3</option>
-                                            
 
                                         </select>
 
@@ -252,11 +142,7 @@
     
                                             <div class="image_wrap">
     
-                                                <% if product.product_info.nil? %>
-                                                    <img src="images/img_product_if_empty.jpg" alt="">
-                                                <% else %>
-                                                    <img src="<%= product.product_info.image_url if product.product_info.image_url? %>" style="width: 240px; height: 200px;" alt="">
-                                                <% end %>
+                                                <img src="<%= product.product_image.image %>" alt="">
     
                                                 <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
     
@@ -264,7 +150,11 @@
     
                                                     <div class="centered_buttons">
     
-                                                        <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
+                                                        <% if !product.product_price.price.nil? %>
+    
+                                                            <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
+                                                        
+                                                        <% end %>
     
                                                     </div><!--/ .centered_buttons -->
     
@@ -319,14 +209,7 @@
 
                             <div class="right_side">
 
-                                <ul class="pags">
-
-                                    <li><a href="#"></a></li>
-                                    <li class="active"><a href="#">1</a></li>
-                                    <!--<li><a href="#">2</a></li>-->
-                                    <li><a href="#"></a></li>
-
-                                </ul>
+                                <%= will_paginate(@products) %>
 
                             </div>
 

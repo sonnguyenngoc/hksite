@@ -8,6 +8,7 @@ class Product < ActiveRecord::Base
   has_many :product_detail
   has_many :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
+  has_and_belongs_to_many :categories
   
   def product_price
     price = product_prices.order("created_at DESC").first
@@ -29,23 +30,23 @@ class Product < ActiveRecord::Base
   end
   
   def self.get_hot_products
-    self.includes(:product_info).where(product_infos: {product_hot: "on"})
+    self.includes(:product_info).where(product_infos: {product_hot: "on"}).order("product_infos.updated_at DESC")
   end
   
   def self.get_sale_products    
-    self.includes(:product_info).where(product_infos: {product_sale: "on"})
+    self.includes(:product_info).where(product_infos: {product_sale: "on"}).order("product_infos.updated_at DESC")
   end
   
   def self.get_bestseller_products
-    self.joins(:product_info).where(product_infos: {product_bestselled: "on"})
+    self.joins(:product_info).where(product_infos: {product_bestselled: "on"}).order("product_infos.updated_at DESC")
   end
   
   def self.get_prominent_products
-    self.joins(:product_info).where(product_infos: {product_prominent: "on"})
+    self.joins(:product_info).where(product_infos: {product_prominent: "on"}).order("product_infos.updated_at DESC")
   end
   
   def self.get_new_products
-    self.joins(:product_info).where(product_infos: {product_new: "on"})
+    self.joins(:product_info).where(product_infos: {product_new: "on"}).order("product_infos.updated_at DESC")
   end
   
   def self.get_favorite_products
@@ -57,12 +58,16 @@ class Product < ActiveRecord::Base
   end
   
   def self.search(params)
-    self.first(15)
-  #  if params
-  #    where('name LIKE ?', "%#{params}%") || where('client LIKE ?', "%#{params}%")
-  #  else
-  #    scoped
-  #  end
+    records = Product.all
+    if params[:search].present?
+      records = records.where('LOWER(name) LIKE ?', "%#{params[:search].strip.downcase}%")
+    end
+    
+    if params[:manufacturer_id].present?
+      records = records.where('products.manufacturer_id = ?', "#{params[:manufacturer_id]}")
+    end
+      
+    return records
   end
   
   def self.get_by_manufacturer(params)

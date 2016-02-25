@@ -28,3 +28,15 @@ table > *:last-child > tr:last-child th, table > *:last-child > tr:last-child td
 .social_feeds .proportional_frame {
     margin: 15px 0 145px;
 }
+.label_highlights {
+    background: #ff0000;
+}
+.search > * {
+    border-left: 2px solid #4ac4fa !important;
+}
+table > *:last-child > tr:last-child th, table > *:last-child > tr:last-child td {
+    text-align: left;
+}
+input:not([type="submit"]), textarea, .active_option {
+    height: 40px;
+}

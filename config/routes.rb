@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   resources :carts
   resources :category
   resources :product
-  resources :product_search
   root 'home#index'
   get "blog" => "blog#index", as: :blog
   get "blog_detail" => "blog_detail#index", as: :blog_detail
@@ -22,6 +21,7 @@ Rails.application.routes.draw do
   get "category_page" => "category_page#index", as: :category_page
   get "manufacturer" => "manufacturer#index", as: :manufacturer
   get "manufacturer_page" => "manufacturer_page#index", as: :manufacturer_page
+  get "product_search" => "product_search#index", as: :product_search
   namespace :admin, :path => "hoangkhangincotech" do
       resources :partners
       resources :articles

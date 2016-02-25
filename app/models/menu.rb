@@ -12,8 +12,18 @@ class Menu < ActiveRecord::Base
     self.save
   end
   
-  def all_products(params)
-    Product.all.limit(15)
+  def get_products_for_categories(params)
+    menu = Menu.find(params[:id])
+    Product.joins(:categories).where(categories: {id: menu.get_all_category_ids})
+  end
+  
+  def get_all_category_ids
+      arr = []
+      self.categories.each do |i|
+          arr += i.get_all_related_ids
+      end
+      
+      return arr
   end
   
 end

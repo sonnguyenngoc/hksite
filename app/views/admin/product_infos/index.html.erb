@@ -53,11 +53,7 @@
                     <tr>
 						<td>
 							<div class="media-left">
-								<% if product.product_info.nil? %>
-									<img src="#" style="width: 82px; height: 56px;" class="img-rounded" alt="Hình ảnh sản phẩm">
-								<% else %>
-									<img src="<%= product.product_info.image_url if product.product_info.image_url? %>" style="width: 82px; height: 56px;" class="img-rounded" alt="Hình ảnh sản phẩm">
-								<% end %>
+								<img src="<%= product.product_image.image %>" style="width: 82px; height: 82px;" class="img-rounded" alt="Hình ảnh sản phẩm">
 							</div>
 						</td>
                         <td>
@@ -97,6 +93,7 @@
             </tbody>
         </table>
 		<%= will_paginate(@products) %>
+		<hr/>
     </div>
         <!-- /basic datatable -->
     

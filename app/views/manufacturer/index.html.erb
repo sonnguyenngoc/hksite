@@ -148,7 +148,7 @@
                                             <div class="image_wrap">
                                                 
                                                 <% if item.image_url.nil? %>
-                                                    <p>Đơn vị hợp tác không có hình</p>
+                                                    <p>Chưa cập nhật logo...</p>
                                                 <% else %>
                                                     <%= link_to(image_tag(item.image_url.partner_image, width: 180, height: 150), {controller: "manufacturer_page", action: "index", id: item.manufacturer_id}) %>
                                                 <% end %>
@@ -208,7 +208,7 @@
                             </div>
 
                             <div class="right_side">    
-
+                                <%= will_paginate(@partners) %>
                             </div>
 
                         </footer>

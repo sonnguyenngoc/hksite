@@ -171,11 +171,11 @@
                                 
                                 <tr>
                                     
+                                    <th class="product_image_col">Hình ảnh</th>
                                     <th class="product_title_col">Tên sản phẩm</th>
-                                    <th class="product_sku_col">Mã sản phẩm</th>
                                     <th class="product_total_col">Giá</th>
-                                    <th class="product_qty_col">Số lượng</th>
-                                    <th class="product_total_col">Tổng tiền</th>
+                                    <th class="product_total_col">Số lượng</th>
+                                    <th class="product_total_col">Thành tiền</th>
     
                                 </tr>
     
@@ -186,6 +186,12 @@
                                 <% @cart.line_items.each do |item| %>
                                 
                                     <tr>
+                                        
+                                        <td class="product_image_col" data-title="Product Image">
+                                            
+                                            <%= link_to(image_tag(item.product.product_image.image, width: 86, height: 86), {controller: "product", action: "index", id: item.product_id}) %>
+                                            
+                                        </td>
                                         
                                         <td data-title="Product Name">
                                             
@@ -199,8 +205,6 @@
                                             </ul>
         
                                         </td>
-        
-                                        <td data-title="SKU"></td>
         
                                         <td data-title="Price" class="subtotal"><%= number_with_delimiter item.product.product_price.price.to_i %>đ</td>
         
@@ -217,21 +221,7 @@
     
                                 <tr>
                                     
-                                    <td colspan="4" class="bold">Tổng tiền (Chưa giảm giá)</td>
-                                    <td class="total"><%= number_with_delimiter @cart.total_order.to_i %>đ</td>
-    
-                                </tr>
-    
-                                <tr>
-                                    
-                                    <td colspan="4" class="bold">Phí vận chuyển &amp; Tổng tiền (Chính thức)</td>
-                                    <td class="total"><%= number_with_delimiter @cart.total_order.to_i %>đ</td>
-    
-                                </tr>
-    
-                                <tr>
-                                    
-                                    <td colspan="4" class="grandtotal">Tổng cộng</td>
+                                    <td colspan="4" class="grandtotal">Tổng tiền</td>
                                     <td class="grandtotal"><%= number_with_delimiter @cart.total_order.to_i %>đ</td>
     
                                 </tr>
@@ -245,8 +235,6 @@
                     <footer class="bottom_box on_the_sides">
     
                         <div class="left_side v_centered">
-    
-                            <span>Thiếu sản phẩm?</span>
                             
                             <%= link_to "Chỉnh sửa giỏ hàng", {controller: "shopping_cart", action: "index"}, {class: "button_grey middle_btn"} %>
     
