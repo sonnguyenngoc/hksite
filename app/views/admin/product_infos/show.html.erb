@@ -12,9 +12,8 @@
     
         <div class="breadcrumb-line">
             <ul class="breadcrumb">
-                <li><a href="#"><i class="icon-home2 position-left"></i> Trang chủ</a></li>
-                <li><a href="<%= admin_tags_path %>">Quản lý</a></li>
-                <li><a href="<%= admin_tags_path %>">Quản lý thông tin sản phẩm</a></li>
+                <li><%= link_to "<i class='icon-home2 position-left'></i> Trang chủ".html_safe, admin_manages_path %></li>
+                <li><%= link_to "Quản lý thông tin sản phẩm", admin_product_infos_path %></li>
                 <li class="active"><%= @product_info.product.name %></li>
             </ul>
         </div>
@@ -39,7 +38,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <%= label "", "Tiêu đề: ", class: "control-label col-sm-2 text-semibold" %>
+                        <%= label "", "Tên sản phẩm: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
                             <%= content_tag(:p, class: "form-control-static") do %>
                               <%= @product_info.product.name %>
@@ -47,18 +46,82 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <%= label "", "Mô tả: ", class: "control-label col-sm-2 text-semibold" %>
+                        <%= label "", "Giá bán: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
                             <%= content_tag(:p, class: "form-control-static ") do %>
-                              <%= @product_info.description %>
+                              <%= number_with_delimiter @product_info.product.product_price.price.to_i %> <i>VNĐ</i>
                             <% end %>
                         </div>
                     </div>
                     <div class="form-group">
-                        <%= label "", "Created At: ", class: "control-label col-sm-2 text-semibold" %>
+                        <%= label "", "Giảm giá: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static ") do %>
+                              <%= number_with_delimiter @product_info.product.product_info.sale_off_price.to_f %> <i>%</i>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= label "", "Giá Khuyến mãi: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static ") do %>
+                              <%= number_with_delimiter @product_info.product.product_info.sale_price.to_f %> <i>VNĐ</i>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= label "", "Quà tặng: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static ") do %>
+                              <%= @product_info.bonus_product %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= label "", "Mô tả: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static ") do %>
+                              <%= @product_info.product.description %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= label "", "Ngày tạo: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
                             <%= content_tag(:p, class: "form-control-static ") do %>
                               <%= @product_info.created_at.strftime("%d/%m/%Y") %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= label "", "Trạng thái: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static ") do %>
+                              <% if !@product_info.nil? %>
+                                    <% if @product_info.product_hot == "on" %>
+                                        HOT,&nbsp;&nbsp;
+                                    <% end %>
+                                    <% if @product_info.product_new == "on" %>
+                                        MỚI,&nbsp;&nbsp;
+                                    <% end %>
+                                    <% if @product_info.product_sale == "on" %>
+                                        KHUYẾN MÃI,&nbsp;&nbsp;
+                                    <% end %>
+                                    <% if @product_info.product_prominent == "on" %>
+                                        NỔI BẬT,&nbsp;&nbsp;
+                                    <% end %>
+                                    <% if @product_info.product_bestselled == "on" %>
+                                        BÁN CHẠY,&nbsp;&nbsp;
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <%= label "", "Giới thiệu: ", class: "control-label col-sm-2 text-semibold" %>
+                        <div class="col-sm-10">
+                            <%= content_tag(:p, class: "form-control-static ") do %>
+                              <%= @product_info.description %>
                             <% end %>
                         </div>
                     </div>

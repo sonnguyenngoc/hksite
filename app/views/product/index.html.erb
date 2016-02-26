@@ -92,15 +92,16 @@
                                     <tbody>
 
                                         <tr>
-
-                                            <td>Nhà cung cấp: </td>
-                                            <td><a href="#"><%= @pro_detail.manufacturer.name %></a></td>
-
+                                            
+                                            <% if !@pro_detail.manufacturer.nil? %>
+                                                <td>Nhà cung cấp: </td>
+                                                <td><a href="#"><%= @pro_detail.manufacturer.name %></a></td>
+                                            <% end %>
                                         </tr>
 
                                         <tr>
 
-                                            <td>Mã sản phẩm: </td>
+                                            <td><b>Mã sản phẩm: </b></td>
                                             <td><%= @pro_detail.product_code %></td>
 
                                         </tr>
@@ -114,8 +115,10 @@
                             <hr>
 
                             <div class="description_section">
-                                Mô tả:
+                                <b>Ghi chú:</b>
                                 <p><%= @pro_detail.product_info.note if !@pro_detail.product_info.nil? %></p>
+                                <b>Mô tả:</b>
+                                <p><%= @pro_detail.description if !@pro_detail.product_info.nil? %></p>
 
                             </div>
 
@@ -131,7 +134,7 @@
 
                             <div class="description_section_2 v_centered">
                                 
-                                <span class="title">Số lượng:</span>
+                                <span class="title"><b>Số lượng:</b></span>
 
                                 <div class="qty min clearfix">
 
