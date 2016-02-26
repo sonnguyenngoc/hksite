@@ -21,3 +21,16 @@
 
 en:
   hello: "Hello world"
+  will_paginate:
+    page_entries_info:
+      single_page:
+        zero:  "Không có "
+        one:   "Hiển thị 1 "
+        other: "Hiển thị toàn bộ: %{count} "
+      single_page_html:
+        zero:  "Không tìm thấy "
+        one:   "Hiển thị <b>1</b> "
+        other: "Hiển thị toàn bộ<b>&nbsp;%{count}</b> "
+
+      multi_page: "Hiển thị %{model} %{from} - %{to} / %{count} "
+      multi_page_html: "Hiển thị <b>%{from}&nbsp;-&nbsp;%{to}</b> / <b>%{count}</b> "

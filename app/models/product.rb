@@ -49,10 +49,6 @@ class Product < ActiveRecord::Base
     self.joins(:product_info).where(product_infos: {product_new: "on"}).order("product_infos.updated_at DESC")
   end
   
-  def self.get_favorite_products
-    self.last(6)
-  end
-  
   def self.get_related_products
     self.first(12)
   end
