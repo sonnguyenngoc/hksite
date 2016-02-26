@@ -92,17 +92,10 @@
                                     <tbody>
 
                                         <tr>
+
+                                            <td>Nhà cung cấp: </td>
                                             
-                                            <% if !@pro_detail.manufacturer.nil? %>
-                                                <td>Nhà cung cấp: </td>
-                                                <td><a href="#"><%= @pro_detail.manufacturer.name %></a></td>
-                                            <% end %>
-                                        </tr>
-
-                                        <tr>
-
-                                            <td><b>Mã sản phẩm: </b></td>
-                                            <td><%= @pro_detail.product_code %></td>
+                                            <td><%= link_to @pro_detail.manufacturer.name, { controller: "manufacturer_page", action: "index", id: @pro_detail.manufacturer.id } %></td>
 
                                         </tr>
 

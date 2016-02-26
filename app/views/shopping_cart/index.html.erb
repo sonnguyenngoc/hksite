@@ -122,9 +122,7 @@
         
                                         <td data-title="Action">
                                             
-                                            <a href="#" class="button_dark_grey icon_btn edit_product"><i class="icon-pencil"></i></a>
-                                            
-                                            <%= link_to "<i class='icon-cancel-2'></i>".html_safe , {controller: "shopping_cart", action: "index", do: 'remove_item', line_item_id: item.id }, {class: "button_dark_grey icon_btn remove_product"}  %>
+                                            <%= link_to "<i class='icon-cancel-2'></i>".html_safe , {controller: "shopping_cart", action: "index", do: 'remove_item', line_item_id: item.id }, {class: "button_dark_grey icon_btn remove_product"} %>
         
                                         </td>
         

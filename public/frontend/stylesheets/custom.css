@@ -77,3 +77,15 @@ input:not([type="submit"]), textarea, .active_option {
     background: #4ac4fa;
     border-color: #4ac4fa;
 }
+select {
+    padding: 9.5px 8px;
+}
+.search_category {
+    width: 208px;
+}
+.search input {
+    width: calc(100% - 258px);
+}
+.section_offset .layerslider {
+    border: 2px solid #b2b2b2;
+}
