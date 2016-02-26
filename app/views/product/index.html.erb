@@ -94,6 +94,7 @@
                                         <tr>
 
                                             <td>Nhà cung cấp: </td>
+                                            
                                             <td><%= link_to @pro_detail.manufacturer.name, { controller: "manufacturer_page", action: "index", id: @pro_detail.manufacturer.id } %></td>
 
                                         </tr>
@@ -107,8 +108,10 @@
                             <hr>
 
                             <div class="description_section">
-                                Mô tả:
+                                <b>Ghi chú:</b>
                                 <p><%= @pro_detail.product_info.note if !@pro_detail.product_info.nil? %></p>
+                                <b>Mô tả:</b>
+                                <p><%= @pro_detail.description if !@pro_detail.product_info.nil? %></p>
 
                             </div>
 
@@ -124,7 +127,7 @@
 
                             <div class="description_section_2 v_centered">
                                 
-                                <span class="title">Số lượng:</span>
+                                <span class="title"><b>Số lượng:</b></span>
 
                                 <div class="qty min clearfix">
 
