@@ -56,31 +56,36 @@ class Product < ActiveRecord::Base
   def self.search(params)
     records = Product.all
     if params[:search].present?
-      records = records.where('LOWER(name) LIKE ?', "%#{params[:search].strip.downcase}%")
+      records = records.where('LOWER(products.name) LIKE ?', "%#{params[:search].strip.downcase}%")
     end
     
     if params[:manufacturer_id].present?
       records = records.where('products.manufacturer_id = ?', "#{params[:manufacturer_id]}")
     end
     
+    if params[:category_id].present?
+      menu = Menu.find(params[:category_id])
+      records = records.joins(:categories).where(categories: {id: menu.get_all_category_ids})
+    end
+    
     if params[:search_new_products].present?
-      records = records.get_new_products.where('LOWER(name) LIKE ?', "%#{params[:search_new_products].strip.downcase}%")
+      records = records.get_new_products.where('LOWER(products.name) LIKE ?', "%#{params[:search_new_products].strip.downcase}%")
     end
     
     if params[:search_hot_products].present?
-      records = records.get_hot_products.where('LOWER(name) LIKE ?', "%#{params[:search_hot_products].strip.downcase}%")
+      records = records.get_hot_products.where('LOWER(products.name) LIKE ?', "%#{params[:search_hot_products].strip.downcase}%")
     end
     
     if params[:search_prominent_products].present?
-      records = records.get_prominent.products.where('LOWER(name) LIKE ?', "%#{params[:search_prominent_products].strip.downcase}%")
+      records = records.get_prominent.products.where('LOWER(products.name) LIKE ?', "%#{params[:search_prominent_products].strip.downcase}%")
     end
     
     if params[:search_bestseller_products].present?
-      records = records.get_bestseller_products.where('LOWER(name) LIKE ?', "%#{params[:search_bestseller_products].strip.downcase}%")
+      records = records.get_bestseller_products.where('LOWER(products.name) LIKE ?', "%#{params[:search_bestseller_products].strip.downcase}%")
     end
     
     if params[:search_sale_products].present?
-      records = records.get_sale_products.where('LOWER(name) LIKE ?', "%#{params[:search_sale_products].strip.downcase}%")
+      records = records.get_sale_products.where('LOWER(products.name) LIKE ?', "%#{params[:search_sale_products].strip.downcase}%")
     end
     
     return records

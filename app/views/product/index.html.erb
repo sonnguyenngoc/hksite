@@ -94,14 +94,7 @@
                                         <tr>
 
                                             <td>Nhà cung cấp: </td>
-                                            <td><a href="#"><%= @pro_detail.manufacturer.name %></a></td>
-
-                                        </tr>
-
-                                        <tr>
-
-                                            <td>Mã sản phẩm: </td>
-                                            <td><%= @pro_detail.product_code %></td>
+                                            <td><%= link_to @pro_detail.manufacturer.name, { controller: "manufacturer_page", action: "index", id: @pro_detail.manufacturer.id } %></td>
 
                                         </tr>
 
