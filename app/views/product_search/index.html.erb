@@ -32,6 +32,20 @@
                     <%= render 'category_page/category_left_page' %>
 
                     <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+                    
+                    <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
+
+                    <div class="section_offset">
+
+                        <a href="#" class="banner">
+                            
+                            <img src="images/box-win-10.jpg" alt="" width="243" height="262">
+
+                        </a>
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
 
                     <!-- - - - - - - - - - - - - - Tags - - - - - - - - - - - - - - - - -->
 
@@ -203,13 +217,13 @@
 
                             <div class="left_side">
 
-                                <p>Trang 1/2 (15/16 sản phẩm)</p>
+                                <%= page_entries_info @products %> sản phẩm.
 
                             </div>
 
                             <div class="right_side">
 
-                                <%= will_paginate(@products) %>
+                                <%= will_paginate @products, previous_label: '<', next_label: '>', renderer: BootstrapPagination::Rails %>
 
                             </div>
 

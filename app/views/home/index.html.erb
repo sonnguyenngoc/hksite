@@ -165,6 +165,16 @@
                             </div><!--/ .widgets_carousel-->
     
                             <!-- - - - - - - - - - - - - - End of carousel of today's deals - - - - - - - - - - - - - - - - -->
+                            
+                            <!-- - - - - - - - - - - - - - View all deals of the day - - - - - - - - - - - - - - - - -->
+                            
+                            <footer class="bottom_box">
+
+                                <%= link_to "Xem toàn bộ sản phẩm khuyến mãi", { controller: "all_sale_product", action: "index" }, { class: "button_grey middle_btn" } %>
+
+                            </footer>
+                            
+                            <!-- - - - - - - - - - - - - - End of view all deals of the day - - - - - - - - - - - - - - - - -->
     
                         </section><!--/ .section_offset.animated.transparent-->
                     
@@ -204,7 +214,7 @@
 
                         <footer class="bottom_box">
                             
-                            <%= link_to "Xem thêm", {controller: "blog", action: "index"}, class: "button_grey middle_btn" %>
+                            <%= link_to "Xem toàn bộ tin tức", {controller: "blog", action: "index"}, class: "button_grey middle_btn" %>
 
                         </footer>
 
@@ -398,6 +408,16 @@
                                     </div>
                               
                                 </div>
+                                
+                                <!-- - - - - - - - - - - - - - View all products - - - - - - - - - - - - - - - - -->
+                            
+                                <footer class="bottom_box">
+                                    
+                                    <%= link_to "Xem toàn bộ sản phẩm mới", { controller: "all_new_product", action: "index" }, class: "button_grey middle_btn" %>
+
+                                </footer>
+                                
+                                <!-- - - - - - - - - - - - - - End of view all products - - - - - - - - - - - - - - - - -->
 
                             </div>
 
@@ -412,6 +432,7 @@
                                     <div class="table_row">
 
                                         <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                                        
                                         <% @prominent_products.each_with_index do |product,index| %>
                                             
                                             <div class="table_cell">
@@ -483,10 +504,23 @@
                                             <%= "</div><div class=\"table_row\">".html_safe if index%3 == 2 %>
                                                 
                                         <% end %>
+                                        
                                         <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+                                    
                                     </div>
+                                            
                                 </div>
 
+                                <!-- - - - - - - - - - - - - - View all products - - - - - - - - - - - - - - - - -->
+                            
+                                <footer class="bottom_box">
+
+                                    <%= link_to "Xem toàn bộ sản phẩm mới", { controller: "all_prominent_product", action: "index" }, class: "button_grey middle_btn" %>
+
+                                </footer>
+                                
+                                <!-- - - - - - - - - - - - - - End of view all products - - - - - - - - - - - - - - - - -->
+                        
                             </div>
                                     
                             <!-- - - - - - - - - - - - - - End of featured products - - - - - - - - - - - - - - - - -->
@@ -500,6 +534,7 @@
                                     <div class="table_row">
 
                                         <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                                        
                                         <% @hot_products.each_with_index do |product,index| %>
                                             
                                             <div class="table_cell">
@@ -576,6 +611,16 @@
                                     </div>
 
                                 </div>
+                                
+                                <!-- - - - - - - - - - - - - - View all products - - - - - - - - - - - - - - - - -->
+                            
+                                <footer class="bottom_box">
+
+                                    <%= link_to "Xem toàn bộ sản phẩm mới", { controller: "all_hot_product", action: "index" }, class: "button_grey middle_btn" %>
+
+                                </footer>
+                                
+                                <!-- - - - - - - - - - - - - - End of view all products - - - - - - - - - - - - - - - - -->
 
                             </div>
                                     
@@ -590,6 +635,7 @@
                                     <div class="table_row">
 
                                         <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                                        
                                         <% @bestseller_products.each_with_index do |product,index| %>
                                             
                                             <div class="table_cell">
@@ -666,6 +712,16 @@
                                     </div>
 
                                 </div>
+                                
+                                <!-- - - - - - - - - - - - - - View all products - - - - - - - - - - - - - - - - -->
+                            
+                                <footer class="bottom_box">
+
+                                    <%= link_to "Xem toàn bộ sản phẩm mới", { controller: "all_bestseller_product", action: "index" }, class: "button_grey middle_btn" %>
+
+                                </footer>
+                                
+                                <!-- - - - - - - - - - - - - - End of view all products - - - - - - - - - - - - - - - - -->
 
                             </div>
                                     
@@ -705,7 +761,7 @@
 
                         <footer class="bottom_box">
 
-                            <%= link_to "Xem thêm", {controller: "manufacturer", action: "index"}, { class: "button_grey middle_btn" } %>
+                            <%= link_to "Xem toàn bộ đối tác", {controller: "manufacturer", action: "index"}, { class: "button_grey middle_btn" } %>
                             
                         </footer>
 
@@ -764,7 +820,7 @@
 
                         <footer class="bottom_box">
 
-                            <%= link_to "Xem thêm", { controller: "blog", action: "index" }, { class: "button_grey middle_btn" } %>
+                            <%= link_to "Xem toàn bộ tin tức", { controller: "blog", action: "index" }, { class: "button_grey middle_btn" } %>
                             
                         </footer>
 

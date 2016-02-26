@@ -26,7 +26,7 @@
             <div class="row">
 
                 <aside class="col-md-3 col-sm-4 has_mega_menu">
-                    
+
                     <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
 
                     <%= render 'category_left_page' %>
@@ -44,39 +44,20 @@
                             <div class="table_layout list_view">
 
                                 <div class="table_row">
+                                    
+                                    <%= hidden_field_tag "category_id", @category.id %>
 
                                     <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
 
                                     <div class="table_cell">
 
                                         <label>Tên sản phẩm</label>
-
+                                        
                                         <%= text_field_tag :search, params[:search], placeholder: "Nhập tên sản phẩm cần tìm..." %>
 
                                     </div><!--/ .table_cell -->
 
                                     <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
-
-                                    <!-- - - - - - - - - - - - - - Manufacturer - - - - - - - - - - - - - - - - -->
-
-                                    <div class="table_cell">
-
-                                        <div class="custom_select">
-
-                                            <select>
-                                                
-                                                <% @manufacturers.each do |item| %>
-                                                    
-                                                    <option value="<%= item.name %>"><%= item.name %></option>
-                                                
-                                                <% end %>
-                                            </select>
-
-                                        </div><!--/ .custom_select -->
-
-                                    </div><!--/ .table_cell -->
-
-                                    <!-- - - - - - - - - - - - - - End manufacturer - - - - - - - - - - - - - - - - -->
 
                                 </div><!--/ .table_row -->
 
@@ -150,8 +131,6 @@
 
                         <h1><%= @category.title %></h1>
 
-                        <p><%= @category.description %></p>
-
                     </section>
 
                     <!-- - - - - - - - - - - - - - Products - - - - - - - - - - - - - - - - -->
@@ -194,7 +173,7 @@
 
                                         <select name="">
 
-                                            <option value="15">15</option>                                      
+                                            <option value="15">15</option>                                        
 
                                         </select>
 
@@ -226,7 +205,7 @@
                             
                             <div class="table_row">
                                 
-                                <% @products.each_with_index do |product,index| %>
+                                <% @products.each_with_index do |product, index| %>
 
                                     <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
     
@@ -245,7 +224,7 @@
                                                 <div class="actions_wrap">
     
                                                     <div class="centered_buttons">
-    
+                                                        
                                                         <% if !product.product_price.price.nil? %>
     
                                                             <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
@@ -269,7 +248,7 @@
                                                 <%= link_to product.name, {controller: "product", action: "index", id: product.id} %>
     
                                                 <div class="clearfix product_info">
-    
+                                                    
                                                     <% if product.product_price.price.nil? %>
     
                                                         <p class="product_price alignleft"><b>Liên hệ:(84-8) 3984 7690</b></p>
@@ -292,7 +271,7 @@
                                                         
                                                         <!-- - - - - - - - - - - - - - End of product rating - - - - - - - - - - - - - - - - -->
                                                     
-                                                    <% end %>
+                                                    <% end %> 
     
                                                 </div>
     
@@ -305,7 +284,7 @@
                                     </div>
     
                                     <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-                                
+                                    
                                     <%= "</div><div class=\"table_row\">".html_safe if index%3 == 2 %>
                                 
                                 <% end %>
@@ -318,14 +297,12 @@
 
                             <div class="left_side">
 
-                                <p>Trang 1/1 (1/<%= @products.count %> sản phẩm)</p>
+                                <%= page_entries_info @products %> sản phẩm.
 
                             </div>
 
                             <div class="right_side">
-
-                                <%= will_paginate(@products) %>
-
+                                <%= will_paginate @products, previous_label: '<', next_label: '>', renderer: BootstrapPagination::Rails %>
                             </div>
 
                         </footer>

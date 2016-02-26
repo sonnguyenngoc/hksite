@@ -43,6 +43,22 @@
 		
 		
         <table class="table datatable-picture">
+			<div class="dataTables_filter col-md-3">
+				<label>
+					<input placeholder="Nhập tên sản phẩm...">
+				</label>
+			</div>
+			<div class="col-md-8">
+				<select class="select-item-color" data-placeholder="Chọn loại cần lọc" multiple="multiple">
+					<optgroup label="Loại của sản phẩm">
+						<option value="Sản phẩm mới" selected="selected">Sản phẩm mới</option>
+						<option value="Sản phẩm hot">Sản phẩm hot</option>
+						<option value="Sản phẩm nổi bật">Sản phẩm nổi bật</option>
+						<option value="Sản phẩm khuyến mãi">Sản phẩm khuyến mãi</option>
+						<option value="Sản phẩm bán chạy nhất">Sản phẩm bán chạy nhất</option>
+					</optgroup>
+				</select>
+			</div>
             <thead>
                 <tr>
                     <th>Hình Ảnh</th>
@@ -73,19 +89,19 @@
 						<td>
 							<% if !product.product_info.nil? %>
 								<% if product.product_info.product_hot == "on" %>
-									<ul><li style="list-style-type: none;"><span class="label label-info">hot</span></li></ul>
+									<ul><li style="list-style-type: none;"><span class="label label-warning">hot</span></li></ul>
 								<% end %>
 								<% if product.product_info.product_new == "on" %>
 									<ul><li style="list-style-type: none;"><span class="label label-info">new</span></li></ul>
 								<% end %>
 								<% if product.product_info.product_sale == "on" %>
-									<ul><li style="list-style-type: none;"><span class="label label-info">khuyến-mãi</span></li></ul>
+									<ul><li style="list-style-type: none;"><span class="label bg-pink">khuyến-mãi</span></li></ul>
 								<% end %>
 								<% if product.product_info.product_prominent == "on" %>
-									<ul><li style="list-style-type: none;"><span class="label label-info">nổi-bật</span></li></ul>
+									<ul><li style="list-style-type: none;"><span class="label label-danger">nổi-bật</span></li></ul>
 								<% end %>
 								<% if product.product_info.product_bestselled == "on" %>
-									<ul><li style="list-style-type: none;"><span class="label label-info">bán-chạy</span></li></ul>
+									<ul><li style="list-style-type: none;"><span class="label bg-purple">bán-chạy</span></li></ul>
 								<% end %>
 							<% end %>
 							
@@ -132,8 +148,10 @@
 <!-- Theme JS files -->
 <%= javascript_include_tag '/backend/assets/js/plugins/forms/styling/uniform.min.js' %>
 <%= javascript_include_tag '/backend/assets/js/plugins/tables/datatables/datatables.min.js' %>
+<%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/bootstrap_multiselect.js' %>
 <%= javascript_include_tag '/backend/assets/js/plugins/forms/selects/select2.min.js' %>
 
 <%= javascript_include_tag '/backend/assets/js/core/app.js' %>
+<%= javascript_include_tag '/backend/assets/js/pages/colors_primary.js' %>
 <%= javascript_include_tag '/backend/javascripts/datatables_productinfo.js' %>
 <!-- /theme JS files -->

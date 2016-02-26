@@ -1,0 +1,2 @@
+module AllBestsellerProductHelper
+end

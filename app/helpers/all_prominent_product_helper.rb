@@ -1,0 +1,2 @@
+module AllProminentProductHelper
+end
