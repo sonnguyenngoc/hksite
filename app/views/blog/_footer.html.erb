@@ -254,9 +254,9 @@
                     <% @menu.each do |item| %>
                             
                         <% if item.level == 1 %>
-                            
+
                             <li><%= link_to item.title, {controller: "category_page", action: "index", id: item.id} %></li>
-                        
+                            
                         <% end %>
                     
                     <% end %>
