@@ -26,124 +26,150 @@
             <section class="section_offset">
 
                 <h1>Giỏ hàng</h1>
-
-                <!-- - - - - - - - - - - - - - Shopping cart table - - - - - - - - - - - - - - - - -->
-
-                <div class="table_wrap">
-
-                    <table class="table_type_1 shopping_cart_table">
-
-                        <thead>
-
-                            <tr>
-                                <th class="product_image_col">Hình ảnh</th>
-                                <th class="product_title_col">Tên sản phẩm</th>
-                                <th>Giá</th>
-                                <th class="product_qty_col">Số lượng</th>
-                                <th>Thành tiền</th>
-                                <th class="product_actions_col">Thao tác</th>
-                            </tr>
-
-                        </thead>
-
-                        <tbody>
-                            
-                            <%= form_for @cart, url: {controller: "shopping_cart", action: "index"} do |f| %>
-                            
-                                <% @cart.line_items.each do |item| %>
-                                
-                                    <tr>
-                                        
-                                        <input type="hidden" name="line_items[id]" value="<%= item.id %>">
-        
-                                        <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                                            
-                                        <td class="product_image_col" data-title="Product Image">
-                                            
-                                            <%= link_to(image_tag(item.product.product_image.image, width: 86, height: 86), {controller: "product", action: "index", id: item.product_id}) %>
-                                            
-                                        </td>
-        
-                                        <!-- - - - - - - - - - - - - - End of product Image - - - - - - - - - - - - - - - - -->
-        
-                                        <!-- - - - - - - - - - - - - - Product name - - - - - - - - - - - - - - - - -->
-        
-                                        <td data-title="Product Name">
-                                            
-                                            <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id}, class: "product_title" %>
-        
-                                            <ul class="sc_product_info">
-                                                
-                                                <li><%= item.product.product_info.description if !item.product.product_info.nil?  %></li>
-                                                
-                                            </ul>
-        
-                                        </td>
-        
-                                        <!-- - - - - - - - - - - - - - End of product name - - - - - - - - - - - - - - - - -->
-        
-                                        <!-- - - - - - - - - - - - - - Price - - - - - - - - - - - - - - - - -->
-        
-                                        <td class="subtotal" data-title="Price">
-                                            
-                                            <%= number_with_delimiter item.product.product_price.price.to_i %>
-        
-                                        </td>
-        
-                                        <!-- - - - - - - - - - - - - - End of Price - - - - - - - - - - - - - - - - -->
-        
-                                        <!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
-        
-                                        <td data-title="Quantity">
-        
-                                            <div class="qty min clearfix">
-        
-                                                <a class="theme_button display_inline" data-direction="minus">&#45;</a>
-                                                <input class="display_inline" type="text" name="line_items[quantity]" value="<%= item.quantity %>">
-                                                <a class="theme_button display_inline" data-direction="plus">&#43;</a>
-        
-                                            </div><!--/ .qty.min.clearfix-->
-        
-                                        </td>
-        
-                                        <!-- - - - - - - - - - - - - - End of quantity - - - - - - - - - - - - - - - - -->
-        
-                                        <!-- - - - - - - - - - - - - - Total - - - - - - - - - - - - - - - - -->
-        
-                                        <td class="total" data-title="Total">
-        
-                                            <%= number_with_delimiter item.total_item.to_i %>
-        
-                                        </td>
-        
-                                        <!-- - - - - - - - - - - - - - End of total - - - - - - - - - - - - - - - - -->
-        
-                                        <!-- - - - - - - - - - - - - - Action - - - - - - - - - - - - - - - - -->
-        
-                                        <td data-title="Action">
-                                            
-                                            <%= link_to "<i class='icon-cancel-2'></i>".html_safe , {controller: "shopping_cart", action: "index", do: 'remove_item', line_item_id: item.id }, {class: "button_dark_grey icon_btn remove_product"} %>
-        
-                                        </td>
-        
-                                        <!-- - - - - - - - - - - - - - End of action - - - - - - - - - - - - - - - - -->
-        
-                                    </tr>
-                                    
-                                <% end %>
-                            
-                            <% end %>
-
-                        </tbody>
-
-                    </table>
-
-                </div><!--/ .table_wrap -->
                 
-                <% if @cart.line_items.count == 0 %>
-
-                    <footer class="bottom_box on_the_sides">
+                <% if @cart.line_items.count > 0 %>
+                
+                    <%= form_for @cart do |f| %>
     
+                        <!-- - - - - - - - - - - - - - Shopping cart table - - - - - - - - - - - - - - - - -->
+        
+                        <div class="table_wrap">
+        
+                            <table class="table_type_1 shopping_cart_table">
+        
+                                <thead>
+        
+                                    <tr>
+                                        <th class="product_image_col">Hình ảnh</th>
+                                        <th class="product_title_col">Tên sản phẩm</th>
+                                        <th>Giá</th>
+                                        <th class="product_qty_col">Số lượng</th>
+                                        <th>Thành tiền</th>
+                                        <th class="product_actions_col">Thao tác</th>
+                                    </tr>
+        
+                                </thead>
+        
+                                <tbody>
+                                    
+                                    <% @cart.line_items.each do |item| %>
+                                    
+                                        <tr>
+                                            
+                                            <input type="hidden" name="line_items[id]" value="<%= item.id %>">
+            
+                                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
+                                                
+                                            <td class="product_image_col" data-title="Product Image">
+                                                
+                                                <%= link_to(image_tag(item.product.product_image.image, width: 86, height: 86), {controller: "product", action: "index", id: item.product_id}) %>
+                                                
+                                            </td>
+            
+                                            <!-- - - - - - - - - - - - - - End of product Image - - - - - - - - - - - - - - - - -->
+            
+                                            <!-- - - - - - - - - - - - - - Product name - - - - - - - - - - - - - - - - -->
+            
+                                            <td data-title="Product Name">
+                                                
+                                                <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id}, class: "product_title" %>
+            
+                                                <ul class="sc_product_info">
+                                                    
+                                                    <li><%= item.product.product_info.description if !item.product.product_info.nil?  %></li>
+                                                    
+                                                </ul>
+            
+                                            </td>
+            
+                                            <!-- - - - - - - - - - - - - - End of product name - - - - - - - - - - - - - - - - -->
+            
+                                            <!-- - - - - - - - - - - - - - Price - - - - - - - - - - - - - - - - -->
+            
+                                            <td class="subtotal" data-title="Price">
+                                                
+                                                <%= number_with_delimiter item.product.product_price.price.to_i %>
+            
+                                            </td>
+            
+                                            <!-- - - - - - - - - - - - - - End of Price - - - - - - - - - - - - - - - - -->
+            
+                                            <!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
+            
+                                            <td data-title="Quantity">
+            
+                                                <div class="qty min clearfix">
+            
+                                                    <a class="theme_button display_inline" data-direction="minus">&#45;</a>
+                                                    <input class="display_inline" type="text" name="quantities[<%= item.id %>]" value="<%= item.quantity %>">
+                                                    <a class="theme_button display_inline" data-direction="plus">&#43;</a>
+            
+                                                </div><!--/ .qty.min.clearfix-->
+            
+                                            </td>
+            
+                                            <!-- - - - - - - - - - - - - - End of quantity - - - - - - - - - - - - - - - - -->
+            
+                                            <!-- - - - - - - - - - - - - - Total - - - - - - - - - - - - - - - - -->
+            
+                                            <td class="total" data-title="Total">
+            
+                                                <%= number_with_delimiter item.total_item.to_i %>
+            
+                                            </td>
+            
+                                            <!-- - - - - - - - - - - - - - End of total - - - - - - - - - - - - - - - - -->
+            
+                                            <!-- - - - - - - - - - - - - - Action - - - - - - - - - - - - - - - - -->
+            
+                                            <td data-title="Action">
+                                                
+                                                <%= link_to "<i class='icon-cancel-2'></i>".html_safe , {controller: "shopping_cart", action: "index", do: 'remove_item', line_item_id: item.id }, {class: "button_dark_grey icon_btn remove_product"} %>
+            
+                                            </td>
+            
+                                            <!-- - - - - - - - - - - - - - End of action - - - - - - - - - - - - - - - - -->
+            
+                                        </tr>
+                                        
+                                    <% end %>         
+        
+                                </tbody>
+        
+                            </table>
+        
+                        </div><!--/ .table_wrap -->
+                        
+                        <!-- - - - - - - - - - - - - - Shopping cart table - - - - - - - - - - - - - - - - -->
+                        
+                        <footer class="bottom_box on_the_sides">
+    
+                            <div class="left_side">
+                                
+                                <%= link_to "Tiến hành đặt hàng", {controller: "check_out", action: "index"}, {class: "button_blue middle_btn"} %>
+        
+                                <%= button_to "Cập nhật giỏ hàng", "#", {class: "button_dark_grey middle_btn"} %>
+                            
+                            </div>
+        
+                            <div class="right_side">
+                                
+                                <%= button_to "Xóa giỏ hàng", @cart, class: "button_grey middle_btn", method: :delete %>
+                                
+                            </div>
+        
+                        </footer><!--/ .bottom_box -->
+        
+                        <!-- - - - - - - - - - - - - - End of shopping cart table - - - - - - - - - - - - - - - - -->
+                        
+                    <% end %>
+                    
+                <% else %>
+                    
+                    <!-- - - - - - - - - - - - - - Shopping cart table - - - - - - - - - - - - - - - - -->
+                    
+                    <footer class="bottom_box on_the_sides">
+        
                         <div class="center_side">
                             
                             <p>Không có sản phẩm nào trong giỏ hàng.....</p>
@@ -154,29 +180,9 @@
     
                     </footer><!--/ .bottom_box -->
     
-                    <!-- - - - - - - - - - - - - - End of shopping cart table - - - - - - - - - - - - - - - - -->
-                    
-                <% else %>
-                    
-                    <footer class="bottom_box on_the_sides">
-    
-                        <div class="left_side">
-    
-                            <%= link_to "Tiến hành thanh toán", {controller: "check_out", action: "index"}, {class: "button_blue middle_btn"} %>
-    
-                        </div>
-    
-                        <div class="right_side">
-                            
-                            <%= button_to "Xóa giỏ hàng", @cart, class: "button_grey middle_btn", method: :delete %>
-                            
-                        </div>
-    
-                    </footer><!--/ .bottom_box -->
-    
-                    <!-- - - - - - - - - - - - - - End of shopping cart table - - - - - - - - - - - - - - - - -->
+                    <!-- - - - - - - - - - - - - - End of shopping cart table - - - - - - - - - - - - - - - - --> 
                 
-                <% end %>
+                <% end %>  
 
             </section>
             

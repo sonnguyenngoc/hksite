@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   get "all_new_product" => "all_new_product#index", as: :all_new_product
   get "all_prominent_product" => "all_prominent_product#index", as: :all_prominent_product
   get "all_sale_product" => "all_sale_product#index", as: :all_sale_product
+  get "finish_checkout" => "finish_checkout#index", as: :finish_checkout
   namespace :admin, :path => "hoangkhangincotech" do
       resources :partners
       resources :articles

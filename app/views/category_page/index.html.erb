@@ -51,7 +51,7 @@
 
                                     <div class="table_cell">
 
-                                        <label>Tên sản phẩm</label>
+                                        <label>Tên sản phẩm cùng chuyên mục: <strong><%= @category.title %></strong></label>
                                         
                                         <%= text_field_tag :search, params[:search], placeholder: "Nhập tên sản phẩm cần tìm..." %>
 
@@ -140,29 +140,48 @@
                         <header class="top_box on_the_sides">
 
                             <div class="left_side clearfix v_centered">
+                                
+                                <%= form_tag({controller: "category_page", action: "index"}, method: "get") do %>
 
-                                <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
-
-                                <div class="v_centered">
-
-                                    <span>Sắp xếp theo:</span>
-
-                                    <div class="custom_select sort_select">
+                                    <%= hidden_field_tag "category_id", @category.id %>
+                                    
+                                    <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
+    
+                                    <div class="v_centered">
+    
+                                        <span>Sắp xếp theo:</span>
+    
+                                        <div class="sort_select">
+                                            
+                                            <select name="sort_by">
+                                                    
+                                                <option value="name">Tên</option>
+                                                <option value="price">Giá</option>
+                                                <option value="created_at">Ngày</option>
+    
+                                            </select>
+    
+                                        </div>
                                         
-                                        <select name="">
-                                                
-                                            <option value="Tên">Tên</option>
-                                            <option value="Giá">Giá</option>
-                                            <option value="Ngày">Ngày</option>
-
-                                        </select>
-
+                                        <div class="sort_select">
+                                            
+                                            <select name="sort_group">
+                                                    
+                                                <option value="ASC">Tăng dần</option>
+                                                <option value="DESC">Giảm dần</option>
+    
+                                            </select>
+    
+                                        </div>
+    
                                     </div>
+    
+                                    <!-- - - - - - - - - - - - - - End of sort by - - - - - - - - - - - - - - - - -->
 
-                                </div>
-
-                                <!-- - - - - - - - - - - - - - End of sort by - - - - - - - - - - - - - - - - -->
-
+                                    <button type="submit" class="button_blue middle_btn" style="margin-top: 10px;">Lọc sản phẩm</button>
+                                
+                                <% end %>
+                            
                             </div>
 
                             <div class="right_side">

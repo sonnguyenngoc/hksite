@@ -28,7 +28,7 @@ class Admin::CustomerOrdersController < ApplicationController
 
     respond_to do |format|
       if @customer_order.save
-        format.html { redirect_to root_path, notice: 'Gửi đơn đặt hàng thành công.' }
+        format.html { redirect_to [:admin, @customer_order], notice: 'Gửi đơn đặt hàng thành công.' }
         format.json { render :show, status: :created, location: @customer_order }
       else
         format.html { render :new }
