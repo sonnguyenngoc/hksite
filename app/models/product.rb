@@ -91,6 +91,9 @@ class Product < ActiveRecord::Base
     return records
   end
   
+  def self
+  end
+  
   def self.get_by_manufacturer(params)
     self.where(manufacturer_id: params[:id])
   end
