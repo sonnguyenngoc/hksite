@@ -89,3 +89,9 @@ select {
 .section_offset .layerslider {
     border: 2px solid #b2b2b2;
 }
+.not_found_404 {
+    font-size: 94px;
+}
+.not_found {
+    font-size: 26px;
+}
