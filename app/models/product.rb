@@ -29,24 +29,79 @@ class Product < ActiveRecord::Base
     pro_detail = products.find(5).name
   end
   
-  def self.get_hot_products
-    self.includes(:product_info).where(product_infos: {product_hot: "on"}).order("product_infos.updated_at DESC")
+  def self.get_hot_products(params)
+    records = self.includes(:product_info).where(product_infos: {product_hot: "on"}).order("product_infos.updated_at DESC")
+    if params[:sort_by] == 'name'
+      products = self.joins(:product_info).where(product_infos: {product_hot: "on"})
+      records = products.order("products.name #{params[:sort_group]}")
+    end
+    
+    if params[:sort_by] == 'created_at'
+      products = self.joins(:product_info).where(product_infos: {product_hot: "on"})
+      records = products.order("products.created_at #{params[:sort_group]}")
+    end
+    
+    return records
   end
   
-  def self.get_sale_products    
-    self.includes(:product_info).where(product_infos: {product_sale: "on"}).order("product_infos.updated_at DESC")
+  def self.get_sale_products(params)    
+    records = self.includes(:product_info).where(product_infos: {product_sale: "on"}).order("product_infos.updated_at DESC")
+    if params[:sort_by] == 'name'
+      products = self.joins(:product_info).where(product_infos: {product_sale: "on"})
+      records = products.order("products.name #{params[:sort_group]}")
+    end
+    
+    if params[:sort_by] == 'created_at'
+      products = self.joins(:product_info).where(product_infos: {product_sale: "on"})
+      records = products.order("products.created_at #{params[:sort_group]}")
+    end
+    
+    return records
   end
   
-  def self.get_bestseller_products
-    self.joins(:product_info).where(product_infos: {product_bestselled: "on"}).order("product_infos.updated_at DESC")
+  def self.get_bestseller_products(params)
+    records = self.joins(:product_info).where(product_infos: {product_bestselled: "on"}).order("product_infos.updated_at DESC")
+    if params[:sort_by] == 'name'
+      products = self.joins(:product_info).where(product_infos: {product_bestselled: "on"})
+      records = products.order("products.name #{params[:sort_group]}")
+    end
+    
+    if params[:sort_by] == 'created_at'
+      products = self.joins(:product_info).where(product_infos: {product_bestselled: "on"})
+      records = products.order("products.created_at #{params[:sort_group]}")
+    end
+    
+    return records
   end
   
-  def self.get_prominent_products
-    self.joins(:product_info).where(product_infos: {product_prominent: "on"}).order("product_infos.updated_at DESC")
+  def self.get_prominent_products(params)
+    records = self.joins(:product_info).where(product_infos: {product_prominent: "on"}).order("product_infos.updated_at DESC")
+    if params[:sort_by] == 'name'
+      products = self.joins(:product_info).where(product_infos: {product_prominent: "on"})
+      records = products.order("products.name #{params[:sort_group]}")
+    end
+    
+    if params[:sort_by] == 'created_at'
+      products = self.joins(:product_info).where(product_infos: {product_prominent: "on"})
+      records = products.order("products.created_at #{params[:sort_group]}")
+    end
+    
+    return records
   end
   
-  def self.get_new_products
-    self.joins(:product_info).where(product_infos: {product_new: "on"}).order("product_infos.updated_at DESC")
+  def self.get_new_products(params)
+    records = self.joins(:product_info).where(product_infos: {product_new: "on"}).order("product_infos.updated_at DESC")
+    if params[:sort_by] == 'name'
+      products = self.joins(:product_info).where(product_infos: {product_new: "on"})
+      records = products.order("products.name #{params[:sort_group]}")
+    end
+    
+    if params[:sort_by] == 'created_at'
+      products = self.joins(:product_info).where(product_infos: {product_new: "on"})
+      records = products.order("products.created_at #{params[:sort_group]}")
+    end
+    
+    return records
   end
   
   def self.get_related_products
@@ -104,7 +159,17 @@ class Product < ActiveRecord::Base
   #end
   
   def self.get_by_manufacturer(params)
-    self.where(manufacturer_id: params[:id])
+    records = self.where(manufacturer_id: params[:manufacturer_id])
+    
+    if params[:sort_by] == 'name'
+      records = records.order("products.name #{params[:sort_group]}")
+    end
+    
+    if params[:sort_by] == 'created_at'
+      records = records.order("products.created_at #{params[:sort_group]}")
+    end
+    
+    return records
   end
  
   def get_amount_prices

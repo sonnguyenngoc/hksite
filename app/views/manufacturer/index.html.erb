@@ -132,7 +132,7 @@
                                                 <% if item.image_url.nil? %>
                                                     <p>Chưa cập nhật logo...</p>
                                                 <% else %>
-                                                    <%= link_to(image_tag(item.image_url.partner_image, width: 180, height: 150), {controller: "manufacturer_page", action: "index", id: item.manufacturer_id}) %>
+                                                    <%= link_to(image_tag(item.image_url.partner_image, width: 180, height: 150), {controller: "manufacturer_page", action: "index", manufacturer_id: item.manufacturer_id}) %>
                                                 <% end %>
     
                                             </div><!--/. image_wrap-->
@@ -143,7 +143,7 @@
     
                                             <div class="description">
     
-                                                <%= link_to item.manufacturer.name, {controller: "manufacturer_page", action: "index", id: item.manufacturer_id} %>
+                                                <%= link_to item.manufacturer.name, {controller: "manufacturer_page", action: "index", manufacturer_id: item.manufacturer_id} %>
     
                                                 <div class="clearfix product_info">
     
