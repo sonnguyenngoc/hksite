@@ -51,7 +51,7 @@
 
                                     <div class="table_cell">
 
-                                        <label>Tên sản phẩm</label>
+                                        <label>Tên sản phẩm cùng chuyên mục: <strong><%= @category.title %></strong></label>
                                         
                                         <%= text_field_tag :search, params[:search], placeholder: "Nhập tên sản phẩm cần tìm..." %>
 
@@ -109,7 +109,7 @@
                             
                                     <% if item.level == 1 %>
                                         
-                                        <li><a class="button_grey" <%= (link_to item.title, {:controller => "category_page", :action => "index", id: item.id }).html_safe %></a></li>
+                                        <li><a class="button_grey" <%= (link_to item.title, {controller: "category_page", action: "index", category_id: item.id }).html_safe %></a></li>
                                         
                                     <% end %>
                                 
@@ -139,64 +139,49 @@
 
                         <header class="top_box on_the_sides">
 
-                            <div class="left_side clearfix v_centered">
+                            <div class="clearfix v_centered">
+                                
+                                <%= form_tag({controller: "category_page", action: "index"}, method: "get") do %>
 
-                                <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
-
-                                <div class="v_centered">
-
-                                    <span>Sắp xếp theo:</span>
-
-                                    <div class="custom_select sort_select">
+                                    <%= hidden_field_tag "category_id", @category.id %>
+                                    
+                                    <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
+    
+                                    <div class="v_centered">
+    
+                                        <span>Sắp xếp theo:</span>
+    
+                                        <div class="sort_select">
+                                            
+                                            <select name="sort_by">
+                                                    
+                                                <option value="name">Tên</option>
+                                                <option value="price">Giá</option>
+                                                <option value="created_at">Ngày</option>
+    
+                                            </select>
+    
+                                        </div>
                                         
-                                        <select name="">
-                                                
-                                            <option value="Tên">Tên</option>
-                                            <option value="Giá">Giá</option>
-                                            <option value="Ngày">Ngày</option>
-
-                                        </select>
-
+                                        <div class="sort_select">
+                                            
+                                            <select name="sort_group">
+                                                    
+                                                <option value="ASC">Tăng dần</option>
+                                                <option value="DESC">Giảm dần</option>
+    
+                                            </select>
+    
+                                        </div>
+                                        
+                                        <button type="submit" class="button_blue middle_btn" style="margin-top: 10px;">Lọc sản phẩm</button>
+    
                                     </div>
-
-                                </div>
-
-                                <!-- - - - - - - - - - - - - - End of sort by - - - - - - - - - - - - - - - - -->
-
-                                <!-- - - - - - - - - - - - - - Number of products shown - - - - - - - - - - - - - - - - -->
-
-                                <div class="v_centered">
-
-                                    <span>Hiển thị:</span>
-
-                                    <div class="custom_select">
-
-                                        <select name="">
-
-                                            <option value="15">15</option>                                        
-
-                                        </select>
-
-                                    </div>
-
-                                </div>
-
-                                <!-- - - - - - - - - - - - - - End of number of products shown - - - - - - - - - - - - - - - - -->
-
-                            </div>
-
-                            <div class="right_side">
-
-                                <!-- - - - - - - - - - - - - - Product layout type - - - - - - - - - - - - - - - - -->
-
-                                <div class="layout_type buttons_row" data-table-container="#products_container">
-
-                                    <a href="#" data-table-layout="grid_view" class="button_grey middle_btn icon_btn active tooltip_container"><i class="icon-th"></i><span class="tooltip top">Danh sách</span></a>
-
-                                </div>
-
-                                <!-- - - - - - - - - - - - - - End of product layout type - - - - - - - - - - - - - - - - -->
-
+    
+                                    <!-- - - - - - - - - - - - - - End of sort by - - - - - - - - - - - - - - - - -->
+                                
+                                <% end %>
+                            
                             </div>
 
                         </header>

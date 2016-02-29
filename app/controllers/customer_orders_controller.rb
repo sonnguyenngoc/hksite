@@ -11,7 +11,7 @@ class CustomerOrdersController < ApplicationController
         OrderMailer.customer_order_email(@customer_order).deliver_now
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        format.html { redirect_to root_path, notice: 'Gửi đơn đặt hàng thành công.' }
+        format.html { redirect_to controller: 'finish_checkout', action: 'index', notice: 'Gửi đơn đặt hàng thành công.' }
         format.json { render :show, status: :created, location: @customer_order }
       else
         format.html { render :new }

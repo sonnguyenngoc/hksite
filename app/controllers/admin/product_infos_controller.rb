@@ -9,7 +9,6 @@ class Admin::ProductInfosController < ApplicationController
   # GET /product_infos.json
   def index
     @products = Product.paginate(:page => params[:page], :per_page => 15).order("created_at DESC")
-    @product_infos = ProductInfo.all
   end
 
   # GET /product_infos/1

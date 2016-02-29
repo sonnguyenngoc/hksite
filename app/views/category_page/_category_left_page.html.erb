@@ -10,7 +10,7 @@
 
                 <li class="has_megamenu animated_item">
 
-                    <%= link_to item.title, {:controller => "category_page", :action => "index", id: item.id } %>
+                    <%= link_to item.title, {:controller => "category_page", :action => "index", category_id: item.id } %>
 
                     <!-- - - - - - - - - - - - - - Mega menu - - - - - - - - - - - - - - - - -->
 
@@ -32,7 +32,7 @@
                     
                                             <% if child_2.level == 3 %>
                                                 
-                                                <li><%= link_to child_2.title, {:controller => "category_page", :action => "index", id: child_2.id } %></a></li>
+                                                <li><%= link_to child_2.title, {:controller => "category_page", :action => "index", category_id: child_2.id } %></a></li>
                                                 
                                             <% end %>
                                         

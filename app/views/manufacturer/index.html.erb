@@ -61,7 +61,7 @@
                             
                                     <% if item.level == 1 %>
                                         
-                                        <li><a class="button_grey" <%= (link_to item.title, {:controller => "category_page", :action => "index", id: item.id }).html_safe %></a></li>
+                                        <li><a class="button_grey" <%= (link_to item.title, {controller: "category_page", action: "index", category_id: item.id }).html_safe %></a></li>
                                         
                                     <% end %>
                                 
@@ -90,28 +90,10 @@
                     <div class="section_offset">
 
                         <header class="top_box on_the_sides">
+                            
+                            <div class="left_side">
 
-                            <div class="left_side clearfix v_centered">
-
-                                <!-- - - - - - - - - - - - - - Number of products shown - - - - - - - - - - - - - - - - -->
-
-                                <div class="v_centered">
-
-                                    <span>Hiển thị:</span>
-
-                                    <div class="custom_select">
-
-                                        <select name="">
-
-                                            <option value="15">15</option>
-                                            
-                                        </select>
-
-                                    </div>
-
-                                </div>
-
-                                <!-- - - - - - - - - - - - - - End of number of products shown - - - - - - - - - - - - - - - - -->
+                                <%= page_entries_info @partners %> đối tác.
 
                             </div>
 
@@ -150,7 +132,7 @@
                                                 <% if item.image_url.nil? %>
                                                     <p>Chưa cập nhật logo...</p>
                                                 <% else %>
-                                                    <%= link_to(image_tag(item.image_url.partner_image, width: 180, height: 150), {controller: "manufacturer_page", action: "index", id: item.manufacturer_id}) %>
+                                                    <%= link_to(image_tag(item.image_url.partner_image, width: 180, height: 150), {controller: "manufacturer_page", action: "index", manufacturer_id: item.manufacturer_id}) %>
                                                 <% end %>
     
                                             </div><!--/. image_wrap-->
@@ -161,7 +143,7 @@
     
                                             <div class="description">
     
-                                                <%= link_to item.manufacturer.name, {controller: "manufacturer_page", action: "index", id: item.manufacturer_id} %>
+                                                <%= link_to item.manufacturer.name, {controller: "manufacturer_page", action: "index", manufacturer_id: item.manufacturer_id} %>
     
                                                 <div class="clearfix product_info">
     

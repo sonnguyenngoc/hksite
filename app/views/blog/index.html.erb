@@ -18,7 +18,7 @@
 
             <ul class="breadcrumbs">
 
-                <li><a href="index.html">Trang chủ</a></li>
+                <li><%= link_to "Trang chủ", root_path %></li>
                 <li>Tin tức</li>
 
             </ul>
@@ -109,11 +109,7 @@
 
                     <div class="section_offset">
 
-                        <a href="#" class="banner">
-                            
-                            <img src="images/logo-company.jpg" alt="">
-
-                        </a>
+                        <%= link_to image_tag("/images/logo-company.jpg"), { controller: "about_us", action: "index" }, class: "banner" %>
 
                     </div>
 

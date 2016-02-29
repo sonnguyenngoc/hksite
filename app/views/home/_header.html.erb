@@ -114,19 +114,22 @@
 
                             <div class="search_category alignleft">
                                 
-                                 <div class="custom_select">
+                                 <div class="">
 
-                                    <select class="list_category">
+                                    <select name="category_id">
                                         
-                                        <option value="Tất cả" name="category_id">Tất cả</option>
+                                        <option value="">Tất cả</option>
                                         
                                         <% @menu.each do |item| %>
                             
                                             <% if item.level == 1 %>
-                                                <option value="<%= item.title %>" name="category_id"><%= item.title %></option>
+                                                
+                                                <option value="<%= item.id %>" class="list_category_option"><%= item.title %></option>
+                                            
                                             <% end %>
                                         
                                         <% end %>
+                                    
                                     </select>
 
                                 </div><!--/ .custom_select -->
@@ -271,7 +274,7 @@
 
                                     <li class="has_megamenu">
     
-                                        <%= link_to item.title, {:controller => "category_page", :action => "index", id: item.id } %>
+                                        <%= link_to item.title, {:controller => "category_page", :action => "index", category_id: item.id } %>
         
                                         <!-- - - - - - - - - - - - - - Mega menu - - - - - - - - - - - - - - - - -->
         
@@ -293,7 +296,7 @@
                                             
                                                                 <% if child_2.level == 3 %>
                 
-                                                                    <li><%= link_to child_2.title, {:controller => "category_page", :action => "index", id: child_2.id } %></a></li>
+                                                                    <li><%= link_to child_2.title, {:controller => "category_page", :action => "index", category_id: child_2.id } %></a></li>
                                                             
                                                                 <% end %>
                                                             

@@ -40,15 +40,12 @@ class CartsController < ApplicationController
   # PATCH/PUT /carts/1
   # PATCH/PUT /carts/1.json
   def update
-    respond_to do |format|
-      if @cart.update(cart_params)
-        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
-        format.json { render :show, status: :ok, location: @cart }
-      else
-        format.html { render :edit }
-        format.json { render json: @cart.errors, status: :unprocessable_entity }
-      end
+    params[:quantities].each do |q|
+      li = LineItem.find(q[0])
+      li.update_attribute(:quantity, q[1])
     end
+    
+    redirect_to controller: 'shopping_cart', action: 'index', notice: 'Cập nhật giỏ hàng thành công.'
   end
 
   # DELETE /carts/1

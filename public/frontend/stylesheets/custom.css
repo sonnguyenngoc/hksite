@@ -38,7 +38,7 @@ table > *:last-child > tr:last-child th, table > *:last-child > tr:last-child td
     text-align: left;
 }
 input:not([type="submit"]), textarea, .active_option {
-    height: 40px;
+    height: 38px;
 }
 .pagination > li{ float: left; }
 .pagination > li:first-child > span{ border-radius: 3px 0 0 3px; }
@@ -76,4 +76,25 @@ input:not([type="submit"]), textarea, .active_option {
     color: #fff;
     background: #4ac4fa;
     border-color: #4ac4fa;
+}
+select {
+    padding: 9.5px 8px;
+}
+.search_category {
+    width: 208px;
+}
+.search input {
+    width: calc(100% - 258px);
+}
+.section_offset .layerslider {
+    border: 2px solid #b2b2b2;
+}
+.not_found_404 {
+    font-size: 94px;
+}
+.not_found {
+    font-size: 26px;
+}
+.margin-contact {
+    margin-bottom: 10px;
 }

@@ -1,0 +1,2 @@
+module FinishCheckoutHelper
+end
