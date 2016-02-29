@@ -8,9 +8,8 @@ class Admin::ProductInfosController < ApplicationController
   # GET /product_infos
   # GET /product_infos.json
   def index
-    @products = Product.search(params)
-    @products = Product.paginate(:page => params[:page], :per_page => 15).order("created_at DESC")
-    @product_infos = ProductInfo.all
+    @products = Product.search(params).paginate(:page => params[:page], :per_page => 15).order("created_at DESC")
+    @manufacturers = Manufacturer.all
   end
 
   # GET /product_infos/1
@@ -20,7 +19,7 @@ class Admin::ProductInfosController < ApplicationController
 
   # GET /product_infos/new
   def new
-    @product_info = ProductInfo.new(product_id: params[:product_id])    
+    @product_info = ProductInfo.new(product_id: params[:product_id])
   end
 
   # GET /product_infos/1/edit

@@ -108,8 +108,18 @@ class Product < ActiveRecord::Base
     self.first(12)
   end
   
+  #def self.get_search_product_infos(params)
+    
+  #   records = Product.joins(:product_info)
+     
+  #  if params[:search_product_infos].present?
+  #     records = records.where('products.name LIKE ?', "%#{params[:search_product_infos].strip.downcase}%")
+  #  end
+    
+  #end
+  
   def self.search(params)
-    records = Product.all
+    records = Product.joins(:product_info)
     if params[:search].present?
       records = records.where('LOWER(products.name) LIKE ?', "%#{params[:search].strip.downcase}%")
     end
@@ -143,20 +153,34 @@ class Product < ActiveRecord::Base
       records = records.get_sale_products.where('LOWER(products.name) LIKE ?', "%#{params[:search_sale_products].strip.downcase}%")
     end
     
-    if params[:name].present?
-      records = records.joins(:product_infos).where('products.name LIKE ?', "%#{params[:name].strip.downcase}%")
+    #Search Product in ProductInfo <index>
+    if params[:search_product_infos].present?
+       records = records.where('LOWER(products.name) LIKE ?', "%#{params[:search_product_infos].strip.downcase}%")
     end
+    
+    if params[:type]=='product_new'
+      records = records.where(product_infos: {product_new: 'on'})
+    end
+    
+    if params[:type]=='product_hot'
+      records = records.where(product_infos: {product_hot: 'on'})
+    end
+    
+    if params[:type]=='product_prominent'
+      records = records.where(product_infos: {product_prominent: 'on'})
+    end
+    
+    if params[:type]=='product_sale'
+      records = records.where(product_infos: {product_sale: 'on'})
+    end
+    
+    if params[:type]=='product_bestselled'
+      records = records.where(product_infos: {product_bestselled: 'on'})
+    end
+    
     
     return records
   end
-  
-  #def self.search(params)
-  #  arr=[]
-  #  if params[:types].each do |t|
-  #    arr << "product_infos.#{+}='on'"
-  #    array = (params[:types].map{|+| arr}.jonis(where(arr.join(product_hot = 'on' OR product_new = 'on' OR product_bestselled = 'on' OR product_prominent = 'on' OR product_sale = 'on')
-  #  end
-  #end
   
   def self.get_by_manufacturer(params)
     records = self.where(manufacturer_id: params[:manufacturer_id])
