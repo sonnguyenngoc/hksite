@@ -9,6 +9,6 @@ class ProductController < ApplicationController
     @product_infos = ProductInfo.all
     @new_blog_footer = Article.order("created_at DESC").first(3)
     
-    @related_products = Product.get_related_products
+    @sale_products = Product.get_sale_products(params)
   end  
 end

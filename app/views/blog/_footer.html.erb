@@ -106,7 +106,7 @@
                             <li><%= link_to "Tin tức", {controller: "blog", action: "index"} %></li>
                             <li><%= link_to "Đối tác", {controller: "manufacturer", action: "index"} %></li>
                             <li><%= link_to "Liên hệ", {controller: "contact", action: "index"} %></li>
-
+                            
                         </ul>
 
                     </section><!--/ .widget-->
@@ -129,8 +129,8 @@
                             
                                 <% if item.level == 1 %>
                                     
-                                    <li><%= link_to item.title, {controller: "category_page", action: "index", id: item.id} %></li>
-                                    
+                                    <li><%= link_to item.title, {controller: "category_page", action: "index", category_id: item.id} %></li>
+
                                 <% end %>
                             
                             <% end %>
@@ -255,8 +255,8 @@
                             
                         <% if item.level == 1 %>
 
-                            <li><%= link_to item.title, {controller: "category_page", action: "index", id: item.id} %></li>
-                            
+                            <li><%= link_to item.title, {controller: "category_page", action: "index", category_id: item.id} %></li>
+
                         <% end %>
                     
                     <% end %>

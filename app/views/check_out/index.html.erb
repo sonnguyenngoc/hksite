@@ -257,8 +257,48 @@
 
                             <p class="not_found">GIỎ HÀNG TRỐNG</p>
 
-                            <%= link_to "Quay về trang chủ", root_path, class: "button_dark_grey middle_btn" %>
+                            <%= link_to "QUAY VỀ TRANG CHỦ", root_path, class: "button_dark_grey middle_btn" %>
 
+                            <!-- - - - - - - - - - - - - - Search form - - - - - - - - - - - - - - - - -->
+                        
+                            <%= form_tag({controller: "product_search", action: "index"}, method: "get", class: "clearfix search") do %>
+    
+                                <input type="text" name="search" tabindex="1" placeholder="Tìm kiếm..." class="alignleft">
+                                
+                                <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+    
+                                <div class="search_category alignleft">
+                                    
+                                     <div class="">
+    
+                                        <select name="category_id">
+                                            
+                                            <option value="">Tất cả</option>
+                                            
+                                            <% @menu.each do |item| %>
+                                
+                                                <% if item.level == 1 %>
+                                                    
+                                                    <option value="<%= item.id %>" class="list_category_option"><%= item.title %></option>
+                                                
+                                                <% end %>
+                                            
+                                            <% end %>
+                                        
+                                        </select>
+    
+                                    </div><!--/ .custom_select -->
+    
+                                </div><!--/ .search_category.alignleft-->
+    
+                                <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+    
+                                <button class="button_blue def_icon_btn alignleft"></button>
+    
+                            <% end %><!--/ #search-->
+                            
+                            <!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->
+                        
                         </div><!--/ .align_center -->
 
                     </div><!--/ [col]-->

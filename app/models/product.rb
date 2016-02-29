@@ -178,6 +178,16 @@ class Product < ActiveRecord::Base
       records = records.where(product_infos: {product_bestselled: 'on'})
     end
     
+    #manus = Product.joins(:manufacturer)
+    #if params[:types]=='manufacturer_id'
+    #  records = self.where(manufacturer_id: params[:manufacturer_id])
+    #end
+    
+    #arr=[]
+    #if params[:types].each do |t|
+    #  arr << "product_infos.#{+}='on'"
+    #  array = (params[:types].map{|t| arr}.jonis(where(arr.join(product_hot = 'on' OR product_new = 'on' OR product_bestselled = 'on' OR product_prominent = 'on' OR product_sale = 'on')
+    #end
     
     return records
   end
