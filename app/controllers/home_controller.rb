@@ -11,10 +11,10 @@ class HomeController < ApplicationController
     @new_blog_footer = Article.order("created_at DESC").first(3)
     @partners = Partner.order("created_at DESC").first(20)
     
-    @hot_products = Product.get_hot_products.limit(9)
-    @sale_products = Product.get_sale_products.limit(6)
-    @bestseller_products = Product.get_bestseller_products.limit(9)
-    @prominent_products = Product.get_prominent_products.limit(9)
-    @new_products = Product.get_new_products.limit(9)
+    @hot_products = Product.get_hot_products(params).limit(9)
+    @sale_products = Product.get_sale_products(params).limit(6)
+    @bestseller_products = Product.get_bestseller_products(params).limit(9)
+    @prominent_products = Product.get_prominent_products(params).limit(9)
+    @new_products = Product.get_new_products(params).limit(9)
   end
 end
