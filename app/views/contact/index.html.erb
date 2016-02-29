@@ -52,7 +52,7 @@
 
                         <a href="#" class="banner">
                             
-                            <img src="images/logo-company.jpg" alt="">
+                            <%= link_to image_tag("/images/logo-company.jpg"), { controller: "about_us", action: "index" }, class: "banner" %>
 
                         </a>
 
@@ -131,12 +131,12 @@
 
                                     </li><!--/ .row -->
 
-                                    <li class="row">
+                                    <li class="row margin-contact">
 
                                         <div class="col-xs-12">
 
                                             <label for="cf_message" class="required">Lời nhắn</label>
-                                            <%= f.text_area :messages, placeholder: 'Lời nhắn (Bắt buộc)', rows: '6', required: true %>
+                                            <%= f.text_field :messages, placeholder: 'Lời nhắn (Bắt buộc)', rows: '6', required: true %>
 
                                         </div><!--/ [col]-->
 

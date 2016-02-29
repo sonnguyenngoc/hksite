@@ -122,7 +122,7 @@
         
                                             <p><%= link_to (truncate(strip_tags(product.name), length: 35)), {controller: "product", action: "index", id: product.id} %></p>
                                             
-                                            <p><%= truncate(strip_tags(product.product_info.bonus_product), length: 30) %></p>
+                                            <p><%= product.product_info.bonus_product %></p>
         
                                             <div class="clearfix product_info">
                                                 

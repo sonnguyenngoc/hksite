@@ -44,7 +44,7 @@ class Product < ActiveRecord::Base
     return records
   end
   
-  def self.get_sale_products(params)    
+  def self.get_sale_products(params)  
     records = self.includes(:product_info).where(product_infos: {product_sale: "on"}).order("product_infos.updated_at DESC")
     if params[:sort_by] == 'name'
       products = self.joins(:product_info).where(product_infos: {product_sale: "on"})
@@ -102,10 +102,6 @@ class Product < ActiveRecord::Base
     end
     
     return records
-  end
-  
-  def self.get_related_products
-    self.first(12)
   end
   
   def self.search(params)

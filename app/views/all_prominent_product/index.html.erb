@@ -107,7 +107,7 @@
                             
                                     <% if item.level == 1 %>
                                         
-                                        <li><a class="button_grey" <%= (link_to item.title, {:controller => "category_page", :action => "index", id: item.id }).html_safe %></a></li>
+                                        <li><a class="button_grey" <%= (link_to item.title, {controller: "category_page", action: "index", category_id: item.id }).html_safe %></a></li>
                                         
                                     <% end %>
                                 
