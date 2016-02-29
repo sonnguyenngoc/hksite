@@ -88,11 +88,20 @@ class Product < ActiveRecord::Base
       records = records.get_sale_products.where('LOWER(products.name) LIKE ?', "%#{params[:search_sale_products].strip.downcase}%")
     end
     
+    if params[:name].present?
+      records = records.joins(:product_infos).where('products.name LIKE ?', "%#{params[:name].strip.downcase}%")
+    end
+    
     return records
   end
   
-  def self
-  end
+  #def self.search(params)
+  #  arr=[]
+  #  if params[:types].each do |t|
+  #    arr << "product_infos.#{+}='on'"
+  #    array = (params[:types].map{|+| arr}.jonis(where(arr.join(product_hot = 'on' OR product_new = 'on' OR product_bestselled = 'on' OR product_prominent = 'on' OR product_sale = 'on')
+  #  end
+  #end
   
   def self.get_by_manufacturer(params)
     self.where(manufacturer_id: params[:id])
