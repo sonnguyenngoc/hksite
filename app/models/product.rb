@@ -108,15 +108,9 @@ class Product < ActiveRecord::Base
     self.first(12)
   end
   
-  #def self.get_search_product_infos(params)
-    
-  #   records = Product.joins(:product_info)
-     
-  #  if params[:search_product_infos].present?
-  #     records = records.where('products.name LIKE ?', "%#{params[:search_product_infos].strip.downcase}%")
-  #  end
-    
-  #end
+  def self.get_sort_manufacturer(params)
+    records = self.where(manufacturer_id: params[:manufacturer_id])
+  end
   
   def self.search(params)
     records = Product.joins(:product_info)
@@ -178,16 +172,9 @@ class Product < ActiveRecord::Base
       records = records.where(product_infos: {product_bestselled: 'on'})
     end
     
-    #manus = Product.joins(:manufacturer)
-    #if params[:types]=='manufacturer_id'
-    #  records = self.where(manufacturer_id: params[:manufacturer_id])
-    #end
-    
-    #arr=[]
-    #if params[:types].each do |t|
-    #  arr << "product_infos.#{+}='on'"
-    #  array = (params[:types].map{|t| arr}.jonis(where(arr.join(product_hot = 'on' OR product_new = 'on' OR product_bestselled = 'on' OR product_prominent = 'on' OR product_sale = 'on')
-    #end
+    if params[:manufacturers].present?
+      records = self.where(manufacturer_id: params[:manufacturers])
+    end
     
     return records
   end

@@ -9,7 +9,6 @@ class Admin::ProductInfosController < ApplicationController
   # GET /product_infos.json
   def index
     @products = Product.search(params).paginate(:page => params[:page], :per_page => 15).order("created_at DESC")
-    @manufacturers = Manufacturer.all
   end
 
   # GET /product_infos/1
@@ -40,7 +39,7 @@ class Admin::ProductInfosController < ApplicationController
 
     respond_to do |format|
       if @product_info.save
-        format.html { redirect_to [:admin, @product_info], notice: 'Product info was successfully created.' }
+        format.html { redirect_to [:admin, @product_info], notice: 'Thông tin sản phẩm đã được cập nhật thành công.' }
         format.json { render :show, status: :created, location: @product_info }
       else
         format.html { render :new }
@@ -60,7 +59,7 @@ class Admin::ProductInfosController < ApplicationController
     
     respond_to do |format|
       if @product_info.update(product_info_params)
-        format.html { redirect_to [:admin, @product_info], notice: 'Product info was successfully updated.' }
+        format.html { redirect_to [:admin, @product_info], notice: 'Thông tin sản phẩm đã được cập nhật thành công.' }
         format.json { render :show, status: :ok, location: @product_info }
       else
         format.html { render :edit }
@@ -74,7 +73,7 @@ class Admin::ProductInfosController < ApplicationController
   def destroy
     @product_info.destroy
     respond_to do |format|
-      format.html { redirect_to admin_product_infos_url, notice: 'Product info was successfully destroyed.' }
+      format.html { redirect_to admin_product_infos_url, notice: 'Thông tin sản phẩm đã được xóa thành công.' }
       format.json { head :no_content }
     end
   end
