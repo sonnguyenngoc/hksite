@@ -108,11 +108,12 @@
                                 
                                     <% if @pro_detail.product_info.product_sale = 'on' %>
                                     
-                                        <p>Sản phẩm đang khuyến mãi</p>
-                                        
-                                        <b>Chi tiết khuyến mãi:</b>
-                                        
-                                        <p><%= @pro_detail.product_info.bonus_product %></p>
+                                        <div class="alert_box success">
+
+                                            <b>Sản phẩm đang khuyến mãi:</b><br/>
+                                            <%= @pro_detail.product_info.bonus_product %>
+        
+                                        </div>
                                     
                                     <% end %>
 
