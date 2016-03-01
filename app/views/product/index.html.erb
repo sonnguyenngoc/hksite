@@ -89,8 +89,11 @@
                                         <tr>
 
                                             <td>Nhà cung cấp: </td>
-                                            
-                                            <td><%= link_to @pro_detail.manufacturer.name, { controller: "manufacturer_page", action: "index", manufacturer_id: @pro_detail.manufacturer.id } %></td>
+                                            <% if !@pro_detail.manufacturer.nil? %>
+                                                <td><%= link_to @pro_detail.manufacturer.name, { controller: "manufacturer_page", action: "index", manufacturer_id: @pro_detail.manufacturer.id } %></td>
+                                            <% else %>
+                                                <td>Updating...</td>
+                                            <% end %>
 
                                         </tr>
                                         
@@ -105,27 +108,27 @@
                                 </table>
 
                             </div>
-
-                            <hr>
-
-                            <div class="description_section">
+                            
+                            <% if !@pro_detail.product_info.nil? %>
                                 
-                                <% if !@pro_detail.product_info.nil? %>
-                                
-                                    <% if @pro_detail.product_info.product_sale = 'on' %>
-                                    
+                                <% if @pro_detail.product_info.product_sale == 'on' %>
+                            
+                                    <hr>
+        
+                                    <div class="description_section">
+                                        
                                         <div class="alert_box success">
 
                                             <b>Sản phẩm đang khuyến mãi:</b><br/>
                                             <%= @pro_detail.product_info.bonus_product %>
         
                                         </div>
-                                    
-                                    <% end %>
-
-                                <% end %>
+                                        
+                                    </div>
                             
-                            </div>
+                                <% end %>
+
+                            <% end %>
 
                             <hr>
 
