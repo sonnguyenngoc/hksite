@@ -169,6 +169,24 @@
                                                     
                                                 <% end %>
                                                 
+                                            <% else %>
+                                                
+                                                <tbody>
+
+                                                    <tr>
+                                                        
+                                                        <td class="special_price" colspan="2">
+                                                            
+                                                            Giá sản phẩm:
+        
+                                                            <div class="price"><%= number_with_delimiter @pro_detail.product_price.price.to_i %> VNĐ</div>
+        
+                                                        </td>
+        
+                                                    </tr>
+        
+                                                </tbody>
+                                                
                                             <% end %>
                                             
                                         <% end %>
