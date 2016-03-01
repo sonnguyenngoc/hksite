@@ -96,42 +96,63 @@
                                             <% end %>
 
                                         </tr>
+                                        
+                                        <tr>
+                                            
+                                            <td><%= @pro_detail.html_description.html_safe if !@pro_detail.html_description.nil? %></td>
+
+                                        </tr>
 
                                     </tbody>
 
                                 </table>
 
                             </div>
-
-                            <hr>
-
-                            <div class="description_section">
-                                
-                                <% if !@pro_detail.product_info.nil? %>
-                                
-                                    <% if @pro_detail.product_info.product_sale = 'on' %>
-                                    
-                                        <p>Sản phẩm đang khuyến mãi</p>
-                                        
-                                        <b>Chi tiết khuyến mãi:</b>
-                                        
-                                        <p><%= @pro_detail.product_info.bonus_product %></p>
-                                    
-                                    <% end %>
-
-                                <% end %>
                             
-                            </div>
+                            <% if !@pro_detail.product_info.nil? %>
+                                
+                                <% if @pro_detail.product_info.product_sale == 'on' %>
+                            
+                                    <hr>
+        
+                                    <div class="description_section">
+                                        
+                                        <div class="alert_box success">
+
+                                            <b>Sản phẩm đang khuyến mãi:</b><br/>
+                                            <%= @pro_detail.product_info.bonus_product %>
+        
+                                        </div>
+                                        
+                                    </div>
+                            
+                                <% end %>
+
+                            <% end %>
 
                             <hr>
 
                             <% if @pro_detail.product_price.price.nil? %>
                                 
-                                <p class="product_price"><b class="theme_color" style="color: #018bc8">Liên hệ báo giá</b></p>
+                                <p class="product_price"><b class="theme_color" style="color: #018bc8">Liên hệ:(84-8) 3984 7690</b></p>
                             
                             <% else %>
                                 
-                                <p class="product_price"><b><%= number_with_delimiter @pro_detail.product_price.price.to_i %> VNĐ</b></p>
+                                <% if !@pro_detail.product_info.nil? %>
+                                               
+                                    <% if @pro_detail.product_info.sale_price.nil? || @pro_detail.product_info.sale_price <= 0 %>
+                                        
+                                        <p class="product_price"><span style="color: #b2b2b2">Giá KM: </span><b><%= number_with_delimiter @pro_detail.product_price.price.to_i %> VNĐ</b></p>
+                                    
+                                    <% else %>
+                                                               
+                                        <p class="product_price"><s style = "font-size: smaller;"><%= number_with_delimiter @pro_detail.product_price.price.to_i %> VNĐ</s>
+                                        
+                                        <b><%= number_with_delimiter @pro_detail.product_info.sale_price.to_i %> VNĐ</b></p>
+                                      
+                                    <% end %>
+                                
+                                <% end %>
                             
                             <% end %>
 
@@ -154,46 +175,6 @@
                 </section><!--/ .section_offset -->
 
                 <!-- - - - - - - - - - - - - - End of product images & description - - - - - - - - - - - - - - - - -->
-
-                <!-- - - - - - - - - - - - - - Tabs - - - - - - - - - - - - - - - - -->
-
-                <div class="section_offset">
-
-                    <div class="tabs type_2">
-
-                        <!-- - - - - - - - - - - - - - Navigation of tabs - - - - - - - - - - - - - - - - -->
-
-                        <ul class="tabs_nav clearfix">
-
-                            <li><a href="#tab-1">Giới thiệu</a></li>
-
-                        </ul>
-                        
-                        <!-- - - - - - - - - - - - - - End navigation of tabs - - - - - - - - - - - - - - - - -->
-
-                        <!-- - - - - - - - - - - - - - Tabs container - - - - - - - - - - - - - - - - -->
-
-                        <div class="tab_containers_wrap">
-
-                            <!-- - - - - - - - - - - - - - Tab - - - - - - - - - - - - - - - - -->
-
-                            <div id="tab-1" class="tab_container">
-
-                                <%= @pro_detail.description if !@pro_detail.product_info.nil? %>
-                                
-                            </div><!--/ #tab-1-->
-
-                            <!-- - - - - - - - - - - - - - End tab - - - - - - - - - - - - - - - - -->
-
-                        </div><!--/ .tab_containers_wrap -->
-
-                        <!-- - - - - - - - - - - - - - End of tabs containers - - - - - - - - - - - - - - - - -->
-
-                    </div><!--/ .tabs-->
-
-                </div><!--/ .section_offset -->
-
-                <!-- - - - - - - - - - - - - - End of tabs - - - - - - - - - - - - - - - - -->
 
                 <!-- - - - - - - - - - - - - - Related products - - - - - - - - - - - - - - - - -->
 

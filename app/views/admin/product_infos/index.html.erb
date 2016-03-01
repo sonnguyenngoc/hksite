@@ -78,7 +78,6 @@
                     <th>Hình Ảnh</th>
                     <th>Tên Sản Phẩm</th>
                     <th>Giá bán (VNĐ)</th>
-					<th>Giới thiệu</th>
                     <th>Trạng thái</th>
                     <th class="text-center">Thao tác</th>
                 </tr>
@@ -92,13 +91,16 @@
 							</div>
 						</td>
                         <td>
-							<%= product.name %>
+							<strong><%= product.name %><br/></strong>
+							Nhà cung cấp: <%= product.manufacturer.name %>
 						</td>
                         <td>
-							<%= number_with_delimiter product.product_price.price.to_i %>
-						</td>
-						<td>
-							<%= truncate(strip_tags(product.description), length: 40) %>
+							<%= number_with_delimiter product.product_price.price.to_i %><br/>
+							<% if !product.product_info.nil? %>
+								<% if product.product_info.product_sale == "on" %>
+									<span class="label bg-pink">Giá khuyến mãi: <%= number_with_delimiter product.product_info.sale_price.to_i %> VNĐ</span>
+								<% end %>
+							<% end %>
 						</td>
 						<td>
 							<% if !product.product_info.nil? %>
@@ -106,16 +108,16 @@
 									<ul><li style="list-style-type: none;"><span class="label label-warning">hot</span></li></ul>
 								<% end %>
 								<% if product.product_info.product_new == "on" %>
-									<ul><li style="list-style-type: none;"><span class="label label-info">new</span></li></ul>
+									<ul><li style="list-style-type: none;"><span class="label label-info">mới</span></li></ul>
 								<% end %>
 								<% if product.product_info.product_sale == "on" %>
-									<ul><li style="list-style-type: none;"><span class="label bg-pink">khuyến-mãi</span></li></ul>
+									<ul><li style="list-style-type: none;"><span class="label bg-pink">khuyến mãi</span></li></ul>
 								<% end %>
 								<% if product.product_info.product_prominent == "on" %>
-									<ul><li style="list-style-type: none;"><span class="label label-danger">nổi-bật</span></li></ul>
+									<ul><li style="list-style-type: none;"><span class="label label-danger">nổi bật</span></li></ul>
 								<% end %>
 								<% if product.product_info.product_bestselled == "on" %>
-									<ul><li style="list-style-type: none;"><span class="label bg-purple">bán-chạy</span></li></ul>
+									<ul><li style="list-style-type: none;"><span class="label bg-purple">bán chạy</span></li></ul>
 								<% end %>
 							<% end %>
 							
@@ -130,9 +132,9 @@
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li>
 											<% if product.product_info.nil? %>
-												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Cập nhật'.html_safe, new_admin_product_info_path(product_id: product.id) %>
+												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Bổ sung thông tin sản phẩm'.html_safe, new_admin_product_info_path(product_id: product.id) %>
 											<% else %>
-												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Cập nhật'.html_safe, edit_admin_product_info_path(product.product_info) %>
+												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Chỉnh sửa thông tin sản phẩm'.html_safe, edit_admin_product_info_path(product.product_info) %>
 											<% end %>
 
 										</li>

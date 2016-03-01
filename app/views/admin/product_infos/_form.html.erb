@@ -20,15 +20,14 @@
                         <div class="form-group">
                             <%= f.label "Hình ảnh: ", class: "col-lg-3 control-label" %>
                             <div class="col-lg-9">
-                              <%= f.file_field :image_url, class: "file-styled" %>
-                              <%= image_tag(@product_info.image_url, size: "100x100", alt: "Hình ảnh", class: "img-rouded") %>
+                              <%= image_tag(@product_info.product.product_image.image, size: "240x200", alt: "Hình ảnh", class: "img-rouded") %>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <%= f.label "Giới thiệu: ", class: "col-lg-3 control-label" %>
-                            <div class="col-lg-9">
-                                <%= f.text_area :description, rows: "5", cols: "5", class: "form-control" %>
+                            <%= f.label "Mô tả sản phẩm: ", class: "col-lg-3 control-label" %>
+                            <div class="col-lg-10">
+                                <b><%= (@product_info.product.html_description).html_safe if !@product_info.product.html_description.nil? %></b>
                             </div>
                         </div>
 
@@ -93,7 +92,7 @@
 
                 <div class="col-md-6">
                     <fieldset style="margin-left: 5%">
-                        <legend class="text-semibold"><i class="icon-list position-left"></i> Thông tin sản phẩm</legend>
+                        <legend class="text-semibold"><i class="icon-list position-left"></i> Thông tin sản phẩm có sẵn</legend>
                         
                         <div class="form-group">
                             <%= f.label "Tên sản phẩm: ", class: "col-lg-3 control-label" %>
@@ -102,12 +101,7 @@
                                 <%= f.hidden_field :product_id %>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <%= f.label "Mã sản phẩm: ", class: "col-lg-3 control-label" %>
-                            <div class="col-lg-10">
-                                <b><%= @product_info.product.product_code %></b>
-                            </div>
-                        </div>
+                        
                         <div class="form-group">
                             <%= f.label "Giá bán: ", class: "col-lg-3 control-label" %>
                             <div class="col-lg-10">
@@ -123,6 +117,7 @@
                         </div>
                             
                     </fieldset>
+                    
                     <fieldset style="margin-left: 5%">
                         <legend class="text-semibold"><i class="icon-gift position-left"></i> CHUYÊN MỤC KHUYẾN MÃI</legend>
                         
@@ -143,17 +138,18 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="form-group">
                             <%= f.label "Nhập phần trăm giảm giá: ", class: "col-lg-3 control-label" %>
                             <div class="col-lg-9">
-                                <%= f.text_field :sale_off_price, :value => number_with_delimiter(@product_info.sale_off_price.to_f), rows: "5", cols: "5", class: "form-control" %>
+                                <%= f.text_field :sale_off_price, value: @product_info.sale_off_price.to_f, class: "form-control" %>
                             </div>
                         </div>
                         
                         <div class="form-group">
                             <%= f.label "Giá khuyến mãi: ", class: "col-lg-3 control-label" %>
                             <div class="col-lg-9">
-                                <%= f.text_field :sale_price, :value => number_with_delimiter(@product_info.product.get_amount_prices.to_i), rows: "5", cols: "5", class: "form-control" %>
+                                <%= f.text_field :sale_price, value: @product_info.product.get_amount_prices.to_i, class: "form-control" %>
                             </div>
                         </div>
                         

@@ -141,6 +141,8 @@
 
                             <div class="clearfix v_centered">
                                 
+                                <!-- - - - - - - - - - - - - - Sort by - - - - - - - - - - - - - - - - -->
+
                                 <%= form_tag({controller: "category_page", action: "index"}, method: "get") do %>
 
                                     <%= hidden_field_tag "category_id", @category.id %>
@@ -177,10 +179,10 @@
                                         <button type="submit" class="button_blue middle_btn" style="margin-top: 10px;">Lọc sản phẩm</button>
     
                                     </div>
-    
-                                    <!-- - - - - - - - - - - - - - End of sort by - - - - - - - - - - - - - - - - -->
                                 
                                 <% end %>
+                            
+                                <!-- - - - - - - - - - - - - - End of sort by - - - - - - - - - - - - - - - - -->
                             
                             </div>
 

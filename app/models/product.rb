@@ -104,10 +104,6 @@ class Product < ActiveRecord::Base
     return records
   end
   
-  def self.get_related_products
-    self.first(12)
-  end
-  
   def self.get_sort_manufacturer(params)
     records = self.where(manufacturer_id: params[:manufacturer_id])
   end
@@ -186,7 +182,7 @@ class Product < ActiveRecord::Base
     if params[:manufacturers].present?
       records = records.where(manufacturer_id: params[:manufacturers])
     end
-    
+
     return records
   end
   

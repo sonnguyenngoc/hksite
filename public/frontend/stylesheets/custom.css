@@ -98,3 +98,36 @@ select {
 .margin-contact {
     margin-bottom: 10px;
 }
+.partner_item {
+    width: 108px;
+    height: 85px;
+    float: left;
+    margin: 4px 4px 4px 0;
+}
+.centered_item {
+    margin: 0;
+    position: absolute;
+    /* width: 20px; */
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+.centered_list {
+    margin: 0;
+    position: absolute;
+    /* width: 20px; */
+    top: 50%;
+    left: 81%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.partner_list {
+    width: 180px;
+    height: 150px;
+    position: relative;
+    display: block;
+    margin: -20px -20px 0px;
+    padding: 20px 20px 10px;
+}
