@@ -164,8 +164,6 @@ select {
 }
 .product_main {
     max-height: 340px;
-    width: 30px;
-    height: 30px;
     margin: 0;
     position: absolute;
     top: 50%;
