@@ -122,6 +122,7 @@ select {
     margin-right: -50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    padding: 5px;
 }
 .partner_list {
     width: 180px;
@@ -131,19 +132,7 @@ select {
     margin: -20px -20px 0px;
     padding: 20px 20px 10px;
 }
-.product_centered {
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 81%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
 .product_image_height {
     max-height: 245px;
     padding: 20px;
-}
-.product_item {
-    height: 285px;
 }
