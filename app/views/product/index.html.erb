@@ -98,7 +98,7 @@
                                         
                                         <tr>
                                             
-                                            <td><%= @pro_detail.html_description.html_safe if !@pro_detail.html_description.nil? %></td>
+                                            <!--<td><%= @pro_detail.html_description.html_safe if !@pro_detail.html_description.nil? %></td>-->
 
                                         </tr>
 
@@ -158,8 +158,12 @@
                             <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
 
                             <div class="buttons_row">
+                                
+                                <% if !@pro_detail.product_price.price.nil? %>
 
-                                <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: @pro_detail), class: "button_blue middle_btn add_to_cart" %>
+                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: @pro_detail), class: "button_blue middle_btn add_to_cart" %>
+                                
+                                <% end %>
                                 
                             </div>
 
@@ -185,13 +189,14 @@
 
                         <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
                         <% @sale_products.each do |product| %>
+                        
                             <div class="product_item">
 
                                 <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
 
-                                <div class="image_wrap">
+                                <div class="image_wrap details_product_list_height">
                                     
-                                    <img src="<%= product.product_image.image %>" alt="">
+                                    <img src="<%= product.product_image.image %>" alt="" class="details_product_image">
 
                                     <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
 
