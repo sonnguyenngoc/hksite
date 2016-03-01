@@ -172,22 +172,26 @@
                                             <% end %>
                                             
                                         <% end %>
+                                        
+                                        <% if !@pro_detail.product_info.nil? %>
 
-                                        <% if !@pro_detail.product_info.bonus_product.nil? %>
-                                            
-                                            <tfoot>
-    
-                                                <tr>
-                                                    
-                                                    <td colspan="4">
+                                            <% if !@pro_detail.product_info.bonus_product.nil? %>
+                                                
+                                                <tfoot>
+        
+                                                    <tr>
                                                         
-                                                        <span class="countdown_title">Tặng kèm: <%= @pro_detail.product_info.bonus_product %></span>
-    
-                                                    </td>
-    
-                                                </tr>
-    
-                                            </tfoot>
+                                                        <td colspan="4">
+                                                            
+                                                            <span class="countdown_title">Tặng kèm: <%= @pro_detail.product_info.bonus_product %></span>
+        
+                                                        </td>
+        
+                                                    </tr>
+        
+                                                </tfoot>
+                                                
+                                            <% end %>
                                             
                                         <% end %>
 
