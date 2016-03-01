@@ -132,7 +132,6 @@ select {
     margin: -20px -20px 0px;
     padding: 20px 20px 10px;
 }
-.product_image_height {
-    max-height: 245px;
-    padding: 20px;
+.product_image {
+    max-height: 245px
 }
