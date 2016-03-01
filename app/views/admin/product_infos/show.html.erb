@@ -31,12 +31,14 @@
                 <% end %>
             
                 <form class="form-horizontal" role="form">
+                    
                     <div class="form-group">
                         <%= label "", "Hình ảnh: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
                             <%= image_tag(@product_info.image_url, size: "250x150", alt: "Hình ảnh của slide", class: "img-rouded") %>
                         </div>
                     </div>
+                        
                     <div class="form-group">
                         <%= label "", "Tên sản phẩm: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
@@ -45,6 +47,7 @@
                             <% end %>
                         </div>
                     </div>
+                        
                     <div class="form-group">
                         <%= label "", "Giá bán: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
@@ -53,22 +56,25 @@
                             <% end %>
                         </div>
                     </div>
+                        
                     <div class="form-group">
                         <%= label "", "Giảm giá: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
                             <%= content_tag(:p, class: "form-control-static ") do %>
-                              <%= number_with_delimiter @product_info.product.product_info.sale_off_price.to_f %> <i>%</i>
+                              <%= number_with_delimiter @product_info.product.product_info.sale_off_price.to_i%> <i>%</i>
                             <% end %>
                         </div>
                     </div>
+                        
                     <div class="form-group">
-                        <%= label "", "Giá Khuyến mãi: ", class: "control-label col-sm-2 text-semibold" %>
+                        <%= label "", "Giá khuyến mãi: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
                             <%= content_tag(:p, class: "form-control-static ") do %>
-                              <%= number_with_delimiter @product_info.product.product_info.sale_price.to_f %> <i>VNĐ</i>
+                              <%= number_with_delimiter @product_info.product.product_info.sale_price.to_i %> <i>VNĐ</i>
                             <% end %>
                         </div>
                     </div>
+                        
                     <div class="form-group">
                         <%= label "", "Quà tặng: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
@@ -77,6 +83,7 @@
                             <% end %>
                         </div>
                     </div>
+                        
                     <div class="form-group">
                         <%= label "", "Mô tả: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
@@ -85,6 +92,7 @@
                             <% end %>
                         </div>
                     </div>
+                        
                     <div class="form-group">
                         <%= label "", "Ngày tạo: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
@@ -93,6 +101,7 @@
                             <% end %>
                         </div>
                     </div>
+                        
                     <div class="form-group">
                         <%= label "", "Trạng thái: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
@@ -117,6 +126,7 @@
                             <% end %>
                         </div>
                     </div>
+                        
                     <div class="form-group">
                         <%= label "", "Giới thiệu: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">

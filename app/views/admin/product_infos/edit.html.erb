@@ -1,43 +1,42 @@
 <!-- Global stylesheets -->
-	<%= stylesheet_link_tag '/assets_backend/css/icons/icomoon/styles.css' %>
-	<%= stylesheet_link_tag '/assets_backend/css/bootstrap.min.css' %>
-	<%= stylesheet_link_tag '/assets_backend/css/core.min.css' %>
-	<%= stylesheet_link_tag '/assets_backend/css/components.min.css' %>
-	<%= stylesheet_link_tag '/assets_backend/css/colors.min.css' %>
-	<!-- /global stylesheets -->
-	
-	<!-- JS and meta for Rails -->
-	<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-	<%= csrf_meta_tags %>
-	<!-- /js and meta for rails -->
-	
-	<!-- Core JS files -->
-	<%= javascript_include_tag '/assets_backend/js/plugins/loaders/pace.min.js' %>
-	<%= javascript_include_tag '/assets_backend/js/core/libraries/jquery.min.js' %>
-	<%= javascript_include_tag '/assets_backend/js/core/libraries/bootstrap.min.js' %>
-	<%= javascript_include_tag '/assets_backend/js/plugins/loaders/blockui.min.js' %>
-    <%= stylesheet_link_tag 'assets_backend/js/pages/form_checkboxes_radios.js' %>
-	<!-- /core JS files -->
-	
-	<!-- Customize -->
-	<%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' %>
-	<%= stylesheet_link_tag 'custom_backend.css' %>
-	<!-- /customize -->
+<%= stylesheet_link_tag '/assets_backend/css/icons/icomoon/styles.css' %>
+<%= stylesheet_link_tag '/assets_backend/css/bootstrap.min.css' %>
+<%= stylesheet_link_tag '/assets_backend/css/core.min.css' %>
+<%= stylesheet_link_tag '/assets_backend/css/components.min.css' %>
+<%= stylesheet_link_tag '/assets_backend/css/colors.min.css' %>
+<!-- /global stylesheets -->
 
+<!-- JS and meta for Rails -->
+<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+<%= csrf_meta_tags %>
+<!-- /js and meta for rails -->
 
+<!-- Core JS files -->
+<%= javascript_include_tag '/assets_backend/js/plugins/loaders/pace.min.js' %>
+<%= javascript_include_tag '/assets_backend/js/core/libraries/jquery.min.js' %>
+<%= javascript_include_tag '/assets_backend/js/core/libraries/bootstrap.min.js' %>
+<%= javascript_include_tag '/assets_backend/js/plugins/loaders/blockui.min.js' %>
+<%= stylesheet_link_tag 'assets_backend/js/pages/form_checkboxes_radios.js' %>
+<!-- /core JS files -->
+
+<!-- Customize -->
+<%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' %>
+<%= stylesheet_link_tag 'custom_backend.css' %>
+<!-- /customize -->
 <!-- Page header -->
 <div class="page-header">
     <div class="page-header-content">
         <div class="page-title">
-            <h4><a href="#" class="btn-back"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Update</span> - Product Infomation</h4>
+            <h4><a href="#" class="btn-back"><i class="icon-arrow-left52 position-left"></i></a> <span class="text-semibold">Chỉnh sửa thông tin sản phẩm</span></h4>
         </div>
     </div>
 
     <div class="breadcrumb-line">
         <ul class="breadcrumb">
-			<li><%= link_to "<i class='icon-home2 position-left'></i> Trang chủ".html_safe, admin_manages_path %></li>
-            <li><%= link_to "Danh sách sản phẩm", admin_product_infos_path %></li>
-            <li class="active">Cập nhật thông tin</li>
+            <li><%= link_to "Trang chủ", admin_manages_path %></li>
+			<li><%= link_to "Quản lý sản phẩm", admin_product_infos_path %></li>
+            <li><%= link_to "Quản lý thông tin sản phẩm", admin_product_infos_path %></li>
+            <li class="active"><%= @product_info.product.name %></li>
         </ul>
     </div>
 </div>

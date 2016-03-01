@@ -19,7 +19,7 @@
             <ul class="breadcrumbs">
 
                 <li><%= link_to "Trang chủ", root_path %></li>
-                <li class="active">Danh sách đối tác</li>
+                <li class="active">Nhãn hiệu phân phối</li>
 
             </ul>
 
@@ -81,7 +81,7 @@
 
                     <section class="section_offset">
 
-                        <h1>Danh sách đối tác</h1>
+                        <h1>Danh sách nhãn hiệu phân phối</h1>
 
                     </section>
 
@@ -127,12 +127,12 @@
     
                                             <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
     
-                                            <div class="image_wrap">
+                                            <div class="partner_list">
                                                 
                                                 <% if item.image_url.nil? %>
                                                     <p>Chưa cập nhật logo...</p>
                                                 <% else %>
-                                                    <%= link_to(image_tag(item.image_url.partner_image, width: 180, height: 150), {controller: "manufacturer_page", action: "index", manufacturer_id: item.manufacturer_id}) %>
+                                                    <%= link_to(image_tag(item.image_url.partner_image, class: "centered_list"), {controller: "manufacturer_page", action: "index", manufacturer_id: item.manufacturer_id}) %>
                                                 <% end %>
     
                                             </div><!--/. image_wrap-->
