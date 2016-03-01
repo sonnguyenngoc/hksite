@@ -187,6 +187,7 @@ ActiveRecord::Schema.define(version: 20160226074840) do
     t.integer  "city_id"
     t.string   "contact_types_cache"
     t.string   "image"
+    t.text     "fixed_address"
   end
 
   create_table "countries", force: :cascade do |t|

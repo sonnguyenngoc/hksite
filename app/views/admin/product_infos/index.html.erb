@@ -38,33 +38,46 @@
 		</div>
 		
 		<div class="form-group">
-			<thead>
+			<thead></thead>
 		</div>
 		
-		
         <table class="table datatable-picture">
+			<%= form_tag({controller: "product_infos", action: "index"}, method: 'get', class: "search") do %>
 			<div class="dataTables_filter col-md-3">
 				<label>
-					<input placeholder="Nhập tên sản phẩm...">
+					<%= text_field_tag :search_product_infos, params[:search_product_infos], placeholder: "Nhập tên sản phẩm..." %>
 				</label>
 			</div>
-			<div class="col-md-8">
-				<select class="select-item-color" data-placeholder="Chọn loại cần lọc" multiple="multiple">
+			<div class="col-md-3">
+				<select name="type" class="select" data-placeholder="Chọn loại cần lọc" multiplex="multiplex">
 					<optgroup label="Loại của sản phẩm">
-						<option value="Sản phẩm mới" selected="selected">Sản phẩm mới</option>
-						<option value="Sản phẩm hot">Sản phẩm hot</option>
-						<option value="Sản phẩm nổi bật">Sản phẩm nổi bật</option>
-						<option value="Sản phẩm khuyến mãi">Sản phẩm khuyến mãi</option>
-						<option value="Sản phẩm bán chạy nhất">Sản phẩm bán chạy nhất</option>
+						<option value="">Tất cả sản phẩm</option>
+						<option value="product_new">Sản phẩm mới</option>
+						<option value="product_hot">Sản phẩm hot</option>
+						<option value="product_prominent">Sản phẩm nổi bật</option>
+						<option value="product_sale">Sản phẩm khuyến mãi</option>
+						<option value="product_bestselled">Sản phẩm bán chạy nhất</option>
 					</optgroup>
 				</select>
 			</div>
+			<div class="col-md-3">
+				<select name="manufacturers[]" class="select" data-placeholder="Lọc sản phẩm theo nhà cung cấp" multiple="multiple">
+					<optgroup label="Nhà cung cấp">
+						<% Manufacturer.all.order(:name).each do |manufacturer| %>
+							<option value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
+						<% end %>
+					</optgroup>
+				</select>
+			</div>
+			<div class="col-md-2">
+				<button type="submit" class="btn btn-primary">Lọc<i class="icon-search4 position-right"></i></button>
+			</div>
+			<% end %>
             <thead>
                 <tr>
                     <th>Hình Ảnh</th>
                     <th>Tên Sản Phẩm</th>
                     <th>Giá bán (VNĐ)</th>
-					<th>Giới thiệu</th>
                     <th>Trạng thái</th>
                     <th class="text-center">Thao tác</th>
                 </tr>
@@ -78,13 +91,16 @@
 							</div>
 						</td>
                         <td>
-							<%= product.name %>
+							<strong><%= product.name %><br/></strong>
+							Nhà cung cấp: <%= product.manufacturer.name %>
 						</td>
                         <td>
-							<%= number_with_delimiter product.product_price.price.to_i %>
-						</td>
-						<td>
-							<%= truncate(strip_tags(product.description), length: 40) %>
+							<%= number_with_delimiter product.product_price.price.to_i %><br/>
+							<% if !product.product_info.nil? %>
+								<% if product.product_info.product_sale == "on" %>
+									<span class="label bg-pink">Giá khuyến mãi: <%= number_with_delimiter product.product_info.sale_price.to_i %> VNĐ</span>
+								<% end %>
+							<% end %>
 						</td>
 						<td>
 							<% if !product.product_info.nil? %>
@@ -92,16 +108,16 @@
 									<ul><li style="list-style-type: none;"><span class="label label-warning">hot</span></li></ul>
 								<% end %>
 								<% if product.product_info.product_new == "on" %>
-									<ul><li style="list-style-type: none;"><span class="label label-info">new</span></li></ul>
+									<ul><li style="list-style-type: none;"><span class="label label-info">mới</span></li></ul>
 								<% end %>
 								<% if product.product_info.product_sale == "on" %>
-									<ul><li style="list-style-type: none;"><span class="label bg-pink">khuyến-mãi</span></li></ul>
+									<ul><li style="list-style-type: none;"><span class="label bg-pink">khuyến mãi</span></li></ul>
 								<% end %>
 								<% if product.product_info.product_prominent == "on" %>
-									<ul><li style="list-style-type: none;"><span class="label label-danger">nổi-bật</span></li></ul>
+									<ul><li style="list-style-type: none;"><span class="label label-danger">nổi bật</span></li></ul>
 								<% end %>
 								<% if product.product_info.product_bestselled == "on" %>
-									<ul><li style="list-style-type: none;"><span class="label bg-purple">bán-chạy</span></li></ul>
+									<ul><li style="list-style-type: none;"><span class="label bg-purple">bán chạy</span></li></ul>
 								<% end %>
 							<% end %>
 							
@@ -116,9 +132,9 @@
                                     <ul class="dropdown-menu dropdown-menu-right">
                                         <li>
 											<% if product.product_info.nil? %>
-												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Update Product Info'.html_safe, new_admin_product_info_path(product_id: product.id) %>
+												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Bổ sung thông tin sản phẩm'.html_safe, new_admin_product_info_path(product_id: product.id) %>
 											<% else %>
-												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Update Product Info'.html_safe, edit_admin_product_info_path(product.product_info) %>
+												<%= link_to '<i class="glyphicon glyphicon-edit"></i> Chỉnh sửa thông tin sản phẩm'.html_safe, edit_admin_product_info_path(product.product_info) %>
 											<% end %>
 
 										</li>

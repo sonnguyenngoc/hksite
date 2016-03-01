@@ -39,7 +39,7 @@ $(function() {
 
 
     // Basic datatable
-    $('.datatable-productinfo').DataTable();
+    $('.datatable-product-infos').DataTable();
 
 
     // Alternative pagination

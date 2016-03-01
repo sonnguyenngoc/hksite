@@ -262,7 +262,7 @@
                                                                
                                                                 <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</s></p>
                                                                 
-                                                                <p class="product_price alignright"><b><%= number_with_delimiter product.get_amount_prices.to_i %> VNĐ</b></p>
+                                                                <p class="product_price alignright"><b><%= number_with_delimiter product.product_info.sale_price.to_i %> VNĐ</b></p>
                                                             
                                                             <% end %>
                                                         

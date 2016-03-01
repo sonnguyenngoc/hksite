@@ -142,7 +142,7 @@
                                                            
                                                             <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</s>
                                                             
-                                                            <b><%= number_with_delimiter product.get_amount_prices.to_i %> VNĐ</b></p>
+                                                            <b><%= number_with_delimiter product.product_info.sale_price.to_i %> VNĐ</b></p>
                                                         
                                                         <% end %>
                                                     
@@ -739,21 +739,36 @@
 
                     <section class="section_offset animated transparent" data-animation="fadeInDown">
 
-                        <h3 class="offset_title">Đối tác cung cấp</h3>
+                        <h3 class="offset_title">Nhãn hiệu phân phối</h3>
 
                         <!-- - - - - - - - - - - - - - Carousel of brands - - - - - - - - - - - - - - - - -->
+                        
+                        <div class="col-sm-12">
 
-                        <div class="owl_carousel brands">
-                            
-                            <% @partners.each do |item| %>
-                                
-                                <!--Brand-->
-                                    <%= link_to(image_tag(item.image_url.partner_image, width: 180, height: 150), {controller: "manufacturer_page", action: "index", manufacturer_id: item.manufacturer_id}) %>
-                                <!--End brand-->
-                                
-                            <% end %>
+                            <section class="widget">
+        
+        
+                                <!-- - - - - - - - - - - - - - Social icon's list - - - - - - - - - - - - - - - - -->
+        
+                                <ul class="social_btns">
+                                    
+                                    <% @partners.each do |item| %>
+        
+                                        <li>
 
-                        </div><!--/ .owl_carousel-->
+                                            <%= link_to image_tag(item.image_url.partner_image, class: "centered_item"), { controller: "manufacturer_page", action: "index", manufacturer_id: item.manufacturer_id}, class: "partner_item tooltip_container" %>
+                                            
+                                        </li>
+                                    
+                                    <% end %>
+                                    
+                                </ul>
+                                
+                                <!-- - - - - - - - - - - - - - End social icon's list - - - - - - - - - - - - - - - - -->
+        
+                            </section><!--/ .widget-->
+        
+                        </div>
                         
                         <!-- - - - - - - - - - - - - - End of carousel of brands - - - - - - - - - - - - - - - - -->
 
@@ -761,7 +776,7 @@
 
                         <footer class="bottom_box">
 
-                            <%= link_to "Xem toàn bộ đối tác", {controller: "manufacturer", action: "index"}, { class: "button_grey middle_btn" } %>
+                            <%= link_to "Xem toàn bộ", {controller: "manufacturer", action: "index"}, { class: "button_grey middle_btn" } %>
                             
                         </footer>
 
