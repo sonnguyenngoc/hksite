@@ -45,7 +45,7 @@
                             <div class="image_preview_container">
 
                                 <% if @pro_detail.product_image.id.nil? %>
-                                    <img src="<%= @pro_detail.product_image.image %>" class="img-rounded" alt="">
+                                    <img src="<%= @pro_detail.product_image.image %>" class="img-rounded main_image" alt="">
                                 <% else %>
                                     <img id="img_zoom" data-zoom-image="<%= @pro_detail.product_image.image %>" src="<%= @pro_detail.product_image.image %>" alt="">
                                 <% end %>
@@ -97,8 +97,6 @@
                                         </tr>
                                         
                                         <tr>
-                                            
-                                            
 
                                         </tr>
 

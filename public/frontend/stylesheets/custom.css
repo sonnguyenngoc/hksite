@@ -158,3 +158,6 @@ select {
 .details_product_list_height {
     height: 212px;
 }
+.main_image {
+    max-height: 245px;
+}
