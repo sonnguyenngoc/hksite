@@ -43,42 +43,43 @@
 		
         <table class="table datatable-picture">
 			<%= form_tag({controller: "product_infos", action: "index"}, method: 'get', class: "search") do %>
-			<div class="dataTables_filter col-md-3">
-				<label>
-					<%= text_field_tag :search_product_infos, params[:search_product_infos], placeholder: "Nhập tên sản phẩm..." %>
-				</label>
-			</div>
-			<div class="col-md-3">
-				<select name="type" class="select" data-placeholder="Chọn loại cần lọc" multiplex="multiplex">
-					<optgroup label="Loại của sản phẩm">
-						<option value="">Tất cả sản phẩm</option>
-						<option value="product_new">Sản phẩm mới</option>
-						<option value="product_hot">Sản phẩm hot</option>
-						<option value="product_prominent">Sản phẩm nổi bật</option>
-						<option value="product_sale">Sản phẩm khuyến mãi</option>
-						<option value="product_bestselled">Sản phẩm bán chạy nhất</option>
-					</optgroup>
-				</select>
-			</div>
-			<div class="col-md-3">
-				<select name="manufacturers" class="select" data-placeholder="Lọc sản phẩm theo nhà cung cấp" multiple="multiple">
-					<optgroup label="Nhà cung cấp">
-						<% Manufacturer.all.order(:name).each do |manufacturer| %>
-							<option value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
-						<% end %>
-					</optgroup>
-				</select>
-			</div>
-			<div class="col-md-2">            
-				<select name="order" class="select" data-placeholder="Chọn kiểu sắp xếp" multiplex="multiplex">
-					<option value="asc">Tăng dần</option>
-					<option value="desc">Giảm dần</option>
-				</select>
-			</div>
-			<div class="col-md-1">
-				<button type="submit" class="btn btn-primary">Lọc<i class="icon-search4 position-right"></i></button>
-			</div>
+				<div class="dataTables_filter col-md-3">
+					<label>
+						<%= text_field_tag :search_product_infos, params[:search_product_infos], placeholder: "Nhập tên sản phẩm..." %>
+					</label>
+				</div>
+				<div class="col-md-3">
+					<select name="type" class="select" data-placeholder="Chọn loại cần lọc" multiplex="multiplex">
+						<optgroup label="Loại của sản phẩm">
+							<option value="">Tất cả sản phẩm</option>
+							<option value="product_new">Sản phẩm mới</option>
+							<option value="product_hot">Sản phẩm hot</option>
+							<option value="product_prominent">Sản phẩm nổi bật</option>
+							<option value="product_sale">Sản phẩm khuyến mãi</option>
+							<option value="product_bestselled">Sản phẩm bán chạy nhất</option>
+						</optgroup>
+					</select>
+				</div>
+				<div class="col-md-3">
+					<select name="manufacturers" class="select" data-placeholder="Lọc sản phẩm theo nhà cung cấp" multiple="multiple">
+						<optgroup label="Nhà cung cấp">
+							<% Manufacturer.all.order(:name).each do |manufacturer| %>
+								<option value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
+							<% end %>
+						</optgroup>
+					</select>
+				</div>
+				<div class="col-md-2">            
+					<select name="order" class="select" data-placeholder="Chọn kiểu sắp xếp" multiplex="multiplex">
+						<option value="asc">Tăng dần</option>
+						<option value="desc">Giảm dần</option>
+					</select>
+				</div>
+				<div class="col-md-1">
+					<button type="submit" class="btn btn-primary">Lọc<i class="icon-search4 position-right"></i></button>
+				</div>
 			<% end %>
+		
             <thead>
                 <tr>
                     <th>Hình Ảnh</th>

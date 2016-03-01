@@ -4,7 +4,7 @@ class CustomerOrder < ActiveRecord::Base
   
   def save_from_cart(cart)
     cart.line_items.each do |item|
-      self.customer_order_details.create(product_id: item.product_id, quantity: 1)
+      self.customer_order_details.create(product_id: item.product_id, quantity: item.quantity)
     end
   end
   
