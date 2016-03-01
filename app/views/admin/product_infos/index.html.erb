@@ -61,7 +61,7 @@
 				</select>
 			</div>
 			<div class="col-md-3">
-				<select name="manufacturers[]" class="select" data-placeholder="Lọc sản phẩm theo nhà cung cấp" multiple="multiple">
+				<select name="manufacturers" class="select" data-placeholder="Lọc sản phẩm theo nhà cung cấp" multiple="multiple">
 					<optgroup label="Nhà cung cấp">
 						<% Manufacturer.all.order(:name).each do |manufacturer| %>
 							<option value="<%= manufacturer.id %>"><%= manufacturer.name %></option>
