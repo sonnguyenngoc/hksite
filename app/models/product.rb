@@ -150,7 +150,6 @@ class Product < ActiveRecord::Base
     records = Product.all
     
     if params[:search_product_infos].present?
-      records = Product.joins(:product_info)
       records = records.where('LOWER(products.name) LIKE ?', "%#{params[:search_product_infos].strip.downcase}%")
     end
     
