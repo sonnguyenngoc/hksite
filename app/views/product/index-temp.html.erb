@@ -1,0 +1,357 @@
+<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+<div class="wide_layout">
+
+<!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+<%= render "blog/header" %>
+
+<!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+<div class="secondary_page_wrapper">
+
+    <div class="container">
+
+        <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+        <ul class="breadcrumbs">
+
+            <li><%= link_to "Trang chủ", root_path %></li>
+            <li>Chi tiết sản phẩm</li>
+            <li class="active"><%= @pro_detail.name %></li>
+            
+        </ul>
+
+        <!-- - - - - - - - - - - - - - End of breadcrumbs - - - - - - - - - - - - - - - - -->
+
+        <div class="row">
+
+            <main class="col-md-9 col-sm-8">
+
+                <!-- - - - - - - - - - - - - - Product images & description - - - - - - - - - - - - - - - - -->
+
+                <section class="section_offset">
+
+                    <div class="clearfix">
+
+                        <!-- - - - - - - - - - - - - - Product image column - - - - - - - - - - - - - - - - -->
+
+                        <div class="single_product">
+
+                            <!-- - - - - - - - - - - - - - Image preview container - - - - - - - - - - - - - - - - -->
+
+                            <div class="image_preview_container">
+
+                                <% if @pro_detail.product_image.id.nil? %>
+                                    <img src="<%= @pro_detail.product_image.image %>" class="img-rounded main_image" alt="">
+                                <% else %>
+                                    <img id="img_zoom" data-zoom-image="<%= @pro_detail.product_image.image %>" src="<%= @pro_detail.product_image.image %>" alt="">
+                                <% end %>
+
+                            </div><!--/ .image_preview_container-->
+
+                            <!-- - - - - - - - - - - - - - End of image preview container - - - - - - - - - - - - - - - - -->
+
+                            <!-- - - - - - - - - - - - - - Prodcut thumbs carousel - - - - - - - - - - - - - - - - -->
+                            
+                            <div class="product_preview">
+
+                                <div class="owl_carousel" id="thumbnails">
+
+                                </div><!--/ .owl-carousel-->
+
+                            </div><!--/ .product_preview-->
+                            
+                            <!-- - - - - - - - - - - - - - End of prodcut thumbs carousel - - - - - - - - - - - - - - - - -->
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of product image column - - - - - - - - - - - - - - - - -->
+
+                        <!-- - - - - - - - - - - - - - Product description column - - - - - - - - - - - - - - - - -->
+
+                        <div class="single_product_description">
+
+                            <h3 class="offset_title"><%= @pro_detail.name %></h3>
+
+                            <div class="description_section v_centered">
+                                Mô tả sản phẩm
+                            </div>
+
+                            <div class="description_section">
+
+                                <table class="product_info">
+
+                                    <tbody>
+
+                                        <tr>
+
+                                            <% if !@pro_detail.manufacturer.nil? %>
+                                                <td>Nhà cung cấp: <%= link_to @pro_detail.manufacturer.name, { controller: "manufacturer_page", action: "index", manufacturer_id: @pro_detail.manufacturer.id } %></td>
+                                            <% else %>
+                                                <td>Nhà cung cấp: Updating...</td>
+                                            <% end %>
+
+                                        </tr>
+                                        
+                                        <tr>
+
+                                        </tr>
+
+                                    </tbody>
+
+                                </table>
+
+                            </div>
+                            
+                            <% if !@pro_detail.product_info.nil? %>
+                                
+                                <% if @pro_detail.product_info.product_sale == 'on' %>
+                            
+                                    <hr>
+        
+                                    <div class="description_section">
+                                        
+                                        <div class="alert_box success">
+
+                                            <b>Sản phẩm đang khuyến mãi:</b><br/>
+                                            <%= @pro_detail.product_info.bonus_product %>
+        
+                                        </div>
+                                        
+                                    </div>
+                            
+                                <% end %>
+
+                            <% end %>
+
+                            <hr>
+
+                            <% if @pro_detail.product_price.price.nil? %>
+                                
+                                <p class="product_price"><b class="theme_color" style="color: #018bc8">Liên hệ:(84-8) 3984 7690</b></p>
+                            
+                            <% else %>
+                                
+                                <% if !@pro_detail.product_info.nil? %>
+                                               
+                                    <% if @pro_detail.product_info.sale_price.nil? || @pro_detail.product_info.sale_price <= 0 %>
+                                        
+                                        <p class="product_price"><span style="color: #b2b2b2">Giá KM: </span><b><%= number_with_delimiter @pro_detail.product_price.price.to_i %> VNĐ</b></p>
+                                    
+                                    <% else %>
+                                                               
+                                        <p class="product_price"><s style = "font-size: smaller;"><%= number_with_delimiter @pro_detail.product_price.price.to_i %> VNĐ</s>
+                                        
+                                        <b><%= number_with_delimiter @pro_detail.product_info.sale_price.to_i %> VNĐ</b></p>
+                                      
+                                    <% end %>
+                                
+                                <% end %>
+                            
+                            <% end %>
+
+                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                            <div class="buttons_row">
+                                
+                                <% if !@pro_detail.product_price.price.nil? %>
+
+                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: @pro_detail), class: "button_blue middle_btn add_to_cart" %>
+                                
+                                <% end %>
+                                
+                            </div>
+
+                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                        </div>
+
+                        <!-- - - - - - - - - - - - - - End of product description column - - - - - - - - - - - - - - - - -->
+
+                    </div>
+
+                </section><!--/ .section_offset -->
+
+                <!-- - - - - - - - - - - - - - End of product images & description - - - - - - - - - - - - - - - - -->
+
+                <!-- - - - - - - - - - - - - - Related products - - - - - - - - - - - - - - - - -->
+
+                <section class="section_offset">
+
+                    <h3 class="offset_title">Sản phẩm khuyến mãi</h3>
+
+                    <div class="owl_carousel related_products">
+
+                        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                        <% @sale_products.each do |product| %>
+                        
+                            <div class="product_item">
+
+                                <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+
+                                <div class="image_wrap details_product_list_height">
+                                    
+                                    <img src="<%= product.product_image.image %>" alt="" class="details_product_image">
+
+                                    <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                                    <div class="actions_wrap">
+
+                                        <div class="centered_buttons">
+                                            
+                                            <% if !product.product_price.price.nil? %>
+
+                                                <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue add_to_cart" %>
+
+                                            <% end %>
+                                        
+                                        </div><!--/ .centered_buttons -->
+
+                                    </div><!--/ .actions_wrap-->
+                                    
+                                    <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                                </div><!--/. image_wrap-->
+
+                                <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+                                
+                                <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+                                        
+                                <% if !product.product_info.sale_off_price.nil? and product.product_info.sale_off_price > 0 %>
+                                    
+                                    <div class="label_offer percentage">
+                                        
+                                        Giảm<div><%= product.product_info.sale_off_price %>%</div>
+    
+                                    </div>
+                                    
+                                <% end %>
+
+                                <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+
+                                <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                <div class="description">
+
+                                    <%= link_to (truncate(strip_tags(product.name), length: 28)), {controller: "product", action: "index", id: product.id} %>
+
+                                    <p><%= product.product_info.bonus_product %></p>
+        
+                                    <div class="clearfix product_info">
+                                        
+                                        <% if product.product_price.price.nil? %>
+                                            
+                                            <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
+                                        
+                                        <% else %>
+                                            
+                                            <% if !product.product_info.nil? %>
+                                               
+                                                <% if product.product_info.sale_price.nil? || product.product_info.sale_price <= 0 %>
+                                                    
+                                                    <p class="product_price alignleft"><span style="color: #b2b2b2">Giá KM: </span><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
+                                                
+                                                <% else %>
+                                                   
+                                                    <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</s>
+                                                    
+                                                    <b><%= number_with_delimiter product.get_amount_prices.to_i %> VNĐ</b></p>
+                                                
+                                                <% end %>
+                                            
+                                            <% end %>
+                                        
+                                        <% end %>
+
+                                    </div><!--/ .clearfix.product_info-->
+
+                                </div>
+
+                                <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+
+                            </div><!--/ .product_item-->
+                            
+                        <% end %>
+                        
+                        <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+
+                    </div><!--/ .owl_carousel -->
+
+                </section><!--/ .section_offset -->
+
+            </main><!--/ [col]-->
+
+            <aside class="col-md-3 col-sm-4">
+
+                <!-- - - - - - - - - - - - - - Seller Information - - - - - - - - - - - - - - - - -->
+
+                <section class="section_offset">
+
+                    <h3>Liên hệ</h3>
+
+                    <div class="theme_box">
+
+                      <ul class="c_info_list">
+                        
+                            <li class="c_info_building"><b><%= @company_info.name %></b></li>
+                            <li class="c_info_location"><%= @company_info.address %></li>
+                            <li class="c_info_phone"><%= @company_info.phone %></li>
+                            <li class="c_info_mail"><a href="mailto:<%= @company_info.email %>"><%= @company_info.email %></a></li>
+  
+                      </ul>
+                        
+                    </div><!--/ .theme_box -->
+
+                </section>
+
+                <!-- - - - - - - - - - - - - - End of seller information - - - - - - - - - - - - - - - - -->
+
+            </aside><!--/ [col]-->
+
+        </div><!--/ .row-->
+
+    </div><!--/ .container-->
+
+</div><!--/ .page_wrapper-->
+
+<!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+<%= render 'blog/footer' %>
+
+<!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+</div><!--/ [layout]-->
+
+<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+<%= render 'home/social_feeds' %>
+
+<!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+
+<!-- Include Libs & Plugins
+============================================ -->
+<%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+<%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+<%= javascript_include_tag '/frontend/js/jquery.elevateZoom-3.0.8.min.js' %>
+<%= javascript_include_tag '/frontend/js/fancybox/source/jquery.fancybox.pack.js' %>
+<%= javascript_include_tag '/frontend/js/fancybox/source/helpers/jquery.fancybox-media.js' %>
+<%= javascript_include_tag '/frontend/js/fancybox/source/helpers/jquery.fancybox-thumbs.js' %>
+<%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+<%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+<%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+<%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+<%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+<%= javascript_include_tag '/frontend/js/retina.min.js' %>
+<%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+
+<!-- Theme files
+============================================ -->
+<%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+<%= javascript_include_tag '/frontend/js/theme.core.js' %>

@@ -159,5 +159,20 @@ select {
     height: 212px;
 }
 .main_image {
-    max-height: 245px;
+    width: 360px;
+    height: 360px;
+}
+.product_main {
+    max-height: 340px;
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
+.safe_off {
+    color: #ff0000;
 }
