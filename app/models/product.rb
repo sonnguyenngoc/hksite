@@ -113,7 +113,7 @@ class Product < ActiveRecord::Base
   end
   
   def self.search(params)
-    records = Product.joins(:product_info)
+    records = Product.all
     if params[:search].present?
       records = records.where('LOWER(products.name) LIKE ?', "%#{params[:search].strip.downcase}%")
     end
@@ -147,33 +147,44 @@ class Product < ActiveRecord::Base
       records = records.get_sale_products.where('LOWER(products.name) LIKE ?', "%#{params[:search_sale_products].strip.downcase}%")
     end
     
-    #Search Product in ProductInfo <index>
+    return records
+  end
+  
+  def self.admin_search(params)
+    records = Product.all
+    
     if params[:search_product_infos].present?
-       records = records.where('LOWER(products.name) LIKE ?', "%#{params[:search_product_infos].strip.downcase}%")
+      records = Product.joins(:product_info)
+      records = records.where('LOWER(products.name) LIKE ?', "%#{params[:search_product_infos].strip.downcase}%")
     end
     
     if params[:type]=='product_new'
+      records = Product.joins(:product_info)
       records = records.where(product_infos: {product_new: 'on'})
     end
     
     if params[:type]=='product_hot'
+      records = Product.joins(:product_info)
       records = records.where(product_infos: {product_hot: 'on'})
     end
     
     if params[:type]=='product_prominent'
+      records = Product.joins(:product_info)
       records = records.where(product_infos: {product_prominent: 'on'})
     end
     
     if params[:type]=='product_sale'
+      records = Product.joins(:product_info)
       records = records.where(product_infos: {product_sale: 'on'})
     end
     
     if params[:type]=='product_bestselled'
+      records = Product.joins(:product_info)
       records = records.where(product_infos: {product_bestselled: 'on'})
     end
     
     if params[:manufacturers].present?
-      records = self.where(manufacturer_id: params[:manufacturers])
+      records = records.where(manufacturer_id: params[:manufacturers])
     end
     
     return records
