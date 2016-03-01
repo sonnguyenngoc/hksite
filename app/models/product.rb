@@ -104,15 +104,9 @@ class Product < ActiveRecord::Base
     return records
   end
   
-  #def self.get_search_product_infos(params)
-    
-  #   records = Product.joins(:product_info)
-     
-  #  if params[:search_product_infos].present?
-  #     records = records.where('products.name LIKE ?', "%#{params[:search_product_infos].strip.downcase}%")
-  #  end
-    
-  #end
+  def self.get_sort_manufacturer(params)
+    records = self.where(manufacturer_id: params[:manufacturer_id])
+  end
   
   def self.search(params)
     records = Product.all
@@ -148,7 +142,7 @@ class Product < ActiveRecord::Base
     if params[:search_sale_products].present?
       records = records.get_sale_products.where('LOWER(products.name) LIKE ?', "%#{params[:search_sale_products].strip.downcase}%")
     end
-    
+  
     return records
   end
   
