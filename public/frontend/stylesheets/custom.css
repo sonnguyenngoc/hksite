@@ -187,3 +187,15 @@ select {
 .size_image_cart {
     max-height: 86px;
 }
+.size_new_product {
+    height: 190px;
+}
+.size_list_new_product {
+    max-height: 150px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+}
