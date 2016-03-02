@@ -184,3 +184,6 @@ select {
 .text-center {
     text-align: center;
 }
+.size_image_cart {
+    max-height: 86px;
+}
