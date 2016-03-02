@@ -178,9 +178,13 @@ class Product < ActiveRecord::Base
       records = records.where(product_infos: {product_bestselled: 'on'})
     end
     
-    if params[:manufacturers].present?
-      records = records.where(manufacturer_id: params[:manufacturers])
-    end
+    #if params[:manufacturers].present?
+    #  records = records.where(manufacturer_id: params[:manufacturers])
+    #end
+    
+    #if !params["order"].nil?
+    #  @records = @records.order("created_at #{params["order"]}")
+    #end
 
     return records
   end
@@ -188,16 +192,18 @@ class Product < ActiveRecord::Base
   def self.get_by_manufacturer(params)
     records = self.where(manufacturer_id: params[:manufacturer_id])
     
-    if params[:sort_by] == 'name'
-      records = records.order("products.name #{params[:sort_group]}")
-    end
-    
-    if params[:sort_by] == 'created_at'
-      records = records.order("products.created_at #{params[:sort_group]}")
-    end
-    
     return records
   end
+  
+  #def self.sort_by_price(params)
+  #  if params[:sort_group]=='ASC'
+  #    records = records.order("products.product_price.price #{params[:sort_group]}")
+  #  end
+  #  
+  #  if params[:sort_group]=='DESC'
+  #    records = records.order("products.product_price.price #{params[:sort_group]}")
+  #  end
+  #end
  
   def get_amount_prices
     if !self.product_info.sale_off_price.nil?
