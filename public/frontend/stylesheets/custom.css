@@ -174,3 +174,13 @@ select {
 .safe_off {
     color: #ff0000;
 }
+.sum_total {
+    font-size: 18px;
+    color: #018bc8;
+}
+.sum_total_col {
+    width: 200px;
+}
+.text-center {
+    text-align: center;
+}

@@ -136,13 +136,13 @@
                                                        
                                                         <% if product.product_info.sale_price.nil? || product.product_info.sale_price <= 0 %>
                                                             
-                                                            <p class="product_price alignleft"><span style="color: #b2b2b2">Giá KM: </span><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
+                                                            <p class="product_price alignleft"><span style="color: #b2b2b2">Giá KM: </span><b><%= number_with_delimiter product.display_default_price %> VNĐ</b></p>
                                                         
                                                         <% else %>
                                                            
-                                                            <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</s>
+                                                            <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.display_default_price %> VNĐ</s>
                                                             
-                                                            <b><%= number_with_delimiter product.product_info.sale_price.to_i %> VNĐ</b></p>
+                                                            <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                         
                                                         <% end %>
                                                     

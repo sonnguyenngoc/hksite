@@ -123,7 +123,7 @@
                                                                 
                                                                 Giá sản phẩm:
             
-                                                                <div class="price"><%= number_with_delimiter @pro_detail.product_price.price.to_i %> VNĐ</div>
+                                                                <div class="price"><%= number_with_delimiter @pro_detail.display_price %> VNĐ</div>
             
                                                             </td>
             
@@ -151,7 +151,7 @@
                                                                 
                                                                 Giá khuyến mãi:
             
-                                                                <div class="price"><%= number_with_delimiter @pro_detail.product_info.sale_price.to_i %> VNĐ</div>
+                                                                <div class="price"><%= number_with_delimiter @pro_detail.display_price %> VNĐ</div>
             
                                                             </td>
             
@@ -159,7 +159,7 @@
                                                                 
                                                                 Giá cũ:
             
-                                                                <div class="price"><%= number_with_delimiter @pro_detail.product_price.price.to_i %> VNĐ</div>
+                                                                <div class="price"><%= number_with_delimiter @pro_detail.display_default_price %> VNĐ</div>
             
                                                             </td>
             
@@ -179,7 +179,7 @@
                                                             
                                                             Giá sản phẩm:
         
-                                                            <div class="price"><%= number_with_delimiter @pro_detail.product_price.price.to_i %> VNĐ</div>
+                                                            <div class="price"><%= number_with_delimiter @pro_detail.display_price %> VNĐ</div>
         
                                                         </td>
         

@@ -57,9 +57,9 @@
                             <% @customer_order.customer_order_details.each_with_index do |item,index| %>
                                 <tr class="<%= (index%2 == 1 ? "" : "alpha-teal") %>">
                                     <td><%= item.product.name %></td>
-                                    <td><%= number_with_delimiter item.price.to_f %></td>
+                                    <td><%= number_with_delimiter item.price.to_i %></td>
                                     <td><%= item.quantity %></td>
-                                    <td><%= item.total %></td>
+                                    <td><%= number_with_delimiter item.total.to_i %></td>
                                 </tr>
                             <% end %>
                         <% else %>
@@ -68,9 +68,10 @@
                             <% end %>
                         <% end %>
                   </tbody>
+                  
                   <tfoot>
                       <tr>
-                          <th>Tổng tiền</th>: <%= @customer_order.total %>
+                          <th>Tổng tiền</th>: <%= number_with_delimiter @customer_order.total.to_i %>
                       </tr>
                   </tfoot>
                 </table>

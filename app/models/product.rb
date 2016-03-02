@@ -204,6 +204,23 @@ class Product < ActiveRecord::Base
       product_price.price.to_f*(1 - (self.product_info.sale_off_price/100)) 
     end
   end
+  
+  def display_price
+    if !self.product_info.nil?
+      if (self.product_info.product_sale == "on") && (self.product_info.sale_price > 0)
+        self.product_info.sale_price.to_i
+      else
+        self.display_default_price
+      end  
+    else
+        self.display_default_price
+    end
+    
+  end
+  
+  def display_default_price
+    self.product_price.price.to_i
+  end
 
   private
     # ensure that there are no line items referencing this product
