@@ -366,30 +366,6 @@
                                     <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
     
                                     <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-    
-                                    <div class="description">
-    
-                                        <%= link_to product.name, {controller: "product", action: "index", id: product.id} %>
-    
-                                        <div class="clearfix product_info">
-    
-                                            <% if product.product_price.price.nil? %>
-    
-                                                <p class="product_price alignleft"><b>Liên hệ:(84-8) 3984 7690</b></p>
-                                            
-                                            <% else %>
-                                                
-                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
-                                            
-                                            <% end %> 
-    
-                                        </div>
-    
-                                    </div>
-    
-                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-    
-                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
 
                                     <div class="description">
     
