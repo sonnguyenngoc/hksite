@@ -370,8 +370,6 @@
                                     <div class="description">
     
                                         <%= link_to (truncate(strip_tags(product.name), length: 28)), {controller: "product", action: "index", id: product.id} %>
-    
-                                        <p><%= product.product_info.bonus_product %></p>
             
                                         <div class="clearfix product_info">
                                             
@@ -382,24 +380,18 @@
                                             <% else %>
                                                 
                                                 <% if !product.product_info.nil? %>
-                                                   
-                                                    <% if product.product_info.sale_price.nil? || product.product_info.sale_price <= 0 %>
-                                                        
-                                                        <p class="product_price alignleft"><span style="color: #b2b2b2">Giá KM: </span><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
-                                                    
-                                                    <% else %>
                                                        
-                                                        <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</s>
-                                                        
-                                                        <b><%= number_with_delimiter product.get_amount_prices.to_i %> VNĐ</b></p>
+                                                    <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</s>
                                                     
-                                                    <% end %>
+                                                    <b><%= number_with_delimiter product.get_amount_prices.to_i %> VNĐ</b></p>
                                                 
                                                 <% end %>
                                             
                                             <% end %>
     
                                         </div><!--/ .clearfix.product_info-->
+                                        
+                                        <p><%= product.product_info.bonus_product %></p>
     
                                     </div>
     
