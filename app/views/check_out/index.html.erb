@@ -173,9 +173,9 @@
                                     
                                     <th class="product_image_col">Hình ảnh</th>
                                     <th class="product_title_col">Tên sản phẩm</th>
-                                    <th class="product_total_col">Giá</th>
-                                    <th class="product_total_col">Số lượng</th>
-                                    <th class="product_total_col">Thành tiền</th>
+                                    <th class="sum_total_col text-center">Giá</th>
+                                    <th class="product_total_col text-center">Số lượng</th>
+                                    <th class="sum_total_col text-center">Thành tiền</th>
     
                                 </tr>
     
@@ -195,22 +195,45 @@
                                         
                                         <td data-title="Product Name">
                                             
-                                            <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id}, class: "product_title" %>
+                                            <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id}, class: "product_title" %><br/>
         
-                                            <ul class="sc_product_info">
-        
-                                                <li>Ram: 1Gb</li>
-                                                <li>Màu: Hồng</li>
-        
-                                            </ul>
+                                            <% if !item.product.product_info.nil? %>
+                                                    
+                                                <% if (item.product.product_info.product_sale == "on") && (item.product.product_info.sale_price > 0) %>
+                                                    
+                                                    Sản phẩm khuyến mãi. <b class="safe_off">Giảm: <%= item.product.product_info.sale_off_price %>%</b><br/>
+                                                    
+                                                <% end %>
+                                                
+                                                <% if item.product.product_info.bonus_product != "" %>
+                                                    
+                                                    <%= item.product.product_info.bonus_product %>
+                                                    
+                                                <% end %>
+  
+                                            <% end %>
         
                                         </td>
         
-                                        <td data-title="Price" class="subtotal"><%= number_with_delimiter item.product.product_price.price.to_i %>đ</td>
+                                        <td data-title="Price" class="subtotal text-center">
+                                            
+                                            <%= number_with_delimiter item.product.display_price %> VNĐ<br/>
+                                            
+                                            <% if !item.product.product_info.nil? %>
+                                                    
+                                                <% if (item.product.product_info.product_sale == "on") && (item.product.product_info.sale_price > 0) %>
+                                                    
+                                                    <s><%= number_with_delimiter item.product.display_default_price %> VNĐ <br/></s>
+                                                    
+                                                <% end %>
+  
+                                            <% end %>
+                                        
+                                        </td>
         
-                                        <td data-title="Quantity"><%= item.quantity %></td>
+                                        <td data-title="Quantity"  class="text-center"><%= item.quantity %></td>
         
-                                        <td data-title="Total" class="total"><%= number_with_delimiter item.total_item.to_i %>đ</td>
+                                        <td data-title="Total" class="total text-center"><%= number_with_delimiter item.total_item.to_i %> VNĐ</td>
         
                                     </tr>
                                 <% end %>
@@ -221,8 +244,8 @@
     
                                 <tr>
                                     
-                                    <td colspan="4" class="grandtotal">Tổng tiền</td>
-                                    <td class="grandtotal"><%= number_with_delimiter @cart.total_order.to_i %>đ</td>
+                                    <td colspan="4" class="sum_total">Tổng tiền</td>
+                                    <td class="sum_total text-center"><%= number_with_delimiter @cart.total_order.to_i %> VNĐ</td>
     
                                 </tr>
     

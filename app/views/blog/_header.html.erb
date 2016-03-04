@@ -301,7 +301,7 @@
     
                                                 <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id}, class: "product_name" %>
     
-                                                <p><%= item.quantity %> x <%= item.product.product_price.price.to_i %> VNĐ</p>
+                                                <p><%= item.quantity %> x <%= item.product.display_price %> VNĐ</p>
     
                                                 <%= link_to "" , {controller: "shopping_cart", action: "index", do: 'remove_item', line_item_id: item.id }, {class: "close"}  %>
     

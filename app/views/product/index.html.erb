@@ -123,7 +123,7 @@
                                                                 
                                                                 Giá sản phẩm:
             
-                                                                <div class="price"><%= number_with_delimiter @pro_detail.product_price.price.to_i %> VNĐ</div>
+                                                                <div class="price"><%= number_with_delimiter @pro_detail.display_price %> VNĐ</div>
             
                                                             </td>
             
@@ -151,7 +151,7 @@
                                                                 
                                                                 Giá khuyến mãi:
             
-                                                                <div class="price"><%= number_with_delimiter @pro_detail.product_info.sale_price.to_i %> VNĐ</div>
+                                                                <div class="price"><%= number_with_delimiter @pro_detail.display_price %> VNĐ</div>
             
                                                             </td>
             
@@ -159,7 +159,7 @@
                                                                 
                                                                 Giá cũ:
             
-                                                                <div class="price"><%= number_with_delimiter @pro_detail.product_price.price.to_i %> VNĐ</div>
+                                                                <div class="price"><%= number_with_delimiter @pro_detail.display_default_price %> VNĐ</div>
             
                                                             </td>
             
@@ -179,7 +179,7 @@
                                                             
                                                             Giá sản phẩm:
         
-                                                            <div class="price"><%= number_with_delimiter @pro_detail.product_price.price.to_i %> VNĐ</div>
+                                                            <div class="price"><%= number_with_delimiter @pro_detail.display_price %> VNĐ</div>
         
                                                         </td>
         
@@ -247,6 +247,40 @@
 
                     <section class="section_offset">
 
+                        <h3>Thông tin giao hàng</h3>
+
+                        <div class="theme_box">
+
+                            <div class="seller_info clearfix">
+                                
+                                <b><%= @company_info.name %></b>
+
+                            </div><!--/ .seller_info-->
+
+                            <ul class="seller_stats">
+
+                                <li class="c_info_location"><%= @company_info.address %></li>
+
+                                <li class="c_info_phone">
+                                    <strong>Số điện thoại: </strong><%= @company_info.phone %><br/>
+                                    <strong>Mã fax: </strong><%= @company_info.fax %><br/>
+                                    <strong>Mã số thuế: </strong><%= @company_info.tax_code %>
+                                </li>
+                                
+                                <li class="c_info_mail"><a href="mailto:<%= @company_info.email %>"><%= @company_info.email %></a></li>
+
+                            </ul>
+
+                        </div><!--/ .theme_box -->
+
+                    </section>
+
+                    <!-- - - - - - - - - - - - - - End of seller information - - - - - - - - - - - - - - - - -->
+                    
+                    <!-- - - - - - - - - - - - - - Seller Information - - - - - - - - - - - - - - - - -->
+
+                    <section class="section_offset">
+
                         <h3>Thông tin liên hệ</h3>
 
                         <div class="theme_box">
@@ -261,12 +295,15 @@
 
                                 <li class="c_info_location"><%= @company_info.address %></li>
 
-                                <li class="c_info_phone"><%= @company_info.phone %></li>
+                                <li class="c_info_phone">
+                                    <strong>Số điện thoại: </strong><%= @company_info.phone %><br/>
+                                    <strong>Mã fax: </strong><%= @company_info.fax %><br/>
+                                </li>
                                 
                                 <li class="c_info_mail"><a href="mailto:<%= @company_info.email %>"><%= @company_info.email %></a></li>
 
                             </ul>
-
+                            
                             <div class="v_centered">
                                 
                                 <%= link_to "Liên hệ ngay", { controller: "contact", action: "index" }, class: "button_blue mini_btn" %>
@@ -366,36 +403,10 @@
                                     <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
     
                                     <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-    
-                                    <div class="description">
-    
-                                        <%= link_to product.name, {controller: "product", action: "index", id: product.id} %>
-    
-                                        <div class="clearfix product_info">
-    
-                                            <% if product.product_price.price.nil? %>
-    
-                                                <p class="product_price alignleft"><b>Liên hệ:(84-8) 3984 7690</b></p>
-                                            
-                                            <% else %>
-                                                
-                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
-                                            
-                                            <% end %> 
-    
-                                        </div>
-    
-                                    </div>
-    
-                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-    
-                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
 
                                     <div class="description">
     
                                         <%= link_to (truncate(strip_tags(product.name), length: 28)), {controller: "product", action: "index", id: product.id} %>
-    
-                                        <p><%= product.product_info.bonus_product %></p>
             
                                         <div class="clearfix product_info">
                                             
@@ -406,24 +417,18 @@
                                             <% else %>
                                                 
                                                 <% if !product.product_info.nil? %>
-                                                   
-                                                    <% if product.product_info.sale_price.nil? || product.product_info.sale_price <= 0 %>
-                                                        
-                                                        <p class="product_price alignleft"><span style="color: #b2b2b2">Giá KM: </span><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
-                                                    
-                                                    <% else %>
                                                        
-                                                        <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</s>
-                                                        
-                                                        <b><%= number_with_delimiter product.get_amount_prices.to_i %> VNĐ</b></p>
+                                                    <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</s>
                                                     
-                                                    <% end %>
+                                                    <b><%= number_with_delimiter product.get_amount_prices.to_i %> VNĐ</b></p>
                                                 
                                                 <% end %>
                                             
                                             <% end %>
     
                                         </div><!--/ .clearfix.product_info-->
+                                        
+                                        <p><%= product.product_info.bonus_product %></p>
     
                                     </div>
     

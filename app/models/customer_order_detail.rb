@@ -6,7 +6,7 @@ class CustomerOrderDetail < ActiveRecord::Base
   
     def update_current_price_from_product
       if self.price.nil?
-          self.price = product.product_price.price
+          self.price = product.display_price
       end    
     end
     

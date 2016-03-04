@@ -62,7 +62,7 @@
                                                 
                                             <td class="product_image_col" data-title="Product Image">
                                                 
-                                                <%= link_to(image_tag(item.product.product_image.image, width: 86, height: 86), {controller: "product", action: "index", id: item.product_id}) %>
+                                                <%= link_to(image_tag(item.product.product_image.image), {controller: "product", action: "index", id: item.product_id}, class: "size_image_cart") %>
                                                 
                                             </td>
             
@@ -72,14 +72,24 @@
             
                                             <td data-title="Product Name">
                                                 
-                                                <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id}, class: "product_title" %>
-            
-                                                <ul class="sc_product_info">
+                                                <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id}, class: "product_title" %> <br/>
+                                                
+                                                <% if !item.product.product_info.nil? %>
                                                     
-                                                    <li><%= item.product.product_info.description if !item.product.product_info.nil?  %></li>
+                                                    <% if (item.product.product_info.product_sale == "on") && (item.product.product_info.sale_price > 0) %>
+                                                        
+                                                        Sản phẩm khuyến mãi. <b class="safe_off">Giảm: <%= item.product.product_info.sale_off_price %>%</b><br/>
+                                                        
+                                                    <% end %>
                                                     
-                                                </ul>
-            
+                                                    <% if item.product.product_info.bonus_product != "" %>
+                                                        
+                                                        <%= item.product.product_info.bonus_product %>
+                                                        
+                                                    <% end %>
+      
+                                                <% end %>
+                                                
                                             </td>
             
                                             <!-- - - - - - - - - - - - - - End of product name - - - - - - - - - - - - - - - - -->
@@ -88,7 +98,17 @@
             
                                             <td class="subtotal" data-title="Price">
                                                 
-                                                <%= number_with_delimiter item.product.product_price.price.to_i %>
+                                                <%= number_with_delimiter item.product.display_price %> VNĐ <br/>
+                                                
+                                                <% if !item.product.product_info.nil? %>
+                                                    
+                                                    <% if (item.product.product_info.product_sale == "on") && (item.product.product_info.sale_price > 0) %>
+                                                        
+                                                        <s><%= number_with_delimiter item.product.display_default_price %> VNĐ <br/></s>
+                                                        
+                                                    <% end %>
+      
+                                                <% end %>
             
                                             </td>
             
@@ -114,7 +134,7 @@
             
                                             <td class="total" data-title="Total">
             
-                                                <%= number_with_delimiter item.total_item.to_i %>
+                                                <%= number_with_delimiter item.total_item.to_i %> VNĐ
             
                                             </td>
             
@@ -124,7 +144,7 @@
             
                                             <td data-title="Action">
                                                 
-                                                <%= link_to "<i class='icon-cancel-2'></i>".html_safe , {controller: "shopping_cart", action: "index", do: 'remove_item', line_item_id: item.id }, {class: "button_dark_grey icon_btn remove_product"} %>
+                                                <%= link_to "<i class='icon-cancel-2'></i>".html_safe , {controller: "shopping_cart", action: "index", do: 'remove_item', line_item_id: item.id }, {class: "button_dark_grey icon_btn remove_product text-center"} %>
             
                                             </td>
             
@@ -242,9 +262,9 @@
     
                             <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
                             
-                            <div class="image_wrap">
+                            <div class="image_wrap size_new_product">
     
-                                <img src="<%= product.product_image.image %>" style="width: 150px; height: 150px;" class="img-rounded">
+                                <img src="<%= product.product_image.image %>" class="img-rounded size_list_new_product">
     
                                 <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
     
