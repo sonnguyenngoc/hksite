@@ -39,6 +39,18 @@ class Admin::ProductInfosController < ApplicationController
 
     respond_to do |format|
       if @product_info.save
+        if (!@product_info.sale_off_price.nil? and @product_info.sale_price.nil?)
+          @product_info.sale_price = @product_info.product.product_price.price.to_f*(1 - (@product_info.sale_off_price/100))
+        end
+        if (!@product_info.sale_price.nil? and @product_info.sale_off_price.nil?)
+          @product_info.sale_off_price =  ((@product_info.product.product_price.price.to_f - @product_info.sale_off_price.to_f)*100)/(@product_info.product.product_price.price.to_f)
+        end
+        if (!@product_info.sale_off_price.nil? and !@product_info.sale_price.nil?)
+            @product_info.sale_price = @product_info.sale_price.to_i
+            @product_info.sale_off_price =  ((@product_info.product.product_price.price.to_f - @product_info.sale_off_price.to_f)*100)/(@product_info.product.product_price.price.to_f)
+        end
+        @product_info.save
+        
         format.html { redirect_to [:admin, @product_info], notice: 'Thông tin sản phẩm đã được cập nhật thành công.' }
         format.json { render :show, status: :created, location: @product_info }
       else
@@ -59,6 +71,18 @@ class Admin::ProductInfosController < ApplicationController
     
     respond_to do |format|
       if @product_info.update(product_info_params)
+        if (!@product_info.sale_off_price.nil? and @product_info.sale_price.nil?)
+          @product_info.sale_price = @product_info.product.product_price.price.to_f*(1 - (@product_info.sale_off_price/100))
+        end
+        if (!@product_info.sale_price.nil? and @product_info.sale_off_price.nil?)
+          @product_info.sale_off_price =  ((@product_info.product.product_price.price.to_f - @product_info.sale_off_price.to_f)*100)/(@product_info.product.product_price.price.to_f)
+        end
+        if (!@product_info.sale_off_price.nil? and !@product_info.sale_price.nil?)
+            @product_info.sale_price = @product_info.sale_price.to_i
+            @product_info.sale_off_price =  ((@product_info.product.product_price.price.to_f - @product_info.sale_off_price.to_f)*100)/(@product_info.product.product_price.price.to_f)
+        end
+        @product_info.update(product_info_params)
+        
         format.html { redirect_to [:admin, @product_info], notice: 'Thông tin sản phẩm đã được cập nhật thành công.' }
         format.json { render :show, status: :ok, location: @product_info }
       else
