@@ -205,21 +205,27 @@ class Product < ActiveRecord::Base
   #  end
   #end
  
-  def get_amount_sale_prices
-    if !self.product_info.sale_off_price.nil? and self.product_info.sale_price.nil?
+  def get_amount_prices
+    if !self.product_info.sale_off_price.nil?
       product_price.price.to_f*(1 - (self.product_info.sale_off_price/100))
-    elsif !self.product_info.sale_off_price.nil? and !self.product_info.sale_price.nil?
-      self.product_info.sale_price.to_i
     end
   end
+ 
+ # def get_amount_sale_prices
+ #   if !self.product_info.sale_off_price.present? and self.product_info.sale_price.present?
+ #     product_price.price.to_f*(1 - (self.product_info.sale_off_price/100))
+ #   elsif !self.product_info.sale_off_price.present? and !self.product_info.sale_price.present?
+ #     self.product_info.sale_price.to_i
+ #   end
+ # end
   
-  def get_amount_sale_off_prices
-    if !self.product_info.sale_price.nil? or self.product_info.sale_off_price.nil?
-      ((product_price.price.to_f - product_info.sale_off_price.to_f)*100)/(product_price.price.to_f)
-    elsif !self.product_info.sale_price.nil? and !self.product_info.sale_off_price.nil?
-      self.product_info.sale_off_price.to_f
-    end
-  end
+ # def get_amount_sale_off_prices
+ #   if !self.product_info.sale_price.nil? or self.product_info.sale_off_price.nil?
+ #     ((product_price.price.to_f - product_info.sale_off_price.to_f)*100)/(product_price.price.to_f)
+ #   elsif !self.product_info.sale_price.nil? and !self.product_info.sale_off_price.nil?
+ #     self.product_info.sale_off_price.to_f
+ #   end
+ # end
   
   def display_price
     if !self.product_info.nil?

@@ -82,6 +82,8 @@
                             <div class="description_section">
 
                                 <p>Mô tả sản phẩm</p>
+                                <p><%= @pro_detail.description %></p>
+                                <p><%= @pro_detail.note %></p>
 
                             </div>
 
@@ -242,12 +244,12 @@
                 </main><!--/ [col] -->
 
                 <aside class="col-md-3 col-sm-4">
-
+                    
                     <!-- - - - - - - - - - - - - - Seller Information - - - - - - - - - - - - - - - - -->
 
                     <section class="section_offset">
 
-                        <h3>Thông tin giao hàng</h3>
+                        <h3>Thông tin công ty</h3>
 
                         <div class="theme_box">
 
@@ -262,9 +264,7 @@
                                 <li class="c_info_location"><%= @company_info.address %></li>
 
                                 <li class="c_info_phone">
-                                    <strong>Số điện thoại: </strong><%= @company_info.phone %><br/>
-                                    <strong>Mã fax: </strong><%= @company_info.fax %><br/>
-                                    <strong>Mã số thuế: </strong><%= @company_info.tax_code %>
+                                    <strong>MST: </strong><%= @company_info.tax_code %>
                                 </li>
                                 
                                 <li class="c_info_mail"><a href="mailto:<%= @company_info.email %>"><%= @company_info.email %></a></li>
@@ -273,34 +273,42 @@
 
                         </div><!--/ .theme_box -->
 
+                        <footer class="bottom_box">
+                            
+                            <%= link_to "Xem giới thiệu công ty", { controller: "about_us", action: "index" }, class: "button_grey middle_btn" %>
+
+                        </footer>
+
                     </section>
 
                     <!-- - - - - - - - - - - - - - End of seller information - - - - - - - - - - - - - - - - -->
-                    
+
                     <!-- - - - - - - - - - - - - - Seller Information - - - - - - - - - - - - - - - - -->
 
                     <section class="section_offset">
 
-                        <h3>Thông tin liên hệ</h3>
+                        <h3>Thông tin liên hệ xin gửi về</h3>
 
                         <div class="theme_box">
 
                             <div class="seller_info clearfix">
                                 
-                                <b><%= @company_info.name %></b>
+                                <b>CN Công Ty TNHH Giải Pháp CNTT & Truyền Thông Hoàng Khang</b>
 
                             </div><!--/ .seller_info-->
 
                             <ul class="seller_stats">
 
-                                <li class="c_info_location"><%= @company_info.address %></li>
+                                <li class="c_info_location">188 Đường số 1, P. 16, Q. Gò Vấp, TP. HCM </li>
 
                                 <li class="c_info_phone">
-                                    <strong>Số điện thoại: </strong><%= @company_info.phone %><br/>
-                                    <strong>Mã fax: </strong><%= @company_info.fax %><br/>
+                                    <strong>Điện thoại: </strong><%= @company_info.phone %><br/>
+                                    <strong>Hotline: </strong>(08) 2212 9454<br/>
+                                    <strong>Fax: </strong><%= @company_info.fax %><br/>
+                                    <strong>MST: </strong><%= @company_info.tax_code %>-001
                                 </li>
                                 
-                                <li class="c_info_mail"><a href="mailto:<%= @company_info.email %>"><%= @company_info.email %></a></li>
+                                <li class="c_info_mail"><a href="mailto:sale@hoangkhang.com.vn">sale@hoangkhang.com.vn</a></li>
 
                             </ul>
                             
@@ -311,12 +319,6 @@
                             </div>
 
                         </div><!--/ .theme_box -->
-
-                        <footer class="bottom_box">
-                            
-                            <%= link_to "Xem giới thiệu công ty", { controller: "about_us", action: "index" }, class: "button_grey middle_btn" %>
-
-                        </footer>
 
                     </section>
 
