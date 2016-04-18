@@ -17,11 +17,11 @@ class Menu < ActiveRecord::Base
     records = Product.joins(:categories).where(categories: {id: menu.get_all_category_ids})
     
     if params[:sort_by] == 'name'
-      records = records.joins(:categories).where(categories: {id: menu.get_all_category_ids}).order("products.name #{params[:sort_group]}")
+      records = records.joins(:categories).where(categories: {id: menu.get_all_category_ids}).order("stock DESC, products.name #{params[:sort_group]}")
     end
     
     if params[:sort_by] == 'created_at'
-      records = records.joins(:categories).where(categories: {id: menu.get_all_category_ids}).order("products.created_at #{params[:sort_group]}")
+      records = records.joins(:categories).where(categories: {id: menu.get_all_category_ids}).order("stock DESC, products.created_at #{params[:sort_group]}")
     end
     
     return records
