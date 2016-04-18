@@ -101,6 +101,9 @@ class Product < ActiveRecord::Base
       records = products.order("products.created_at #{params[:sort_group]}")
     end
     
+    # overide all
+    records = self.all.order("stock DESC")
+    
     return records
   end
   
@@ -242,6 +245,23 @@ class Product < ActiveRecord::Base
   
   def display_default_price
     self.product_price.price.to_i
+  end
+  
+  def display_name
+    result = ''
+    if categories.first.name != 'none'
+      result += categories.first.name + " "
+    end
+    
+    if manufacturer.name != 'none'
+      result += manufacturer.name + " "
+    end
+    
+    
+    result += name
+    result += " " + product_code if !product_code.nil?
+    
+    return result.strip
   end
 
   private

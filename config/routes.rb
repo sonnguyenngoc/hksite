@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get "about_us" => "about_us#index", as: :about_us
   get "shopping_cart" => "shopping_cart#index", as: :shopping_cart
   get "check_out" => "check_out#index", as: :check_out
-  get "category_page" => "category_page#index", as: :category_page
+  get "category_page/:id" => "category_page#index", as: :category_page
   get "manufacturer" => "manufacturer#index", as: :manufacturer
   get "manufacturer_page" => "manufacturer_page#index", as: :manufacturer_page
   get "product_search" => "product_search#index", as: :product_search

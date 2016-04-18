@@ -364,7 +364,9 @@
     
                                                         <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
     
-                                                        <div class="label_new">Mới</div>
+                                                        <% if product.product_info.present? and product.product_info.product_new == "on" %>
+                                                            <div class="label_new">Mới</div>
+                                                        <% end %>
     
                                                         <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
     
@@ -376,7 +378,7 @@
     
                                                     <div class="description">
                                                         
-                                                        <%= link_to (truncate(strip_tags(product.name), length: 35)), {controller: "product", action: "index", id: product.id} %>
+                                                        <%= link_to strip_tags(product.display_name), {controller: "product", action: "index", id: product.id}, title: product.display_name %>
                                                         
                                                         <div class="clearfix product_info">
                                                             
@@ -413,7 +415,7 @@
                             
                                 <footer class="bottom_box">
                                     
-                                    <%= link_to "Xem toàn bộ sản phẩm mới", { controller: "all_new_product", action: "index" }, class: "button_grey middle_btn" %>
+                                    <%= link_to "Xem toàn bộ", { controller: "all_new_product", action: "index" }, class: "button_grey middle_btn" %>
 
                                 </footer>
                                 
@@ -477,7 +479,7 @@
                                                     
                                                     <div class="description">
                                 
-                                                        <%= link_to (truncate(strip_tags(product.name), length: 35)), {controller: "product", action: "index", id: product.id} %>
+                                                        <%= link_to strip_tags(product.display_name), {controller: "product", action: "index", id: product.id}, title: product.display_name %>
                                                         
                                                         <div class="clearfix product_info">
                                                             
@@ -515,7 +517,7 @@
                             
                                 <footer class="bottom_box">
 
-                                    <%= link_to "Xem toàn bộ sản phẩm mới", { controller: "all_prominent_product", action: "index" }, class: "button_grey middle_btn" %>
+                                    <%= link_to "Xem toàn bộ", { controller: "all_prominent_product", action: "index" }, class: "button_grey middle_btn" %>
 
                                 </footer>
                                 
@@ -579,7 +581,7 @@
     
                                                     <div class="description">
     
-                                                        <%= link_to (truncate(strip_tags(product.name), length: 35)), {controller: "product", action: "index", id: product.id} %>
+                                                        <%= link_to strip_tags(product.display_name), {controller: "product", action: "index", id: product.id}, title: product.display_name %>
                                                         
                                                         <div class="clearfix product_info">
                                                             
@@ -616,7 +618,7 @@
                             
                                 <footer class="bottom_box">
 
-                                    <%= link_to "Xem toàn bộ sản phẩm mới", { controller: "all_hot_product", action: "index" }, class: "button_grey middle_btn" %>
+                                    <%= link_to "Xem toàn bộ", { controller: "all_hot_product", action: "index" }, class: "button_grey middle_btn" %>
 
                                 </footer>
                                 
@@ -680,7 +682,7 @@
     
                                                     <div class="description">
     
-                                                        <%= link_to (truncate(strip_tags(product.name), length: 35)), {controller: "product", action: "index", id: product.id} %>
+                                                        <%= link_to strip_tags(product.display_name), {controller: "product", action: "index", id: product.id}, title: product.display_name %>
                                                         
                                                         <div class="clearfix product_info">
                                                             
@@ -717,7 +719,7 @@
                             
                                 <footer class="bottom_box">
 
-                                    <%= link_to "Xem toàn bộ sản phẩm mới", { controller: "all_bestseller_product", action: "index" }, class: "button_grey middle_btn" %>
+                                    <%= link_to "Xem toàn bộ", { controller: "all_bestseller_product", action: "index" }, class: "button_grey middle_btn" %>
 
                                 </footer>
                                 

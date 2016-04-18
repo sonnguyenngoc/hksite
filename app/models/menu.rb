@@ -13,7 +13,7 @@ class Menu < ActiveRecord::Base
   end
   
   def get_products_for_categories(params)
-    menu = Menu.find(params[:category_id])
+    menu = Menu.find(params[:id])
     records = Product.joins(:categories).where(categories: {id: menu.get_all_category_ids})
     
     if params[:sort_by] == 'name'
