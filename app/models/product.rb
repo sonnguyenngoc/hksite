@@ -45,7 +45,8 @@ class Product < ActiveRecord::Base
   end
   
   def self.get_sale_products(params)    
-    records = self.includes(:product_info).where(product_infos: {product_sale: "on"}).order("product_infos.updated_at DESC")
+    records = self.includes(:product_info).where(status: 1)
+                                          .where(product_infos: {product_sale: "on"}).order("product_infos.updated_at DESC")
     if params[:sort_by] == 'name'
       products = self.joins(:product_info).where(product_infos: {product_sale: "on"})
       records = products.order("products.name #{params[:sort_group]}")
@@ -60,7 +61,8 @@ class Product < ActiveRecord::Base
   end
   
   def self.get_bestseller_products(params)
-    records = self.joins(:product_info).where(product_infos: {product_bestselled: "on"}).order("product_infos.updated_at DESC")
+    records = self.joins(:product_info).where(status: 1)
+                                      .where(product_infos: {product_bestselled: "on"}).order("product_infos.updated_at DESC")
     if params[:sort_by] == 'name'
       products = self.joins(:product_info).where(product_infos: {product_bestselled: "on"})
       records = products.order("products.name #{params[:sort_group]}")
@@ -75,7 +77,8 @@ class Product < ActiveRecord::Base
   end
   
   def self.get_prominent_products(params)
-    records = self.joins(:product_info).where(product_infos: {product_prominent: "on"}).order("product_infos.updated_at DESC")
+    records = self.joins(:product_info).where(status: 1)
+                                      .where(product_infos: {product_prominent: "on"}).order("product_infos.updated_at DESC")
     if params[:sort_by] == 'name'
       products = self.joins(:product_info).where(product_infos: {product_prominent: "on"})
       records = products.order("products.name #{params[:sort_group]}")
@@ -90,7 +93,8 @@ class Product < ActiveRecord::Base
   end
   
   def self.get_new_products(params)
-    records = self.joins(:product_info).where(product_infos: {product_new: "on"}).order("product_infos.updated_at DESC")
+    records = self.joins(:product_info).where(status: 1)
+                                      .where(product_infos: {product_new: "on"}).order("product_infos.updated_at DESC")
     if params[:sort_by] == 'name'
       products = self.joins(:product_info).where(product_infos: {product_new: "on"})
       records = products.order("products.name #{params[:sort_group]}")
@@ -112,7 +116,7 @@ class Product < ActiveRecord::Base
   end
   
   def self.search(params)
-    records = Product.all
+    records = Product.where(status: 1)
     if params[:search].present?
       records = records.where('LOWER(products.name) LIKE ?', "%#{params[:search].strip.downcase}%")
     end

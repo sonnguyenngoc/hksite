@@ -14,7 +14,9 @@ class Menu < ActiveRecord::Base
   
   def get_products_for_categories(params)
     menu = Menu.find(params[:id])
-    records = Product.joins(:categories).where(categories: {id: menu.get_all_category_ids})
+    records = Product.joins(:categories)
+                      .where(status: 1)
+                      .where(categories: {id: menu.get_all_category_ids})
     
     if params[:sort_by] == 'name'
       records = records.joins(:categories).where(categories: {id: menu.get_all_category_ids}).order("products.stock DESC, products.name #{params[:sort_group]}")
