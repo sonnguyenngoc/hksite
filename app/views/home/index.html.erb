@@ -105,11 +105,11 @@
         
                                         <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
                                         
-                                        <% if !product.product_info.sale_off_price.nil? and product.product_info.sale_off_price > 0 %>
+                                        <% if !product.get_old_price.nil? and !product.get_discount_percent.nil? %>
                                             
                                             <div class="label_offer percentage">
                                                 
-                                                Giảm<div><%= product.product_info.sale_off_price %>%</div>
+                                                <div><%= product.get_discount_percent.to_f.round(1) %>%</div>Off
             
                                             </div>
                                             

@@ -42,7 +42,7 @@
                                     <tr>
                                         <th class="product_image_col">Hình ảnh</th>
                                         <th class="product_title_col">Tên sản phẩm</th>
-                                        <th>Giá</th>
+                                        <th>Đơn giá</th>
                                         <th class="product_qty_col">Số lượng</th>
                                         <th>Thành tiền</th>
                                         <th class="product_actions_col">Thao tác</th>
@@ -73,21 +73,17 @@
                                             <td data-title="Product Name">
                                                 
                                                 <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id}, class: "product_title" %> <br/>
+                                                    
+                                                <% if item.product.get_old_price.present? and item.product.get_discount_percent.present? %>
+                                                    
+                                                    Sản phẩm khuyến mãi. <b class="safe_off">Giảm: <%= number_to_percentage(item.product.get_discount_percent, strip_insignificant_zeros: true) %></b><br/>
+                                                    
+                                                <% end %>
                                                 
-                                                <% if !item.product.product_info.nil? %>
+                                                <% if !item.product.product_info.nil? and item.product.product_info.bonus_product != "" %>
                                                     
-                                                    <% if (item.product.product_info.product_sale == "on") && (item.product.product_info.sale_price > 0) %>
-                                                        
-                                                        Sản phẩm khuyến mãi. <b class="safe_off">Giảm: <%= item.product.product_info.sale_off_price %>%</b><br/>
-                                                        
-                                                    <% end %>
+                                                    <%= item.product.product_info.bonus_product %>
                                                     
-                                                    <% if item.product.product_info.bonus_product != "" %>
-                                                        
-                                                        <%= item.product.product_info.bonus_product %>
-                                                        
-                                                    <% end %>
-      
                                                 <% end %>
                                                 
                                             </td>
@@ -99,15 +95,11 @@
                                             <td class="subtotal" data-title="Price">
                                                 
                                                 <%= number_with_delimiter item.product.display_price %> VNĐ <br/>
-                                                
-                                                <% if !item.product.product_info.nil? %>
                                                     
-                                                    <% if (item.product.product_info.product_sale == "on") && (item.product.product_info.sale_price > 0) %>
-                                                        
-                                                        <s><%= number_with_delimiter item.product.display_default_price %> VNĐ <br/></s>
-                                                        
-                                                    <% end %>
-      
+                                                <% if !item.product.get_old_price.nil? %>
+                                                    
+                                                    <s><%= number_with_delimiter item.product.get_old_price.price.to_i %> VNĐ <br/></s>
+                                                    
                                                 <% end %>
             
                                             </td>

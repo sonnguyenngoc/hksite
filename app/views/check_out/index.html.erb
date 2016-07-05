@@ -173,7 +173,7 @@
                                     
                                     <th class="product_image_col">Hình ảnh</th>
                                     <th class="product_title_col">Tên sản phẩm</th>
-                                    <th class="sum_total_col text-center">Giá</th>
+                                    <th class="sum_total_col text-center">Đơn giá</th>
                                     <th class="product_total_col text-center">Số lượng</th>
                                     <th class="sum_total_col text-center">Thành tiền</th>
     
@@ -197,20 +197,16 @@
                                             
                                             <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id}, class: "product_title" %><br/>
         
-                                            <% if !item.product.product_info.nil? %>
-                                                    
-                                                <% if (item.product.product_info.product_sale == "on") && (item.product.product_info.sale_price > 0) %>
-                                                    
-                                                    Sản phẩm khuyến mãi. <b class="safe_off">Giảm: <%= item.product.product_info.sale_off_price %>%</b><br/>
-                                                    
-                                                <% end %>
+                                            <% if item.product.get_old_price.present? and item.product.get_discount_percent.present? %>
                                                 
-                                                <% if item.product.product_info.bonus_product != "" %>
-                                                    
-                                                    <%= item.product.product_info.bonus_product %>
-                                                    
-                                                <% end %>
-  
+                                                Sản phẩm khuyến mãi. <b class="safe_off">Giảm: <%= number_to_percentage(item.product.get_discount_percent, strip_insignificant_zeros: true) %></b><br/>
+                                                
+                                            <% end %>
+                                            
+                                            <% if !item.product.product_info.nil? and item.product.product_info.bonus_product != "" %>
+                                                
+                                                <%= item.product.product_info.bonus_product %>
+                                                
                                             <% end %>
         
                                         </td>
@@ -218,15 +214,11 @@
                                         <td data-title="Price" class="subtotal text-center">
                                             
                                             <%= number_with_delimiter item.product.display_price %> VNĐ<br/>
-                                            
-                                            <% if !item.product.product_info.nil? %>
                                                     
-                                                <% if (item.product.product_info.product_sale == "on") && (item.product.product_info.sale_price > 0) %>
-                                                    
-                                                    <s><%= number_with_delimiter item.product.display_default_price %> VNĐ <br/></s>
-                                                    
-                                                <% end %>
-  
+                                            <% if !item.product.get_old_price.nil? %>
+                                                
+                                                <s><%= number_with_delimiter item.product.get_old_price.price.to_i %> VNĐ <br/></s>
+                                                
                                             <% end %>
                                         
                                         </td>

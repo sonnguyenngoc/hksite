@@ -115,6 +115,21 @@ class Product < ActiveRecord::Base
     records = self.where(manufacturer_id: params[:manufacturer_id])
   end
   
+  def self.sort_by
+    [
+      ["Tên sản phẩm","products.name"],
+      ["Giá sản phẩm","products.product_price.price"],
+      ["Còn trong kho","products.stock"],
+    ]
+  end
+  
+  def self.sort_order
+    [
+      ["Tăng dần","asc"],
+      ["Giảm dần","desc"],
+    ]
+  end
+  
   def self.search(params)
     records = Product.where(status: 1)
     if params[:search].present?
@@ -150,7 +165,17 @@ class Product < ActiveRecord::Base
       records = records.get_sale_products.where('LOWER(products.name) LIKE ?', "%#{params[:search_sale_products].strip.downcase}%")
     end
     
+    if params[:sort_by].present? and params[:sort_order]
+      # for sorting
+      sort_by = params[:sort_by].present? ? params[:sort_by] : "products.name"
+      sort_order = params[:sort_order].present? ? params[:sort_order] : "asc"
+      records = records.order("#{sort_by} #{sort_order}")
+    elsif !(params[:sort_by].present? and params[:sort_order])
+      records = records.order("stock DESC")
+    end
+    
     return records
+    
   end
   
   def self.admin_search(params)
@@ -197,7 +222,7 @@ class Product < ActiveRecord::Base
   end
   
   def self.get_by_manufacturer(params)
-    records = self.where(manufacturer_id: params[:manufacturer_id])
+    records = self.search(params).where(manufacturer_id: params[:manufacturer_id])
     
     return records
   end
@@ -261,11 +286,29 @@ class Product < ActiveRecord::Base
     #  result += manufacturer.name + " "
     #end
     
-    
     result += name
     result += " " + product_code if !product_code.nil?
     
     return result.strip
+  end
+  
+  def get_discount_percent
+    percent = 0
+    price = self.product_price.price
+    old_price = self.get_old_price.price
+    if !old_price.nil?
+      percent = ((old_price - price)/old_price)*100
+    end
+    return percent.round(1)
+  end
+  
+  def get_old_price
+    second_price = self.product_prices.order("created_at DESC").second
+    if second_price.present? and second_price.price > self.product_price.price
+      second_price
+    else
+      nil
+    end
   end
 
   private

@@ -112,64 +112,42 @@
                                             </tbody>
                                             
                                         <% else %>
-                                            
-                                            <% if !@pro_detail.product_info.nil? %>
                                                 
-                                                <% if @pro_detail.product_info.sale_price.nil? || @pro_detail.product_info.sale_price <= 0 %>
+                                            <% if !@pro_detail.get_old_price.present? and !@pro_detail.get_discount_percent.present? and !@pro_detail.get_discount_percent > 0 %>
+                                                
+                                                <tbody>
                                                     
-                                                    <tbody>
-
-                                                        <tr>
-                                                            
-                                                            <td class="special_price" colspan="2">
-                                                                
-                                                                Giá sản phẩm:
-            
-                                                                <div class="price"><%= number_with_delimiter @pro_detail.display_price %> VNĐ</div>
-            
-                                                            </td>
-            
-                                                        </tr>
-            
-                                                    </tbody>
-                                                    
-                                                <% else %>
-                                                    
-                                                    <tbody>
+                                                    <tr>
                                                         
-                                                        <tr>
+                                                        <td class="special_price" colspan="4">
                                                             
-                                                            <td class="special_price" colspan="4">
-                                                                
-                                                               <h4>Sản phẩm khuyến mãi. <b class="safe_off">Giảm: <%= @pro_detail.product_info.sale_off_price %>%</b></h4>
+                                                           <h4>Sản phẩm khuyến mãi. <b class="safe_off">Giảm giá: <%= number_to_percentage(@pro_detail.get_discount_percent, strip_insignificant_zeros: true) %></b></h4>
 
-                                                            </td>
-            
-                                                        </tr>
-                                                        
-                                                        <tr>
-                                                            
-                                                            <td class="special_price" colspan="2">
-                                                                
-                                                                Giá khuyến mãi:
-            
-                                                                <div class="price"><%= number_with_delimiter @pro_detail.display_price %> VNĐ</div>
-            
-                                                            </td>
-            
-                                                            <td class="old_price" colspan="2">
-                                                                
-                                                                Giá cũ:
-            
-                                                                <div class="price"><%= number_with_delimiter @pro_detail.display_default_price %> VNĐ</div>
-            
-                                                            </td>
-            
-                                                        </tr>
-            
-                                                    </tbody>
+                                                        </td>
+        
+                                                    </tr>
                                                     
-                                                <% end %>
+                                                    <tr>
+                                                        
+                                                        <td class="special_price" colspan="2">
+                                                            
+                                                            Giá khuyến mãi:
+        
+                                                            <div class="price"><%= number_with_delimiter @pro_detail.display_price %> VNĐ</div>
+        
+                                                        </td>
+        
+                                                        <td class="old_price" colspan="2">
+                                                            
+                                                            Giá cũ:
+        
+                                                            <div class="price"><s style = "font-size: smaller;"><%= number_with_delimiter @pro_detail.get_old_price.price.to_i %> VNĐ</s></div>
+        
+                                                        </td>
+        
+                                                    </tr>
+        
+                                                </tbody>
                                                 
                                             <% else %>
                                                 
@@ -392,11 +370,11 @@
                                     
                                     <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
                                         
-                                    <% if !product.product_info.sale_off_price.nil? and product.product_info.sale_off_price > 0 %>
+                                    <% if !product.get_old_price.nil? and product.get_discount_percent.present? and product.get_discount_percent > 0 %>
                                         
                                         <div class="label_offer percentage">
                                             
-                                            Giảm<div><%= product.product_info.sale_off_price %>%</div>
+                                            Giảm<div><%= number_to_percentage(product.get_discount_percent, strip_insignificant_zeros: true) %></div>
         
                                         </div>
                                         
@@ -413,24 +391,19 @@
                                         <div class="clearfix product_info">
                                             
                                             <% if product.product_price.price.nil? %>
-                                                
-                                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
-                                            
+                                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ:(84-8) 3984 7690</b></p>
+                                            <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
+                                                <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> VNĐ</s>
+                                                <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                             <% else %>
-                                                
-                                                <% if !product.product_info.nil? %>
-                                                       
-                                                    <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</s>
-                                                    
-                                                    <b><%= number_with_delimiter product.get_amount_prices.to_i %> VNĐ</b></p>
-                                                
-                                                <% end %>
-                                            
+                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                             <% end %>
     
                                         </div><!--/ .clearfix.product_info-->
                                         
-                                        <p><%= product.product_info.bonus_product %></p>
+                                        <% if !product.product_info.nil? %>
+                                            <p><%= product.product_info.bonus_product %></p>
+                                        <% end %>
     
                                     </div>
     

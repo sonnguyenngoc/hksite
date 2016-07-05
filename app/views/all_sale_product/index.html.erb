@@ -149,23 +149,13 @@
     
                                         <div class="sort_select">
                                             
-                                            <select name="sort_by">
-                                                    
-                                                <option value="name">Tên</option>
-                                                <option value="created_at">Ngày</option>
-    
-                                            </select>
+                                            <%= select_tag(:sort_by, options_for_select(Product.sort_by, :selected => params[:sort_by])) %>
     
                                         </div>
                                         
                                         <div class="sort_select">
                                             
-                                            <select name="sort_group">
-                                                    
-                                                <option value="ASC">Tăng dần</option>
-                                                <option value="DESC">Giảm dần</option>
-    
-                                            </select>
+                                            <%= select_tag(:sort_order, options_for_select(Product.sort_order, :selected => params[:sort_order])) %>
     
                                         </div>
                                         
