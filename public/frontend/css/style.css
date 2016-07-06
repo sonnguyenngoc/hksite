@@ -1585,6 +1585,7 @@
 		.c_info_schedule::after{ content: "\ee8d"; }
 		.c_info_building::after { content: '\ea56'; }
 		.c_info_fax::after { content: '\ef96'; }
+		.c_info_care::after { content: '\f27a'; }
 
 		.shop_links_list{ text-align:left; }
 		.shop_links_list li:not(:first-child){ margin-top:4px; }		
