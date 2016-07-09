@@ -295,9 +295,9 @@ class Product < ActiveRecord::Base
   def get_discount_percent
     percent = 0
     price = self.product_price.price
-    old_price = self.get_old_price.price
+    old_price = self.get_old_price
     if !old_price.nil?
-      percent = ((old_price - price)/old_price)*100
+      percent = ((old_price.price - price)/old_price)*100
     end
     return percent.round(1)
   end
