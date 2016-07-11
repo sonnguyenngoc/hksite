@@ -304,7 +304,7 @@ class Product < ActiveRecord::Base
   
   def get_old_price
     second_price = self.product_prices.order("created_at DESC").second
-    if second_price.present? and second_price.price.to_s > self.product_price.price.to_s
+    if second_price.present? and second_price.price.present? and self.product_price.price.present? and second_price.price.to_f > self.product_price.price.to_f
       second_price
     else
       nil
