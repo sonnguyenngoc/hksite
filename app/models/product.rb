@@ -297,14 +297,14 @@ class Product < ActiveRecord::Base
     price = self.product_price.price
     old_price = self.get_old_price
     if !old_price.nil?
-      percent = ((old_price.price - price)/old_price)*100
+      percent = ((old_price.price - price)/old_price.price)*100
     end
     return percent.round(1)
   end
   
   def get_old_price
     second_price = self.product_prices.order("created_at DESC").second
-    if second_price.present? and second_price.price > self.product_price.price
+    if second_price.present? and second_price.price.present? and self.product_price.price.present? and second_price.price.to_f > self.product_price.price.to_f
       second_price
     else
       nil
