@@ -14,10 +14,13 @@ class Product < ActiveRecord::Base
     price = product_prices.order("created_at DESC").first
     
     if price.nil?
-      return ProductPrice.new
+      p = ProductPrice.new
     else
-      return price
-    end    
+      p = price
+    end
+    p.price = p.price.to_f*1.1
+    
+    return p
   end
   
   def product_image
