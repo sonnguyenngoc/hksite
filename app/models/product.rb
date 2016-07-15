@@ -18,7 +18,7 @@ class Product < ActiveRecord::Base
     else
       p = price
     end
-    p.price = p.price.to_f*1.1
+    # p.price = p.price.to_f*1.1
     
     return p
   end
