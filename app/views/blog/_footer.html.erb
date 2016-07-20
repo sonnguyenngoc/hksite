@@ -130,7 +130,7 @@
                                 <% if item.level == 1 %>
                                     
                                     <li><%= link_to item.title, {controller: "category_page", action: "index", id: item.id} %></li>
-
+                                    
                                 <% end %>
                             
                             <% end %>
@@ -156,7 +156,7 @@
                             <li><%= link_to "Xem đơn hàng", {controller: "shopping_cart", action: "index"} %></li>
                             <li><%= link_to "Đặt hàng", {controller: "check_out", action: "index"} %></li>
                             <li><%= link_to "Nhận tin tức mới", {controller: "contact", action: "index"} %></li>
-
+                            
                         </ul>
 
                     </section><!--/ .widget-->
