@@ -86,9 +86,9 @@ select {
 .search input {
     width: calc(100% - 258px);
 }
-.section_offset .layerslider {
+/*.section_offset .layerslider {
     border: 2px solid #b2b2b2;
-}
+}*/
 .not_found_404 {
     font-size: 94px;
 }
@@ -201,4 +201,7 @@ select {
 }
 #qLoverlay {
     display: none !important;
+}
+.middle_btn {
+    padding: 8px 5px 9px !important;
 }
