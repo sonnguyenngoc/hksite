@@ -205,3 +205,12 @@ select {
 .middle_btn {
     padding: 8px 5px 9px !important;
 }
+a.skype {
+    border: solid 1px #555;
+    padding: 2px 28px;
+    border-radius: 10px;
+}
+a.skype > img {
+    height: 20px;
+    margin-top: 1px;
+}
