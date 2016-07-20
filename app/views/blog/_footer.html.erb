@@ -177,7 +177,7 @@
                             
                             <% @new_blog_footer.each do |blog| %>
                             
-                                <% if blog.tag.title != "Giới thiệu công ty" %>
+                                <% if blog.tag.present? and blog.tag.title != "Giới thiệu công ty" %>
 
                                     <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
         
