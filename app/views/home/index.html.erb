@@ -200,6 +200,21 @@
                     </section><!--/ .section_offset.animated.transparent-->
 
                     <!-- - - - - - - - - - - - - - End of support - - - - - - - - - - - - - - - - -->
+                    
+                    <section class="section_offset">
+
+                        <h3>HÃNG PHÂN PHỐI</h3>
+
+                        <ul class="theme_menu cats">
+                            
+                            <% @partners.each do |item| %>                            
+                                <li class="has_megamenu"><%= link_to item.manufacturer.name, { controller: "manufacturer_page", action: "index", manufacturer_id: item.manufacturer_id} %></li>
+                            <% end %>
+                            <li class="has_megamenu"><%= link_to "<b>Xem tất cả hãng</b>".html_safe, {controller: "manufacturer", action: "index"}, { class: "all" } %></li>
+
+                        </ul>
+
+                    </section>
 
                     <!-- - - - - - - - - - - - - - Infoblocks - - - - - - - - - - - - - - - - -->
 
