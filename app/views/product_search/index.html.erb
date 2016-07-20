@@ -114,7 +114,7 @@
     
                                                         <% if !product.product_price.price.nil? %>
     
-                                                            <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
+                                                            <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_cart_fix" %>
                                                         
                                                         <% end %>
     
@@ -128,7 +128,7 @@
     
                                             <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
                                             
-                                            <% if product.get_old_price.present? and product.get_discount_percent.present? and product.get_discount_percent > 0 %>
+                                            <% if product.get_old_price.present? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
                                             
                                                 <div class="label_offer percentage">
                                                     
@@ -164,7 +164,7 @@
     
                                     </div>
                                 
-                                <%= "</div><div class=\"table_row\">".html_safe if index%3 == 2 %>
+                                <%= "</div><div class=\"table_row\">".html_safe if index%4 == 3 %>
                                                 
                                 <% end %>
     
