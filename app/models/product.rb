@@ -313,6 +313,11 @@ class Product < ActiveRecord::Base
       nil
     end
   end
+  
+  def get_related_products
+    records = Product.all
+    return records.limit(10)
+  end
 
   private
     # ensure that there are no line items referencing this product

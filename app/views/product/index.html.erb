@@ -29,6 +29,89 @@
         <div class="section_offset">
 
             <div class="row">
+                
+                <aside class="col-md-3 col-sm-4">
+                    
+                    <!-- - - - - - - - - - - - - - Seller Information - - - - - - - - - - - - - - - - -->
+
+                    <section class="section_offset">
+
+                        <h3>Thông tin công ty</h3>
+
+                        <div class="theme_box">
+
+                            <div class="seller_info clearfix">
+                                
+                                <b><%= @company_info.name %></b>
+
+                            </div><!--/ .seller_info-->
+
+                            <ul class="seller_stats">
+
+                                <li class="c_info_location"><%= @company_info.address %></li>
+
+                                <li class="c_info_phone">
+                                    <strong>MST: </strong><%= @company_info.tax_code %>
+                                </li>
+                                
+                                <li class="c_info_mail"><a href="mailto:<%= @company_info.email %>"><%= @company_info.email %></a></li>
+
+                            </ul>
+
+                        </div><!--/ .theme_box -->
+
+                        <footer class="bottom_box">
+                            
+                            <%= link_to "Xem giới thiệu công ty", { controller: "about_us", action: "index" }, class: "button_grey middle_btn" %>
+
+                        </footer>
+
+                    </section>
+
+                    <!-- - - - - - - - - - - - - - End of seller information - - - - - - - - - - - - - - - - -->
+
+                    <!-- - - - - - - - - - - - - - Seller Information - - - - - - - - - - - - - - - - -->
+
+                    <section class="section_offset">
+
+                        <h3>Thông tin liên hệ xin gửi về</h3>
+
+                        <div class="theme_box">
+
+                            <div class="seller_info clearfix">
+                                
+                                <b>CN Công Ty TNHH Giải Pháp CNTT & Truyền Thông Hoàng Khang</b>
+
+                            </div><!--/ .seller_info-->
+
+                            <ul class="seller_stats">
+
+                                <li class="c_info_location">188 Đường số 1, P. 16, Q. Gò Vấp, TP. HCM </li>
+
+                                <li class="c_info_phone">
+                                    <strong>Điện thoại: </strong><%= @company_info.phone %><br/>
+                                    <strong>Hotline: </strong>(08) 2212 9454<br/>
+                                    <strong>Fax: </strong><%= @company_info.fax %><br/>
+                                    <strong>MST: </strong><%= @company_info.tax_code %>-001
+                                </li>
+                                
+                                <li class="c_info_mail"><a href="mailto:sale@hoangkhang.com.vn">kinhdoanh@hoangkhang.com.vn</a></li>
+
+                            </ul>
+                            
+                            <div class="v_centered">
+                                
+                                <%= link_to "Liên hệ ngay", { controller: "contact", action: "index" }, class: "button_blue mini_btn" %>
+
+                            </div>
+
+                        </div><!--/ .theme_box -->
+
+                    </section>
+
+                    <!-- - - - - - - - - - - - - - End of seller information - - - - - - - - - - - - - - - - -->
+
+                </aside>
 
                 <main class="col-md-9 col-sm-8">
 
@@ -218,91 +301,198 @@
                         <!-- - - - - - - - - - - - - - End of product description column - - - - - - - - - - - - - - - - -->
 
                     </div>
+                        
+                    <!-- - - - - - - - - - - - - - Related products - - - - - - - - - - - - - - - - -->
+
+                    <section class="section_offset">
+            
+                        <h3 class="offset_title">CÓ THỂ BẠN QUAN TÂM</h3>
+            
+                        <div class="owl_carousel related_products">
+            
+                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+            
+                            <% @pro_detail.get_related_products.each do |product| %>
+                            
+                                <div class="product_item">
+                
+                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+                
+                                    <div class="image_wrap">
+                
+                                        <img src="<%= product.product_image.image %>" alt="">
+                
+                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+                
+                                        <div class="actions_wrap">
+                
+                                            <div class="centered_buttons">
+                
+                                                <% if !product.product_price.price.nil? %>
+    
+                                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_cart_fix" %>
+                                                
+                                                <% end %>
+                
+                                            </div><!--/ .centered_buttons -->
+                
+                                        </div><!--/ .actions_wrap-->
+                                        
+                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+                
+                                    </div><!--/. image_wrap-->
+                
+                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+                
+                                    <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+                                        
+                                    <% if !product.get_old_price.nil? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
+                                        
+                                        <div class="label_offer percentage">
+                                            
+                                            Giảm<div><%= number_to_percentage(product.get_discount_percent, strip_insignificant_zeros: true) %></div>
+        
+                                        </div>
+                                        
+                                    <% end %>
+    
+                                    <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+    
+                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                    <div class="description">
+    
+                                        <%= link_to (truncate(strip_tags(product.name), length: 28)), {controller: "product", action: "index", id: product.id} %>
+            
+                                        <div class="clearfix product_info">
+                                            
+                                            <% if product.product_price.price.nil? %>
+                                                <p class="product_price alignleft"><b style="color: #018bc8">Call: </b><%= @company_info.phone %></p>
+                                            <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
+                                                <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> VNĐ</s>
+                                                <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
+                                            <% else %>
+                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
+                                            <% end %>
+    
+                                        </div><!--/ .clearfix.product_info-->
+                                        
+                                        <% if !product.product_info.nil? %>
+                                            <p><%= product.product_info.bonus_product %></p>
+                                        <% end %>
+    
+                                    </div>
+                
+                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+                
+                                </div><!--/ .product_item-->
+                                
+                            <% end %>
+                            
+                            <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+            
+                        </div><!--/ .owl_carousel -->
+            
+                    </section><!--/ .section_offset -->
+            
+                    <!-- - - - - - - - - - - - - - End of related products - - - - - - - - - - - - - - - - -->
+                    
+                     <!-- - - - - - - - - - - - - - Sale off products - - - - - - - - - - - - - - - - -->
+
+                    <section class="section_offset">
+            
+                        <h3 class="widget_title">KHUYẾN MÃI HÔM NAY</h3>
+            
+                        <div class="owl_carousel related_products">
+            
+                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+            
+                            <% @pro_detail.get_related_products.each do |product| %>
+                            
+                                <div class="product_item">
+                
+                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+                
+                                    <div class="image_wrap">
+                
+                                        <img src="<%= product.product_image.image %>" alt="">
+                
+                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+                
+                                        <div class="actions_wrap">
+                
+                                            <div class="centered_buttons">
+                
+                                                <% if !product.product_price.price.nil? %>
+    
+                                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_cart_fix" %>
+                                                
+                                                <% end %>
+                
+                                            </div><!--/ .centered_buttons -->
+                
+                                        </div><!--/ .actions_wrap-->
+                                        
+                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+                
+                                    </div><!--/. image_wrap-->
+                
+                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+                
+                                    <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+                                        
+                                    <% if !product.get_old_price.nil? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
+                                        
+                                        <div class="label_offer percentage">
+                                            
+                                            Giảm<div><%= number_to_percentage(product.get_discount_percent, strip_insignificant_zeros: true) %></div>
+        
+                                        </div>
+                                        
+                                    <% end %>
+    
+                                    <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+    
+                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+
+                                    <div class="description">
+    
+                                        <%= link_to (truncate(strip_tags(product.name), length: 28)), {controller: "product", action: "index", id: product.id} %>
+            
+                                        <div class="clearfix product_info">
+                                            
+                                            <% if product.product_price.price.nil? %>
+                                                <p class="product_price alignleft"><b style="color: #018bc8">Call: </b><%= @company_info.phone %></p>
+                                            <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
+                                                <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> VNĐ</s>
+                                                <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
+                                            <% else %>
+                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
+                                            <% end %>
+    
+                                        </div><!--/ .clearfix.product_info-->
+                                        
+                                        <% if !product.product_info.nil? %>
+                                            <p><%= product.product_info.bonus_product %></p>
+                                        <% end %>
+    
+                                    </div>
+                
+                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+                
+                                </div><!--/ .product_item-->
+                                
+                            <% end %>
+                            
+                            <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+            
+                        </div><!--/ .owl_carousel -->
+            
+                    </section><!--/ .section_offset -->
+            
+                    <!-- - - - - - - - - - - - - - End of sale off products - - - - - - - - - - - - - - - - -->
 
                 </main><!--/ [col] -->
-
-                <aside class="col-md-3 col-sm-4">
-                    
-                    <!-- - - - - - - - - - - - - - Seller Information - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Thông tin công ty</h3>
-
-                        <div class="theme_box">
-
-                            <div class="seller_info clearfix">
-                                
-                                <b><%= @company_info.name %></b>
-
-                            </div><!--/ .seller_info-->
-
-                            <ul class="seller_stats">
-
-                                <li class="c_info_location"><%= @company_info.address %></li>
-
-                                <li class="c_info_phone">
-                                    <strong>MST: </strong><%= @company_info.tax_code %>
-                                </li>
-                                
-                                <li class="c_info_mail"><a href="mailto:<%= @company_info.email %>"><%= @company_info.email %></a></li>
-
-                            </ul>
-
-                        </div><!--/ .theme_box -->
-
-                        <footer class="bottom_box">
-                            
-                            <%= link_to "Xem giới thiệu công ty", { controller: "about_us", action: "index" }, class: "button_grey middle_btn" %>
-
-                        </footer>
-
-                    </section>
-
-                    <!-- - - - - - - - - - - - - - End of seller information - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Seller Information - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Thông tin liên hệ xin gửi về</h3>
-
-                        <div class="theme_box">
-
-                            <div class="seller_info clearfix">
-                                
-                                <b>CN Công Ty TNHH Giải Pháp CNTT & Truyền Thông Hoàng Khang</b>
-
-                            </div><!--/ .seller_info-->
-
-                            <ul class="seller_stats">
-
-                                <li class="c_info_location">188 Đường số 1, P. 16, Q. Gò Vấp, TP. HCM </li>
-
-                                <li class="c_info_phone">
-                                    <strong>Điện thoại: </strong><%= @company_info.phone %><br/>
-                                    <strong>Hotline: </strong>(08) 2212 9454<br/>
-                                    <strong>Fax: </strong><%= @company_info.fax %><br/>
-                                    <strong>MST: </strong><%= @company_info.tax_code %>-001
-                                </li>
-                                
-                                <li class="c_info_mail"><a href="mailto:sale@hoangkhang.com.vn">kinhdoanh@hoangkhang.com.vn</a></li>
-
-                            </ul>
-                            
-                            <div class="v_centered">
-                                
-                                <%= link_to "Liên hệ ngay", { controller: "contact", action: "index" }, class: "button_blue mini_btn" %>
-
-                            </div>
-
-                        </div><!--/ .theme_box -->
-
-                    </section>
-
-                    <!-- - - - - - - - - - - - - - End of seller information - - - - - - - - - - - - - - - - -->
-
-                </aside>
 
             </div><!--/ .row -->
 
@@ -370,7 +560,7 @@
                                     
                                     <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
                                         
-                                    <% if !product.get_old_price.nil? and product.get_discount_percent.present? and product.get_discount_percent > 0 %>
+                                    <% if !product.get_old_price.nil? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
                                         
                                         <div class="label_offer percentage">
                                             
