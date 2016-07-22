@@ -1,0 +1,64 @@
+<section class="section_offset">
+
+    <h3>Thông tin</h3>
+
+    <ul class="theme_menu">
+
+        <li><%= link_to "Giới thiệu", {controller: "about_us", action: "index"} %></li>
+        <li><%= link_to "Tin tức", {controller: "blog", action: "index"} %></li>
+        <li><%= link_to "Đối tác", {controller: "manufacturer", action: "index"} %></li>
+        <li><%= link_to "Liên hệ", {controller: "contact", action: "index"} %></li>
+
+    </ul>
+
+</section><!--/ .section_offset -->
+
+<!-- - - - - - - - - - - - - - End of information - - - - - - - - - - - - - - - - -->
+
+<section class="section_offset">
+
+    <h3>Thông tin công ty</h3>
+
+    <div class="theme_box">
+
+        <div class="seller_info clearfix">
+            
+            <b><%= @company_info.name %></b>
+
+        </div><!--/ .seller_info-->
+
+        <ul class="seller_stats">
+
+            <li class="c_info_location">138/10 Đường số 20, Phường 5, Quận Gò Vấp, TP.Hồ Chí Minh</li>
+
+            <li class="c_info_phone">
+                <strong>MST: </strong><%= @company_info.tax_code %>
+            </li>
+            
+            <li class="c_info_mail"><a href="mailto:<%= @company_info.email %>"><%= @company_info.email %></a></li>
+
+        </ul>
+
+    </div><!--/ .theme_box -->
+    
+</section>
+
+<section class="section_offset">
+
+    <h3>Đăng ký nhận tin mới</h3>
+
+    <div class="theme_box">
+
+        <p class="form_caption">Đăng ký email để nhận được những tin tức về những sản phẩm mới..</p>
+        
+        <%= form_for @newsletter, url: admin_newsletters_path,html: {class: 'newsletter subscribe clearfix'} do |f| %>
+
+            <%= f.email_field :email, placeholder: 'Nhập email của bạn...', required: true %>
+            
+            <button class="button_blue def_icon_btn" type="submit"></button>
+
+        <% end %>
+
+    </div><!--/ .theme_box-->
+
+</section>
