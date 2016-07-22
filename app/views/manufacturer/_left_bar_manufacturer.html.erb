@@ -64,49 +64,53 @@
 
 <!-- - - - - - - - - - - - - - Filter - - - - - - - - - - - - - - - - -->
 
-<section class="section_offset">
+<% if status == "manufacturer_page" %>
 
-    <h3>TÌM KIẾM SẢN PHẨM</h3>
-
-    <%= form_tag({controller: "product_search", action: "index"}, method: "get", class: "type_2") do %>
-
-        <div class="table_layout list_view">
-
-            <div class="table_row">
-                
-                <%= hidden_field_tag "manufacturer_id", @manufacturer.id %>
-
-                <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
-
-                <div class="table_cell">
-
-                    <label>Tìm kiếm sản phẩm của hãng "<strong><%= @manufacturer.name %></strong>"</label>
-                    
-                    <%= text_field_tag :search, params[:search], placeholder: "Nhập tên sản phẩm cần tìm..." %>
-
-                </div><!--/ .table_cell -->
-
-                <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
-
-            </div><!--/ .table_row -->
-
-        </div><!--/ .table_layout -->
-
-        <footer class="bottom_box">
-
-            <div class="buttons_row">
-
-                <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>
-
-                <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>
-
-            </div>
-
-        </footer>
-
-    <% end %>
-
-</section>
+    <section class="section_offset">
+    
+        <h3>TÌM KIẾM SẢN PHẨM</h3>
+        
+            <%= form_tag({controller: "manufacturer", action: "index"}, method: "get", class: "type_2") do %>
+        
+                <div class="table_layout list_view">
+        
+                    <div class="table_row">
+                        
+                        <%= hidden_field_tag "manufacturer_id", @manufacturer.id %>
+        
+                        <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
+        
+                        <div class="table_cell">
+        
+                            <label>Tìm kiếm sản phẩm của hãng "<strong><%= @manufacturer.name %></strong>"</label>
+                            
+                            <%= text_field_tag :search, params[:search], placeholder: "Nhập tên sản phẩm cần tìm..." %>
+        
+                        </div><!--/ .table_cell -->
+        
+                        <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
+        
+                    </div><!--/ .table_row -->
+        
+                </div><!--/ .table_layout -->
+        
+                <footer class="bottom_box">
+        
+                    <div class="buttons_row">
+        
+                        <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>
+        
+                        <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>
+        
+                    </div>
+        
+                </footer>
+        
+            <% end %>
+    
+    </section>
+    
+<% end %>
 
 <!-- - - - - - - - - - - - - - End of filter - - - - - - - - - - - - - - - - -->
 

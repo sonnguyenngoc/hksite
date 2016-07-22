@@ -1,0 +1,230 @@
+<!-- - - - - - - - - - - - - - Today's deals - - - - - - - - - - - - - - - - -->
+                    
+<% if @sale_products.count >= 0 %>
+    
+    <section class="section_offset animated transparent" data-animation="fadeInDown">
+
+        <h3 class="widget_title">KHUYẾN MÃI HÔM NAY</h3>
+
+        <!-- - - - - - - - - - - - - - Carousel of today's deals - - - - - - - - - - - - - - - - -->
+
+        <div class="owl_carousel widgets_carousel">
+            
+            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
+                
+            <% @sale_products.each do |product| %>
+
+                <div class="product_item">
+
+                    <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
+
+                    <div class="image_wrap product_list_height">
+
+                        <img src="<%= product.product_image.image %>" alt="" class="product_image" />
+
+                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+
+                        <div class="actions_wrap">
+
+                            <div class="centered_buttons">
+
+                                <% if !product.product_price.price.nil? %>
+
+                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_cart_fix" %>
+
+                                <% end %>
+
+                            </div><!--/ .centered_buttons -->
+
+                        </div><!--/ .actions_wrap-->
+                        
+                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+
+                    </div><!--/. image_wrap-->
+
+                    <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
+
+                    <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+                    
+                    <% if !product.get_old_price.nil? and !product.get_discount_percent.nil? %>
+                        
+                        <div class="label_offer percentage">
+                            
+                            <div><%= product.get_discount_percent.to_f.round(1) %>%</div>Off
+
+                        </div>
+                        
+                    <% end %>
+
+                    <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+
+                    <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
+
+                    <div class="description">
+
+                        <p><%= link_to (truncate(strip_tags(product.display_name), length: 35)), {controller: "product", action: "index", id: product.id} %></p>
+                        
+                        <p><%= product.product_info.bonus_product %></p>
+
+                        <div class="clearfix product_info">
+                            
+                            <% if product.product_price.price.nil? %>
+                                
+                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
+                            
+                            <% else %>
+                                
+                                <% if !product.product_info.nil? %>
+                                   
+                                    <% if product.product_info.sale_price.nil? || product.product_info.sale_price <= 0 %>
+                                        
+                                        <p class="product_price alignleft"><span style="color: #b2b2b2">Giá KM: </span><b><%= number_with_delimiter product.display_default_price %> VNĐ</b></p>
+                                    
+                                    <% else %>
+                                       
+                                        <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.display_default_price %> VNĐ</s>
+                                        
+                                        <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
+                                    
+                                    <% end %>
+                                
+                                <% end %>
+                            
+                            <% end %>
+
+                        </div><!--/ .clearfix.product_info-->
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
+                
+                </div><!--/ .product_item-->
+                
+            <% end %>                            
+            
+            <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
+
+        </div><!--/ .widgets_carousel-->
+
+        <!-- - - - - - - - - - - - - - End of carousel of today's deals - - - - - - - - - - - - - - - - -->
+        
+        <!-- - - - - - - - - - - - - - View all deals of the day - - - - - - - - - - - - - - - - -->
+        
+        <footer class="bottom_box">
+
+            <%= link_to "Xem tất cả khuyến mãi", { controller: "all_sale_product", action: "index" }, { class: "button_grey middle_btn" } %>
+
+        </footer>
+        
+        <!-- - - - - - - - - - - - - - End of view all deals of the day - - - - - - - - - - - - - - - - -->
+
+    </section><!--/ .section_offset.animated.transparent-->
+
+<% end %>
+
+<!-- - - - - - - - - - - - - - End of today's deals - - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - - Latest posts - - - - - - - - - - - - - - - - -->
+
+<section class="section_offset">
+
+    <h3>BÀI VIẾT MỚI NHẤT</h3>
+
+    <ul class="list_of_entries">
+
+        <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
+        
+        <% @blog.each do |blog| %>
+        
+            <li>
+                    
+                <article class="entry">
+                    
+                    <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
+    
+                    <a href="#" class="entry_thumb">
+    
+                        <img src="<%= blog.image_url.article_small if blog.image_url? %>" width="83" height="83" alt="">
+    
+                    </a>
+    
+                    <!-- - - - - - - - - - - - - - End of thumbnail - - - - - - - - - - - - - - - - -->
+    
+                    <div class="wrapper">
+    
+                        <h6 class="entry_title"><%= link_to truncate(strip_tags(blog.title), length: 50), { controller: "blog_post", action: "index", id: blog.id } %></h6>
+    
+                        <!-- - - - - - - - - - - - - - Byline - - - - - - - - - - - - - - - - -->
+    
+                        <div class="entry_meta">
+    
+                            <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
+    
+                        </div><!--/ .byline-->
+    
+                        <!-- - - - - - - - - - - - - - End of byline - - - - - - - - - - - - - - - - -->
+    
+                    </div><!--/ .wrapper-->
+    
+                </article><!--/ .clearfix-->
+    
+            </li>
+            
+        <% end %>
+
+        <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
+
+    </ul>
+
+</section>
+
+<!-- - - - - - - - - - - - - - End of latest posts - - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - - Support - - - - - - - - - - - - - - - - -->
+
+<%= render 'support_care' %>
+
+<!-- - - - - - - - - - - - - - End of support - - - - - - - - - - - - - - - - -->
+
+<section class="section_offset">
+
+    <h3>HÃNG PHÂN PHỐI</h3>
+
+    <ul class="theme_menu cats">
+        
+        <% @partners.each do |item| %>                            
+            <li class="has_megamenu"><%= link_to item.manufacturer.name, { controller: "manufacturer_page", action: "index", manufacturer_id: item.manufacturer_id} %></li>
+        <% end %>
+        <li class="has_megamenu"><%= link_to "<b>Xem tất cả hãng</b>".html_safe, {controller: "manufacturer", action: "index"}, { class: "all" } %></li>
+
+    </ul>
+
+</section>
+
+<!-- - - - - - - - - - - - - - Tags - - - - - - - - - - - - - - - - -->
+
+<section class="section_offset animated transparent" data-animation="fadeInDown">
+
+    <h3>Nhãn</h3>
+
+    <div class="tags_container">
+
+        <ul class="tags_cloud">
+            
+            <% @menu.each do |item| %>
+        
+                <% if item.level == 1 %>
+                    
+                    <li><a class="button_grey" <%= (link_to item.title, {:controller => "category_page", :action => "index", id: item.id }).html_safe %></a></li>
+                    
+                <% end %>
+            
+            <% end %>
+
+        </ul><!--/ .tags_cloud-->
+        
+    </div><!--/ .tags_container-->
+
+</section>
+
+<!-- - - - - - - - - - - - - - End of tags - - - - - - - - - - - - - - - - -->
