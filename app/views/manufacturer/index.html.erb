@@ -29,59 +29,17 @@
 
                     <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
 
-                    <%= render 'category_page/category_left_page' %>
+                    <%= render 'left_bar_manufacturer' %>
 
                     <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
-
-                    <div class="section_offset">
-
-                        <a href="#" class="banner">
-                            
-                            <img src="images/box-win-10.jpg" alt="" width="243" height="262">
-
-                        </a>
-
-                    </div>
-
-                    <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Tags - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Nhãn</h3>
-
-                        <div class="tags_container">
-
-                            <ul class="tags_cloud">
-                                
-                                <% @menu.each do |item| %>
-                            
-                                    <% if item.level == 1 %>
-                                        
-                                        <li><a class="button_grey" <%= (link_to item.title, {controller: "category_page", action: "index", id: item.id }).html_safe %></a></li>
-                                        
-                                    <% end %>
-                                
-                                <% end %>
-
-                            </ul><!--/ .tags_cloud-->
-                            
-                        </div><!--/ .tags_container-->
-
-                    </section>
-
-                    <!-- - - - - - - - - - - - - - End of tags - - - - - - - - - - - - - - - - -->
 
                 </aside>
 
                 <main class="col-md-9 col-sm-8">
 
-                    <section class="section_offset">
+                    <section>
 
-                        <h1>Danh sách nhãn hiệu phân phối</h1>
+                        <h1>NHÃN HIỆU PHÂN PHỐI</h1>
 
                     </section>
 

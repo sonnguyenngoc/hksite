@@ -1,0 +1,143 @@
+<!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+<section class="section_offset">
+
+    <h3>DANH MỤC</h3>
+
+    <ul class="theme_menu cats">
+
+        <% @menu.each do |item| %>
+                            
+            <% if item.level == 1 %>
+
+                <li class="has_megamenu animated_item">
+
+                    <%= link_to item.title, {:controller => "category_page", :action => "index", id: item.id } %>
+
+                    <!-- - - - - - - - - - - - - - Mega menu - - - - - - - - - - - - - - - - -->
+
+                    <div class="mega_menu clearfix">
+                        
+                        <% item.children.each do |child_1| %>
+                    
+                            <% if child_1.level == 2 %>
+
+                                <!-- - - - - - - - - - - - - - Mega menu item - - - - - - - - - - - - - - - - -->
+
+                                <div class="mega_menu_item">
+                                
+                                    <h6><b><%= child_1.title %></b></h6>
+                            
+                                    <ul class="list_of_links">
+                                        
+                                        <% child_1.children.each do |child_2| %>
+                    
+                                            <% if child_2.level == 3 %>
+                                                
+                                                <li><%= link_to child_2.title, {:controller => "category_page", :action => "index", id: child_2.id } %></a></li>
+                                                
+                                            <% end %>
+                                        
+                                        <% end %>
+
+                                    </ul>
+
+                                </div><!--/ .mega_menu_item-->
+                            
+                            <% end %>
+                        
+                        <% end %>
+                        
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of mega menu item - - - - - - - - - - - - - - - - -->
+
+                </li>
+            
+            <% end %>
+        
+        <% end %>
+
+    </ul>
+
+</section><!--/ .animated.transparent-->
+<!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - - Filter - - - - - - - - - - - - - - - - -->
+
+<section class="section_offset">
+
+    <h3>TÌM KIẾM SẢN PHẨM</h3>
+
+    <%= form_tag({controller: "product_search", action: "index"}, method: "get", class: "type_2") do %>
+
+        <div class="table_layout list_view">
+
+            <div class="table_row">
+                
+                <%= hidden_field_tag "manufacturer_id", @manufacturer.id %>
+
+                <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
+
+                <div class="table_cell">
+
+                    <label>Tìm kiếm sản phẩm của hãng "<strong><%= @manufacturer.name %></strong>"</label>
+                    
+                    <%= text_field_tag :search, params[:search], placeholder: "Nhập tên sản phẩm cần tìm..." %>
+
+                </div><!--/ .table_cell -->
+
+                <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
+
+            </div><!--/ .table_row -->
+
+        </div><!--/ .table_layout -->
+
+        <footer class="bottom_box">
+
+            <div class="buttons_row">
+
+                <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>
+
+                <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>
+
+            </div>
+
+        </footer>
+
+    <% end %>
+
+</section>
+
+<!-- - - - - - - - - - - - - - End of filter - - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - - Support - - - - - - - - - - - - - - - - -->
+
+    <%= render 'home/support_care' %>
+
+<!-- - - - - - - - - - - - - - End of support - - - - - - - - - - - - - - - - -->
+
+<section class="section_offset">
+
+    <h3>NHÃN</h3>
+
+    <div class="tags_container">
+
+        <ul class="tags_cloud">
+            
+            <% @menu.each do |item| %>
+        
+                <% if item.level == 1 %>
+                    
+                    <li><a class="button_grey" <%= (link_to item.title, {controller: "category_page", action: "index", id: item.id }).html_safe %></a></li>
+                    
+                <% end %>
+            
+            <% end %>
+
+        </ul><!--/ .tags_cloud-->
+        
+    </div><!--/ .tags_container-->
+
+</section>
+
+<!-- - - - - - - - - - - - - - End of tags - - - - - - - - - - - - - - - - -->
