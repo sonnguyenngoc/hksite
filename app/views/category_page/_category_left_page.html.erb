@@ -70,67 +70,204 @@
 
 <!-- - - - - - - - - - - - - - Filter - - - - - - - - - - - - - - - - -->
 
-<section class="section_offset">
+<% if status == "category_page" %>
 
-    <h3>TÌM TRONG CHUYÊN MỤC</h3>
-
-    <%= form_tag({controller: "category_page", action: "index"}, method: "get", class: "type_2") do %>
-
-        <div class="table_layout list_view">
-
-            <div class="table_row">
-                
-                <%= hidden_field_tag "category_id", @category.id %>
-
-                <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
-
-                <div class="table_cell">
-
-                    <label>Tìm kiếm sản phẩm có trong chuyên mục <strong>"<%= @category.title %>"</strong></label>
-                    
-                    <%= text_field_tag :search, params[:search], placeholder: "Nhập tên sản phẩm cần tìm..." %>
-
-                </div><!--/ .table_cell -->
-
-                <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
-
-            </div><!--/ .table_row -->
-
-        </div><!--/ .table_layout -->
-
-        <footer class="bottom_box">
-
-            <div class="buttons_row">
-
-                <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>
-
-                <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>
-
-            </div>
-
-        </footer>
-
-    <% end %>
-
-</section>
-
-<!-- - - - - - - - - - - - - - End of filter - - - - - - - - - - - - - - - - -->
-<% if @category.level > 1 %>
     <section class="section_offset">
     
-        <h3>HÃNG PHÂN PHỐI</h3>
+        <h3>TÌM TRONG CHUYÊN MỤC</h3>
     
-        <ul class="theme_menu cats">
-                                        
-            <% @manufacturers.each do |item| %>                            
-                <li class="has_megamenu"><%= link_to item.name, { controller: "category_page", action: "index", manufacturer_id: item.id} %></li>
-            <% end %>
+        <%= form_tag({controller: "category_page", action: "index"}, method: "get", class: "type_2") do %>
     
-        </ul>
+            <div class="table_layout list_view">
+    
+                <div class="table_row">
+                    
+                    <%= hidden_field_tag "category_id", @category.id %>
+    
+                    <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
+    
+                    <div class="table_cell">
+    
+                        <label>Tìm kiếm sản phẩm có trong chuyên mục <strong>"<%= @category.title %>"</strong></label>
+                        
+                        <%= text_field_tag :search, params[:search], placeholder: "Nhập tên sản phẩm cần tìm..." %>
+    
+                    </div><!--/ .table_cell -->
+    
+                    <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
+    
+                </div><!--/ .table_row -->
+    
+            </div><!--/ .table_layout -->
+    
+            <footer class="bottom_box">
+    
+                <div class="buttons_row">
+    
+                    <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>
+    
+                    <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>
+    
+                </div>
+    
+            </footer>
+    
+        <% end %>
     
     </section>
+    
+<% elsif status == "all_new_product" %>
+    
+    <section class="section_offset">
+    
+        <h3>TÌM TRONG CHUYÊN MỤC</h3>
+    
+        <%= form_tag({controller: "all_new_product", action: "index"}, method: "get", class: "type_2") do %>
+    
+            <div class="table_layout list_view">
+    
+                <div class="table_row">
+    
+                    <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
+    
+                    <div class="table_cell">
+    
+                        <label>Tìm kiếm sản phẩm có trong "<strong>Sản phẩm mới</strong>"</label>
+                        
+                        <%= text_field_tag :search, params[:search], placeholder: "Nhập tên sản phẩm cần tìm..." %>
+    
+                    </div><!--/ .table_cell -->
+    
+                    <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
+    
+                </div><!--/ .table_row -->
+    
+            </div><!--/ .table_layout -->
+    
+            <footer class="bottom_box">
+    
+                <div class="buttons_row">
+    
+                    <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>
+    
+                    <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>
+    
+                </div>
+    
+            </footer>
+    
+        <% end %>
+    
+    </section>
+
+<% elsif status == "all_prominent_product" %>
+    
+    <section class="section_offset">
+    
+        <h3>TÌM TRONG CHUYÊN MỤC</h3>
+    
+        <%= form_tag({controller: "all_prominent_product", action: "index"}, method: "get", class: "type_2") do %>
+    
+            <div class="table_layout list_view">
+    
+                <div class="table_row">
+    
+                    <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
+    
+                    <div class="table_cell">
+    
+                        <label>Tìm kiếm sản phẩm có trong chuyên mục "<strong>Sản phẩm nổi bật</strong>"</label>
+                        
+                        <%= text_field_tag :search, params[:search], placeholder: "Nhập tên sản phẩm cần tìm..." %>
+    
+                    </div><!--/ .table_cell -->
+    
+                    <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
+    
+                </div><!--/ .table_row -->
+    
+            </div><!--/ .table_layout -->
+    
+            <footer class="bottom_box">
+    
+                <div class="buttons_row">
+    
+                    <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>
+    
+                    <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>
+    
+                </div>
+    
+            </footer>
+    
+        <% end %>
+    
+    </section>
+    
+<% elsif status == "all_bestseller_product" %>
+    
+    <section class="section_offset">
+    
+        <h3>TÌM TRONG CHUYÊN MỤC</h3>
+    
+        <%= form_tag({controller: "all_bestseller_product", action: "index"}, method: "get", class: "type_2") do %>
+    
+            <div class="table_layout list_view">
+    
+                <div class="table_row">
+    
+                    <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
+    
+                    <div class="table_cell">
+    
+                        <label>Tìm kiếm sản phẩm có trong chuyên mục "<strong>Sản phẩm bán chạy</strong>"</label>
+                        
+                        <%= text_field_tag :search, params[:search], placeholder: "Nhập tên sản phẩm cần tìm..." %>
+    
+                    </div><!--/ .table_cell -->
+    
+                    <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
+    
+                </div><!--/ .table_row -->
+    
+            </div><!--/ .table_layout -->
+    
+            <footer class="bottom_box">
+    
+                <div class="buttons_row">
+    
+                    <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>
+    
+                    <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>
+    
+                </div>
+    
+            </footer>
+    
+        <% end %>
+    
+    </section>
+
 <% end %>
 
+<!-- - - - - - - - - - - - - - End of filter - - - - - - - - - - - - - - - - -->
+<% if status == "category_page" %>
+    <% if @category.level > 1 %>
+        <section class="section_offset">
+        
+            <h3>HÃNG PHÂN PHỐI</h3>
+        
+            <ul class="theme_menu cats">
+                                            
+                <% @manufacturers.each do |item| %>                            
+                    <li class="has_megamenu"><%= link_to item.name, { controller: "category_page", action: "index", manufacturer_id: item.id} %></li>
+                <% end %>
+        
+            </ul>
+        
+        </section>
+    <% end %>
+<% end %>
 <!-- - - - - - - - - - - - - - Tags - - - - - - - - - - - - - - - - -->
 
 <section class="section_offset">

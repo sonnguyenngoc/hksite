@@ -125,8 +125,14 @@
     
                                                         <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
     
-                                                        <% if product.product_info.present? and product.product_info.product_new == "on" %>
-                                                            <div class="label_new">Mới</div>
+                                                        <% if product.get_old_price.present? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
+                                            
+                                                            <div class="label_offer percentage">
+                                                                
+                                                                <div><%= number_to_percentage(product.get_discount_percent, strip_insignificant_zeros: true) %></div>Off
+                            
+                                                            </div>
+                                                            
                                                         <% end %>
     
                                                         <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
@@ -144,13 +150,12 @@
                                                         <div class="clearfix product_info">
                                                             
                                                             <% if product.product_price.price.nil? %>
-                                                                
                                                                 <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
-                                                            
+                                                            <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
+                                                                <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> </s>
+                                                                <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                             <% else %>
-                                                                
-                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
-                                                            
+                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                             <% end %>
                                                         
                                                         </div>
@@ -226,7 +231,15 @@
                                                         
                                                         <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
     
-                                                        <div class="label_highlights">Nổi bật</div>
+                                                        <% if product.get_old_price.present? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
+                                            
+                                                            <div class="label_offer percentage">
+                                                                
+                                                                <div><%= number_to_percentage(product.get_discount_percent, strip_insignificant_zeros: true) %></div>Off
+                            
+                                                            </div>
+                                                            
+                                                        <% end %>
     
                                                         <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
                                                         
@@ -245,13 +258,12 @@
                                                         <div class="clearfix product_info">
                                                             
                                                             <% if product.product_price.price.nil? %>
-                                                                
-                                                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
-                                                            
+                                                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ</b></p>
+                                                            <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
+                                                                <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> </s>
+                                                                <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                             <% else %>
-                                                                
-                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
-                                                            
+                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                             <% end %>
                                                             
                                                         </div>
@@ -330,7 +342,15 @@
     
                                                         <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
     
-                                                        <div class="label_bestseller">Bán chạy nhất</div>
+                                                        <% if product.get_old_price.present? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
+                                            
+                                                            <div class="label_offer percentage">
+                                                                
+                                                                <div><%= number_to_percentage(product.get_discount_percent, strip_insignificant_zeros: true) %></div>Off
+                            
+                                                            </div>
+                                                            
+                                                        <% end %>
     
                                                         <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
     
@@ -347,13 +367,12 @@
                                                         <div class="clearfix product_info">
                                                             
                                                             <% if product.product_price.price.nil? %>
-                                                                
-                                                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
-                                                            
+                                                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ</b></p>
+                                                            <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
+                                                                <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> </s>
+                                                                <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                             <% else %>
-                                                                
-                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
-                                                            
+                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                             <% end %>
                                                         
                                                         </div>

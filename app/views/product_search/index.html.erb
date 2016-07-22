@@ -43,7 +43,7 @@
 
                         <section>
 
-                            <h1>Kết quả tìm kiếm</h1>
+                            <h1>KẾT QUẢ TÌM KIẾM</h1>
     
                         </section>
 
@@ -104,9 +104,9 @@
                                                 <div class="clearfix product_info">
                                                 
                                                 <% if product.product_price.price.nil? %>
-                                                    <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ:(84-8) 3984 7690</b></p>
+                                                    <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
                                                 <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
-                                                    <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> VNĐ</s>
+                                                    <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> </s>
                                                     <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                 <% else %>
                                                     <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
