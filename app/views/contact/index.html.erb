@@ -29,54 +29,7 @@
 
                     <!-- - - - - - - - - - - - - - Information - - - - - - - - - - - - - - - - -->
 
-                    <section class="section_offset">
-
-                        <h3>Thông tin</h3>
-
-                        <ul class="theme_menu">
-
-                            <li><%= link_to "Giới thiệu", {controller: "about_us", action: "index"} %></li>
-                            <li><%= link_to "Tin tức", {controller: "blog", action: "index"} %></li>
-                            <li><%= link_to "Đối tác", {controller: "manufacturer", action: "index"} %></li>
-                            <li><%= link_to "Liên hệ", {controller: "contact", action: "index"} %></li>
-
-                        </ul>
-
-                    </section><!--/ .section_offset -->
-
-                    <!-- - - - - - - - - - - - - - End of information - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
-
-                    <div class="section_offset">
-                            
-                         <%= link_to image_tag("/images/logo-company.jpg"), { controller: "about_us", action: "index" }, class: "banner" %>
-
-                    </div>
-
-                    <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Đăng ký nhận tin mới</h3>
-
-                        <div class="theme_box">
-
-                            <p class="form_caption">Đăng ký email để nhận được những tin tức về những sản phẩm mới..</p>
-                            
-                            <%= form_for @newsletter, url: admin_newsletters_path,html: {class: 'newsletter subscribe clearfix'} do |f| %>
-    
-                                <%= f.email_field :email, placeholder: 'Nhập email của bạn...', required: true %>
-                                
-                                <button class="button_blue def_icon_btn" type="submit"></button>
-    
-                            <% end %>
-
-                        </div><!--/ .theme_box-->
-
-                    </section>
+                    <%= render 'left_bar_contact' %>
 
                     <!-- - - - - - - - - - - - - - End of Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
 
@@ -84,11 +37,13 @@
 
                 <main class="col-md-9 col-sm-8">
 
-                    <h1 class="page_title">Liên hệ</h1>
-
                     <section class="section_offset">
                         
-                        <h3>Giao diện nhập liên hệ</h3>
+                        <section>
+
+                            <h1>Liên hệ</h1>
+    
+                        </section>
 
                         <div class="theme_box">
 
@@ -166,7 +121,7 @@
 
                     <section class="section_offset">
 
-                        <h3>Thông tin liên hệ</h3>
+                        <h3>Liên hệ giao dịch</h3>
 
                         <div class="theme_box">
 
@@ -179,16 +134,20 @@
                                     <ul class="c_info_list">
 
                                         <li class="c_info_location"><b>Địa chỉ: </b>188 Đường số 1, Phường 16, Quận Gò Vấp, TP.Hồ Chí Minh</li>
-                                        <li class="c_info_phone"><b>Điện thoại: </b><%= @company_info.phone %></li>
-                                        <li class="c_info_mobile"><b>Hotline: </b>(08) 2212 9454 <i>(giờ hành chính)</i></li>
+                                        <li class="c_info_phone">
+                                            <b>Điện thoại: </b><%= @company_info.phone %><br />
+                                            <b>Hotline: </b>(08) 2212 9454 <i>(giờ hành chính)</i><br />
+                                            <b>Fax: </b><%= @company_info.fax %><br />
+                                            <b>MST: </b><%= @company_info.tax_code %>-001
+                                        </li>
                                         <li class="c_info_mail"><b>Email: </b><a href="mailto:kinhdoanh@hoangkhang.com.vn">kinhdoanh@hoangkhang.com.vn</a></li>
                                         <li class="c_info_schedule"><b>Giờ làm việc:</b>
 
                                             <ul>
 
-                                                <li>Thứ 2 đến Thứ 6: 07:30 - 17:00</li>
-                                                <li>Thứ 7: 07:30 - 12:00</li>
-                                                <li>Chủ nhật: Không làm việc</li>
+                                                <li>Thứ 2 đến Thứ 6: Sáng 07:30 - 11:30; Chiều 13:00 - 17:00</li>
+                                                <li>Thứ 7: Sáng 07:30 - 12:00; Chiều nghỉ</li>
+                                                <li>Chủ nhật: Nghỉ</li>
 
                                             </ul>
 
@@ -200,7 +159,7 @@
 
                                 <div class="col-sm-12">
 
-                                    <div class="proportional_frame">
+                                    <div class="proportional_frame proportional_frame_fix">
 
                                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d979.631059828945!2d106.65701382916684!3d10.847674316657857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDUwJzUxLjYiTiAxMDbCsDM5JzI3LjIiRQ!5e0!3m2!1svi!2s!4v1456217935069" style="border:0" allowfullscreen></iframe>
 
