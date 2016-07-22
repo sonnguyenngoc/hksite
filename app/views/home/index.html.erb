@@ -448,65 +448,6 @@
                     
                     <!-- - - - - - - - - - - - - - End our brands - - - - - - - - - - - - - - - - -->
 
-                    <!-- - - - - - - - - - - - - - Latest News - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset animated transparent" data-animation="fadeInDown">
-
-                        <h3>Tin tức mới nhất</h3>
-
-                        <div class="table_layout">
-
-                            <div class="table_row">
-                                
-                                <% @blog.each do |blog| %>
-
-                                    <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-    
-                                    <div class="table_cell">
-    
-                                        <article class="entry">
-    
-                                            <a href="#" class="thumbnail entry_image">
-    
-                                                <img src="<%= blog.image_url.article_home if blog.image_url? %>" width="244" height="154" alt="">
-    
-                                            </a>
-    
-                                            <h5 class="entry_title"><b><%= link_to blog.title, { controller: "blog_post", action: "index", id: blog.id } %></b></h5>
-    
-                                            <div class="entry_meta">
-    
-                                                <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
-    
-                                            </div><!--/ .byline-->
-    
-                                            <p><%= truncate(strip_tags(blog.content.html_safe), length: 150) %></p>
-    
-                                        </article><!--/ .entry-->
-    
-                                    </div>
-    
-                                    <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-                                <% end %>
-
-                            </div>
-
-                        </div>
-
-                        <!-- - - - - - - - - - - - - - View all entries - - - - - - - - - - - - - - - - -->
-
-                        <footer class="bottom_box">
-
-                            <%= link_to "Xem toàn bộ tin tức", { controller: "blog", action: "index" }, { class: "button_grey middle_btn" } %>
-                            
-                        </footer>
-
-                        <!-- - - - - - - - - - - - - - End of view all entries - - - - - - - - - - - - - - - - -->
-
-                    </section><!--/ .section_offset.aniamted.transparent-->
-
-                    <!-- - - - - - - - - - - - - - End of latest news - - - - - - - - - - - - - - - - -->
-
                 </main>
 
             </div><!--/ .row-->
