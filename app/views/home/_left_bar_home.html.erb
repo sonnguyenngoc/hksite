@@ -1,6 +1,6 @@
 <!-- - - - - - - - - - - - - - Today's deals - - - - - - - - - - - - - - - - -->
                     
-<% if @sale_products.count >= 0 %>
+<% if @sale_products.present? and @sale_products.count >= 0 %>
     
     <section class="section_offset animated transparent" data-animation="fadeInDown">
 

@@ -47,7 +47,7 @@ class Product < ActiveRecord::Base
     return records
   end
   
-  def self.get_sale_products(params)    
+  def self.get_sale_products(params)  
     records = self.includes(:product_info).where(status: 1)
                                           .where(product_infos: {product_sale: "on"}).order("product_infos.updated_at DESC")
     if params[:sort_by] == 'name'
