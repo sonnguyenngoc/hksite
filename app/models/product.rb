@@ -136,7 +136,10 @@ class Product < ActiveRecord::Base
   def self.search(params)
     records = Product.where(status: 1)
     if params[:search].present?
-      records = records.where('LOWER(products.name) LIKE ?', "%#{params[:search].strip.downcase}%")
+      params[:search].split(" ").each do |k|
+        records = records.where("LOWER(products.cache_search) LIKE ?", "%#{k.strip.downcase}%") if k.strip.present?
+      end
+      #records = records.where("LOWER(products.cache_search) LIKE ?", "%#{params[:search].strip.downcase}%") if params[:search].present?    
     end
     
     if params[:manufacturer_id].present?
