@@ -43,25 +43,63 @@
                 <main class="col-md-9 col-sm-8">
 
                     <div class="clearfix">
-
+                        
                         <!-- - - - - - - - - - - - - - Product image column - - - - - - - - - - - - - - - - -->
 
                         <div class="single_product">
 
                             <!-- - - - - - - - - - - - - - Image preview container - - - - - - - - - - - - - - - - -->
 
-                            <div class="image_preview_container main_image">
+                            <div class="image_preview_container">
 
-                                <img src="<%= @pro_detail.product_image.image %>" class="product_main" >
+                                <img id="img_zoom" data-zoom-image="images/qv_large_1.JPG" src="images/qv_img_1.jpg" alt="">
+                                
+                                <!--<img id="img_zoom" data-zoom-image="<%= @pro_detail.product_image.image %>" src="<%= @pro_detail.product_image.image %>" alt="">-->
 
                             </div><!--/ .image_preview_container-->
 
                             <!-- - - - - - - - - - - - - - End of image preview container - - - - - - - - - - - - - - - - -->
 
+                            <!-- - - - - - - - - - - - - - Prodcut thumbs carousel - - - - - - - - - - - - - - - - -->
+                            
+                            <div class="product_preview">
+
+                                <div class="owl_carousel" id="thumbnails">
+                                    
+                                    <a href="#" data-image="images/qv_img_1.jpg" data-zoom-image="images/qv_large_1.JPG">
+
+                                        <img src="images/qv_thumb_1.jpg" data-large-image="images/qv_img_1.jpg" alt="">
+
+                                    </a>
+
+                                    <a href="#" data-image="images/qv_img_2.jpg" data-zoom-image="images/qv_large_2.jpg">
+
+                                        <img src="images/qv_thumb_2.jpg" data-large-image="images/qv_img_2.jpg" alt="">
+
+                                    </a>
+
+                                    <a href="#" data-image="images/qv_img_3.jpg" data-zoom-image="images/qv_large_3.jpg">
+
+                                        <img src="images/qv_thumb_3.jpg" data-large-image="images/qv_img_3.jpg" alt="">
+
+                                    </a>
+
+                                    <a href="#" data-image="images/qv_img_4.jpg" data-zoom-image="images/qv_large_4.JPG">
+
+                                        <img src="images/qv_thumb_4.jpg" data-large-image="images/qv_img_4.jpg" alt="">
+
+                                    </a>
+
+                                </div><!--/ .owl-carousel-->
+
+                            </div><!--/ .product_preview-->
+                            
+                            <!-- - - - - - - - - - - - - - End of prodcut thumbs carousel - - - - - - - - - - - - - - - - -->
+
                         </div>
 
                         <!-- - - - - - - - - - - - - - End of product image column - - - - - - - - - - - - - - - - -->
-
+                        
                         <!-- - - - - - - - - - - - - - Product description column - - - - - - - - - - - - - - - - -->
 
                         <div class="single_product_description">
@@ -228,6 +266,8 @@
                         <!-- - - - - - - - - - - - - - End of product description column - - - - - - - - - - - - - - - - -->
 
                     </div>
+                        
+                    <div class="section_offset"></div>
                         
                     <!-- - - - - - - - - - - - - - Related products - - - - - - - - - - - - - - - - -->
 
