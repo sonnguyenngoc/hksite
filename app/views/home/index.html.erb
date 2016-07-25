@@ -93,6 +93,93 @@
 
                                         <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
                                         
+                                        <% @manual_new_products.each_with_index do |product,index| %>
+                                        
+                                            <div class="table_cell">
+    
+                                                <div class="product_item">
+    
+                                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+    
+                                                    <div class="image_wrap product_list_height">
+    
+                                                        <img src="<%= product.product_image.image %>" alt="" class="product_image" />
+    
+                                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+    
+                                                        <div class="actions_wrap">
+    
+                                                            <div class="centered_buttons">
+                                                                
+                                                                <% if !product.product_price.price.nil? %>
+
+                                                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_cart_fix" %>
+
+                                                                <% end %>
+    
+                                                            </div><!--/ .centered_buttons -->
+    
+                                                        </div><!--/ .actions_wrap-->
+                                                        
+                                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+    
+                                                        <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+    
+                                                        <% if product.get_old_price.present? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
+                                            
+                                                            <div class="label_offer percentage">
+                                                                
+                                                                <div><%= number_to_percentage(product.get_discount_percent, strip_insignificant_zeros: true) %></div>Off
+                            
+                                                            </div>
+                                                            
+                                                        <% end %>
+    
+                                                        <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+    
+                                                    </div><!--/. image_wrap-->
+    
+                                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+    
+                                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+    
+                                                    <div class="description">
+                                                        
+                                                        <%= link_to strip_tags(product.display_name), {controller: "product", action: "index", id: product.id}, title: product.display_name %>
+                                                        
+                                                        <div class="clearfix product_info">
+                                                            
+                                                            <% if product.product_price.price.nil? %>
+                                                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
+                                                            <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
+                                                                <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> </s>
+                                                                <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
+                                                            <% else %>
+                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
+                                                            <% end %>
+                                                        
+                                                        </div>
+    
+                                                    </div>
+    
+                                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+    
+                                                </div><!--/ .product_item-->
+    
+                                            </div>
+                                                
+                                            <%= "</div><div class=\"table_row\">".html_safe if index%4 == 3 %>
+                                                
+                                            <% end %>
+                                            
+                                        </div>
+                              
+                                </div>
+                                
+                                <div class="table_layout">
+                                    
+                                    <div class="table_row">
+                                        
                                         <% @new_products.each_with_index do |product,index| %>
                                         
                                             <div class="table_cell">

@@ -96,6 +96,10 @@ class Product < ActiveRecord::Base
   end
   
   def self.get_new_products(params)
+    records = self.all.order("stock DESC")
+  end
+  
+  def self.get_new_products_manual(params)
     records = self.joins(:product_info).where(status: 1)
                                       .where(product_infos: {product_new: "on"}).order("product_infos.updated_at DESC")
     if params[:sort_by] == 'name'
@@ -109,7 +113,7 @@ class Product < ActiveRecord::Base
     end
     
     # overide all
-    records = self.all.order("stock DESC")
+    #records = self.all.order("stock DESC")
     
     return records
   end
