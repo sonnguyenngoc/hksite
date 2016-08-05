@@ -218,5 +218,9 @@ a.skype > img {
     padding-bottom: 30%;
 }
 .ls-nav-prev, .ls-nav-next {
+	position: absolute !important;
+	top: 40%;
+}
+.ls-inner {
 	position: absolute;
 }
