@@ -86,9 +86,9 @@ select {
 .search input {
     width: calc(100% - 258px);
 }
-.section_offset .layerslider {
+/*.section_offset .layerslider {
     border: 2px solid #b2b2b2;
-}
+}*/
 .not_found_404 {
     font-size: 94px;
 }
@@ -201,4 +201,22 @@ select {
 }
 #qLoverlay {
     display: none !important;
+}
+.add_cart_fix {
+    padding: 8px 5px 9px !important;
+}
+a.skype {
+    border: solid 1px #555;
+    padding: 2px 28px;
+    border-radius: 10px;
+}
+a.skype > img {
+    height: 20px;
+    margin-top: 1px;
+}
+.proportional_frame_fix {
+    padding-bottom: 30%;
+}
+.ls-nav-prev, .ls-nav-next {
+	position: absolute;
 }

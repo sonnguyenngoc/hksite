@@ -29,105 +29,17 @@
 
                     <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
 
-                    <%= render 'category_left_page' %>
+                    <%= render 'category_left_page', status: "category_page" %>
 
                     <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
 
-                    <!-- - - - - - - - - - - - - - Filter - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Bộ lọc</h3>
-
-                        <%= form_tag({controller: "product_search", action: "index"}, method: "get", class: "type_2") do %>
-
-                            <div class="table_layout list_view">
-
-                                <div class="table_row">
-                                    
-                                    <%= hidden_field_tag "category_id", @category.id %>
-
-                                    <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
-
-                                    <div class="table_cell">
-
-                                        <label>Tên sản phẩm cùng chuyên mục: <strong><%= @category.title %></strong></label>
-                                        
-                                        <%= text_field_tag :search, params[:search], placeholder: "Nhập tên sản phẩm cần tìm..." %>
-
-                                    </div><!--/ .table_cell -->
-
-                                    <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
-
-                                </div><!--/ .table_row -->
-
-                            </div><!--/ .table_layout -->
-
-                            <footer class="bottom_box">
-
-                                <div class="buttons_row">
-
-                                    <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>
-
-                                    <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>
-
-                                </div>
-
-                            </footer>
-
-                        <% end %>
-
-                    </section>
-
-                    <!-- - - - - - - - - - - - - - End of filter - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
-
-                    <div class="section_offset">
-
-                        <a href="#" class="banner">
-                            
-                            <img src="images/box-win-10.jpg" alt="" width="243" height="262">
-
-                        </a>
-
-                    </div>
-
-                    <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Tags - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Nhãn</h3>
-
-                        <div class="tags_container">
-
-                            <ul class="tags_cloud">
-                                
-                                <% @menu.each do |item| %>
-                            
-                                    <% if item.level == 1 %>
-                                        
-                                        <li><a class="button_grey" <%= (link_to item.title, {controller: "category_page", action: "index", id: item.id }).html_safe %></a></li>
-                                        
-                                    <% end %>
-                                
-                                <% end %>
-
-                            </ul><!--/ .tags_cloud-->
-                            
-                        </div><!--/ .tags_container-->
-
-                    </section>
-
-                    <!-- - - - - - - - - - - - - - End of tags - - - - - - - - - - - - - - - - -->
+                    
 
                 </aside>
 
                 <main class="col-md-9 col-sm-8">
 
-                    <section class="section_offset">
+                    <section>
 
                         <h1><%= @category.title %></h1>
 
@@ -256,7 +168,7 @@
     
                                     <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
                                     
-                                    <%= "</div><div class=\"table_row\">".html_safe if index%3 == 2 %>
+                                    <%= "</div><div class=\"table_row\">".html_safe if index%4 == 3 %>
                                 
                                 <% end %>
                             

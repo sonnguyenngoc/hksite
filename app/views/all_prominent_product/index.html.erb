@@ -29,105 +29,17 @@
 
                     <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
 
-                    <%= render 'category_page/category_left_page' %>
+                    <%= render 'category_page/category_left_page', status: "all_prominent_product" %>
 
                     <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Filter - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Bộ lọc</h3>
-
-                        <%= form_tag({controller: "product_search", action: "index"}, method: "get", class: "type_2") do %>
-
-                            <div class="table_layout list_view">
-
-                                <div class="table_row">
-
-                                    <!-- - - - - - - - - - - - - - Category filter - - - - - - - - - - - - - - - - -->
-
-                                    <div class="table_cell">
-
-                                        <label>Tên sản phẩm</label>
-                                        
-                                        <%= text_field_tag :search_prominent_products, params[:search_prominent_products], placeholder: "Nhập tên sản phẩm cần tìm..." %>
-
-                                    </div><!--/ .table_cell -->
-
-                                    <!-- - - - - - - - - - - - - - End of category filter - - - - - - - - - - - - - - - - -->
-
-                                </div><!--/ .table_row -->
-
-                            </div><!--/ .table_layout -->
-
-                            <footer class="bottom_box">
-
-                                <div class="buttons_row">
-
-                                    <button type="submit" class="button_blue middle_btn">Tìm kiếm</button>
-
-                                    <button type="reset" class="button_grey middle_btn filter_reset">Nhập lại</button>
-
-                                </div>
-
-                            </footer>
-
-                        <% end %>
-
-                    </section>
-
-                    <!-- - - - - - - - - - - - - - End of filter - - - - - - - - - - - - - - - - -->
-                    
-                    <!-- - - - - - - - - - - - - - Banner - - - - - - - - - - - - - - - - -->
-
-                    <div class="section_offset">
-
-                        <a href="#" class="banner">
-                            
-                            <img src="images/box-win-10.jpg" alt="" width="243" height="262">
-
-                        </a>
-
-                    </div>
-
-                    <!-- - - - - - - - - - - - - - End of banner - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Tags - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Nhãn</h3>
-
-                        <div class="tags_container">
-
-                            <ul class="tags_cloud">
-                                
-                                <% @menu.each do |item| %>
-                            
-                                    <% if item.level == 1 %>
-                                        
-                                        <li><a class="button_grey" <%= (link_to item.title, {controller: "category_page", action: "index", id: item.id }).html_safe %></a></li>
-                                        
-                                    <% end %>
-                                
-                                <% end %>
-
-                            </ul><!--/ .tags_cloud-->
-                            
-                        </div><!--/ .tags_container-->
-
-                    </section>
-
-                    <!-- - - - - - - - - - - - - - End of tags - - - - - - - - - - - - - - - - -->
 
                 </aside>
 
                 <main class="col-md-9 col-sm-8">
 
-                    <section class="section_offset">
+                    <section>
 
-                        <h1>Danh sách sản phẩm nổi bật</h1>
+                        <h1>SẢN PHẨM NỔI BẬT</h1>
 
                     </section>
 
@@ -209,7 +121,15 @@
     
                                                 <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
         
-                                                    <div class="label_highlights">Nổi bật</div>
+                                                    <% if product.get_old_price.present? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
+                                            
+                                                        <div class="label_offer percentage">
+                                                            
+                                                            <div><%= number_to_percentage(product.get_discount_percent, strip_insignificant_zeros: true) %></div>Off
+                        
+                                                        </div>
+                                                        
+                                                    <% end %>
     
                                                 <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
                                                 
@@ -226,14 +146,13 @@
                                                 <div class="clearfix product_info">
                                                     
                                                     <% if product.product_price.price.nil? %>
-    
-                                                        <p class="product_price alignleft"><b>Liên hệ:(84-8) 3984 7690</b></p>
-                                                    
+                                                        <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
+                                                    <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
+                                                        <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> </s>
+                                                        <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                     <% else %>
-                                                        
-                                                        <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
-                                                    
-                                                    <% end %> 
+                                                        <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
+                                                    <% end %>
     
                                                 </div>
     

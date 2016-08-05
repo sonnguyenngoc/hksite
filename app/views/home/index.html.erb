@@ -25,17 +25,17 @@
 
                             <!-- - - - - - - - - - - - - - Slideshow - - - - - - - - - - - - - - - - -->
                         
-                            <% @slideshow.each do |product| %>
+                            <% @slideshow.each do |item| %>
     
                                 <div class="ls-slide" data-ls="transition2d: 10, 27, 63, 67, 69;">
     
-                                    <img src="<%= product.image_url.slide_show if product.image_url? %>" class="ls-bg" alt="">
+                                    <img src="<%= item.image_url.slide_show if item.image_url? %>" class="ls-bg" alt="">
     
-                                    <div class="ls-l layer_1" style="left: 80px; top:128px; text-transform: uppercase; color: #bd6208;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack;"><%= product.title %></div>
-                                    <!--<div class="ls-l layer_3" style="left: 80px; top: 188px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 150;"></div>-->
-                                    <div class="ls-l layer_2" style="left: 80px; top: 200px; font-size: 40px; color: #b2b2b2" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 300;"><%= product.description %></div>
-    
-                                    <!--<a href="#" class="ls-l button_blue huge_btn" style="left: 80px; top: 330px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 450;">CHI TIẾT</a>-->
+                                    <div class="ls-l layer_1" style="left: 80px; top:128px; text-transform: capitalize; color: #bd6208;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack;"><%= item.title %></div>
+                                    <div class="ls-l layer_2" style="left: 80px; top: 200px; font-size: 45px; color: #000" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 300;"><%= item.description %></div>
+                                    <% if !item.link_to.empty? %>
+                                        <a href="<%= item.link_to %>" class="ls-l button_blue huge_btn" style="left: 80px; top: 330px;" data-ls="offsetxin: -60; durationin: 650; easingin: easeOutBack; delayin: 450;">CHI TIẾT</a>
+                                    <% end %>
     
                                 </div>
                                 
@@ -57,246 +57,7 @@
 
                 <aside class="col-md-3 col-sm-4">
 
-                    <!-- - - - - - - - - - - - - - Today's deals - - - - - - - - - - - - - - - - -->
-                    
-                    <% if @sale_products.count > 1 %>
-                        
-                        <section class="section_offset animated transparent" data-animation="fadeInDown">
-    
-                            <h3 class="widget_title">Đang khuyến mãi</h3>
-    
-                            <!-- - - - - - - - - - - - - - Carousel of today's deals - - - - - - - - - - - - - - - - -->
-    
-                            <div class="owl_carousel widgets_carousel">
-                                
-                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                                    
-                                <% @sale_products.each do |product| %>
-    
-                                    <div class="product_item">
-    
-                                        <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-        
-                                        <div class="image_wrap product_list_height">
-    
-                                            <img src="<%= product.product_image.image %>" alt="" class="product_image" />
-        
-                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-        
-                                            <div class="actions_wrap">
-        
-                                                <div class="centered_buttons">
-        
-                                                    <% if !product.product_price.price.nil? %>
-    
-                                                        <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
-    
-                                                    <% end %>
-        
-                                                </div><!--/ .centered_buttons -->
-        
-                                            </div><!--/ .actions_wrap-->
-                                            
-                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-        
-                                        </div><!--/. image_wrap-->
-        
-                                        <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-        
-                                        <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-                                        
-                                        <% if !product.get_old_price.nil? and !product.get_discount_percent.nil? %>
-                                            
-                                            <div class="label_offer percentage">
-                                                
-                                                <div><%= product.get_discount_percent.to_f.round(1) %>%</div>Off
-            
-                                            </div>
-                                            
-                                        <% end %>
-        
-                                        <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-        
-                                        <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-        
-                                        <div class="description">
-        
-                                            <p><%= link_to (truncate(strip_tags(product.display_name), length: 35)), {controller: "product", action: "index", id: product.id} %></p>
-                                            
-                                            <p><%= product.product_info.bonus_product %></p>
-        
-                                            <div class="clearfix product_info">
-                                                
-                                                <% if product.product_price.price.nil? %>
-                                                    
-                                                    <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
-                                                
-                                                <% else %>
-                                                    
-                                                    <% if !product.product_info.nil? %>
-                                                       
-                                                        <% if product.product_info.sale_price.nil? || product.product_info.sale_price <= 0 %>
-                                                            
-                                                            <p class="product_price alignleft"><span style="color: #b2b2b2">Giá KM: </span><b><%= number_with_delimiter product.display_default_price %> VNĐ</b></p>
-                                                        
-                                                        <% else %>
-                                                           
-                                                            <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.display_default_price %> VNĐ</s>
-                                                            
-                                                            <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
-                                                        
-                                                        <% end %>
-                                                    
-                                                    <% end %>
-                                                
-                                                <% end %>
-        
-                                            </div><!--/ .clearfix.product_info-->
-        
-                                        </div>
-        
-                                        <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-                                    
-                                    </div><!--/ .product_item-->
-                                    
-                                <% end %>                            
-                                
-                                <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-    
-                            </div><!--/ .widgets_carousel-->
-    
-                            <!-- - - - - - - - - - - - - - End of carousel of today's deals - - - - - - - - - - - - - - - - -->
-                            
-                            <!-- - - - - - - - - - - - - - View all deals of the day - - - - - - - - - - - - - - - - -->
-                            
-                            <footer class="bottom_box">
-
-                                <%= link_to "Xem toàn bộ sản phẩm khuyến mãi", { controller: "all_sale_product", action: "index" }, { class: "button_grey middle_btn" } %>
-
-                            </footer>
-                            
-                            <!-- - - - - - - - - - - - - - End of view all deals of the day - - - - - - - - - - - - - - - - -->
-    
-                        </section><!--/ .section_offset.animated.transparent-->
-                    
-                    <% end %>
-
-                    <!-- - - - - - - - - - - - - - End of today's deals - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Testimonials - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset animated transparent" data-animation="fadeInDown">
-
-                        <h3>Tin tức</h3>
-
-                        <!-- - - - - - - - - - - - - - Carousel of testimonials - - - - - - - - - - - - - - - - -->
-
-                        <div class="owl_carousel widgets_carousel">
-
-                            <!-- - - - - - - - - - - - - - Testimonial - - - - - - - - - - - - - - - - -->
-                            <% @new_blog_footer.each do |blog| %>
-                                
-                                <blockquote>
-    
-                                    <div class="author_info"><b><%= link_to blog.title, { controller: "blog_post", action: "index", id: blog.id } %></b></div>
-    
-                                    <p><%= truncate(strip_tags(blog.content), length: 35) %></p>
-    
-                                </blockquote>
-                            
-                            <% end %>
-                            <!-- - - - - - - - - - - - - - End testimonial - - - - - - - - - - - - - - - - -->
-
-                        </div><!--/ .widgets_carousel-->
-
-                        <!-- - - - - - - - - - - - - - End of carousel of testimonials - - - - - - - - - - - - - - - - -->
-
-                        <!-- - - - - - - - - - - - - - View all testimonials - - - - - - - - - - - - - - - - -->
-
-                        <footer class="bottom_box">
-                            
-                            <%= link_to "Xem toàn bộ tin tức", {controller: "blog", action: "index"}, class: "button_grey middle_btn" %>
-
-                        </footer>
-
-                        <!-- - - - - - - - - - - - - - End of view all testimonials - - - - - - - - - - - - - - - - -->
-
-                    </section><!--/ .section_offset.animated.transparent-->
-
-                    <!-- - - - - - - - - - - - - - End of testimonials - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Infoblocks - - - - - - - - - - - - - - - - -->
-
-                    <div class="section_offset">
-
-                        <!-- - - - - - - - - - - - - - Infoblock - - - - - - - - - - - - - - - - -->
-
-                        <section class="infoblock type_2 animated transparent" data-animation="fadeInDown">
-
-                            <i class="icon-thumbs-up-1"></i>
-
-                            <h4 class="caption"><b>Sản phẩm đạt chất lượng</b></h4>
-
-                        </section><!--/ .infoblock.type_2-->
-
-                        <!-- - - - - - - - - - - - - - End infoblock - - - - - - - - - - - - - - - - -->
-
-                        <!-- - - - - - - - - - - - - - Infoblock - - - - - - - - - - - - - - - - -->
-
-                        <section class="infoblock type_2 animated transparent" data-animation="fadeInDown">
-
-                            <i class="icon-paper-plane"></i>
-
-                            <h4 class="caption"><b>Giao hàng tận nơi, nhanh chóng</b></h4>
-
-                        </section><!--/ .infoblock.type_2-->
-
-                        <!-- - - - - - - - - - - - - - End infoblock - - - - - - - - - - - - - - - - -->
-
-                        <!-- - - - - - - - - - - - - - Infoblock - - - - - - - - - - - - - - - - -->
-
-                        <section class="infoblock type_2 animated transparent" data-animation="fadeInDown">
-
-                            <i class="icon-lock"></i>
-
-                            <h4 class="caption"><b>Đặt hàng an toàn &amp; bảo mật</b></h4>
-
-
-                        </section><!--/ .infoblock.type_2-->
-
-                        <!-- - - - - - - - - - - - - - End infoblock - - - - - - - - - - - - - - - - -->
-
-                    </div>
-
-                    <!-- - - - - - - - - - - - - - End of infoblocks - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Tags - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset animated transparent" data-animation="fadeInDown">
-
-                        <h3>Nhãn</h3>
-
-                        <div class="tags_container">
-
-                            <ul class="tags_cloud">
-                                
-                                <% @menu.each do |item| %>
-                            
-                                    <% if item.level == 1 %>
-                                        
-                                        <li><a class="button_grey" <%= (link_to item.title, {:controller => "category_page", :action => "index", id: item.id }).html_safe %></a></li>
-                                        
-                                    <% end %>
-                                
-                                <% end %>
-
-                            </ul><!--/ .tags_cloud-->
-                            
-                        </div><!--/ .tags_container-->
-
-                    </section>
-
-                    <!-- - - - - - - - - - - - - - End of tags - - - - - - - - - - - - - - - - -->
+                    <%= render 'left_bar_home' %>
                     
                 </aside>
 
@@ -310,10 +71,9 @@
 
                         <ul class="tabs_nav clearfix">
 
-                            <li><a href="#tab-1">Mới</a></li>
-                            <li><a href="#tab-2">Nổi bật</a></li>
-                            <li><a href="#tab-3">Hot</a></li>
-                            <li><a href="#tab-4">Bán chạy nhất</a></li>
+                            <li><a href="#tab-1">Sản phẩm mới</a></li>
+                            <li><a href="#tab-2">Sản phẩm nổi bật</a></li>
+                            <li><a href="#tab-3">Sản phẩm bán chạy</a></li>
 
                         </ul>
                             
@@ -353,7 +113,7 @@
                                                                 
                                                                 <% if !product.product_price.price.nil? %>
 
-                                                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
+                                                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_cart_fix" %>
 
                                                                 <% end %>
     
@@ -365,8 +125,14 @@
     
                                                         <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
     
-                                                        <% if product.product_info.present? and product.product_info.product_new == "on" %>
-                                                            <div class="label_new">Mới</div>
+                                                        <% if product.get_old_price.present? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
+                                            
+                                                            <div class="label_offer percentage">
+                                                                
+                                                                <div><%= number_to_percentage(product.get_discount_percent, strip_insignificant_zeros: true) %></div>Off
+                            
+                                                            </div>
+                                                            
                                                         <% end %>
     
                                                         <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
@@ -384,13 +150,12 @@
                                                         <div class="clearfix product_info">
                                                             
                                                             <% if product.product_price.price.nil? %>
-                                                                
                                                                 <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
-                                                            
+                                                            <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
+                                                                <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> </s>
+                                                                <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                             <% else %>
-                                                                
-                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
-                                                            
+                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                             <% end %>
                                                         
                                                         </div>
@@ -403,7 +168,7 @@
     
                                             </div>
                                                 
-                                            <%= "</div><div class=\"table_row\">".html_safe if index%3 == 2 %>
+                                            <%= "</div><div class=\"table_row\">".html_safe if index%4 == 3 %>
                                                 
                                         <% end %>
                                         <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
@@ -456,7 +221,7 @@
         
                                                                 <% if !product.product_price.price.nil? %>
 
-                                                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
+                                                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_cart_fix" %>
 
                                                                 <% end %>
         
@@ -466,7 +231,15 @@
                                                         
                                                         <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
     
-                                                        <div class="label_highlights">Nổi bật</div>
+                                                        <% if product.get_old_price.present? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
+                                            
+                                                            <div class="label_offer percentage">
+                                                                
+                                                                <div><%= number_to_percentage(product.get_discount_percent, strip_insignificant_zeros: true) %></div>Off
+                            
+                                                            </div>
+                                                            
+                                                        <% end %>
     
                                                         <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
                                                         
@@ -485,13 +258,12 @@
                                                         <div class="clearfix product_info">
                                                             
                                                             <% if product.product_price.price.nil? %>
-                                                                
-                                                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
-                                                            
+                                                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ</b></p>
+                                                            <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
+                                                                <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> </s>
+                                                                <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                             <% else %>
-                                                                
-                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
-                                                            
+                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                             <% end %>
                                                             
                                                         </div>
@@ -504,7 +276,7 @@
                                                 
                                             </div>
                                                 
-                                            <%= "</div><div class=\"table_row\">".html_safe if index%3 == 2 %>
+                                            <%= "</div><div class=\"table_row\">".html_safe if index%4 == 3 %>
                                                 
                                         <% end %>
                                         
@@ -527,111 +299,10 @@
                             </div>
                                     
                             <!-- - - - - - - - - - - - - - End of featured products - - - - - - - - - - - - - - - - -->
-
-                            <!-- - - - - - - - - - - - - - Hot products - - - - - - - - - - - - - - - - -->
-
-                            <div id="tab-3" class="tab_container">
-
-                                <div class="table_layout">
-
-                                    <div class="table_row">
-
-                                        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-                                        
-                                        <% @hot_products.each_with_index do |product,index| %>
-                                            
-                                            <div class="table_cell">
-    
-                                                <div class="product_item">
-    
-                                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-    
-                                                    <div class="image_wrap product_list_height">
-    
-                                                        <img src="<%= product.product_image.image %>" alt="" class="product_image" />
-    
-                                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-    
-                                                        <div class="actions_wrap">
-    
-                                                            <div class="centered_buttons">
-    
-                                                                <% if !product.product_price.price.nil? %>
-
-                                                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
-
-                                                                <% end %>
-    
-                                                            </div><!--/ .centered_buttons -->
-                                                            
-                                                        </div><!--/ .actions_wrap-->
-                                                        
-                                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-    
-                                                        <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-    
-                                                        <div class="label_hot">HOT</div>
-    
-                                                        <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-    
-                                                    </div><!--/. image_wrap-->
-    
-                                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-    
-                                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-    
-                                                    <div class="description">
-    
-                                                        <%= link_to strip_tags(product.display_name), {controller: "product", action: "index", id: product.id}, title: product.display_name %>
-                                                        
-                                                        <div class="clearfix product_info">
-                                                            
-                                                            <% if product.product_price.price.nil? %>
-                                                                
-                                                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
-                                                            
-                                                            <% else %>
-                                                                
-                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
-                                                            
-                                                            <% end %>
-                                                        
-                                                        </div>
-    
-                                                    </div>
-    
-                                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-    
-                                                </div><!--/ .product_item-->
-    
-                                            </div>
-                                            
-                                            <%= "</div><div class=\"table_row\">".html_safe if index%3 == 2 %>
-                                                
-                                        <% end %>
-                                        <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-
-                                    </div>
-
-                                </div>
-                                
-                                <!-- - - - - - - - - - - - - - View all products - - - - - - - - - - - - - - - - -->
-                            
-                                <footer class="bottom_box">
-
-                                    <%= link_to "Xem toàn bộ", { controller: "all_hot_product", action: "index" }, class: "button_grey middle_btn" %>
-
-                                </footer>
-                                
-                                <!-- - - - - - - - - - - - - - End of view all products - - - - - - - - - - - - - - - - -->
-
-                            </div>
-                                    
-                            <!-- - - - - - - - - - - - - - End of hot products - - - - - - - - - - - - - - - - -->
                             
                             <!-- - - - - - - - - - - - - - Bestseller products - - - - - - - - - - - - - - - - -->
 
-                            <div id="tab-4" class="tab_container">
+                            <div id="tab-3" class="tab_container">
 
                                 <div class="table_layout">
 
@@ -659,7 +330,7 @@
     
                                                                 <% if !product.product_price.price.nil? %>
 
-                                                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
+                                                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_cart_fix" %>
 
                                                                 <% end %>
     
@@ -671,7 +342,15 @@
     
                                                         <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
     
-                                                        <div class="label_bestseller">Bán chạy nhất</div>
+                                                        <% if product.get_old_price.present? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
+                                            
+                                                            <div class="label_offer percentage">
+                                                                
+                                                                <div><%= number_to_percentage(product.get_discount_percent, strip_insignificant_zeros: true) %></div>Off
+                            
+                                                            </div>
+                                                            
+                                                        <% end %>
     
                                                         <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
     
@@ -688,13 +367,12 @@
                                                         <div class="clearfix product_info">
                                                             
                                                             <% if product.product_price.price.nil? %>
-                                                                
-                                                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
-                                                            
+                                                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ</b></p>
+                                                            <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
+                                                                <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> </s>
+                                                                <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                             <% else %>
-                                                                
-                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
-                                                            
+                                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                             <% end %>
                                                         
                                                         </div>
@@ -707,7 +385,7 @@
     
                                             </div>
                                             
-                                            <%= "</div><div class=\"table_row\">".html_safe if index%3 == 2 %>
+                                            <%= "</div><div class=\"table_row\">".html_safe if index%4 == 3 %>
                                                 
                                         <% end %>
                                         <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
@@ -788,65 +466,6 @@
                     </section><!--/ .section_offset.animated.transparent-->
                     
                     <!-- - - - - - - - - - - - - - End our brands - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Latest News - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset animated transparent" data-animation="fadeInDown">
-
-                        <h3>Tin tức mới nhất</h3>
-
-                        <div class="table_layout">
-
-                            <div class="table_row">
-                                
-                                <% @blog.each do |blog| %>
-
-                                    <!-- - - - - - - - - - - - - - Entry - - - - - - - - - - - - - - - - -->
-    
-                                    <div class="table_cell">
-    
-                                        <article class="entry">
-    
-                                            <a href="#" class="thumbnail entry_image">
-    
-                                                <img src="<%= blog.image_url.article_home if blog.image_url? %>" width="244" height="154" alt="">
-    
-                                            </a>
-    
-                                            <h5 class="entry_title"><b><%= link_to blog.title, { controller: "blog_post", action: "index", id: blog.id } %></b></h5>
-    
-                                            <div class="entry_meta">
-    
-                                                <span><i class="icon-calendar"></i> <%= blog.created_at.strftime("%d/%m/%Y") %></span>
-    
-                                            </div><!--/ .byline-->
-    
-                                            <p><%= truncate(strip_tags(blog.content.html_safe), length: 150) %></p>
-    
-                                        </article><!--/ .entry-->
-    
-                                    </div>
-    
-                                    <!-- - - - - - - - - - - - - - End of entry - - - - - - - - - - - - - - - - -->
-                                <% end %>
-
-                            </div>
-
-                        </div>
-
-                        <!-- - - - - - - - - - - - - - View all entries - - - - - - - - - - - - - - - - -->
-
-                        <footer class="bottom_box">
-
-                            <%= link_to "Xem toàn bộ tin tức", { controller: "blog", action: "index" }, { class: "button_grey middle_btn" } %>
-                            
-                        </footer>
-
-                        <!-- - - - - - - - - - - - - - End of view all entries - - - - - - - - - - - - - - - - -->
-
-                    </section><!--/ .section_offset.aniamted.transparent-->
-
-                    <!-- - - - - - - - - - - - - - End of latest news - - - - - - - - - - - - - - - - -->
 
                 </main>
 

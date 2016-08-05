@@ -47,7 +47,7 @@ class Product < ActiveRecord::Base
     return records
   end
   
-  def self.get_sale_products(params)    
+  def self.get_sale_products(params)  
     records = self.includes(:product_info).where(status: 1)
                                           .where(product_infos: {product_sale: "on"}).order("product_infos.updated_at DESC")
     if params[:sort_by] == 'name'
@@ -136,7 +136,10 @@ class Product < ActiveRecord::Base
   def self.search(params)
     records = Product.where(status: 1)
     if params[:search].present?
-      records = records.where('LOWER(products.name) LIKE ?', "%#{params[:search].strip.downcase}%")
+      params[:search].split(" ").each do |k|
+        records = records.where("LOWER(products.cache_search) LIKE ?", "%#{k.strip.downcase}%") if k.strip.present?
+      end
+      #records = records.where("LOWER(products.cache_search) LIKE ?", "%#{params[:search].strip.downcase}%") if params[:search].present?    
     end
     
     if params[:manufacturer_id].present?
@@ -312,6 +315,11 @@ class Product < ActiveRecord::Base
     else
       nil
     end
+  end
+  
+  def get_related_products
+    records = Product.all
+    return records.limit(10)
   end
 
   private
