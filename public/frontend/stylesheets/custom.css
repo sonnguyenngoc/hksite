@@ -217,3 +217,10 @@ a.skype > img {
 .proportional_frame_fix {
     padding-bottom: 30%;
 }
+.ls-nav-prev, .ls-nav-next {
+	position: absolute !important;
+	top: 40%;
+}
+.ls-inner {
+	position: absolute;
+}
