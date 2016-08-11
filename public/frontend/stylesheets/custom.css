@@ -227,3 +227,6 @@ a.skype > img {
 .product_price {
     font-size: 15px;
 }
+.zoomContainer {
+    z-index: 100;
+}
