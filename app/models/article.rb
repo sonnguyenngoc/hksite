@@ -10,4 +10,9 @@ class Article < ActiveRecord::Base
   def self.get_article(params)
       self.joins(:tag).where(tags: {id: params[:id]})
   end
+  
+  def self.get_home_popup
+    self.where(popup: true).order("created_at DESC").first
+  end
+  
 end

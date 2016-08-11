@@ -31,6 +31,13 @@
             <%= f.collection_select(:tag_id, Tag.all, :id, :title, {:prompt => "Chọn loại bài viết..."}, {class: "select"}) %>
         </div>
     </div>
+    
+    <div class="form-group">
+        <%= f.label "Pupup?: ", class: "col-lg-2 control-label" %>
+        <div class="col-lg-10">
+            <%= f.select(:popup, ['false', 'true'], {}, { :selected => :popup, :class => 'select' })%>
+        </div>
+    </div>
 
     <div class="mb-15">
         <%= f.text_area :content, rows: "4", cols: "4", id: "editor-full" %>

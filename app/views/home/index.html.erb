@@ -1,5 +1,6 @@
 <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
+
 <div class="wide_layout">
 
     <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
@@ -598,6 +599,34 @@
 <%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
 <%= javascript_include_tag '/frontend/js/retina.min.js' %>
 <%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+
+
+
+<!-- Optional theme -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<% if @popup.present? && @popup.image_url.article_blog_post.present? %>
+<div class="modal fade" id="HomePopup">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">      
+      <div class="modal-body">
+        <img src="<%= @popup.image_url.article_blog_post %>">
+      </div>
+      <div class="modal-footer">
+        <!--<a type="button" class="button_blue" href="">Xem thêm</a>-->
+        <button type="button" class="button_dark_grey" data-dismiss="modal">Đóng</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script>
+    $(document).ready(function() {
+        $('#HomePopup').modal('show');
+    });
+</script>
+<% end %>
+
 
 <!-- Theme files
 ============================================ -->

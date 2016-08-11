@@ -58,7 +58,7 @@
                     </div>
                         
                     <div class="form-group">
-                        <%= label "", "Giảm giá: ", class: "control-label col-sm-2 text-semibold" %>
+                        <%= label "", "Phần trăm giảm: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
                             <%= content_tag(:p, class: "form-control-static ") do %>
                               <%= number_with_delimiter @product_info.product.product_info.sale_off_price.to_i%> <i>%</i>
@@ -67,10 +67,10 @@
                     </div>
                         
                     <div class="form-group">
-                        <%= label "", "Giá khuyến mãi: ", class: "control-label col-sm-2 text-semibold" %>
+                        <%= label "", "Giá cũ: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
                             <%= content_tag(:p, class: "form-control-static ") do %>
-                              <%= number_with_delimiter @product_info.product.product_info.sale_price.to_i %> <i>VNĐ</i>
+                              <%= number_with_delimiter @product_info.product.product_info.old_price.to_i %> <i>VNĐ</i>
                             <% end %>
                         </div>
                     </div>

@@ -274,20 +274,29 @@ class Product < ActiveRecord::Base
  # end
   
   def display_price
-    if !self.product_info.nil?
-      if (self.product_info.product_sale == "on") && (self.product_info.sale_price > 0)
-        self.product_info.sale_price.to_i
-      else
-        self.display_default_price
-      end  
-    else
-        self.display_default_price
-    end
+    #if !self.product_info.nil?
+    #  if (self.product_info.product_sale == "on") && (self.product_info.old_price > 0)
+    #    self.product_info.old_price.to_i
+    #  else
+    #    self.display_default_price
+    #  end  
+    #else
+    #  self.display_default_price
+    #end
+    self.product_price.price.to_i
     
   end
   
   def display_default_price
     self.product_price.price.to_i
+  end
+  
+  def display_old_price
+    if !self.product_info.nil?
+      if (self.product_info.product_sale == "on") && (self.product_info.old_price > 0)
+        self.product_info.old_price.to_i
+      end
+    end
   end
   
   def display_name

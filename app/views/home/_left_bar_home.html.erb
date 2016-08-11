@@ -1,10 +1,10 @@
 <!-- - - - - - - - - - - - - - Today's deals - - - - - - - - - - - - - - - - -->
                     
-<% if @sale_products.present? and @sale_products.count >= 0 %>
+<% if @sale_products.present? and @sale_products.count > 1 %>
     
     <section class="section_offset animated transparent" data-animation="fadeInDown">
 
-        <h3 class="widget_title">KHUYẾN MÃI HÔM NAY</h3>
+        <h3 class="widget_title">ĐANG KHUYẾN MÃI</h3>
 
         <!-- - - - - - - - - - - - - - Carousel of today's deals - - - - - - - - - - - - - - - - -->
 
@@ -43,14 +43,14 @@
                     </div><!--/. image_wrap-->
 
                     <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
                     
-                    <% if !product.get_old_price.nil? and !product.get_discount_percent.nil? %>
+                    <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+                                            
+                    <% if !product.product_info.sale_off_price.nil? and product.product_info.sale_off_price > 1 %>
                         
                         <div class="label_offer percentage">
                             
-                            <div><%= product.get_discount_percent.to_f.round(1) %>%</div>Off
+                            <div><%= product.product_info.sale_off_price.to_f.round(0) %>%</div>Off
 
                         </div>
                         
@@ -76,13 +76,13 @@
                                 
                                 <% if !product.product_info.nil? %>
                                    
-                                    <% if product.product_info.sale_price.nil? || product.product_info.sale_price <= 0 %>
+                                    <% if product.product_info.old_price.nil? || product.product_info.old_price <= 0 %>
                                         
                                         <p class="product_price alignleft"><span style="color: #b2b2b2">Giá KM: </span><b><%= number_with_delimiter product.display_default_price %> VNĐ</b></p>
                                     
                                     <% else %>
                                        
-                                        <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.display_default_price %> VNĐ</s>
+                                        <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.product_info.old_price %> VNĐ</s>
                                         
                                         <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                     

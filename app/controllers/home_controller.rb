@@ -16,5 +16,6 @@ class HomeController < ApplicationController
     @prominent_products = Product.get_prominent_products(params).limit(20)
     @new_products = Product.get_new_products(params).limit(8)
     @manual_new_products = Product.get_new_products_manual(params).limit(12)
+    @popup = Article.get_home_popup
   end
 end
