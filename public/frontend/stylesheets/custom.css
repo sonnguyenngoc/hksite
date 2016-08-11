@@ -224,3 +224,6 @@ a.skype > img {
 .ls-inner {
 	position: absolute;
 }
+.product_price {
+    font-size: 15px;
+}
