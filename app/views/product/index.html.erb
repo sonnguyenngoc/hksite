@@ -350,97 +350,112 @@
                     <!-- - - - - - - - - - - - - - End of related products - - - - - - - - - - - - - - - - -->
                     
                      <!-- - - - - - - - - - - - - - Sale off products - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-            
-                        <!--<h3 class="widget_title">KHUYẾN MÃI HÔM NAY</h3>-->
-            
-                        <div class="owl_carousel related_products">
-            
-                            <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-            
-                            <% @pro_detail.get_related_products.limit(0).each do |product| %>
-                            
-                                <div class="product_item">
+                    <% if @sale_products.present? %>
+                        <section class="section_offset">
                 
-                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+                            <h3 class="widget_title">ĐANG KHUYẾN MÃI</h3>
                 
-                                    <div class="image_wrap">
+                            <div class="owl_carousel related_products">
                 
-                                        <img src="<%= product.product_image.image %>" alt="">
+                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
                 
-                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-                
-                                        <div class="actions_wrap">
-                
-                                            <div class="centered_buttons">
-                
-                                                <% if !product.product_price.price.nil? %>
+                                <% @sale_products.each do |product| %>
+                                
+                                    <div class="product_item">
+                    
+                                        <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
+                    
+                                        <div class="image_wrap">
+                    
+                                            <img src="<%= product.product_image.image %>" alt="">
+                    
+                                            <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
+                    
+                                            <div class="actions_wrap">
+                    
+                                                <div class="centered_buttons">
+                    
+                                                    <% if !product.product_price.price.nil? %>
+        
+                                                        <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_cart_fix" %>
+                                                    
+                                                    <% end %>
+                    
+                                                </div><!--/ .centered_buttons -->
+                    
+                                            </div><!--/ .actions_wrap-->
+                                            
+                                            <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
+                    
+                                        </div><!--/. image_wrap-->
+                    
+                                        <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
+                    
+                                        <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
+                                            
+                                        <% if !product.product_info.sale_off_price.nil? and product.product_info.sale_off_price > 1 %>
+                        
+                                            <div class="label_offer percentage">
+                                                
+                                                <div><%= product.product_info.sale_off_price.to_f.round(0) %>%</div>Off
+                    
+                                            </div>
+                                            
+                                        <% end %>
+        
+                                        <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
+        
+                                        <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
+                                        
+                                        <div class="description">
     
-                                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_cart_fix" %>
+                                            <%= link_to (truncate(strip_tags(product.name), length: 28)), {controller: "product", action: "index", id: product.id} %>
+                                            
+                                            <p><%= product.product_info.bonus_product %></p>
+                                            
+                                            <div class="clearfix product_info">
+                                                
+                                                <% if product.product_price.price.nil? %>
+                                
+                                                    <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
+                                                
+                                                <% else %>
+                                                    
+                                                    <% if !product.product_info.nil? %>
+                                                       
+                                                        <% if product.product_info.old_price.nil? || product.product_info.old_price <= 0 %>
+                                                            
+                                                            <p class="product_price alignleft"><span style="color: #b2b2b2">Giá KM: </span><b><%= number_with_delimiter product.display_default_price %> VNĐ</b></p>
+                                                        
+                                                        <% else %>
+                                                           
+                                                            <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.product_info.old_price %> VNĐ</s>
+                                                            
+                                                            <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
+                                                        
+                                                        <% end %>
+                                                    
+                                                    <% end %>
                                                 
                                                 <% end %>
-                
-                                            </div><!--/ .centered_buttons -->
-                
-                                        </div><!--/ .actions_wrap-->
-                                        
-                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-                
-                                    </div><!--/. image_wrap-->
-                
-                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-                
-                                    <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-                                        
-                                    <% if !product.get_old_price.nil? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
-                                        
-                                        <div class="label_offer percentage">
-                                            
-                                            Giảm<div><%= number_to_percentage(product.get_discount_percent, strip_insignificant_zeros: true) %></div>
         
-                                        </div>
-                                        
-                                    <% end %>
-    
-                                    <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-    
-                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-
-                                    <div class="description">
-    
-                                        <%= link_to (truncate(strip_tags(product.name), length: 28)), {controller: "product", action: "index", id: product.id} %>
-            
-                                        <div class="clearfix product_info">
+                                            </div><!--/ .clearfix.product_info-->
                                             
-                                            <% if product.product_price.price.nil? %>
-                                                <p class="product_price alignleft"><b style="color: #018bc8">Call: </b><%= @company_info.phone %></p>
-                                            <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
-                                                <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> VNĐ</s>
-                                                <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
-                                            <% else %>
-                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
-                                            <% end %>
-    
-                                        </div><!--/ .clearfix.product_info-->
-                                        
-                                        <% if !product.product_info.nil? %>
-                                            <p><%= product.product_info.bonus_product %></p>
-                                        <% end %>
-    
-                                    </div>
-                
-                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-                
-                                </div><!--/ .product_item-->
+                                        </div>
+                    
+                                        <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
+                    
+                                    </div><!--/ .product_item-->
+                                    
+                                <% end %>
                                 
-                            <% end %>
-                            
-                            <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-            
-                        </div><!--/ .owl_carousel -->
-            
-                    </section><!--/ .section_offset -->
+                                <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
+                
+                            </div><!--/ .owl_carousel -->
+                
+                        </section><!--/ .section_offset -->
+                        
+                    <% end %>
             
                     <!-- - - - - - - - - - - - - - End of sale off products - - - - - - - - - - - - - - - - -->
 
@@ -448,130 +463,7 @@
 
             </div><!--/ .row -->
 
-        </div>
-
-        <!-- - - - - - - - - - - - - - Tabs - - - - - - - - - - - - - - - - -->
-
-        <div class="section_offset">
-
-            <div class="tabs products">
-
-                <!-- - - - - - - - - - - - - - Navigation of tabs - - - - - - - - - - - - - - - - -->
-
-                <!--<ul class="tabs_nav clearfix">
-                    
-                    <li><a href="#tab-1">Sản phẩm đang khuyến mãi</a></li>
-
-                </ul>-->
-                
-                <!-- - - - - - - - - - - - - - End navigation of tabs - - - - - - - - - - - - - - - - -->
-
-                <!-- - - - - - - - - - - - - - Tabs container - - - - - - - - - - - - - - - - -->
-
-                <div class="tab_containers_wrap">
-
-                    <div id="tab-1" class="tab_container">
-
-                        <!-- - - - - - - - - - - - - - Carousel of hot products - - - - - - - - - - - - - - - - -->
-
-                        <div class="owl_carousel type_2 carousel_in_tabs">
-                            
-                            <% @sale_products.each do |product| %>
-
-                                <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-    
-                                <div class="product_item">
-    
-                                    <!-- - - - - - - - - - - - - - Thumbmnail - - - - - - - - - - - - - - - - -->
-    
-                                    <div class="image_wrap product_list_height">
-    
-                                        <img src="<%= product.product_image.image %>" alt="" class="product_image">
-    
-                                        <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-    
-                                        <div class="actions_wrap">
-    
-                                            <div class="centered_buttons">
-    
-                                                <% if !product.product_price.price.nil? %>
-    
-                                                    <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
-                                                
-                                                <% end %>
-    
-                                            </div><!--/ .centered_buttons -->
-    
-                                        </div><!--/ .actions_wrap-->
-                                        
-                                        <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-    
-                                    </div><!--/. image_wrap-->
-    
-                                    <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
-                                    
-                                    <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-                                        
-                                    <% if !product.get_old_price.nil? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
-                                        
-                                        <div class="label_offer percentage">
-                                            
-                                            Giảm<div><%= number_to_percentage(product.get_discount_percent, strip_insignificant_zeros: true) %></div>
-        
-                                        </div>
-                                        
-                                    <% end %>
-    
-                                    <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-    
-                                    <!-- - - - - - - - - - - - - - Product title & price - - - - - - - - - - - - - - - - -->
-
-                                    <div class="description">
-    
-                                        <%= link_to (truncate(strip_tags(product.name), length: 28)), {controller: "product", action: "index", id: product.id} %>
-            
-                                        <div class="clearfix product_info">
-                                            
-                                            <% if product.product_price.price.nil? %>
-                                                <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ:(84-8) 3984 7690</b></p>
-                                            <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
-                                                <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> VNĐ</s>
-                                                <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
-                                            <% else %>
-                                                <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
-                                            <% end %>
-    
-                                        </div><!--/ .clearfix.product_info-->
-                                        
-                                        <% if !product.product_info.nil? %>
-                                            <p><%= product.product_info.bonus_product %></p>
-                                        <% end %>
-    
-                                    </div>
-    
-                                    <!-- - - - - - - - - - - - - - End of product title & price - - - - - - - - - - - - - - - - -->
-                                    
-                                </div><!--/ .product_item-->
-                                
-                                <!-- - - - - - - - - - - - - - End product - - - - - - - - - - - - - - - - -->
-                                
-                            <% end %>
-
-                        </div><!--/ .sh_container-->
-                        
-                        <!-- - - - - - - - - - - - - - End of carousel of hot products - - - - - - - - - - - - - - - - -->
-
-                    </div><!--/ #tab-1-->
-
-                </div>
-
-                <!-- - - - - - - - - - - - - - End of tabs containers - - - - - - - - - - - - - - - - -->
-
-            </div><!--/ .tabs.section_offset-->
-
-        </div>
-            
-        <!-- - - - - - - - - - - - - - End of tabs - - - - - - - - - - - - - - - - -->
+        </div>        
 
     </div><!--/ .container-->
 
