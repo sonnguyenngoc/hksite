@@ -63,16 +63,17 @@
                                 <div class="product_preview">
     
                                     <div class="owl_carousel" id="thumbnails">
-                                        <% if !@pro_detail.all_product_images.first %>
-                                            <% @pro_detail.all_product_images.each do |item| %>
-                                                <a href="#" data-image="<%= url_for(item.product_image.image) %>" data-zoom-image="<%= url_for(item.product_image.image) %>">
+                                        
+                                        <% @pro_detail.all_product_images.each_with_index do |item,index| %>
+                                            <!--<% if index > 0 %>-->
+                                                <a href="#" data-image="<%= url_for(item.image) %>" data-zoom-image="<%= url_for(item.image) %>">
             
-                                                    <img src="<%= url_for(item.product_image.image) %>" data-large-image="<%= url_for(item.product_image.image) %>" alt="">
+                                                    <img src="<%= url_for(item.image) %>" data-large-image="<%= url_for(item.image) %>" alt="">
             
                                                 </a>
-                                            <% end %>
+                                            <!--<% end %>-->
                                         <% end %>
-    
+                                        
                                     </div><!--/ .owl-carousel-->
     
                                 </div><!--/ .product_preview-->
