@@ -52,7 +52,7 @@
                             
                              <div class="image_preview_container main_image">
 
-                                <img src="<%= url_for(@pro_detail.product_image.image) %>" class="product_main" >
+                                <img src="<%= url_for(@pro_detail.product_image.image) %>" >
 
                             </div><!--/ .image_preview_container-->
 
@@ -65,13 +65,13 @@
                                     <div class="owl_carousel" id="thumbnails">
                                         
                                         <% @pro_detail.all_product_images.each_with_index do |item,index| %>
-                                            <!--<% if index > 0 %>-->
-                                                <a href="#" data-image="<%= url_for(item.image) %>" data-zoom-image="<%= url_for(item.image) %>">
-            
-                                                    <img src="<%= url_for(item.image) %>" data-large-image="<%= url_for(item.image) %>" alt="">
-            
-                                                </a>
-                                            <!--<% end %>-->
+                                        
+                                            <a class="<%= "main_image" if @pro_detail.product_image.present? and @pro_detail.product_image.id == item.id %>" rel="<%= index %>" href="#" data-image="<%= url_for(item.image) %>">
+    
+                                                <img src="<%= url_for(item.image) %>" data-large-image="<%= url_for(item.image) %>" alt="">
+
+                                            </a>
+                                            
                                         <% end %>
                                         
                                     </div><!--/ .owl-carousel-->
