@@ -23,8 +23,12 @@ class Product < ActiveRecord::Base
     return p
   end
   
+  def all_product_images
+    product_images.where.not(filename: nil).order("display_order")
+  end
+  
   def product_image
-    img = product_images.where.not(filename: nil).order("display_order").first
+    img = all_product_images.first
     return img.nil? ? ProductImage.new : img
   end
 
