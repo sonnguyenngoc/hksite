@@ -322,8 +322,13 @@ class Product < ActiveRecord::Base
   end
   
   def get_related_products
-    records = Product.all
-    return records.limit(10)
+    cat_ids = []
+    categories.each do |c|
+      cat_ids += c.get_all_related_ids
+    end
+    records = Product.joins(:categories).where(categories: {id: cat_ids}).uniq
+    
+    return records.limit(20)
   end
 
   private
