@@ -129,7 +129,7 @@
     
                                             <!-- - - - - - - - - - - - - - End thumbmnail - - - - - - - - - - - - - - - - -->
                                             
-                                            <% if product.get_old_price.present? and product.get_discount_percent.present? %>
+                                            <% if product.get_old_price.present? and product.get_discount_percent.present? and product.get_discount_percent >= 1 %>
                                             
                                                 <div class="label_offer percentage">
                                                     
