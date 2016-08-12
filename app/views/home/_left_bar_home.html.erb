@@ -82,7 +82,7 @@
                                     
                                     <% else %>
                                        
-                                        <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.product_info.old_price %> VNĐ</s>
+                                        <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter number_with_precision(product.product_info.old_price, :precision => 0) %> VNĐ</s>
                                         
                                         <b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                     
