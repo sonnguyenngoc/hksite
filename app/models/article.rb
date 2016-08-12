@@ -12,7 +12,7 @@ class Article < ActiveRecord::Base
   end
   
   def self.get_home_popup
-    self.where(popup: true).order("created_at DESC").first
+    self.where(popup: true).order("updated_at DESC").first
   end
   
 end
