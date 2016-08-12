@@ -3,7 +3,7 @@ function updatePercentDiscount() {
     var price = parseFloat($("input#product_price").val());
     
     if (old_price > 0 && price > 0) {
-        $("input#product_info_sale_off_price").val(((old_price - price)/old_price)*100);
+        $("input#product_info_sale_off_price").val(Math.round(((old_price - price)/old_price)*100));
     }
 }
 
@@ -12,7 +12,7 @@ function updateOldPrice() {
     var price = parseFloat($("input#product_price").val());
     
     if (discount_percent > 0 && price > 0) {
-        $(".form-group input#product_info_old_price").val(price/(1 - (discount_percent/100)));
+        $(".form-group input#product_info_old_price").val(Math.round(price/(1 - (discount_percent/100))));
     }
 }
 
