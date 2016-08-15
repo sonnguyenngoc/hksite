@@ -56,7 +56,7 @@
                         <% if @customer_order.customer_order_details.any? %>
                             <% @customer_order.customer_order_details.each_with_index do |item,index| %>
                                 <tr class="<%= (index%2 == 1 ? "" : "alpha-teal") %>">
-                                    <td><%= item.product.name %></td>
+                                    <td><%= item.product.display_name %></td>
                                     <td><%= number_with_delimiter item.price.to_i %></td>
                                     <td><%= item.quantity %></td>
                                     <td><%= number_with_delimiter item.total.to_i %></td>

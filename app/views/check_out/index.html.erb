@@ -195,7 +195,7 @@
                                         
                                         <td data-title="Product Name">
                                             
-                                            <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id}, class: "product_title" %><br/>
+                                            <%= link_to item.product.display_name, {controller: "product", action: "index", id: item.product_id}, class: "product_title" %><br/>
         
                                             <% if item.product.get_old_price.present? and item.product.get_discount_percent.present? %>
                                                 
