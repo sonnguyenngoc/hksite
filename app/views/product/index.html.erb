@@ -89,7 +89,7 @@
 
                         <div class="single_product_description">
 
-                            <h3 class="offset_title"><%= @pro_detail.name %></h3>
+                            <h3 class="offset_title"><%= @pro_detail.display_name %></h3>
 
                             <div class="description_section">
 
@@ -314,7 +314,7 @@
 
                                     <div class="description">
     
-                                        <%= link_to (truncate(strip_tags(product.name), length: 28)), {controller: "product", action: "index", id: product.id} %>
+                                        <%= link_to (truncate(strip_tags(product.display_name), length: 28)), {controller: "product", action: "index", id: product.id} %>
             
                                         <div class="clearfix product_info">
                                             
@@ -409,7 +409,7 @@
                                         
                                         <div class="description">
     
-                                            <%= link_to (truncate(strip_tags(product.name), length: 28)), {controller: "product", action: "index", id: product.id} %>
+                                            <%= link_to (truncate(strip_tags(product.display_name), length: 28)), {controller: "product", action: "index", id: product.id} %>
                                             
                                             <p><%= product.product_info.bonus_product %></p>
                                             
