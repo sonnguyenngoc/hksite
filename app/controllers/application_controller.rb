@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   include CurrentCart
-  before_action :set_cart, only: [:index, :confirm_order, :create]
+  before_action :set_cart, only: [:index, :confirm_order, :create, :policy]
   
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
        controller_name == 'contact' || controller_name == 'about_us' || controller_name == 'shopping_cart' || controller_name == 'manufacturer_page'  || controller_name == 'manufacturer' ||
        controller_name == 'check_out' || controller_name == 'product' || controller_name == 'category_page' || controller_name == 'product_search' ||
        controller_name == 'all_bestseller_product' || controller_name == 'all_hot_product' || controller_name == 'all_new_product' || controller_name == 'all_prominent_product' || controller_name == 'all_sale_product' ||
-       controller_name == 'finish_checkout'
+       controller_name == 'finish_checkout' || controller_name == 'infomations'
           'frontend'
     elsif (devise_controller? && resource_name == :login && action_name != 'edit') || controller_name == 'passwords'
             'login'

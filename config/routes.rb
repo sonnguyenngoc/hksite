@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "blog_post" => "blog_post#index", as: :blog_post
   get "contact" => "contact#index", as: :contact
   get "about_us" => "about_us#index", as: :about_us
+  get "infomations/policy" => "infomations#policy", as: :policy
   get "shopping_cart" => "shopping_cart#index", as: :shopping_cart
   get "check_out" => "check_out#index", as: :check_out
   get "category_page/:id" => "category_page#index", as: :category_page
