@@ -346,6 +346,11 @@ class Product < ActiveRecord::Base
     
     return records.limit(20)
   end
+  
+  def display_description
+    html = description.gsub("\r\n", "<br/>")
+    return html.html_safe
+  end
 
   private
     # ensure that there are no line items referencing this product

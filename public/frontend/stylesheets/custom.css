@@ -353,3 +353,6 @@ a.skype > img {
     width: 900px;
   }
 }
+#thongsokythuat table {
+    border: solid 1px #ddd;
+}
