@@ -1,3 +1,6 @@
+<% content_for :title, @pro_detail.display_name %>
+<% content_for :meta_description, strip_tags(@pro_detail.display_description) %>
+
 <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
 <div class="wide_layout">
@@ -52,7 +55,7 @@
                             
                              <div class="image_preview_container">
 
-                                <img id="img_zoom" data-zoom-image="<%= @pro_detail.product_image.image %>" src="<%= @pro_detail.product_image.image %>" >
+                                <img id="img_zoom" data-zoom-image="<%= @pro_detail.product_image.image %>" src="<%= @pro_detail.product_image.image %>"  alt="<%= @pro_detail.display_name %>" title="<%= @pro_detail.display_name %>">
 
                             </div><!--/ .image_preview_container-->
 
@@ -68,7 +71,7 @@
                                         
                                             <a class="<%= "main_image" if @pro_detail.product_image.present? and @pro_detail.product_image.id == item.id %>" rel="<%= index %>" href="#" data-image="<%= item.image %>">
     
-                                                <img src="<%= item.image %>" data-large-image="<%= item.image %>" alt="">
+                                                <img src="<%= item.image %>" data-large-image="<%= item.image %>" alt="<%= @pro_detail.display_name %>" title="<%= @pro_detail.display_name %>">
 
                                             </a>
                                             
@@ -89,9 +92,9 @@
 
                         <div class="single_product_description">
 
-                            <h3 class="offset_title"><%= @pro_detail.display_name %></h3>
+                            <h1 class="offset_title"><%= @pro_detail.display_name %></h1>
 
-                            <div class="description_section">
+                            <!--<div class="description_section">
 
                                 <table class="product_info">
 
@@ -110,11 +113,11 @@
 
                             </div>
 
-                            <hr>
+                            <hr>-->
 
                             <div class="description_section">
 
-                                <p>Mô tả sản phẩm</p>
+                                <p class="description_section_label">Mô tả sản phẩm</p>
                                 <p><%= @pro_detail.display_description %></p>
 
                             </div>
@@ -352,7 +355,7 @@
 
                                     <div class="description">
     
-                                        <%= link_to (truncate(strip_tags(product.display_name), length: 28)), {controller: "product", action: "index", id: product.id} %>
+                                        <%= link_to (truncate(strip_tags(product.display_name), length: 28)), {controller: "product", action: "index", id: product.id, title: url_friendly(strip_tags(product.display_name))} %>
             
                                         <div class="clearfix product_info">
                                             

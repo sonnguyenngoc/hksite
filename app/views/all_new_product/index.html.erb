@@ -141,7 +141,7 @@
     
                                             <div class="description">
     
-                                                <%= link_to product.display_name, {controller: "product", action: "index", id: product.id} %>
+                                                <%= link_to product.display_name, {controller: "product", action: "index", id: product.id, title: url_friendly(strip_tags(product.display_name))} %>
     
                                                 <div class="clearfix product_info">
                                                     

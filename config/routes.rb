@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get "san-pham(/:title)-:id.html" => "product#index", as: :detail_products
+  get "chuyen-muc(/:title)-:id.html" => "category_page#index", as: :category_list
+  
   resources :product_images do
     collection do
       get :image

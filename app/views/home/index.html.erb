@@ -1,3 +1,5 @@
+<% content_for :title, "Trang chủ" %>
+
 <!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
 
 
@@ -146,7 +148,7 @@
     
                                                     <div class="description">
                                                         
-                                                        <%= link_to strip_tags(product.display_name), {controller: "product", action: "index", id: product.id}, title: product.display_name %>
+                                                        <%= link_to strip_tags(product.display_name), {controller: "product", action: "index", id: product.id, title: url_friendly(strip_tags(product.display_name))}, title: product.display_name %>
                                                         
                                                         <div class="clearfix product_info">
                                                             

@@ -189,13 +189,13 @@
                                         
                                         <td class="product_image_col" data-title="Product Image">
                                             
-                                            <%= link_to(image_tag(item.product.product_image.image, width: 86, height: 86), {controller: "product", action: "index", id: item.product_id}) %>
+                                            <%= link_to(image_tag(item.product.product_image.image, width: 86, height: 86), {controller: "product", action: "index", id: item.product_id, title: url_friendly(strip_tags(item.product.display_name))}) %>
                                             
                                         </td>
                                         
                                         <td data-title="Product Name">
                                             
-                                            <%= link_to item.product.display_name, {controller: "product", action: "index", id: item.product_id}, class: "product_title" %><br/>
+                                            <%= link_to item.product.display_name, {controller: "product", action: "index", id: item.product_id, title: url_friendly(strip_tags(item.product.display_name))}, class: "product_title" %><br/>
         
                                             <% if item.product.get_old_price.present? and item.product.get_discount_percent.present? %>
                                                 

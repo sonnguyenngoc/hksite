@@ -4,9 +4,9 @@ class HomeController < ApplicationController
     @message = Message.new
     @menu = Menu.all
     @company_info = Contact.find(1)
-    @product = Product.order("created_at DESC").first(12)
+    # @product = Product.order("created_at DESC").first(12)
     @blog = Article.get_all_articles.first(3)
-    @product = Product.last(12)
+    @product = Product.get_all.last(12)
     @slideshow = SlideShow.get_slideshows
     @new_blog_footer = Article.get_all_articles.first(3)
     @partners = Partner.order("created_at DESC").first(28)

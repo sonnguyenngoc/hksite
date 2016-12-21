@@ -190,7 +190,7 @@
 
                                         <li class="has_megamenu animated_item">
         
-                                            <%= link_to item.title, {:controller => "category_page", :action => "index", id: item.id } %>
+                                            <%= link_to item.title, {:controller => "category_page", :action => "index", id: item.id, title: url_friendly(item.title) } %>
         
                                             <!-- - - - - - - - - - - - - - Mega menu - - - - - - - - - - - - - - - - -->
         
@@ -212,7 +212,7 @@
                                             
                                                                     <% if child_2.level == 3 %>
                                                                         
-                                                                        <li><%= link_to child_2.title, {:controller => "category_page", :action => "index", id: child_2.id } %></a></li>
+                                                                        <li><%= link_to child_2.title, {:controller => "category_page", :action => "index", id: child_2.id, title: url_friendly(child_2.title) } %></a></li>
                                                                         
                                                                     <% end %>
                                                                 
@@ -297,9 +297,9 @@
     
                                             <div class="clearfix sc_product">
                                                 
-                                                <%= link_to(image_tag(item.product.product_image.image, width: 60, height: 60), {controller: "product", action: "index", id: item.product_id}, class: "product_thumb") %>
+                                                <%= link_to(image_tag(item.product.product_image.image, width: 60, height: 60), {controller: "product", action: "index", id: item.product_id, title: url_friendly(strip_tags(item.product.display_name))}, class: "product_thumb") %>
     
-                                                <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id}, class: "product_name" %>
+                                                <%= link_to item.product.name, {controller: "product", action: "index", id: item.product_id, title: url_friendly(strip_tags(item.product.display_name))}, class: "product_name" %>
     
                                                 <p><%= item.quantity %> x <%= item.product.display_price %> VNĐ</p>
     

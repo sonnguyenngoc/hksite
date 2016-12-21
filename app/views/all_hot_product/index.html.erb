@@ -107,7 +107,7 @@
                             
                                     <% if item.level == 1 %>
                                         
-                                        <li><a class="button_grey" <%= (link_to item.title, {controller: "category_page", action: "index", id: item.id }).html_safe %></a></li>
+                                        <li><a class="button_grey" <%= (link_to item.title, {controller: "category_page", action: "index", id: item.id, title: url_friendly(item.title) }).html_safe %></a></li>
                                         
                                     <% end %>
                                 
@@ -221,7 +221,7 @@
     
                                             <div class="description">
     
-                                                <%= link_to product.display_name, {controller: "product", action: "index", id: product.id} %>
+                                                <%= link_to product.display_name, {controller: "product", action: "index", id: product.id, title: url_friendly(strip_tags(product.display_name))} %>
     
                                                 <div class="clearfix product_info">
                                                     

@@ -100,7 +100,7 @@
     
                                             <div class="description">
     
-                                                <%= link_to (truncate(strip_tags(product.display_name), length: 35)), {controller: "product", action: "index", id: product.id}, title: "#{product.display_name}" %>
+                                                <%= link_to (truncate(strip_tags(product.display_name), length: 35)), {controller: "product", action: "index", id: product.id, title: url_friendly(strip_tags(product.display_name))}, title: "#{product.display_name}" %>
                                                 <div class="clearfix product_info">
                                                 
                                                 <% if product.product_price.price.nil? %>

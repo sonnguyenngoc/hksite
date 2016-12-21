@@ -50,5 +50,6 @@ gem 'will_paginate-bootstrap'
 gem "select2-rails"
 gem 'devise'
 gem 'will_paginate-bootstrap'
+gem "sixarm_ruby_unaccent", ">= 1.1.1", "< 2"
 
 

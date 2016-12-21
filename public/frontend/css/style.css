@@ -4122,7 +4122,11 @@ transition-duration:0.1s;
 		border-radius: 3px;
 	}
 
-	.offset_title{ padding-right:75px; }
+	.offset_title {
+		padding-right: 75px;
+		font-size: 24px;
+		line-height: 30px;
+	}
 
 	.seller{
 		padding-top: 19px;
@@ -6427,3 +6431,28 @@ only screen and (min-resolution: 144 dpi){
 		background-size:41px 33px;
 	}
 }
+
+.description_section h2 {
+	margin-bottom: 0;
+}
+.description_section h2 strong {
+	font-size: 17px;
+	font-weight: 600 !important;
+}
+.description_section_label {
+    font-size: 18px;
+    color: #0186c8;
+    font-weight: 600;
+    margin: 0 !important;
+}
+.countdown_title {
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 24px;
+}
+.product_price_table .price {
+    font-size: 26px;
+    line-height: 38px;
+	color: #ff8400;
+}
+.product_price_table .special_price {padding: 10px}

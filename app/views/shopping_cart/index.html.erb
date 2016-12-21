@@ -72,7 +72,7 @@
             
                                             <td data-title="Product Name">
                                                 
-                                                <%= link_to item.product.display_name, {controller: "product", action: "index", id: item.product_id}, class: "product_title" %> <br/>
+                                                <%= link_to item.product.display_name, {controller: "product", action: "index", id: item.product_id, title: url_friendly(strip_tags(item.product.display_name))}, class: "product_title" %> <br/>
                                                     
                                                 <% if item.product.get_old_price.present? and item.product.get_discount_percent.present? %>
                                                     
@@ -286,7 +286,7 @@
     
                             <div class="description">
     
-                                <%= link_to product.display_name, {controller: "product", action: "index", id: product.id} %>
+                                <%= link_to product.display_name, {controller: "product", action: "index", id: product.id, title: url_friendly(strip_tags(product.display_name))} %>
     
                                 <div class="clearfix product_info">
     

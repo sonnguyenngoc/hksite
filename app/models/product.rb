@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
   has_and_belongs_to_many :categories
   
   def self.get_all
-    self.where("products.status=1")
+    self.where("products.status=1").where("products.created_at > ? OR products.stock > 0", "2016-01-01".to_datetime)
   end
   
   def product_price
@@ -348,7 +348,7 @@ class Product < ActiveRecord::Base
   end
   
   def display_description
-    html = description.gsub("\r\n", "<br/>")
+    html = short_intro.gsub("\r\n", "<br/>")
     return html.html_safe
   end
 

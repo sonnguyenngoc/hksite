@@ -11,7 +11,7 @@
 
                 <li class="has_megamenu animated_item">
 
-                    <%= link_to item.title, {:controller => "category_page", :action => "index", id: item.id } %>
+                    <%= link_to item.title, {:controller => "category_page", :action => "index", id: item.id, title: url_friendly(item.title) } %>
 
                     <!-- - - - - - - - - - - - - - Mega menu - - - - - - - - - - - - - - - - -->
 
@@ -33,7 +33,7 @@
                     
                                             <% if child_2.level == 3 %>
                                                 
-                                                <li><%= link_to child_2.title, {:controller => "category_page", :action => "index", id: child_2.id } %></a></li>
+                                                <li><%= link_to child_2.title, {:controller => "category_page", :action => "index", id: child_2.id, title: url_friendly(child_2.title) } %></a></li>
                                                 
                                             <% end %>
                                         
@@ -132,7 +132,7 @@
         
                 <% if item.level == 1 %>
                     
-                    <li><a class="button_grey" <%= (link_to item.title, {controller: "category_page", action: "index", id: item.id }).html_safe %></a></li>
+                    <li><a class="button_grey" <%= (link_to item.title, {controller: "category_page", action: "index", id: item.id, title: url_friendly(item.title) }).html_safe %></a></li>
                     
                 <% end %>
             

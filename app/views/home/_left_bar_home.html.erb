@@ -62,7 +62,7 @@
 
                     <div class="description">
 
-                        <p><%= link_to (truncate(strip_tags(product.display_name), length: 35)), {controller: "product", action: "index", id: product.id} %></p>
+                        <p><%= link_to (truncate(strip_tags(product.display_name), length: 35)), {controller: "product", action: "index", id: product.id, title: url_friendly(strip_tags(product.display_name))} %></p>
                         
                         <p><%= product.product_info.bonus_product %></p>
 
