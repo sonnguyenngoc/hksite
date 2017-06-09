@@ -386,7 +386,7 @@
 
 	.show{ display: block; }
 
-	.transparent{ opacity:1; }
+	.transparent{ opacity:0; }
 
 	.invisible{ 
 		opacity: 0;
