@@ -6456,3 +6456,6 @@ only screen and (min-resolution: 144 dpi){
 	color: #ff8400;
 }
 .product_price_table .special_price {padding: 10px}
+.transparent {
+	opacity: 1;
+}
