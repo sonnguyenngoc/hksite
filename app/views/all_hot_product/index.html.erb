@@ -195,7 +195,7 @@
     
                                                     <div class="centered_buttons">
                                                         
-                                                        <% if !product.product_price.price.nil? %>
+                                                        <% if product.has_price %>
     
                                                             <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart" %>
                                                         
@@ -225,7 +225,7 @@
     
                                                 <div class="clearfix product_info">
                                                     
-                                                    <% if product.product_price.price.nil? %>
+                                                    <% if !product.has_price %>
     
                                                         <p class="product_price alignleft"><b>Liên hệ:(84-8) 3984 7690</b></p>
                                                     

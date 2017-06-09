@@ -107,7 +107,7 @@
     
                                                     <div class="centered_buttons">
                                                         
-                                                        <% if !product.product_price.price.nil? %>
+                                                        <% if product.has_price %>
     
                                                             <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_cart_fix" %>
                                                         
@@ -145,7 +145,7 @@
     
                                                 <div class="clearfix product_info">
                                                     
-                                                    <% if product.product_price.price.nil? %>
+                                                    <% if !product.has_price %>
                                                         <p class="product_price alignleft"><b style="color: #018bc8">Liên hệ báo giá</b></p>
                                                     <% elsif !product.get_old_price.nil? and (product.get_old_price.price.to_i > product.product_price.price.to_i) %>
                                                         <p class="product_price alignleft"><s style = "font-size: smaller;"><%= number_with_delimiter product.get_old_price.price.to_i %> </s>

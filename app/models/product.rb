@@ -308,9 +308,9 @@ class Product < ActiveRecord::Base
       result += categories.first.name + " "
     end
     
-    #if !manufacturer.nil? and manufacturer.name != 'none'
-    #  result += manufacturer.name + " "
-    #end
+    if !manufacturer.nil? and manufacturer.name != 'none'
+      result += manufacturer.name + " "
+    end
     
     result += name
     result += " " + product_code if !product_code.nil?
@@ -350,6 +350,10 @@ class Product < ActiveRecord::Base
   def display_description
     html = short_intro.gsub("\r\n", "<br/>")
     return html.html_safe
+  end
+  
+  def has_price
+    !self.product_price.price.nil? and !self.no_price
   end
 
   private

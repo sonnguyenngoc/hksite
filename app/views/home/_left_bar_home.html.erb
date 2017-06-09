@@ -28,7 +28,7 @@
 
                             <div class="centered_buttons">
 
-                                <% if !product.product_price.price.nil? %>
+                                <% if product.has_price %>
 
                                     <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue middle_btn add_to_cart add_cart_fix" %>
 
