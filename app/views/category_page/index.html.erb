@@ -148,7 +148,6 @@
                                                 <%= link_to product.display_name, {controller: "product", action: "index", id: product.id, title: url_friendly(strip_tags(product.display_name))} %>
     
                                                 <div class="clearfix product_info">
-
                                                     <% if !product.has_price %>
                                                         <p class="product_price alignleft"><b>Liên hệ:(84-8) 3984 7690</b></p>
                                                     <% elsif !product.get_old_price.nil? %>
@@ -157,7 +156,6 @@
                                                     <% else %>
                                                         <p class="product_price alignleft"><b><%= number_with_delimiter product.display_price %> VNĐ</b></p>
                                                     <% end %>
-    
                                                 </div>
     
                                             </div>

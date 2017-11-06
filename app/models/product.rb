@@ -353,6 +353,7 @@ class Product < ActiveRecord::Base
   end
   
   def has_price
+    return false if self.categories.map(&:id).include?(8)
     !self.product_price.price.nil? and !self.no_price
   end
 
