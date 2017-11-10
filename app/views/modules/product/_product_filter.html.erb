@@ -1,0 +1,44 @@
+<% if category.children.count > 0 %>
+<div class="filter-options-item filter-categori">
+    <div class="filter-options-title">Chuyên mục sản phẩm</div>
+    <div class="filter-options-content">
+        <ul>
+            <% category.children.each do |cat| %>
+            <li class="cat-parent"><%= cat.title %></li>
+                <% cat.children.each do |child_1| %>
+                    <li class="<%= 'active' if child_1.id == category.id %>">--- <%= link_to child_1.title,
+                        category_path(id: child_1.id, title: url_friendly(strip_tags(child_1.title))), title: child_1.title %></li>
+                <% end %>
+            <% end %>
+        </ul>
+    </div>
+</div>
+<% else %>
+    <% if category.parent.present? %>
+        <div class="filter-options-item filter-categori">
+            <div class="filter-options-title">Chuyên mục sản phẩm</div>
+            <div class="filter-options-content">
+                <ul>
+                    <% category.parent.first.children.each do |cat| %>
+                    <li class="<%= 'active' if cat.id == category.id %>"><%= link_to cat.title,
+                        category_path(id: cat.id, title: url_friendly(strip_tags(cat.title))), title: cat.title %></li>
+                    <% end %>
+                </ul>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+<% if manufacturers.count < 20 %>
+<div class="filter-options-item filter-brand">
+    <div class="filter-options-title">Thương hiệu sản phẩm</div>
+    <div class="filter-options-content">
+        <ul>
+            <% manufacturers.each do |manufacturer| %>
+                <li class="<%= 'active' if manufacturer.id == params[:manufacturer_id].to_i %>">
+                    <%= link_to manufacturer.name, category_path(manufacturer_id: manufacturer.id) %>
+                </li>
+            <% end %>
+        </ul>
+    </div>
+</div>
+<% end %>

@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="links">
+        <h3 class="quick-link">LIÊN KẾT NHANH</h3>
+        <% Menu.get_menus.each do |menu| %>
+            <% menu.children.each do |child_1| %>
+                <ul>
+                    <li><strong><%= link_to child_1.title, category_path(id: child_1.id, title: url_friendly(strip_tags(child_1.title))), title: child_1.title, class: 'links-primary quick-links-first' %>:</strong></li>
+                    <% child_1.children.each do |child_2| %>
+                        <li><%= link_to child_2.title, category_path(id: child_2.id, title: url_friendly(strip_tags(child_2.title))), title: child_2.title, class: 'quick-links-second' %></li>
+                    <% end %>
+                </ul>
+            <% end %>
+        <% end %>
+    </div>
+</div>

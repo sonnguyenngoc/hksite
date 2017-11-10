@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811090641) do
+ActiveRecord::Schema.define(version: 20171110070138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -225,9 +225,10 @@ ActiveRecord::Schema.define(version: 20160811090641) do
     t.string   "orderer_phone"
     t.string   "orderer_fax"
     t.text     "orderer_message"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.string   "orderer_tax"
+    t.boolean  "is_invoice",           default: false
   end
 
   create_table "deliveries", force: :cascade do |t|
@@ -311,6 +312,8 @@ ActiveRecord::Schema.define(version: 20160811090641) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "level"
+    t.string   "image_url"
+    t.string   "menu_image"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -535,7 +538,7 @@ ActiveRecord::Schema.define(version: 20160811090641) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.decimal  "price",           precision: 16, scale: 2
+    t.decimal  "price",             precision: 16, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "product_code"
@@ -544,11 +547,20 @@ ActiveRecord::Schema.define(version: 20160811090641) do
     t.string   "unit"
     t.integer  "user_id"
     t.integer  "tmpproduct"
-    t.integer  "stock",                                    default: 0
+    t.integer  "stock",                                      default: 0
     t.text     "serial_numbers"
-    t.integer  "status",                                   default: 1
+    t.integer  "status",                                     default: 1
     t.text     "note"
     t.text     "cache_search"
+    t.text     "intro"
+    t.integer  "tax_id"
+    t.text     "short_intro"
+    t.boolean  "no_price"
+    t.boolean  "erp_price_updated",                          default: false
+    t.boolean  "erp_imported",                               default: false
+    t.boolean  "suspended",                                  default: false
+    t.boolean  "erp_sold_out",                               default: false
+    t.decimal  "web_price",         precision: 16, scale: 2
   end
 
   create_table "roles", force: :cascade do |t|
@@ -699,12 +711,12 @@ ActiveRecord::Schema.define(version: 20160811090641) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -717,6 +729,7 @@ ActiveRecord::Schema.define(version: 20160811090641) do
     t.string   "mobile"
     t.string   "ATT_No"
     t.string   "image"
+    t.boolean  "is_soft",                default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

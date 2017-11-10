@@ -1,0 +1,50 @@
+<div class="owl-carousel nav-style2 border-background equal-container" data-nav="true" data-autoplay="false" data-dots="true" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":3},"992":{"items":2}}'>
+    <% Product.get_sale_products.each do |product| %>
+    <div class="deal-of-day equal-elem">
+        <div class="product-thumb style1">
+            <div class="thumb-inner">
+                <% if !product.product_image.id.nil? %>
+                    <%= link_to image_tag(product.product_image.image(:thumb170), alt: product.display_name),
+                                product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+                <% else %>
+                    <%= link_to image_tag('/hksite/images/no-image/thumb-170.jpg', alt: product.display_name),
+                                product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+                <% end %>
+            </div>
+        </div>
+        <div class="product-innfo">
+            <div class="product-name">
+                <%= link_to truncate(product.display_name, length: 45),
+                product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+            </div>
+            <% if product.has_price %>
+                <span class="price">
+                    <% if product.check_product_sale %>
+                        <ins><%= format_price(product.display_price) %></ins>
+                        <del><%= format_price(product.product_info.old_price) %></del>
+                        <% if product.get_percent_sale.present? %>
+                            <span class="onsale">-<%= product.get_percent_sale.to_f.round(0) %>%</span>
+                        <% end %>
+                    <% else %>
+                        <ins><%= format_price(product.display_price) %></ins>
+                    <% end %>
+                </span>                    
+            <% else %>
+                <span class="price">
+                    <ins>Liên hệ: (028) 3984 7690</ins>
+                </span>
+            <% end %>
+            <br><span class="star-rating">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+            </span>
+            <% if product.has_price %>
+                <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "btn-add-to-cart" %>
+            <% end %>
+        </div>
+    </div>
+    <% end %>
+</div>

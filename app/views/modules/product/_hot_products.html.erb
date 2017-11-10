@@ -1,0 +1,92 @@
+<div class="owl-ones-row">
+    <% Product.get_prominent_products[0..5].each do |product| %>
+    <div class="product-item style1">
+        <div class="product-inner">
+            <div class="product-thumb">
+                <div class="thumb-inner">
+                    <% if !product.product_image.id.nil? %>
+                        <%= link_to image_tag(product.product_image.image(:thumb80), alt: product.display_name),
+                                    product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+                    <% else %>
+                        <%= link_to image_tag('/hksite/images/no-image/thumb-80.jpg', alt: product.display_name),
+                                    product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+                    <% end %>
+                </div>
+            </div>
+            <div class="product-innfo">
+                <div class="product-name">
+                    <%= link_to truncate(product.display_name, length: 30),
+                    product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+                </div>
+                <% if product.has_price %>
+                    <span class="price">
+                        <% if product.check_product_sale %>
+                            <ins><%= format_price(product.display_price) %></ins>
+                            <del><%= format_price(product.product_info.old_price) %></del>
+                        <% else %>
+                            <ins><%= format_price(product.display_price) %></ins>
+                        <% end %>
+                    </span>                    
+                <% else %>
+                    <span class="price">
+                        <ins>Giá liên hệ</ins>
+                    </span>
+                <% end %>
+                <br><span class="star-rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </span>
+            </div>    
+        </div>
+    </div>
+    <% end %>
+</div>
+<div class="owl-ones-row">
+    <% Product.get_prominent_products[6..11].each do |product| %>
+    <div class="product-item style1">
+        <div class="product-inner">
+            <div class="product-thumb">
+                <div class="thumb-inner">
+                    <% if !product.product_image.id.nil? %>
+                        <%= link_to image_tag(product.product_image.image(:thumb80), alt: product.display_name),
+                                    product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+                    <% else %>
+                        <%= link_to image_tag('/hksite/images/no-image/thumb-80.jpg', alt: product.display_name),
+                                    product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+                    <% end %>
+                </div>
+            </div>
+            <div class="product-innfo">
+                <div class="product-name">
+                    <%= link_to truncate(product.display_name, length: 30),
+                    product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+                </div>
+                <% if product.has_price %>
+                    <span class="price">
+                        <% if product.check_product_sale %>
+                            <ins><%= format_price(product.display_price) %></ins>
+                            <del><%= format_price(product.product_info.old_price) %></del>
+                        <% else %>
+                            <ins><%= format_price(product.display_price) %></ins>
+                        <% end %>
+                    </span>                    
+                <% else %>
+                    <span class="price">
+                        <ins>Giá liên hệ</ins>
+                    </span>
+                <% end %>
+                <br><span class="star-rating">
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                    <i class="fa fa-star" aria-hidden="true"></i>
+                </span>
+            </div>    
+        </div>
+    </div>
+    <% end %>
+</div>

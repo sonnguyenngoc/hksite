@@ -6,6 +6,11 @@ class Menu < ActiveRecord::Base
   belongs_to :category
   has_many :categories_menus
   has_and_belongs_to_many :categories
+  
+  def self.get_menus
+    self.all.where(level: 1)
+            .order("created_at ASC")
+  end
 
   def update_level(lvl)
     self.level = lvl

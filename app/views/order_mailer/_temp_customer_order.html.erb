@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>-------- Thông tin người đặt hàng --------</p>
+    <p>
+      Tên người đặt hàng: <%= @customer_order.orderer_first_name + " " + @customer_order.orderer_last_name %>
+    </p>
+    <p>
+      Email người đặt hàng: <%= @customer_order.orderer_email %>
+    </p>
+    <p>
+      Số điện thoại: <%= @customer_order.orderer_phone %>
+    </p>
+    <p>
+      Mã fax: <%= @customer_order.orderer_fax %>
+    </p>
+    <p>
+      Tên công ty: <%= @customer_order.orderer_company_name %>
+    </p>
+    <p>
+      Mã số thuế: <%= @customer_order.orderer_tax %>
+    </p>
+    <p>
+      Địa chỉ giao hàng: <%= @customer_order.orderer_address_1 %>
+    </p>
+    <p>
+      Địa chỉ xuất hóa đơn: <%= @customer_order.orderer_address_2 %>
+    </p>
+    <p>
+      Lời nhắn: <%= @customer_order.orderer_message %>
+    </p>
+    <p>
+      Ngày gửi đơn hàng: <%= @customer_order.created_at.in_time_zone("Hanoi").strftime("%d/%m/%Y %H:%M") %> (GMT+07:00)
+    </p>
+    <p>
+      Email nhận: sonnn@hoangkhang.com.vn
+    </p>
+    <div class="form-group">
+        <p>-------- Danh sách sản phẩm đặt hàng --------</p>
+        <div class="col-sm-10">
+            <article>
+                <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Tên sản phẩm</th>
+                          <th>Giá</th>
+                          <th>Số lượng</th>
+                          <th>Thành tiền</th>
+                      </tr>
+                  </thead>
+                  
+                  <tbody>
+                        <% if @customer_order.customer_order_details.any? %>
+                            <% @customer_order.customer_order_details.each_with_index do |item,index| %>
+                                <tr class="<%= (index%2 == 1 ? "" : "alpha-teal") %>">
+                                    <td><%= item.product.display_name %></td>
+                                    <td><%= number_with_delimiter item.price.to_i %></td>
+                                    <td><%= item.quantity %></td>
+                                    <td><%= number_with_delimiter item.total.to_i %></td>
+                                </tr>
+                            <% end %>
+                        <% else %>
+                            <%= content_tag(:p, class: "form-control-static") do %>
+                                Danh sách đơn hàng trống....
+                            <% end %>
+                        <% end %>
+                  </tbody>
+                  
+                  <tfoot>
+                      <tr>
+                          <th>Tổng tiền</th>: <%= number_with_delimiter @customer_order.total.to_i %>
+                      </tr>
+                  </tfoot>
+                </table>
+            </article>
+        </div>
+    </div>
+  </body>
+</html>

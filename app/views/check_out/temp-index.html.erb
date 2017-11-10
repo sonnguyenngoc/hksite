@@ -18,772 +18,309 @@
 
             <ul class="breadcrumbs">
 
-                <li><a href="index.html">Trang chủ</a></li>
-                <li>Thanh toán</li>
+                <li><%= link_to "Trang chủ", root_path %></li>
+                <li>Đặt hàng</li>
 
             </ul>
-
-            <h1 class="page_title">Thanh toán</h1>
-
-            <!-- - - - - - - - - - - - - - Checkout method - - - - - - - - - - - - - - - - -->
-
-            <section class="section_offset">
-
-                <h3 class="offset_title">1. Hình thức thanh toán</h3>
-
-                <div class="relative">
-
-                    <a class="icon_btn button_dark_grey edit_button" href="#"><i class="icon-pencil"></i></a>
-
-
-                    <div class="table_layout">
-
-                        <div class="table_row">
-
-                            <div class="table_cell">
-
-                                <section>
-
-                                    <h4>Loại thanh toán: Khách hay Thành viên</h4>
-
-                                    <p class="subcaption">Đăng ký thành viên ngay để thuận tiện cho lần mua hàng sau.</p>
-
-                                    <form>
-
-                                        <ul>
-                                            
-                                            <li>
-
-                                                <input type="radio" checked name="radio_2" id="radio_button_1">
-                                                <label for="radio_button_1">Khách</label>
-
-                                            </li>
-
-                                            <li>
-
-                                                <input type="radio" name="radio_2" id="radio_button_2">
-                                                <label for="radio_button_2">Thành viên</label>
-
-                                            </li>
-
-                                        </ul>
-
-                                    </form>
-
-                                    <h5 class="sub bold">Thành viên và những lợi ích</h5>
-
-                                    <p class="subcaption">Đăng ký làm thành viên bạn có những lợi ích sau:</p>
-
-                                    <ul class="list_type_7">
-
-                                        <li>Thanh toán nhanh và tiện lợi.</li>
-                                        <li>Theo dõi được lịch sử mua hàng và tình trạng đơn hàng.</li>
-
-                                    </ul>
-
-                                </section>
-
-                            </div><!--/ .table_cell -->
-
-                            <div class="table_cell">
-
-                                <section>
-
-                                    <h4>Đăng nhập</h4>
-
-                                    <p class="subcaption">Nếu đã đăng ký tài khoản? Tiến hành đăng nhập:</p>
-
-                                    <form id="login_form" class="type_2">
-
-                                        <ul>
-
-                                            <li class="row">
-
-                                                <div class="col-xs-12">
-
-                                                    <label for="login_email" class="required">Địa chỉ email</label>
-                                                    <input type="email" name="" id="login_email">
-
-                                                </div>
-
-                                            </li>
-
-                                            <li class="row">
-
-                                                <div class="col-xs-12">
-
-                                                    <label for="login_password" class="required">Mật khẩu</label>
-                                                    <input type="password" name="" id="login_password">
-
-                                                </div>
-
-                                            </li>
-
-                                            <li class="row">
-
-                                                <div class="col-xs-12">
-
-                                                    <div class="on_the_sides">
-
-                                                        <div class="left_side">
-
-                                                            <a href="#" class="small_link">Quên mật khẩu?</a>
-
-                                                        </div>
-
-                                                        <div class="right_side">
-
-                                                            <span class="prompt">Bắt buộc nhập.</span>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-
-                                            </li>
-
-                                        </ul>
-
-                                    </form>
-
-                                </section>
-
-                            </div><!--/ .table_cell -->
-
-                        </div><!--/ .table_row -->
-
-                        <div class="table_row">
-
-                            <div class="table_cell">
-
-                                <a href="#" class="button_blue middle_btn">Tiếp tục</a>
-
-                            </div><!--/ .table_cell -->
-
-                            <div class="table_cell">
-
-                                <div class="on_the_sides login_with">
-
-                                    <div class="left_side">
-
-                                        <button type="submit" form="login_form" class="button_blue middle_btn">Đăng nhập</button>
-
-                                    </div>
-
-                                    <div class="right_side v_centered">
-
-                                        <h4>Hoặc đăng nhập bằng</h4>
-
-                                        <ul class="horizontal_list social_btns">
-
-                                            <li><a href="#" class="icon_btn middle_btn social_facebook tooltip_container"><i class="icon-facebook-1"></i><span class="tooltip top">Facebook</span></a></li>
-
-                                            <li><a href="#" class="icon_btn middle_btn social_googleplus tooltip_container"><i class="icon-google"></i><span class="tooltip top">Google</span></a></li>
-
-                                        </ul><!--/ .horizontal_list.social_btns-->
-
-                                    </div>
-
-                                </div>
-
-                            </div><!--/ .table_cell -->
-
-                        </div><!--/ .table_row -->
-
-                    </div><!--/ .table_layout -->
-
-                </div><!--/ .relative -->
-
-            </section><!--/ .section_offset -->
-
-            <!-- - - - - - - - - - - - - - End of checkout method - - - - - - - - - - - - - - - - -->
-
-            <!-- - - - - - - - - - - - - - Billing information - - - - - - - - - - - - - - - - -->
-
-            <section class="section_offset">
-
-                <h3>2. Thông tin thanh toán</h3>
-
-                <div class="theme_box">
-
-                    <a class="icon_btn button_dark_grey edit_button" href="#"><i class="icon-pencil"></i></a>
-
-                    <form class="type_2">
+            
+            <% if @cart.line_items.count > 0 %>
+
+                <h1 class="page_title">Đặt hàng</h1>
+    
+                <!-- - - - - - - - - - - - - - Billing information - - - - - - - - - - - - - - - - -->
+    
+                <section class="section_offset">
+    
+                    <h3 class="offset_title">1. Gửi đơn đặt hàng</h3>
+    
+                    <div class="theme_box">
                         
-                        <ul>
+                         <%= form_for @customer_order, html: {class: "type_2"} do |f| %>
                             
-                            <li class="row">
+                            <ul>
                                 
-                                <div class="col-sm-6">
+                                <li class="row">
                                     
-                                    <label for="first_name" class="required">Họ</label>
-                                    <input type="text" name="" id="first_name">
-
-                                </div><!--/ [col] -->
-
-                                <div class="col-sm-6">
+                                    <div class="col-sm-6">
+                                        
+                                        <label for="first_name" class="required">Họ</label>
+                                        <%= f.text_field :orderer_first_name, required: true %>
+    
+                                    </div><!--/ [col] -->
+    
+                                    <div class="col-sm-6">
+                                        
+                                        <label for="last_name" class="required">Tên</label>
+                                        <%= f.text_field :orderer_last_name, required: true %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!--/ .row -->
+    
+                                <li class="row">
                                     
-                                    <label for="last_name" class="required">Tên</label>
-                                    <input type="text" name="" id="last_name">
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
+                                    <div class="col-sm-6">
+                                        
+                                        <label for="company_name" class="required">Số điện thoại</label>
+                                        <%= f.text_field :orderer_phone, required: true %>
+    
+                                    </div><!--/ [col] -->
+    
+                                    <div class="col-sm-6">
+                                        
+                                        <label for="email_address">Địa chỉ email</label>
+                                        <%= f.text_field :orderer_email %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!--/ .row -->
                                 
-                                <div class="col-sm-6">
-                                    
-                                    <label for="company_name">Tên công ty</label>
-                                    <input type="text" name="" id="company_name">
-
-                                </div><!--/ [col] -->
-
-                                <div class="col-sm-6">
-                                    
-                                    <label for="email_address" class="required">Địa chỉ email</label>
-                                    <input type="text" name="" id="email_address">
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">	
-
-                                <div class="col-xs-12">
-
-                                    <label for="address" class="required">Địa chỉ</label>
-                                    <input type="text" name="" id="address">
-
-                                </div><!--/ [col] -->
-
-                            </li><!-- / .row -->
-
-                            <li class="row">
-
-                                <div class="col-xs-12">
-
-                                    <input type="text" name="">
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
-
-                                <div class="col-sm-6">
-                                    
-                                    <label for="city" class="required">Quận/Huyện</label>
-                                    <input type="text" name="" id="city">
-
-                                </div><!--/ [col] -->
-
-                                <div class="col-sm-6">
-
-                                    <label class="required">Tỉnh/Thành phố</label>
-
-                                    <div class="custom_select">
-
-                                        <select name="">
-
-                                            <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
-                                            <option value="Hà Nội">Hà Nội</option>
-                                            <option value="TP. Vũng Tàu">TP. Vũng Tàu</option>
-
-                                        </select>
-
-                                    </div>
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
-
-                                <div class="col-sm-6">
-
-                                    <label for="postal_code" class="required">Mã bưu chính/bưu điện</label>
-                                    <input type="text" name="" id="postal_code">
-
-                                </div><!--/ [col] -->
-
-                                <div class="col-sm-6">
-
-                                    <label class="required">Quốc gia</label>
-
-                                    <div class="custom_select">
-
-                                        <select name="">
-                                            
-                                            <option selected value="Việt Nam">Việt Nam</option>
-                                            <option value="Canada">Canada</option>
-                                            <option value="USA">USA</option>
-
-                                        </select>
-
-                                    </div>
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
-
-                                <div class="col-sm-6">
-
-                                    <label for="telephone" class="required">Số điện thoại</label>
-                                    <input type="text" name="" id="telephone">
-
-                                </div><!--/ [col] -->
-
-                                <div class="col-sm-6">
-
-                                    <label for="fax">Số fax</label>
-                                    <input type="text" name="" id="fax">
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
-
-                                <div class="col-sm-6">
-
-                                    <label for="password" class="required">Mật khẩu</label>
-                                    <input type="password" name="" id="password">
-
-                                </div><!--/ [col] -->
-
-                                <div class="col-sm-6">
-
-                                    <label for="confirm" class="required">Xác nhận mật khẩu</label>
-                                    <input type="password" name="" id="confirm">
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
-
-                                <div class="col-xs-12">
-
-                                    <input type="radio" checked name="ship" id="radio_1">
-                                    <label for="radio_1">Gửi theo địa chỉ hiện tại.</label>
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
-
-                                <div class="col-xs-12">
-
-                                    <input type="radio" name="ship" id="radio_2">
-                                    <label for="radio_2">Gửi theo địa chỉ khác.</label>
-
-                                </div>
-
-                            </li><!--/ .row -->
-
-                        </ul>
-
-                    </form>
-
-                </div>
-
-                <footer class="bottom_box on_the_sides">
-
-                    <div class="left_side">
-
-                        <a href="#" class="button_blue middle_btn">Tiếp tục</a>
-
+                                <li class="row">	
+    
+                                    <div class="col-xs-12">
+    
+                                        <label for="address">Tên công ty</label>
+                                        <%= f.text_field :orderer_company_name %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!-- / .row -->
+    
+                                <li class="row">	
+    
+                                    <div class="col-xs-12">
+    
+                                        <label for="address" class="required">Địa chỉ giao hàng</label>
+                                        <%= f.text_field :orderer_address_1, required: true %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!-- / .row -->
+                                
+                                <li class="row">	
+    
+                                    <div class="col-xs-12">
+    
+                                        <label for="address" >Địa chỉ xuất hóa đơn</label>
+                                        <%= f.text_field :orderer_address_2 %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!-- / .row -->
+    
+                                <li class="row">
+    
+                                    <div class="col-sm-6">
+                                        
+                                        <label for="first_name">Mã số thuế</label>
+                                        <%= f.text_field :orderer_tax %>
+    
+                                    </div><!--/ [col] -->
+    
+                                    <div class="col-sm-6">
+                                        
+                                        <label for="last_name">Mã fax</label>
+                                        <%= f.text_field :orderer_fax %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!--/ .row -->
+                                
+                                <li class="row">
+    
+                                    <div class="col-sm-12">
+    
+                                        <label for="telephone" class="required">Lời nhắn</label>
+                                        <%= f.text_field :orderer_message, required: true %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!--/ .row -->
+                                
+                                <li class="row">
+    
+                                    <div class="col-sm-6">
+                                        
+                                        <%= f.submit "Gửi đơn hàng", class: "button_blue middle_btn" %>
+    
+                                    </div><!--/ [col] -->
+    
+                                </li><!--/ .row -->
+    
+                            </ul>
+    
+                        <% end %>
+    
                     </div>
-
-                    <div class="right_side">
-
-                        <span class="prompt">Bắt buộc nhập.</span>
-
-                    </div>
-
-                </footer>
-
-            </section><!--/ .section_offset -->
-
-            <!-- - - - - - - - - - - - - - End of billing information - - - - - - - - - - - - - - - - -->
-
-            <!-- - - - - - - - - - - - - - Shipping information - - - - - - - - - - - - - - - - -->
-
-            <section class="section_offset">
-
-                <h3>3. Thông tin giao hàng</h3>
-
-                <div class="theme_box">
-
-                    <a class="icon_btn button_dark_grey edit_button" href="#"><i class="icon-pencil"></i></a>
-
-                    <form class="type_2">
-                        
-                        <ul>
-                            
-                            <li class="row">
+    
+                </section><!--/ .section_offset -->
+    
+                <!-- - - - - - - - - - - - - - End of billing information - - - - - - - - - - - - - - - - -->
+    
+                <!-- - - - - - - - - - - - - - Order review - - - - - - - - - - - - - - - - -->
+    
+                <section class="section_offset">
+    
+                    <h3>2. Xem lại đơn hàng</h3>
+    
+                    <div class="table_wrap">
+    
+                        <table class="table_type_1 order_review">
+    
+                            <thead>
                                 
-                                <div class="col-sm-6">
-                                    
-                                    <label for="first_name_1" class="required">Họ</label>
-                                    <input type="text" name="" id="first_name_1">
-
-                                </div><!--/ [col] -->
-
-                                <div class="col-sm-6">
-                                    
-                                    <label for="last_name_1" class="required">Tên</label>
-                                    <input type="text" name="" id="last_name_1">
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
-                                
-                                <div class="col-sm-6">
-                                    
-                                    <label for="company_name_1">Tên công ty</label>
-                                    <input type="text" name="" id="company_name_1">
-
-                                </div><!--/ [col] -->
-
-                                <div class="col-sm-6">
-                                    
-                                    <label for="email_address_1" class="required">Địa chỉ email</label>
-                                    <input type="text" name="" id="email_address_1">
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
-
-                                <div class="col-xs-12">
-
-                                    <label for="address_1" class="required">Địa chỉ</label>
-                                    <input type="text" name="" id="address_1">
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
-
-                                <div class="col-xs-12">
-
-                                    <input type="text" name="">
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
-
-                                <div class="col-sm-6">
-                                    
-                                    <label for="city_1" class="required">Quận/Huyện</label>
-                                    <input type="text" name="" id="city_1">
-
-                                </div><!--/ [col] -->
-
-                                <div class="col-sm-6">
-
-                                    <label class="required">Tỉnh/Thành phố</label>
-
-                                    <div class="custom_select">
-
-                                        <select name="">
-
-                                            <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
-                                            <option value="Hà Nội">Hà Nội</option>
-                                            <option value="TP. Vũng Tàu">TP. Vũng Tàu</option>
-
-                                        </select>
-
-                                    </div>
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
-
-                                <div class="col-sm-6">
-
-                                    <label for="postal_code_1" class="required">Mã bưu điện/bưu chính</label>
-                                    <input type="text" name="" id="postal_code_1">
-
-                                </div><!--/ [col] -->
-
-                                <div class="col-sm-6">
-
-                                    <label class="required">Country</label>
-
-                                    <div class="custom_select">
-
-                                        <select name="">
-                                            
-                                            <option selected value="Việt Nam">Việt Nam</option>
-                                            <option value="Canada">Canada</option>
-                                            <option value="USA">USA</option>
-
-                                        </select>
-
-                                    </div>
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                            <li class="row">
-
-                                <div class="col-sm-6">
-
-                                    <label for="telephone_1" class="required">Số điện thoại</label>
-                                    <input type="text" name="" id="telephone_1">
-
-                                </div><!--/ [col] -->
-
-                                <div class="col-sm-6">
-
-                                    <label for="fax_1">Mã fax</label>
-                                    <input type="text" name="" id="fax_1">
-
-                                </div><!--/ [col] -->
-
-                            </li><!--/ .row -->
-
-                        </ul>
-
-                    </form>
-
-                    <a href="#" class="button_grey middle_btn">Sử dụng địa chỉ thanh toán</a>
-
-                </div>
-
-                <footer class="bottom_box on_the_sides">
-
-                    <div class="left_side buttons_row">
-
-                        <a href="#" class="button_grey middle_btn">Quay lại</a>
-
-                        <a href="#" class="button_blue middle_btn">Tiếp tục</a>
-
-                    </div>
-
-                    <div class="right_side">
-
-                        <span class="prompt">Bắt buộc nhập.</span>
-
-                    </div>
-
-                </footer>
-
-            </section><!--/ .section_offset -->
-
-            <!-- - - - - - - - - - - - - - End of billing information - - - - - - - - - - - - - - - - -->
-
-            <!-- - - - - - - - - - - - - - Shipping method - - - - - - - - - - - - - - - - -->
-
-            <section class="section_offset">
-
-                <h3>4. Hình thức vận chuyển</h3>
-
-                <div class="theme_box">
-
-                    <a class="icon_btn button_dark_grey edit_button" href="#"><i class="icon-pencil"></i></a>
-
-                    <ul class="shipping_method">
-
-                        <li>
-
-                            <p class="subcaption bold">Miễn phí</p>
-
-                            <input type="radio" checked name="radio_3" id="radio_button_3">
-                            <label for="radio_button_3">0đ</label>
-
-                        </li>
-
-                        <li>
-
-                            <p class="subcaption bold">Tính phí</p>
-
-                            <input type="radio" name="radio_3" id="radio_button_4">
-                            <label for="radio_button_4"> 0đ</label>
-
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <footer class="bottom_box">
-
-                    <a href="#" class="button_blue middle_btn">Tiếp tục</a>
-
-                </footer>
-
-            </section>
-
-
-            <!-- - - - - - - - - - - - - - End of shipping method - - - - - - - - - - - - - - - - -->
-
-            <!-- - - - - - - - - - - - - - Payment information - - - - - - - - - - - - - - - - -->
-
-            <section class="section_offset">
-
-                <h3>5. Thông tin thanh toán</h3>
-
-                <div class="theme_box">
-
-                    <a class="icon_btn button_dark_grey edit_button" href="#"><i class="icon-pencil"></i></a>
-
-                    <p class="subcaption bold">Miễn phí vận chuyển</p>
-
-                    <ul class="simple_vertical_list">
-
-                        <li>
-
-                            <input type="radio" checked name="radio_4" id="radio_button_5">
-                            <label for="radio_button_5">Kiểm tra/Xem đơn hàng</label>
-
-                        </li>
-
-                        <li>
-
-                            <input type="radio" name="radio_4" id="radio_button_6">
-                            <label for="radio_button_6">Thẻ tín dụng (Đã lưu)</label>
-
-                        </li>
-
-                    </ul>
-
-                </div>
-
-                <footer class="bottom_box">
-
-                    <a href="#" class="button_blue middle_btn">Tiếp tục</a>
-
-                </footer>
-
-            </section>
-
-
-            <!-- - - - - - - - - - - - - - End of payment information - - - - - - - - - - - - - - - - -->
-
-            <!-- - - - - - - - - - - - - - Order review - - - - - - - - - - - - - - - - -->
-
-            <section class="section_offset">
-
-                <h3>6. Xem lại đơn hàng</h3>
-
-                <div class="table_wrap">
-
-                    <table class="table_type_1 order_review">
-
-                        <thead>
-                            
-                            <tr>
-                                
-                                <th class="product_title_col">Tên sản phẩm</th>
-                                <th class="product_sku_col">Mã sản phẩm</th>
-                                <th class="product_total_col">Giá</th>
-                                <th class="product_qty_col">Số lượng</th>
-                                <th class="product_total_col">Tổng tiền</th>
-
-                            </tr>
-
-                        </thead>
-
-                        <tbody>
-                            
-                            <% @cart.line_items.each do |item| %>
-                            
                                 <tr>
                                     
-                                    <td data-title="Product Name">
-                                        
-                                        <a href="#" class="product_title"><%= item.product.name %></a>
-    
-                                        <ul class="sc_product_info">
-    
-                                            <li>Ram: 1Gb</li>
-                                            <li>Màu: Hồng</li>
-    
-                                        </ul>
-    
-                                    </td>
-    
-                                    <td data-title="SKU"></td>
-    
-                                    <td data-title="Price" class="subtotal"><%= number_with_delimiter item.product.product_price.price.to_i %>đ</td>
-    
-                                    <td data-title="Quantity"><%= item.quantity %></td>
-    
-                                    <td data-title="Total" class="total"><%= number_with_delimiter item.total_item.to_i %>đ</td>
+                                    <th class="product_image_col">Hình ảnh</th>
+                                    <th class="product_title_col">Tên sản phẩm</th>
+                                    <th class="sum_total_col text-center">Đơn giá</th>
+                                    <th class="product_total_col text-center">Số lượng</th>
+                                    <th class="sum_total_col text-center">Thành tiền</th>
     
                                 </tr>
-                            <% end %>
-
-                        </tbody>
-
-                        <tfoot>
-
-                            <tr>
+    
+                            </thead>
+    
+                            <tbody>
                                 
-                                <td colspan="4" class="bold">Tổng tiền (Chưa giảm giá)</td>
-                                <td class="total"><%= number_with_delimiter @cart.total_order.to_i %>đ</td>
-
-                            </tr>
-
-                            <tr>
+                                <% @cart.line_items.each do |item| %>
                                 
-                                <td colspan="4" class="bold">Phí vận chuyển &amp; Tổng tiền (Chính thức)</td>
-                                <td class="total"><%= number_with_delimiter @cart.total_order.to_i %>đ</td>
+                                    <tr>
+                                        
+                                        <td class="product_image_col" data-title="Product Image">
+                                            
+                                            <%= link_to(image_tag(item.product.product_image.image, width: 86, height: 86), {controller: "product", action: "index", id: item.product_id, title: url_friendly(strip_tags(item.product.display_name))}) %>
+                                            
+                                        </td>
+                                        
+                                        <td data-title="Product Name">
+                                            
+                                            <%= link_to item.product.display_name, {controller: "product", action: "index", id: item.product_id, title: url_friendly(strip_tags(item.product.display_name))}, class: "product_title" %><br/>
+        
+                                            <% if item.product.get_old_price.present? and item.product.get_discount_percent.present? %>
+                                                
+                                                Sản phẩm khuyến mãi. <b class="safe_off">Giảm: <%= number_to_percentage(item.product.get_discount_percent, strip_insignificant_zeros: true) %></b><br/>
+                                                
+                                            <% end %>
+                                            
+                                            <% if !item.product.product_info.nil? and item.product.product_info.bonus_product != "" %>
+                                                
+                                                <%= item.product.product_info.bonus_product %>
+                                                
+                                            <% end %>
+        
+                                        </td>
+        
+                                        <td data-title="Price" class="subtotal text-center">
+                                            
+                                            <%= number_with_delimiter item.product.display_price %> VNĐ<br/>
+                                                    
+                                            <% if !item.product.get_old_price.nil? %>
+                                                
+                                                <s><%= number_with_delimiter item.product.get_old_price.price.to_i %> VNĐ <br/></s>
+                                                
+                                            <% end %>
+                                        
+                                        </td>
+        
+                                        <td data-title="Quantity"  class="text-center"><%= item.quantity %></td>
+        
+                                        <td data-title="Total" class="total text-center"><%= number_with_delimiter item.total_item.to_i %> VNĐ</td>
+        
+                                    </tr>
+                                <% end %>
+    
+                            </tbody>
+    
+                            <tfoot>
+    
+                                <tr>
+                                    
+                                    <td colspan="4" class="sum_total">Tổng tiền</td>
+                                    <td class="sum_total text-center"><%= number_with_delimiter @cart.total_order.to_i %> VNĐ</td>
+    
+                                </tr>
+    
+                            </tfoot>
+    
+                        </table>
+    
+                    </div><!--/ .table_wrap -->
+    
+                    <footer class="bottom_box on_the_sides">
+    
+                        <div class="left_side v_centered">
+                            
+                            <%= link_to "Chỉnh sửa giỏ hàng", {controller: "shopping_cart", action: "index"}, {class: "button_grey middle_btn"} %>
+    
+                        </div>
+    
+                    </footer>
+    
+    
+                </section>
+    
+                <!-- - - - - - - - - - - - - - End of order review - - - - - - - - - - - - - - - - -->
+                
+            <% else %>
+                
+                <div class="row">
 
-                            </tr>
+                    <div class="col-xs-12">
 
-                            <tr>
-                                
-                                <td colspan="4" class="grandtotal">Tổng cộng</td>
-                                <td class="grandtotal"><%= number_with_delimiter @cart.total_order.to_i %>đ</td>
+                        <div class="container_404">
 
-                            </tr>
+                            <p class="not_found">GIỎ HÀNG TRỐNG</p>
 
-                        </tfoot>
+                            <%= link_to "QUAY VỀ TRANG CHỦ", root_path, class: "button_dark_grey middle_btn" %>
 
-                    </table>
-
-                </div><!--/ .table_wrap -->
-
-                <footer class="bottom_box on_the_sides">
-
-                    <div class="left_side v_centered">
-
-                        <span>Thiếu sản phẩm?</span>
+                            <!-- - - - - - - - - - - - - - Search form - - - - - - - - - - - - - - - - -->
                         
-                        <%= link_to "Chỉnh sửa giỏ hàng", {controller: "shopping_cart", action: "index"}, {class: "button_grey middle_btn"} %>
+                            <%= form_tag({controller: "product_search", action: "index"}, method: "get", class: "clearfix search") do %>
+    
+                                <input type="text" name="search" tabindex="1" placeholder="Tìm kiếm..." class="alignleft">
+                                
+                                <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
+    
+                                <div class="search_category alignleft">
+                                    
+                                     <div class="">
+    
+                                        <select name="category_id">
+                                            
+                                            <option value="">Tất cả</option>
+                                            
+                                            <% @menu.each do |item| %>
+                                
+                                                <% if item.level == 1 %>
+                                                    
+                                                    <option value="<%= item.id %>" class="list_category_option"><%= item.title %></option>
+                                                
+                                                <% end %>
+                                            
+                                            <% end %>
+                                        
+                                        </select>
+    
+                                    </div><!--/ .custom_select -->
+    
+                                </div><!--/ .search_category.alignleft-->
+    
+                                <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
+    
+                                <button class="button_blue def_icon_btn alignleft"></button>
+    
+                            <% end %><!--/ #search-->
+                            
+                            <!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->
+                        
+                        </div><!--/ .align_center -->
 
-                    </div>
+                    </div><!--/ [col]-->
 
-                    <div class="right_side">
-
-                        <button class="button_blue middle_btn">Gửi đơn hàng</button>
-
-                    </div>
-
-                </footer>
-
-
-            </section>
-
-            <!-- - - - - - - - - - - - - - End of order review - - - - - - - - - - - - - - - - -->
+				</div>
+            
+            <% end %>
 
         </div><!--/ .container-->
 

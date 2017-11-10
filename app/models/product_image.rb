@@ -13,12 +13,16 @@ class ProductImage < ActiveRecord::Base
     end
   end
   
+  def url_friendly(string)
+    string.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip
+  end
+  
   def image(version = nil)
     return "/images/no_image.jpg" if id.nil?
   
     ActionView::Base.send(:include, Rails.application.routes.url_helpers)
     link_helper = ActionController::Base.helpers
     
-    link_helper.url_for(controller: "product_images", action: "image", id: self.id, type: version)
+    link_helper.url_for(controller: "product_images", action: "image", title: url_friendly(self.product.display_name), id: self.id, type: version)
   end
 end

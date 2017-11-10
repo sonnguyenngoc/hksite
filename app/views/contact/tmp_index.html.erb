@@ -1,0 +1,219 @@
+<% content_for :title, "Liên hệ" %>
+
+<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+<div class="wide_layout">
+
+    <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+    <%= render 'blog/header' %>
+    
+    <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="secondary_page_wrapper">
+
+        <div class="container">
+
+            <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+            <ul class="breadcrumbs">
+
+                <li><%= link_to "Trang chủ", root_path %></li>
+                <li>Liên hệ</li>
+
+            </ul>
+
+            <div class="row">
+
+                <aside class="col-md-3 col-sm-4">
+
+                    <!-- - - - - - - - - - - - - - Information - - - - - - - - - - - - - - - - -->
+
+                    <%= render 'left_bar_contact' %>
+
+                    <!-- - - - - - - - - - - - - - End of Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
+
+                </aside><!--/ [col]-->
+
+                <main class="col-md-9 col-sm-8">
+
+                    <section class="section_offset">
+                        
+                        <section>
+
+                            <h1>Liên hệ</h1>
+    
+                        </section>
+
+                        <div class="theme_box">
+
+                            <!-- - - - - - - - - - - - - - Contact form - - - - - - - - - - - - - - - - -->
+                            
+                            <%= form_for @message, url: admin_messages_path,html: {class: "contactform type_2"} do |f| %>
+
+                                <ul>
+                                
+                                    <li class="row">
+
+                                        <div class="col-sm-6">
+                                        
+                                            <label for="cf_name" class="required">Họ & Tên</label>
+                                            <%= f.text_field :name, placeholder: 'Họ & Tên (Bắt buộc)', required: true %>
+
+                                        </div><!--/ [col]-->
+
+                                        <div class="col-sm-6">
+
+                                            <label for="cf_email" class="required">Số điện thoại</label>
+                                            <%= f.telephone_field :phone, placeholder: 'Số điện thoại (Bắt buộc)', required: true %>
+
+                                        </div><!--/ [col]-->
+
+                                    </li><!--/ .row -->
+
+                                    <li class="row">
+
+                                        <div class="col-xs-12">
+
+                                            <label for="cf_order_number">Địa chỉ email</label>
+                                            <%= f.email_field :email, placeholder: 'Địa chỉ email' %>
+
+                                        </div><!--/ [col]-->
+
+                                    </li><!--/ .row -->
+
+                                    <li class="row margin-contact">
+
+                                        <div class="col-xs-12">
+
+                                            <label for="cf_message" class="required">Lời nhắn</label>
+                                            <%= f.text_field :messages, placeholder: 'Lời nhắn (Bắt buộc)', rows: '6', required: true %>
+
+                                        </div><!--/ [col]-->
+
+                                    </li><!--/ .row -->
+
+                                </ul>
+                                
+                                <footer class="bottom_box on_the_sides">
+
+                                    <div class="left_side">
+                                        
+                                        <%= f.submit 'Gửi liên hệ', class: 'button_dark_grey middle_btn' %>
+        
+                                    </div>
+        
+                                    <div class="right_side">
+        
+                                        <p class="prompt">Bắt buộc nhập</p>
+        
+                                    </div>
+        
+                                </footer>
+
+                            <% end %>
+
+                            <!-- - - - - - - - - - - - - - End of contact form - - - - - - - - - - - - - - - - -->
+
+                        </div><!--/ .theme_box -->
+
+                    </section>
+
+                    <section class="section_offset">
+
+                        <h3>Liên hệ giao dịch</h3>
+
+                        <div class="theme_box">
+
+                            <div class="row">
+                                
+                                <div class="col-sm-12 info-contact">
+
+                                    <p class="form_caption c_info_building"></li><strong>CN <%= @company_info.name %></strong></p>
+
+                                    <ul class="c_info_list">
+
+                                        <li class="c_info_location"><b>Địa chỉ: </b>188 Đường số 1, Phường 16, Quận Gò Vấp, TP.Hồ Chí Minh</li>
+                                        <li class="c_info_phone">
+                                            <b>Điện thoại: </b><%= @company_info.phone %><br />
+                                            <b>Hotline: </b>(08) 2212 9454 <i>(giờ hành chính)</i><br />
+                                            <b>Fax: </b><%= @company_info.fax %><br />
+                                            <b>MST: </b><%= @company_info.tax_code %>-001
+                                        </li>
+                                        <li class="c_info_mail"><b>Email: </b><a href="mailto:kinhdoanh@hoangkhang.com.vn">kinhdoanh@hoangkhang.com.vn</a></li>
+                                        <li class="c_info_schedule"><b>Giờ làm việc:</b>
+
+                                            <ul>
+
+                                                <li>Thứ 2 đến Thứ 6: Sáng 07:30 - 11:30; Chiều 13:00 - 17:00</li>
+                                                <li>Thứ 7: Sáng 07:30 - 12:00; Chiều nghỉ</li>
+                                                <li>Chủ nhật: Nghỉ</li>
+
+                                            </ul>
+
+                                        </li>
+
+                                    </ul>
+
+                                </div><!--/ [col]-->
+
+                                <div class="col-sm-12">
+
+                                    <div class="proportional_frame proportional_frame_fix">
+
+                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d979.631059828945!2d106.65701382916684!3d10.847674316657857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDUwJzUxLjYiTiAxMDbCsDM5JzI3LjIiRQ!5e0!3m2!1svi!2s!4v1456217935069" style="border:0" allowfullscreen></iframe>
+
+                                    </div>
+
+                                </div><!--/ [col]-->
+
+                            </div><!--/ .row -->
+
+                        </div><!--/ .theme_box -->
+
+                    </section>
+
+                </main><!--/ [col]-->
+
+            </div><!--/ .row-->
+
+        </div><!--/ .container-->
+
+    </div><!--/ .page_wrapper-->
+    
+    <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+    <%= render 'blog/footer' %>
+    
+    <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+</div><!--/ [layout]-->
+
+<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+<%= render "home/social_feeds" %>
+
+<!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+
+<!-- Include Libs & Plugins
+============================================ -->
+<%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+<%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+<%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+<%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+<%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+<%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+<%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+<%= javascript_include_tag '/frontend/js/retina.min.js' %>
+<%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+
+<!-- Theme files
+============================================ -->
+<%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+<%= javascript_include_tag '/frontend/js/theme.core.js' %>

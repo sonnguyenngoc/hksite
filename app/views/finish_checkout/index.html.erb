@@ -1,115 +1,16 @@
-<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+<main class="site-main contact-us finish-checkout">
+    <div class="container">
+        <ol class="breadcrumb-page">
+            <li><%= link_to 'Trang Chủ', root_path %></li>
+            <li class="active"><%= link_to 'Đặt Hàng Thành Công', 'javascript:void(0)' %></li>
+        </ol>
+    </div>
 
-<div class="wide_layout">
-
-    <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
-
-    <%= render 'blog/header' %>
-    
-    <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
-
-    <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
-
-    <div class="secondary_page_wrapper">
-
-        <div class="container">
-
-            <div class="row">
-
-                <div class="col-xs-12">
-
-                    <div class="container_404">
-
-                        <p class="not_found_404">CẢM ƠN!</p>
-
-                        <p class="not_found">ĐƠN HÀNG CỦA BẠN ĐƯỢC GỬI THÀNH CÔNG!</p>
-
-                        <%= link_to "QUAY VỀ TRANG CHỦ", root_path, class: "button_blue middle_btn" %>
-
-                        <!-- - - - - - - - - - - - - - Search form - - - - - - - - - - - - - - - - -->
-                        
-                        <%= form_tag({controller: "product_search", action: "index"}, method: "get", class: "clearfix search") do %>
-
-                            <input type="text" name="search" tabindex="1" placeholder="Tìm kiếm..." class="alignleft">
-                            
-                            <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
-
-                            <div class="search_category alignleft">
-                                
-                                 <div class="">
-
-                                    <select name="category_id">
-                                        
-                                        <option value="">Tất cả</option>
-                                        
-                                        <% @menu.each do |item| %>
-                            
-                                            <% if item.level == 1 %>
-                                                
-                                                <option value="<%= item.id %>" class="list_category_option"><%= item.title %></option>
-                                            
-                                            <% end %>
-                                        
-                                        <% end %>
-                                    
-                                    </select>
-
-                                </div><!--/ .custom_select -->
-
-                            </div><!--/ .search_category.alignleft-->
-
-                            <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
-
-                            <button class="button_blue def_icon_btn alignleft"></button>
-
-                        <% end %><!--/ #search-->
-                        
-                        <!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->
-
-                    </div><!--/ .align_center -->
-
-                </div><!--/ [col]-->
-
-            </div><!--/ .row -->
-
-        </div><!--/ .container-->
-
-    </div><!--/ .page_wrapper-->
-    
-    <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
-
-    <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
-
-    <%= render 'blog/footer' %>
-    
-    <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
-
-</div><!--/ [layout]-->
-
-<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
-
-<!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
-
-<%= render "home/social_feeds" %>
-
-<!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
-
-<!-- Include Libs & Plugins
-============================================ -->
-<%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
-<%= javascript_include_tag '/frontend/js/jquery-ui.min.js' %>
-<%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
-<%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
-<%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
-<%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
-<%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
-<%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
-<%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
-<%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
-<%= javascript_include_tag '/frontend/js/retina.min.js' %>
-<%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
-
-<!-- Theme files
-============================================ -->
-<%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
-<%= javascript_include_tag '/frontend/js/theme.core.js' %>
+    <div class="container">
+        <div class="row">
+            <div class="contact-map full-width">
+                <a href=""><img src="/hksite/images/map.jpg" alt="map"></a>
+            </div>            
+        </div>
+    </div>
+</main>

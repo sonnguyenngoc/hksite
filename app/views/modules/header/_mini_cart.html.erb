@@ -1,0 +1,78 @@
+<div class="block-minicart dropdown style2">                                
+    <a class="minicart" href="javascript:void(0)">
+        <span class="counter qty">
+            <span class="cart-icon"><i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
+            <span class="counter-number">
+                <% if @cart.present? %><%= @cart.count_quantity %><% else %>0<% end %>
+            </span>
+        </span>
+        <span class="counter-your-cart">
+            <span class="counter-label">GIỎ HÀNG</span>
+            <span class="counter-price">
+                <% if @cart.present? %><%= format_price(@cart.total_order) %><% else %><%= format_price(0) %><% end %>                
+            </span>
+        </span>
+    </a>
+    <div class="parent-megamenu">
+        <% if @cart.present? %>
+            <div class="minicart-content-wrapper" >
+                <% if @cart.line_items.count > 0 %>
+                    <div class="subtitle">
+                        Hiện có <span><%= @cart.count_quantity %></span> sản phẩm trong giỏ hàng.
+                    </div>
+                    <div class="minicart-items-wrapper">
+                        <ol class="minicart-items">
+                            <% @cart.line_items.each do |line_item| %>
+                            <li class="product-inner">
+                                <div class="product-thumb style1">
+                                    <div class="thumb-inner">
+                                       <% if !line_item.product.product_image.id.nil? %>
+                                            <%= link_to image_tag(line_item.product.product_image.image(:thumb80), alt: line_item.product.display_name),
+                                                        product_path(id: line_item.product.id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.product.display_name %>
+                                        <% else %>
+                                            <%= link_to image_tag('/hksite/images/no-image/thumb-80.jpg', alt: line_item.product.display_name),
+                                                        product_path(id: line_item.product.id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.product.display_name %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                                <div class="product-innfo">
+                                    <div class="product-name">
+                                        <%= line_item.quantity %> x <%= link_to truncate(line_item.get_product_name, length: 35),
+                                        product_path(id: line_item.product_id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.get_product_name %>
+                                    </div>
+                                    <span class="price">
+                                        <% if line_item.product.check_product_sale %>
+                                            <ins><%= format_price(line_item.product.display_price) %></ins>
+                                            <del><%= format_price(line_item.product.product_info.old_price) %></del>
+                                        <% else %>
+                                            <ins><%= format_price(line_item.product.display_price) %></ins>
+                                        <% end %>
+                                    </span>
+                                </div>
+                            </li>
+                            <% end %>
+                        </ol>
+                    </div>
+                    <div class="subtotal">
+                        <span class="label">Thành tiền:</span>
+                        <span class="price"><%= format_price(@cart.total_order) %></span>
+                    </div>
+                    <div class="actions">
+                        <%= link_to 'Giỏ hàng', shopping_cart_path, title: "Xem giỏ hàng", class: 'btn btn-viewcart' %>
+                        <%= link_to 'Đặt hàng', check_out_path, title: "Đặt hàng", class: 'btn btn-checkout' %>
+                    </div>
+                <% else %>
+                    <div class="subtitle">
+                        Hiện có <span>0</span> sản phẩm trong giỏ hàng.
+                    </div>
+                <% end %>
+            </div>
+        <% else %>
+            <div class="minicart-content-wrapper" >
+                <div class="subtitle">
+                    Hiện có <span>0</span> sản phẩm trong giỏ hàng.
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

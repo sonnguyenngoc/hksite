@@ -1,8 +1,6 @@
 class OrderMailer < ApplicationMailer
-  default from: 'sonnn@hoangkhang.com.vn'
-  
   def customer_order_email(customer_order)
     @customer_order = customer_order
-    mail(to: "sonnn@hoangkhang.com.vn", subject: "Đơn đặt hàng")
+    mail(to: "sonnn@hoangkhang.com.vn", subject: @customer_order.created_at.utc.in_time_zone("Hanoi").strftime("%Y%m%d%H%M")+" - ĐƠN ĐẶT HÀNG")
   end
 end

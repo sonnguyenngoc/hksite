@@ -1,6 +1,7 @@
 class Product < ActiveRecord::Base
   has_and_belongs_to_many :categories
   belongs_to :manufacturer
+  has_many :order_details
   has_one :product_info, dependent: :destroy
   has_many :product_prices
   has_many :product_images
@@ -12,6 +13,10 @@ class Product < ActiveRecord::Base
   
   def self.get_all
     self.where("products.status=1").where("products.created_at > ? OR products.stock > 0", "2016-01-01".to_datetime)
+  end
+  
+  def self.get_all_stock_ready
+    self.where('stock > 1')
   end
   
   def product_price
@@ -55,55 +60,46 @@ class Product < ActiveRecord::Base
     return records
   end
   
-  def self.get_sale_products(params)  
-    records = self.get_all.includes(:product_info).where(product_infos: {product_sale: "on"}).order("product_infos.updated_at DESC")
-    if params[:sort_by] == 'name'
-      products = self.get_all.joins(:product_info).where(product_infos: {product_sale: "on"})
-      records = products.order("products.name #{params[:sort_group]}")
+  def check_product_sale
+    if product_info.present?
+      product_info.product_sale == 'on'
     end
-    
-    if params[:sort_by] == 'created_at'
-      products = self.get_all.joins(:product_info).where(product_infos: {product_sale: "on"})
-      records = products.order("products.created_at #{params[:sort_group]}")
-    end
-    
-    return records
   end
   
-  def self.get_bestseller_products(params)
+  def get_percent_sale
+    if product_info.sale_off_price.present? && product_info.sale_off_price > 1
+      product_info.sale_off_price
+    end
+  end
+  
+  def self.get_sale_products
+    records = self.get_all.includes(:product_info)
+                  .where(product_infos: {product_sale: "on"})
+                  .order("product_infos.updated_at DESC")
+    
+    return records.limit(18)
+  end
+  
+  def self.get_bestseller_products
     records = self.get_all.joins(:product_info)
-                                      .where(product_infos: {product_bestselled: "on"}).order("product_infos.updated_at DESC")
-    if params[:sort_by] == 'name'
-      products = self.get_all.joins(:product_info).where(product_infos: {product_bestselled: "on"})
-      records = products.order("products.name #{params[:sort_group]}")
-    end
+                  .where(product_infos: {product_bestselled: "on"})
+                  .order("product_infos.updated_at DESC")
     
-    if params[:sort_by] == 'created_at'
-      products = self.get_all.joins(:product_info).where(product_infos: {product_bestselled: "on"})
-      records = products.order("products.created_at #{params[:sort_group]}")
-    end
-    
-    return records
+    return records.limit(20)
   end
   
-  def self.get_prominent_products(params)
+  def self.get_prominent_products
     records = self.get_all.joins(:product_info)
-                                      .where(product_infos: {product_prominent: "on"}).order("product_infos.updated_at DESC")
-    if params[:sort_by] == 'name'
-      products = self.get_all.joins(:product_info).where(product_infos: {product_prominent: "on"})
-      records = products.order("products.name #{params[:sort_group]}")
-    end
+                  .where(product_infos: {product_prominent: "on"})
+                  .order("product_infos.updated_at DESC")
     
-    if params[:sort_by] == 'created_at'
-      products = self.get_all.joins(:product_info).where(product_infos: {product_prominent: "on"})
-      records = products.order("products.created_at #{params[:sort_group]}")
-    end
-    
-    return records
+    return records.limit(20)
   end
   
-  def self.get_new_products(params)
-    records = self.get_all.order("stock DESC")
+  def self.get_stock_products
+    records = self.get_all_stock_ready.joins(:categories)
+                  .where(categories: {id: [2, 14, 19, 54, 74, 127, 152]}).uniq.order("stock DESC")
+    return records.limit(40)
   end
   
   def self.get_new_products_manual(params)
@@ -316,6 +312,22 @@ class Product < ActiveRecord::Base
     result += " " + product_code if !product_code.nil?
     
     return result.strip
+  end
+  
+  def get_manufacturer_name
+    if manufacturer.present?
+      manufacturer.name
+    else
+      return 'Unknown'
+    end
+  end
+  
+  def get_warranty
+    if warranty.present?
+      return warranty
+    else
+      return '0'
+    end
   end
   
   def get_discount_percent

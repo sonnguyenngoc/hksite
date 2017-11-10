@@ -1,364 +1,117 @@
-<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
-
-<div class="wide_layout">
-
-    <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
-
-    <%= render 'blog/header' %>
-    
-    <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
-
-    <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
-
-    <div class="secondary_page_wrapper">
-
-        <div class="container">
-
-            <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
-
-            <ul class="breadcrumbs">
-
-                <li><%= link_to "Trang chủ", root_path %></li>
-                <li>Đặt hàng</li>
-
-            </ul>
-            
-            <% if @cart.line_items.count > 0 %>
-
-                <h1 class="page_title">Đặt hàng</h1>
-    
-                <!-- - - - - - - - - - - - - - Billing information - - - - - - - - - - - - - - - - -->
-    
-                <section class="section_offset">
-    
-                    <h3 class="offset_title">1. Gửi đơn đặt hàng</h3>
-    
-                    <div class="theme_box">
-                        
-                         <%= form_for @customer_order, html: {class: "type_2"} do |f| %>
-                            
-                            <ul>
-                                
-                                <li class="row">
-                                    
-                                    <div class="col-sm-6">
-                                        
-                                        <label for="first_name" class="required">Họ</label>
-                                        <%= f.text_field :orderer_first_name, required: true %>
-    
-                                    </div><!--/ [col] -->
-    
-                                    <div class="col-sm-6">
-                                        
-                                        <label for="last_name" class="required">Tên</label>
-                                        <%= f.text_field :orderer_last_name, required: true %>
-    
-                                    </div><!--/ [col] -->
-    
-                                </li><!--/ .row -->
-    
-                                <li class="row">
-                                    
-                                    <div class="col-sm-6">
-                                        
-                                        <label for="company_name" class="required">Số điện thoại</label>
-                                        <%= f.text_field :orderer_phone, required: true %>
-    
-                                    </div><!--/ [col] -->
-    
-                                    <div class="col-sm-6">
-                                        
-                                        <label for="email_address">Địa chỉ email</label>
-                                        <%= f.text_field :orderer_email %>
-    
-                                    </div><!--/ [col] -->
-    
-                                </li><!--/ .row -->
-                                
-                                <li class="row">	
-    
-                                    <div class="col-xs-12">
-    
-                                        <label for="address">Tên công ty</label>
-                                        <%= f.text_field :orderer_company_name %>
-    
-                                    </div><!--/ [col] -->
-    
-                                </li><!-- / .row -->
-    
-                                <li class="row">	
-    
-                                    <div class="col-xs-12">
-    
-                                        <label for="address" class="required">Địa chỉ giao hàng</label>
-                                        <%= f.text_field :orderer_address_1, required: true %>
-    
-                                    </div><!--/ [col] -->
-    
-                                </li><!-- / .row -->
-                                
-                                <li class="row">	
-    
-                                    <div class="col-xs-12">
-    
-                                        <label for="address" >Địa chỉ xuất hóa đơn</label>
-                                        <%= f.text_field :orderer_address_2 %>
-    
-                                    </div><!--/ [col] -->
-    
-                                </li><!-- / .row -->
-    
-                                <li class="row">
-    
-                                    <div class="col-sm-6">
-                                        
-                                        <label for="first_name">Mã số thuế</label>
-                                        <%= f.text_field :orderer_tax %>
-    
-                                    </div><!--/ [col] -->
-    
-                                    <div class="col-sm-6">
-                                        
-                                        <label for="last_name">Mã fax</label>
-                                        <%= f.text_field :orderer_fax %>
-    
-                                    </div><!--/ [col] -->
-    
-                                </li><!--/ .row -->
-                                
-                                <li class="row">
-    
-                                    <div class="col-sm-12">
-    
-                                        <label for="telephone" class="required">Lời nhắn</label>
-                                        <%= f.text_field :orderer_message, required: true %>
-    
-                                    </div><!--/ [col] -->
-    
-                                </li><!--/ .row -->
-                                
-                                <li class="row">
-    
-                                    <div class="col-sm-6">
-                                        
-                                        <%= f.submit "Gửi đơn hàng", class: "button_blue middle_btn" %>
-    
-                                    </div><!--/ [col] -->
-    
-                                </li><!--/ .row -->
-    
-                            </ul>
-    
-                        <% end %>
-    
+<main class="site-main checkout">
+    <div class="container">
+        <ol class="breadcrumb-page">
+            <li><%= link_to 'Trang Chủ', root_path %></li>
+            <li class="active"><%= link_to 'Đặt Hàng', 'javascript:void(0)' %></li>
+        </ol>
+    </div>
+    <div class="container">
+        <%= form_for @customer_order, html: {class: "checkout"} do |f| %>
+            <h1>THÔNG TIN ĐẶT HÀNG</h1>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="customer_order_orderer_first_name" class="title">Họ <span class="required">*</span></label>
+                            <%= f.text_field :orderer_first_name, required: true, placeholder: 'Vui lòng nhập họ tại đây.....', class: 'form-control required' %>
+                        </div>
+                        <div class="form-group col-md-6">   
+                            <label for="customer_order_orderer_last_name" class="title">Tên <span class="required">*</span></label>
+                            <%= f.text_field :orderer_last_name, required: true, placeholder: 'Vui lòng nhập tên tại đây.....', class: 'form-control required' %>
+                        </div>
                     </div>
-    
-                </section><!--/ .section_offset -->
-    
-                <!-- - - - - - - - - - - - - - End of billing information - - - - - - - - - - - - - - - - -->
-    
-                <!-- - - - - - - - - - - - - - Order review - - - - - - - - - - - - - - - - -->
-    
-                <section class="section_offset">
-    
-                    <h3>2. Xem lại đơn hàng</h3>
-    
-                    <div class="table_wrap">
-    
-                        <table class="table_type_1 order_review">
-    
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="customer_order_orderer_phone" class="title">Số điện thoại <span class="required">*</span></label>
+                            <%= f.text_field :orderer_phone, required: true, placeholder: 'Vui lòng nhập số điện thoại.....', class: 'form-control required' %>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="customer_order_orderer_email" class="title">Địa chỉ email <span class="required">*</span></label>
+                            <%= f.text_field :orderer_email, required: true, placeholder: 'Vui lòng nhập địa chỉ email.....', class: 'form-control required email' %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="customer_order_orderer_address_1" class="title">Địa chỉ giao hàng <span class="required">*</span></label>
+                            <%= f.text_field :orderer_address_1, required: true, placeholder: 'Vui lòng nhập địa chỉ giao hàng.....', class: 'form-control required' %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="customer_order_orderer_company_name" class="title">Tên công ty</label>
+                            <%= f.text_field :orderer_company_name, placeholder: 'Vui lòng nhập tên công ty.....', class: 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="customer_order_orderer_tax" class="title">Mã số thuế</label>
+                            <%= f.text_field :orderer_tax, placeholder: 'Vui lòng nhập mã số thuế.....', class: 'form-control' %>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="customer_order_orderer_fax" class="title">Mã fax</label>
+                            <%= f.text_field :orderer_fax, placeholder: 'Vui lòng nhập mã fax.....', class: 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="customer_order_orderer_address_2" class="title">Địa chỉ xuất hóa đơn</label>
+                            <%= f.text_field :orderer_address_2, required: true, placeholder: 'Vui lòng nhập địa chỉ xuất hóa đơn.....', class: 'form-control required' %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="customer_order_orderer_message" class="title">Lời nhắn</label>
+                            <%= f.text_area :orderer_message, placeholder: 'Vui lòng nhập lời nhắn (nếu có).....', class: 'form-control' %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group shipping col-md-12">
+                            <ul>
+                                <li>
+                                    <label class="inline" for="customer_order_is_invoice">
+                                        <input type="checkbox" id="customer_order_is_invoice" name="customer_order[is_invoice]" value="1">
+                                        <span class="input"></span>Có xuất hóa đơn?
+                                    </label>
+                                </li>                                
+                            </ul>
+                            <button type="submit" class="btn-order">ĐỒNG Ý ĐẶT HÀNG</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group payment col-md-6">
+                    <h4 class="title-shopping-cart">THÔNG TIN ĐƠN HÀNG</h4>
+                    <div class="table-cart check-my-order">
+                        <table class="table">
                             <thead>
-                                
                                 <tr>
-                                    
-                                    <th class="product_image_col">Hình ảnh</th>
-                                    <th class="product_title_col">Tên sản phẩm</th>
-                                    <th class="sum_total_col text-center">Đơn giá</th>
-                                    <th class="product_total_col text-center">Số lượng</th>
-                                    <th class="sum_total_col text-center">Thành tiền</th>
-    
+                                    <th class="tb-product">Tên sản phẩm</th>
+                                    <th class="tb-price">Đơn giá</th>
+                                    <th class="tb-qty">Số lượng</th>
+                                    <th class="tb-total">Thành tiền</th>
                                 </tr>
-    
                             </thead>
-    
                             <tbody>
-                                
-                                <% @cart.line_items.each do |item| %>
-                                
+                                <% @cart.line_items.each do |line_item| %>
                                     <tr>
-                                        
-                                        <td class="product_image_col" data-title="Product Image">
-                                            
-                                            <%= link_to(image_tag(item.product.product_image.image, width: 86, height: 86), {controller: "product", action: "index", id: item.product_id, title: url_friendly(strip_tags(item.product.display_name))}) %>
-                                            
+                                        <td class="tb-product">
+                                            <div class="product-name">
+                                                <%= link_to truncate(line_item.get_product_name, length: 60),
+                                                product_path(id: line_item.product_id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.get_product_name %>
+                                            </div>
                                         </td>
-                                        
-                                        <td data-title="Product Name">
-                                            
-                                            <%= link_to item.product.display_name, {controller: "product", action: "index", id: item.product_id, title: url_friendly(strip_tags(item.product.display_name))}, class: "product_title" %><br/>
-        
-                                            <% if item.product.get_old_price.present? and item.product.get_discount_percent.present? %>
-                                                
-                                                Sản phẩm khuyến mãi. <b class="safe_off">Giảm: <%= number_to_percentage(item.product.get_discount_percent, strip_insignificant_zeros: true) %></b><br/>
-                                                
-                                            <% end %>
-                                            
-                                            <% if !item.product.product_info.nil? and item.product.product_info.bonus_product != "" %>
-                                                
-                                                <%= item.product.product_info.bonus_product %>
-                                                
-                                            <% end %>
-        
-                                        </td>
-        
-                                        <td data-title="Price" class="subtotal text-center">
-                                            
-                                            <%= number_with_delimiter item.product.display_price %> VNĐ<br/>
-                                                    
-                                            <% if !item.product.get_old_price.nil? %>
-                                                
-                                                <s><%= number_with_delimiter item.product.get_old_price.price.to_i %> VNĐ <br/></s>
-                                                
-                                            <% end %>
-                                        
-                                        </td>
-        
-                                        <td data-title="Quantity"  class="text-center"><%= item.quantity %></td>
-        
-                                        <td data-title="Total" class="total text-center"><%= number_with_delimiter item.total_item.to_i %> VNĐ</td>
-        
+                                        <td class="tb-price"><%= format_price(line_item.product.display_price) %></td>
+                                        <td class="tb-qty">
+                                            <div class="quantity"><%= line_item.quantity %></td>
+                                        <td class="tb-total"><%= format_price(line_item.total_item) %></td>
                                     </tr>
                                 <% end %>
-    
                             </tbody>
-    
-                            <tfoot>
-    
-                                <tr>
-                                    
-                                    <td colspan="4" class="sum_total">Tổng tiền</td>
-                                    <td class="sum_total text-center"><%= number_with_delimiter @cart.total_order.to_i %> VNĐ</td>
-    
-                                </tr>
-    
-                            </tfoot>
-    
                         </table>
-    
-                    </div><!--/ .table_wrap -->
-    
-                    <footer class="bottom_box on_the_sides">
-    
-                        <div class="left_side v_centered">
-                            
-                            <%= link_to "Chỉnh sửa giỏ hàng", {controller: "shopping_cart", action: "index"}, {class: "button_grey middle_btn"} %>
-    
-                        </div>
-    
-                    </footer>
-    
-    
-                </section>
-    
-                <!-- - - - - - - - - - - - - - End of order review - - - - - - - - - - - - - - - - -->
-                
-            <% else %>
-                
-                <div class="row">
-
-                    <div class="col-xs-12">
-
-                        <div class="container_404">
-
-                            <p class="not_found">GIỎ HÀNG TRỐNG</p>
-
-                            <%= link_to "QUAY VỀ TRANG CHỦ", root_path, class: "button_dark_grey middle_btn" %>
-
-                            <!-- - - - - - - - - - - - - - Search form - - - - - - - - - - - - - - - - -->
-                        
-                            <%= form_tag({controller: "product_search", action: "index"}, method: "get", class: "clearfix search") do %>
-    
-                                <input type="text" name="search" tabindex="1" placeholder="Tìm kiếm..." class="alignleft">
-                                
-                                <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
-    
-                                <div class="search_category alignleft">
-                                    
-                                     <div class="">
-    
-                                        <select name="category_id">
-                                            
-                                            <option value="">Tất cả</option>
-                                            
-                                            <% @menu.each do |item| %>
-                                
-                                                <% if item.level == 1 %>
-                                                    
-                                                    <option value="<%= item.id %>" class="list_category_option"><%= item.title %></option>
-                                                
-                                                <% end %>
-                                            
-                                            <% end %>
-                                        
-                                        </select>
-    
-                                    </div><!--/ .custom_select -->
-    
-                                </div><!--/ .search_category.alignleft-->
-    
-                                <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
-    
-                                <button class="button_blue def_icon_btn alignleft"></button>
-    
-                            <% end %><!--/ #search-->
-                            
-                            <!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->
-                        
-                        </div><!--/ .align_center -->
-
-                    </div><!--/ [col]-->
-
-				</div>
-            
-            <% end %>
-
-        </div><!--/ .container-->
-
-    </div><!--/ .page_wrapper-->
-    
-    <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
-
-    <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
-
-    <%= render 'blog/footer' %>
-    
-    <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
-
-</div><!--/ [layout]-->
-
-<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
-
-<!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
-
-<%= render 'home/social_feeds' %>
-
-<!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
-
-<!-- Include Libs & Plugins
-============================================ -->
-<%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
-<%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
-<%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
-<%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
-<%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
-<%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
-<%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
-<%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
-<%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
-<%= javascript_include_tag '/frontend/js/retina.min.js' %>
-<%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
-
-<!-- Theme files
-============================================ -->
-<%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
-<%= javascript_include_tag '/frontend/js/theme.core.js' %>
+                        <span class="total-order"><strong>TỔNG TIỀN: </strong><%= format_price(@cart.total_order) %></span>
+                    </div>                    
+                    <%= link_to 'Xem lại giỏ hàng', shopping_cart_path, title: '', class: 'btn btn-view-cart' %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</main>

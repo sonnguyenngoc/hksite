@@ -31,7 +31,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to controller: 'shopping_cart', action: 'index', notice: 'Thêm sản phẩm vào giỏ hàng thành công.' }
+        format.html { redirect_to shopping_cart_path, notice: 'add-success' }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }

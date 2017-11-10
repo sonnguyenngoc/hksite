@@ -1,219 +1,98 @@
-<% content_for :title, "Liên hệ" %>
-
-<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
-
-<div class="wide_layout">
-
-    <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
-
-    <%= render 'blog/header' %>
-    
-    <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
-
-    <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
-
-    <div class="secondary_page_wrapper">
-
-        <div class="container">
-
-            <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
-
-            <ul class="breadcrumbs">
-
-                <li><%= link_to "Trang chủ", root_path %></li>
-                <li>Liên hệ</li>
-
-            </ul>
-
-            <div class="row">
-
-                <aside class="col-md-3 col-sm-4">
-
-                    <!-- - - - - - - - - - - - - - Information - - - - - - - - - - - - - - - - -->
-
-                    <%= render 'left_bar_contact' %>
-
-                    <!-- - - - - - - - - - - - - - End of Sign Up to Our Newsletter - - - - - - - - - - - - - - - - -->
-
-                </aside><!--/ [col]-->
-
-                <main class="col-md-9 col-sm-8">
-
-                    <section class="section_offset">
-                        
-                        <section>
-
-                            <h1>Liên hệ</h1>
-    
-                        </section>
-
-                        <div class="theme_box">
-
-                            <!-- - - - - - - - - - - - - - Contact form - - - - - - - - - - - - - - - - -->
-                            
-                            <%= form_for @message, url: admin_messages_path,html: {class: "contactform type_2"} do |f| %>
-
-                                <ul>
-                                
-                                    <li class="row">
-
-                                        <div class="col-sm-6">
-                                        
-                                            <label for="cf_name" class="required">Họ & Tên</label>
-                                            <%= f.text_field :name, placeholder: 'Họ & Tên (Bắt buộc)', required: true %>
-
-                                        </div><!--/ [col]-->
-
-                                        <div class="col-sm-6">
-
-                                            <label for="cf_email" class="required">Số điện thoại</label>
-                                            <%= f.telephone_field :phone, placeholder: 'Số điện thoại (Bắt buộc)', required: true %>
-
-                                        </div><!--/ [col]-->
-
-                                    </li><!--/ .row -->
-
-                                    <li class="row">
-
-                                        <div class="col-xs-12">
-
-                                            <label for="cf_order_number">Địa chỉ email</label>
-                                            <%= f.email_field :email, placeholder: 'Địa chỉ email' %>
-
-                                        </div><!--/ [col]-->
-
-                                    </li><!--/ .row -->
-
-                                    <li class="row margin-contact">
-
-                                        <div class="col-xs-12">
-
-                                            <label for="cf_message" class="required">Lời nhắn</label>
-                                            <%= f.text_field :messages, placeholder: 'Lời nhắn (Bắt buộc)', rows: '6', required: true %>
-
-                                        </div><!--/ [col]-->
-
-                                    </li><!--/ .row -->
-
-                                </ul>
-                                
-                                <footer class="bottom_box on_the_sides">
-
-                                    <div class="left_side">
-                                        
-                                        <%= f.submit 'Gửi liên hệ', class: 'button_dark_grey middle_btn' %>
-        
-                                    </div>
-        
-                                    <div class="right_side">
-        
-                                        <p class="prompt">Bắt buộc nhập</p>
-        
-                                    </div>
-        
-                                </footer>
-
-                            <% end %>
-
-                            <!-- - - - - - - - - - - - - - End of contact form - - - - - - - - - - - - - - - - -->
-
-                        </div><!--/ .theme_box -->
-
-                    </section>
-
-                    <section class="section_offset">
-
-                        <h3>Liên hệ giao dịch</h3>
-
-                        <div class="theme_box">
-
-                            <div class="row">
-                                
-                                <div class="col-sm-12 info-contact">
-
-                                    <p class="form_caption c_info_building"></li><strong>CN <%= @company_info.name %></strong></p>
-
-                                    <ul class="c_info_list">
-
-                                        <li class="c_info_location"><b>Địa chỉ: </b>188 Đường số 1, Phường 16, Quận Gò Vấp, TP.Hồ Chí Minh</li>
-                                        <li class="c_info_phone">
-                                            <b>Điện thoại: </b><%= @company_info.phone %><br />
-                                            <b>Hotline: </b>(08) 2212 9454 <i>(giờ hành chính)</i><br />
-                                            <b>Fax: </b><%= @company_info.fax %><br />
-                                            <b>MST: </b><%= @company_info.tax_code %>-001
-                                        </li>
-                                        <li class="c_info_mail"><b>Email: </b><a href="mailto:kinhdoanh@hoangkhang.com.vn">kinhdoanh@hoangkhang.com.vn</a></li>
-                                        <li class="c_info_schedule"><b>Giờ làm việc:</b>
-
-                                            <ul>
-
-                                                <li>Thứ 2 đến Thứ 6: Sáng 07:30 - 11:30; Chiều 13:00 - 17:00</li>
-                                                <li>Thứ 7: Sáng 07:30 - 12:00; Chiều nghỉ</li>
-                                                <li>Chủ nhật: Nghỉ</li>
-
-                                            </ul>
-
-                                        </li>
-
-                                    </ul>
-
-                                </div><!--/ [col]-->
-
-                                <div class="col-sm-12">
-
-                                    <div class="proportional_frame proportional_frame_fix">
-
-                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d979.631059828945!2d106.65701382916684!3d10.847674316657857!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTDCsDUwJzUxLjYiTiAxMDbCsDM5JzI3LjIiRQ!5e0!3m2!1svi!2s!4v1456217935069" style="border:0" allowfullscreen></iframe>
-
-                                    </div>
-
-                                </div><!--/ [col]-->
-
-                            </div><!--/ .row -->
-
-                        </div><!--/ .theme_box -->
-
-                    </section>
-
-                </main><!--/ [col]-->
-
-            </div><!--/ .row-->
-
-        </div><!--/ .container-->
-
-    </div><!--/ .page_wrapper-->
-    
-    <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
-
-    <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
-
-    <%= render 'blog/footer' %>
-    
-    <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
-
-</div><!--/ [layout]-->
-
-<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
-
-<!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
-
-<%= render "home/social_feeds" %>
-
-<!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
-
-<!-- Include Libs & Plugins
-============================================ -->
-<%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
-<%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
-<%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
-<%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
-<%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
-<%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
-<%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
-<%= javascript_include_tag '/frontend/js/retina.min.js' %>
-<%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
-
-<!-- Theme files
-============================================ -->
-<%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
-<%= javascript_include_tag '/frontend/js/theme.core.js' %>
+<main class="site-main contact-us">
+    <div class="container">
+        <ol class="breadcrumb-page">
+            <li><%= link_to 'Trang Chủ', root_path %></li>
+            <li class="active"><%= link_to 'Liên Hệ', 'javascript:void(0)' %></li>
+        </ol>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="contact-map full-width">
+                <a href=""><img src="/hksite/images/map.jpg" alt="map"></a>
+            </div>
+            <form class="form-contact" action="#" method="post">
+                <div class="col-md-5">
+                    <div class="contact-info">
+                        <h5 class="title-contact">Gửi lời nhắn cho chúng tôi</h5>
+                        <p class="form-row form-row-wide">
+                            <label>Họ & Tên <span class="required">*</span></label>
+                            <input type="text" value="" name="text" placeholder="Vui lòng nhập họ & tên....." class="input-text">
+                        </p>
+                        <p class="form-row form-row-wide">
+                            <label>Địa chỉ email <span class="required">*</span></label>
+                            <input type="email" value="" name="text" placeholder="Vui lòng nhập địa chỉ email....." class="input-text">
+                        </p>
+                        <p class="form-row form-row-wide">
+                            <label>Số điện thoại </label>
+                            <input type="text" value="" name="text" placeholder="Vui lòng nhập số điện thoại....." class="input-text">
+                        </p>
+                            <p class="form-row form-row-wide form-text">
+                            <label>Nội dung lời nhắn <span class="required">*</span></label>
+                            <textarea placeholder="Vui lòng nhập nội dung lời nhắn hoặc nội dung góp ý tại đây....." aria-invalid="false" class="textarea-control" rows="5" cols="40" name="message"></textarea>
+                        </p>
+                        <p class="form-row">
+                            <input type="submit" value="Gửi lời nhắn" name="Gửi lời nhắn" class="button-submit">
+                        </p>
+                    </div>
+                </div>
+            </form>
+            <div class="col-md-4 contact-detail">
+                <h5 class="title-contact">Thông tin công ty</h5>
+                <div class="contacts-info ">
+                    <div class="contact-icon"><i class="fa fa-home" aria-hidden="true"></i></div>
+                    <h4 class="title-info">Tên công ty</h4>
+                    <div class="info-detail">Chi nhánh Công Ty TNHH giải Pháp CNTT và TT Hoàng Khang</div>
+                </div>
+                <div class="contacts-info ">
+                    <div class="contact-icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
+                    <h4 class="title-info">Địa chỉ</h4>
+                    <div class="info-detail">188 Đường Số 1, Phường 16, Quận Gò Vấp, TP. Hồ Chí Minh, Việt Nam</div>
+                </div>
+                <div class="contacts-info ">
+                    <div class="contact-icon"><i class="fa fa-barcode" aria-hidden="true"></i></div>
+                    <h4 class="title-info">Mã số thuế</h4>
+                    <div class="info-detail">0306146736-001</div>
+                </div>
+                <div class="contacts-info ">
+                    <div class="contact-icon"><i class="fa fa-user-md" aria-hidden="true"></i></div>
+                    <h4 class="title-info">Đơn vị chủ quản</h4>
+                    <div class="info-detail">Công Ty TNHH Giải Pháp CNTT và TT Hoàng Khang (Hoang Khang Incotech)</div>
+                </div>
+                <div class="contacts-info ">
+                    <div class="contact-icon"><i class="fa fa-trademark" aria-hidden="true"></i></div>
+                    <h4 class="title-info">GPĐKKD</h4>
+                    <div class="info-detail">GPĐKKD số 0306146736 do Sở KH&ĐT TPHCM cấp lần đầu ngày 06/08/2008</div>
+                </div>
+            </div>
+            <div class="col-md-3 contact-detail">
+                <h5 class="title-contact">Thông tin liên hệ</h5>
+                <div class="contacts-info ">
+                    <div class="contact-icon"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></div>
+                    <h4 class="title-info">Email</h4>
+                    <div class="info-detail"><%= mail_to 'kinhdoanh@hoangkhang.com.vn', 'kinhdoanh@hoangkhang.com.vn', title: '' %></div>
+                </div>
+                <div class="contacts-info ">
+                    <div class="contact-icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+                    <h4 class="title-info">Số điện thoại</h4>
+                    <div class="info-detail"><%= link_to '(028) 3984 7690', 'tel:02839847690', title: '(028) 3984 7690' %></div>
+                </div>
+                <div class="contacts-info ">
+                    <div class="contact-icon"><i class="fa fa-volume-control-phone" aria-hidden="true"></i></div>
+                    <h4 class="title-info">Hotline</h4>
+                    <div class="info-detail"><%= link_to '(028) 2212 9454', 'tel:02822129454', title: '(028) 2212 9454' %> (Giờ hành chính)</div>
+                </div>
+                <div class="contacts-info ">
+                    <div class="contact-icon"><i class="fa fa-fax" aria-hidden="true"></i></div>
+                    <h4 class="title-info">Fax</h4>
+                    <div class="info-detail">(028) 3984 7691</div>
+                </div>
+                <div class="contacts-info ">
+                    <div class="contact-icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+                    <h4 class="title-info">Giờ làm việc</h4>
+                    <div class="info-detail">Thứ 2 ~ Thứ 6: 7h30 - 17h00<br>Thứ 7: 7h30 - 12h00<br>Chủ nhật, Ngày lễ: Không làm việc</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

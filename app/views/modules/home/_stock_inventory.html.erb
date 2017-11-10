@@ -1,0 +1,61 @@
+<div class="tab-content">
+    <div class="tab-container">
+        <div id="tab-3" class="tab-panel active">
+            <div class="owl-carousel" data-nav="false" data-autoplay="false" data-dots="false" data-loop="true" data-margin="30" data-responsive='{"0":{"items":1},"480":{"items":2},"1000":{"items":3}}'>
+                <div class="owl-one-row">
+                    <% count = Product.get_stock_products.count %>                    
+                    <% Product.get_stock_products.each_with_index do |product, index| %>
+                        <div class="product-item style2">
+                            <div class="product-inner">
+                                <div class="product-thumb style1">
+                                    <div class="thumb-inner">
+                                        <% if !product.product_image.id.nil? %>
+                                            <%= link_to image_tag(product.product_image.image(:thumb170), alt: product.display_name),
+                                                        product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+                                        <% else %>
+                                            <%= link_to image_tag('/hksite/images/no-image/thumb-170.jpg', alt: product.display_name),
+                                                        product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+                                        <% end %>
+                                    </div>
+                                </div>
+                                <div class="product-innfo">
+                                    <div class="product-name">
+                                        <%= link_to truncate(product.display_name, length: 55),
+                                        product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+                                    </div>
+                                    <% if product.has_price %>
+                                        <span class="price">
+                                            <% if product.check_product_sale %>
+                                                <ins><%= format_price(product.display_price) %></ins>
+                                                <del><%= format_price(product.product_info.old_price) %></del>
+                                                <span class="onsale">-<%= product.get_percent_sale.to_f.round(0) %>%</span>
+                                            <% else %>
+                                                <ins><%= format_price(product.display_price) %></ins>
+                                                <span class="onnew">Xả kho</span>
+                                            <% end %>
+                                        </span>                    
+                                    <% else %>
+                                        <span class="price">
+                                            <ins>Liên hệ: (028) 3984 7690</ins>
+                                        </span>
+                                    <% end %>
+                                    <span class="star-rating">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                    </span>
+                                    <% if product.has_price %>
+                                        <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "btn-add-to-cart newest-add-to-cart" %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    <%= '</div><div class="owl-one-row">'.html_safe if index%2 == 1 && index+1 != count %>
+                    <% end %>
+                </div>                              
+            </div>
+        </div>        
+    </div>
+</div>

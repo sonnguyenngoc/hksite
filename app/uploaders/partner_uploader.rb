@@ -39,6 +39,10 @@ class PartnerUploader < CarrierWave::Uploader::Base
   version :partner_image do
     process :resize_to_fit => [180, 150]
   end
+  
+  version :thumb196 do
+    process :resize_and_pad => [195, 70, "#FFFFFF", "Center"]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

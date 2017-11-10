@@ -9,16 +9,29 @@
 <% end %>
 
 <%= form_for [:admin, @menu], html: {class: "form-horizontal"} do |f| %>
-
     <div class="panel-body">
-        
+        <div class="form-group">
+            <%= f.label "Hình trên menu: ", class: "col-lg-3 control-label" %>
+            <div class="col-lg-9">
+              <%= f.file_field :menu_image, class: "file-styled" %>
+              <span class="help-block">Định dạng hình ảnh: gif, png, jpg.</span>
+              <%= image_tag(@menu.menu_image, size: "310x200", alt: "Banner dành cho menu", class: "img-rouded") %>
+            </div>
+        </div>
+        <div class="form-group">
+            <%= f.label "Banner: ", class: "col-lg-3 control-label" %>
+            <div class="col-lg-9">
+              <%= f.file_field :image_url, class: "file-styled" %>
+              <span class="help-block">Định dạng hình ảnh: gif, png, jpg.</span>
+              <%= image_tag(@menu.image_url, size: "310x200", alt: "Banner dành cho menu", class: "img-rouded") %>
+            </div>
+        </div>
         <div class="form-group field">
             <%= f.label "Tiêu đề: ", class: "col-lg-3 control-label" %>
             <div class="col-lg-9">
               <%= f.text_field :title, placeholder: "Tiêu đề loại bài viết...", class: "form-control" %>
             </div>
         </div>
-            
         <div class="form-group field">
             <%= f.label "Add chuyên mục liên quan: ", class: "col-lg-3 control-label" %>
             <div class="col-lg-9">
@@ -29,14 +42,12 @@
                 </select>
             </div>
         </div>
-
         <div class="form-group field">
             <%= f.label "Mô tả: ", class: "col-lg-3 control-label" %>
             <div class="col-lg-9">
               <%= f.text_area :description, rows: "5", cols: "5", placeholder: "Mô tả loại bài viết...", class: "form-control" %>
             </div>
         </div>
-            
         <div class="form-group field">
             <%= f.label "Chuyên mục cha: ", class: "col-lg-3 control-label" %>
             <div class="col-lg-6">

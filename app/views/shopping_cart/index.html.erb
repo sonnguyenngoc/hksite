@@ -1,363 +1,99 @@
-<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
-
-<div class="wide_layout">
-
-    <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
-
-    <%= render 'blog/header' %>
-    
-    <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
-
-    <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
-
-    <div class="secondary_page_wrapper">
-
-        <div class="container">
-
-            <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
-
-            <ul class="breadcrumbs">
-
-                <li><%= link_to "Trang chủ", root_path %></li>
-                <li>Giỏ hàng</li>
-
-            </ul>
-
-            <section class="section_offset">
-
-                <h1>Giỏ hàng</h1>
-                
-                <% if @cart.line_items.count > 0 %>
-                
-                    <%= form_for @cart do |f| %>
-    
-                        <!-- - - - - - - - - - - - - - Shopping cart table - - - - - - - - - - - - - - - - -->
-        
-                        <div class="table_wrap">
-        
-                            <table class="table_type_1 shopping_cart_table">
-        
+<main class="site-main shopping-cart">
+    <div class="container">
+        <ol class="breadcrumb-page">
+            <li><%= link_to 'Trang Chủ', root_path %></li>
+            <li class="active"><%= link_to 'Giỏ Hàng', 'javascript:void(0)' %></li>
+        </ol>
+    </div>
+    <div class="container">
+        <h1>GIỎ HÀNG</h1>
+        <% if @cart.line_items.count > 0 %>
+            <div class="row">            
+                <div class="col-md-9">
+                    <%= form_for(@cart, html: {class: 'form-cart'}) do |f| %>
+                        <div class="table-cart">
+                            <table class="table">
                                 <thead>
-        
                                     <tr>
-                                        <th class="product_image_col">Hình ảnh</th>
-                                        <th class="product_title_col">Tên sản phẩm</th>
-                                        <th>Đơn giá</th>
-                                        <th class="product_qty_col">Số lượng</th>
-                                        <th>Thành tiền</th>
-                                        <th class="product_actions_col">Thao tác</th>
+                                        <th class="tb-image"></th>
+                                        <th class="tb-product">Tên sản phẩm</th>
+                                        <th class="tb-price">Đơn giá</th>
+                                        <th class="tb-qty">Số lượng</th>
+                                        <th class="tb-total">Thành tiền</th>
+                                        <th class="tb-remove"></th>
                                     </tr>
-        
                                 </thead>
-        
                                 <tbody>
-                                    
-                                    <% @cart.line_items.each do |item| %>
-                                    
+                                    <% @cart.line_items.each do |line_item| %>
                                         <tr>
-                                            
-                                            <input type="hidden" name="line_items[id]" value="<%= item.id %>">
-            
-                                            <!-- - - - - - - - - - - - - - Product Image - - - - - - - - - - - - - - - - -->
-                                                
-                                            <td class="product_image_col" data-title="Product Image">
-                                                
-                                                <%= link_to(image_tag(item.product.product_image.image), {controller: "product", action: "index", id: item.product_id}, class: "size_image_cart") %>
-                                                
-                                            </td>
-            
-                                            <!-- - - - - - - - - - - - - - End of product Image - - - - - - - - - - - - - - - - -->
-            
-                                            <!-- - - - - - - - - - - - - - Product name - - - - - - - - - - - - - - - - -->
-            
-                                            <td data-title="Product Name">
-                                                
-                                                <%= link_to item.product.display_name, {controller: "product", action: "index", id: item.product_id, title: url_friendly(strip_tags(item.product.display_name))}, class: "product_title" %> <br/>
-                                                    
-                                                <% if item.product.get_old_price.present? and item.product.get_discount_percent.present? %>
-                                                    
-                                                    Sản phẩm khuyến mãi. <b class="safe_off">Giảm: <%= number_to_percentage(item.product.get_discount_percent, strip_insignificant_zeros: true) %></b><br/>
-                                                    
+                                            <td class="tb-image">
+                                                <% if !line_item.product.product_image.id.nil? %>
+                                                    <%= link_to image_tag(line_item.product.product_image.image(:thumb100), alt: line_item.get_product_name),
+                                                                product_path(id: line_item.product_id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.get_product_name %>
+                                                <% else %>
+                                                    <%= link_to image_tag('/hksite/images/no-image/thumb-100.jpg', alt: line_item.get_product_name),
+                                                                product_path(id: line_item.product_id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.get_product_name %>
                                                 <% end %>
-                                                
-                                                <% if !item.product.product_info.nil? and item.product.product_info.bonus_product != "" %>
-                                                    
-                                                    <%= item.product.product_info.bonus_product %>
-                                                    
-                                                <% end %>
-                                                
                                             </td>
-            
-                                            <!-- - - - - - - - - - - - - - End of product name - - - - - - - - - - - - - - - - -->
-            
-                                            <!-- - - - - - - - - - - - - - Price - - - - - - - - - - - - - - - - -->
-            
-                                            <td class="subtotal" data-title="Price">
-                                                
-                                                <%= number_with_delimiter item.product.display_price %> VNĐ <br/>
-                                                    
-                                                <% if !item.product.get_old_price.nil? %>
-                                                    
-                                                    <s><%= number_with_delimiter item.product.get_old_price.price.to_i %> VNĐ <br/></s>
-                                                    
-                                                <% end %>
-            
+                                            <td class="tb-product">
+                                                <div class="product-name">
+                                                    <%= link_to truncate(line_item.get_product_name, length: 60),
+                                                    product_path(id: line_item.product_id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.get_product_name %>
+                                                </div>
                                             </td>
-            
-                                            <!-- - - - - - - - - - - - - - End of Price - - - - - - - - - - - - - - - - -->
-            
-                                            <!-- - - - - - - - - - - - - - Quantity - - - - - - - - - - - - - - - - -->
-            
-                                            <td data-title="Quantity">
-            
-                                                <div class="qty min clearfix">
-            
-                                                    <a class="theme_button display_inline" data-direction="minus">&#45;</a>
-                                                    <input class="display_inline" type="text" name="quantities[<%= item.id %>]" value="<%= item.quantity %>">
-                                                    <a class="theme_button display_inline" data-direction="plus">&#43;</a>
-            
-                                                </div><!--/ .qty.min.clearfix-->
-            
+                                            <td class="tb-price"><%= format_price(line_item.product.display_price) %></td>
+                                            <td class="tb-qty">
+                                                <div class="quantity">
+                                                    <div class="buttons-added">
+                                                        <input name="quantities[<%= line_item.id %>]" type="text" value="<%= line_item.quantity %>" min="1" title="Số lượng đặt mua" class="input-text qty text" size="1">
+                                                        <a href="javascript:void(0)" class="sign plus"><i class="fa fa-plus"></i></a>
+                                                        <a href="javascript:void(0)" class="sign minus"><i class="fa fa-minus"></i></a>
+                                                    </div>
+                                                </div>
                                             </td>
-            
-                                            <!-- - - - - - - - - - - - - - End of quantity - - - - - - - - - - - - - - - - -->
-            
-                                            <!-- - - - - - - - - - - - - - Total - - - - - - - - - - - - - - - - -->
-            
-                                            <td class="total" data-title="Total">
-            
-                                                <%= number_with_delimiter item.total_item.to_i %> VNĐ
-            
+                                            <td class="tb-total"><%= format_price(line_item.total_item) %></td>
+                                            <td class="tb-remove">
+                                                <%= link_to '<span><i class="fa fa-times" aria-hidden="true"></i></span>'.html_safe,
+                                                    shopping_cart_path(do: 'remove_item', line_item_id: line_item.id), class: 'action-remove' %>
                                             </td>
-            
-                                            <!-- - - - - - - - - - - - - - End of total - - - - - - - - - - - - - - - - -->
-            
-                                            <!-- - - - - - - - - - - - - - Action - - - - - - - - - - - - - - - - -->
-            
-                                            <td data-title="Action">
-                                                
-                                                <%= link_to "<i class='icon-cancel-2'></i>".html_safe , {controller: "shopping_cart", action: "index", do: 'remove_item', line_item_id: item.id }, {class: "button_dark_grey icon_btn remove_product text-center"} %>
-            
-                                            </td>
-            
-                                            <!-- - - - - - - - - - - - - - End of action - - - - - - - - - - - - - - - - -->
-            
                                         </tr>
-                                        
-                                    <% end %>         
-        
+                                    <% end %>
                                 </tbody>
-        
                             </table>
-        
-                        </div><!--/ .table_wrap -->
-                        
-                        <!-- - - - - - - - - - - - - - Shopping cart table - - - - - - - - - - - - - - - - -->
-                        
-                        <footer class="bottom_box on_the_sides">
-    
-                            <div class="left_side">
-                                
-                                <%= link_to "Tiến hành đặt hàng", {controller: "check_out", action: "index"}, {class: "button_blue middle_btn"} %>
-        
-                                <%= button_to "Cập nhật giỏ hàng", "#", {class: "button_dark_grey middle_btn"} %>
-                            
-                            </div>
-        
-                            <div class="right_side">
-                                
-                                <%= button_to "Xóa giỏ hàng", @cart, class: "button_grey middle_btn", method: :delete %>
-                                
-                            </div>
-        
-                        </footer><!--/ .bottom_box -->
-        
-                        <!-- - - - - - - - - - - - - - End of shopping cart table - - - - - - - - - - - - - - - - -->
-                        
+                        </div>
+                        <div class=cart-actions">
+                            <%= link_to 'Tiếp tục mua hàng', root_path, title: '', class: 'btn btn-continue' %>
+                            <%= button_to 'Cập nhật giỏ hàng', "#", class: "btn btn-clean" %>
+                        </div>
                     <% end %>
-                    
-                <% else %>
-                    
-                    <div class="row">
-
-                        <div class="col-xs-12">
-    
-                            <div class="container_404">
-    
-                                <p class="not_found">GIỎ HÀNG TRỐNG</p>
-    
-                                <%= link_to "QUAY VỀ TRANG CHỦ", root_path, class: "button_dark_grey middle_btn" %>
-    
-                                <!-- - - - - - - - - - - - - - Search form - - - - - - - - - - - - - - - - -->
-                            
-                                <%= form_tag({controller: "product_search", action: "index"}, method: "get", class: "clearfix search") do %>
-        
-                                    <input type="text" name="search" tabindex="1" placeholder="Tìm kiếm..." class="alignleft">
-                                    
-                                    <!-- - - - - - - - - - - - - - Categories - - - - - - - - - - - - - - - - -->
-        
-                                    <div class="search_category alignleft">
-                                        
-                                         <div class="">
-        
-                                            <select name="category_id">
-                                                
-                                                <option value="">Tất cả</option>
-                                                
-                                                <% @menu.each do |item| %>
-                                    
-                                                    <% if item.level == 1 %>
-                                                        
-                                                        <option value="<%= item.id %>" class="list_category_option"><%= item.title %></option>
-                                                    
-                                                    <% end %>
-                                                
-                                                <% end %>
-                                            
-                                            </select>
-        
-                                        </div><!--/ .custom_select -->
-        
-                                    </div><!--/ .search_category.alignleft-->
-        
-                                    <!-- - - - - - - - - - - - - - End of categories - - - - - - - - - - - - - - - - -->
-        
-                                    <button class="button_blue def_icon_btn alignleft"></button>
-        
-                                <% end %><!--/ #search-->
-                                
-                                <!-- - - - - - - - - - - - - - End search form - - - - - - - - - - - - - - - - -->
-                            
-                            </div><!--/ .align_center -->
-    
-                        </div><!--/ [col]-->
-    
+                </div>
+                <div class="col-md-3 padding-left-5">
+                    <div class="order-summary">
+                        <h4 class="title-shopping-cart">Thông tin thanh toán</h4>
+                        <div class="checkout-element-content">                        
+                            <span class="order-left">Tổng tiền:<%= format_price(@cart.total_order) %></span>
+                            <%= link_to 'ĐẶT HÀNG', check_out_path, title: 'Đặt hàng', class: 'btn btn-checkout' %>
+                        </div>
                     </div>
-                
-                <% end %>  
-
-            </section>
-            
-            <section class="section_offset">
-
-                <h3 class="offset_title">Sản phẩm mới</h3>
-
-                <!-- - - - - - - - - - - - - - Carousel of you might also like - - - - - - - - - - - - - - - - -->
-
-                <div class="owl_carousel six_items">
-                    
-                    <% @new_products.each do |product| %>
-
-                        <!-- - - - - - - - - - - - - - Product - - - - - - - - - - - - - - - - -->
-    
-                        <div class="product_item">
-    
-                            <!-- - - - - - - - - - - - - - Thumbnail - - - - - - - - - - - - - - - - -->
-                            
-                            <div class="image_wrap size_new_product">
-    
-                                <img src="<%= product.product_image.image %>" class="img-rounded size_list_new_product">
-    
-                                <!-- - - - - - - - - - - - - - Product actions - - - - - - - - - - - - - - - - -->
-    
-                                <div class="actions_wrap">
-    
-                                    <div class="centered_buttons">
-                                        
-                                        <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: product), class: "button_blue add_to_cart font-small" %>
-    
-                                    </div><!--/ .centered_buttons -->
-    
-                                </div><!--/ .actions_wrap-->
-                                
-                                <!-- - - - - - - - - - - - - - End of product actions - - - - - - - - - - - - - - - - -->
-    
-                            </div><!--/. image_wrap-->
-    
-                            <!-- - - - - - - - - - - - - - End thumbnail - - - - - - - - - - - - - - - - -->
-    
-                            <!-- - - - - - - - - - - - - - Label - - - - - - - - - - - - - - - - -->
-    
-                            <div class="label_new">Mới</div>
-    
-                            <!-- - - - - - - - - - - - - - End label - - - - - - - - - - - - - - - - -->
-    
-                            <!-- - - - - - - - - - - - - - Product description - - - - - - - - - - - - - - - - -->
-    
-                            <div class="description">
-    
-                                <%= link_to product.display_name, {controller: "product", action: "index", id: product.id, title: url_friendly(strip_tags(product.display_name))} %>
-    
-                                <div class="clearfix product_info">
-    
-                                    <p class="product_price"><b><%= number_with_delimiter product.product_price.price.to_i %> VNĐ</b></p>
-    
-                                </div><!--/ .clearfix.product_info-->
-    
-                            </div>
-    
-                            <!-- - - - - - - - - - - - - - End of product description - - - - - - - - - - - - - - - - -->
-    
-                        </div><!--/ .product_item-->
-                        
-                        <!-- - - - - - - - - - - - - - End of product - - - - - - - - - - - - - - - - -->
-                        
-                    <% end %>
-
-                </div><!--/ .owl_carousel-->
-                
-                <!-- - - - - - - - - - - - - - End of you might also like - - - - - - - - - - - - - - - - -->
-
-                <!-- - - - - - - - - - - - - - View all entries - - - - - - - - - - - - - - - - -->
-
-                <footer class="bottom_box">
-
-                    <%= link_to "Xem toàn bộ sản phẩm mới", { controller: "all_new_product", action: "index" }, { class: "button_grey middle_btn" } %>
-                    
-                </footer>
-
-                <!-- - - - - - - - - - - - - - End of view all entries - - - - - - - - - - - - - - - - -->
-            
-            </section>
-
-        </div><!--/ .container-->
-
-    </div><!--/ .page_wrapper-->
-    
-    <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
-
-    <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
-
-    <%= render 'blog/footer' %>
-    
-    <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
-
-</div><!--/ [layout]-->
-
-<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
-
-<!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
-
-<%= render 'home/social_feeds' %>
-
-<!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
-
-<!-- Include Libs & Plugins
-============================================ -->
-<%= javascript_include_tag 'http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js' %>
-<%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
-<%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
-<%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
-<%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
-<%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
-<%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
-<%= javascript_include_tag '/frontend/js/jquery.countdown.plugin.min.js' %>
-<%= javascript_include_tag '/frontend/js/jquery.countdown.min.js' %>
-<%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
-<%= javascript_include_tag '/frontend/js/retina.min.js' %>
-<%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
-
-<!-- Theme files
-============================================ -->
-<%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
-<%= javascript_include_tag '/frontend/js/theme.core.js' %>
+                </div>
+            </div>
+        <% else %>
+            <div class="row">            
+                <div class="col-md-12">
+                    <span>GIỎ HÀNG CỦA BẠN HIỆN TẠI ĐANG TRỐNG</span>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <div class="block-recent-view">
+        <div class="container">
+            <div class="title-of-section">Sản Phẩm Bán Chạy</div>
+            <%= render '/modules/bestselling' %>
+        </div>
+    </div>
+    <div class="block-section-brand">
+        <div class="container">
+            <%= render '/modules/listing_brand' %>
+        </div>
+    </div>
+</main>

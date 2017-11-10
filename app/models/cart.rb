@@ -11,6 +11,10 @@ class Cart < ActiveRecord::Base
     current_item
   end
   
+  def count_quantity
+    line_items.sum(:quantity)
+  end
+  
   def remove_item(line_item_id)
     self.line_items.where(id: line_item_id).destroy_all
   end

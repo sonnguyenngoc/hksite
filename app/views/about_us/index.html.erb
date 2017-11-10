@@ -1,145 +1,85 @@
-<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
-
-<div class="wide_layout">
-
-    <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
-
-    <%= render 'blog/header' %>
-    
-    <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
-
-    <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
-
-    <div class="secondary_page_wrapper">
-
-        <div class="container">
-
-            <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
-
-            <ul class="breadcrumbs">
-
-                <li><%= link_to "Trang chủ", root_path %></li>
-                <li>Giới thiệu</li>
-
-            </ul>
-
-            <div class="row">
-
-                <aside class="col-md-3 col-sm-4">
-
-                    <!-- - - - - - - - - - - - - - Information - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Thông tin</h3>
-
-                        <ul class="theme_menu">
-
-                            <li><%= link_to "Giới thiệu", {controller: "about_us", action: "index"} %></li>
-                            <li><%= link_to "Tin tức", {controller: "blog", action: "index"} %></li>
-                            <li><%= link_to "Đối tác", {controller: "manufacturer", action: "index"} %></li>
-                            <li><%= link_to "Liên hệ", {controller: "contact", action: "index"} %></li>
-
-                        </ul>
-
-                    </section><!--/ .section_offset -->
-
-                    <div class="section_offset">
-
-                        <div class="section_offset">
-
-                            <%= link_to image_tag("/images/logo-company.jpg"), { controller: "about_us", action: "index" }, class: "banner" %>
-    
-                        </div>
-
-                    </div>
-
-                    <!-- - - - - - - - - - - - - - End of information - - - - - - - - - - - - - - - - -->
-
-                    <!-- - - - - - - - - - - - - - Tags - - - - - - - - - - - - - - - - -->
-
-                    <section class="section_offset">
-
-                        <h3>Nhãn</h3>
-
-                        <div class="tags_container">
-
-                            <ul class="tags_cloud">
-                                
-                                <% @menu.each do |item| %>
-                            
-                                    <% if item.level == 1 %>
-                                        
-                                        <li><a class="button_grey" <%= (link_to item.title, {:controller => "category_page", :action => "index", id: item.id }).html_safe %></a></li>
-                                        
-                                    <% end %>
-                                
-                                <% end %>
-
-                            </ul><!--/ .tags_cloud-->
-                            
-                        </div><!--/ .tags_container-->
-
-                    </section>
-
-                    <!-- - - - - - - - - - - - - - End of tags - - - - - - - - - - - - - - - - -->
-                
-                </aside><!--/ [col]-->
-
-                <main class="col-md-9 col-sm-8">
-
-                    <h1>Giới thiệu</h1>
-
-                    <div class="theme_box clearfix">
-                        
-                        <% @about_us.each do |about| %>
-
-                        <img src="<%= about.image_url if about.image_url %>" class="alignleft" width="310" alt="">
-                        
-                        <%= about.content.html_safe %>
-                        
-                        <% end %>
-                    </div><!--/ .theme_box-->
-
-                </main><!--/ [col]-->
-
-            </div><!--/ .row-->
-
-        </div><!--/ .container-->
-
-    </div><!--/ .page_wrapper-->
-    
-    <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
-
-    <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
-
-    <%= render 'blog/footer' %>
-    
-    <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
-
-</div><!--/ [layout]-->
-
-<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
-
-<!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
-
-<%= render "home/social_feeds" %>
-
-<!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
-
-<!-- Include Libs & Plugins
-============================================ -->
-<%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
-<%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
-<%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
-<%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
-<%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
-<%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
-<%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
-<%= javascript_include_tag '/frontend/js/retina.min.js' %>
-<%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
-
-<!-- Theme files
-============================================ -->
-<%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
-<%= javascript_include_tag '/frontend/js/theme.core.js' %>
+<main class="site-main about-us">
+    <div class="container">
+        <ol class="breadcrumb-page">
+            <li><%= link_to 'Trang Chủ', root_path %></li>
+            <li class="active"><%= link_to 'Giới Thiệu', 'javascript:void(0)' %></li>
+        </ol>
+    </div>
+    <div class="container">
+        <div class="banner-paralax">
+            <%= image_tag '/hksite/images/banner-paralax.jpg',
+                           alt: 'Công Ty TNHH giải Pháp CNTT và TT Hoàng Khang',
+                           title: 'Công Ty TNHH giải Pháp CNTT và TT Hoàng Khang' %>
+        </div>
+    </div>
+    <div class="container">
+        <div class="about-text">
+            <h1>GIỚI THIỆU</h1>
+            <p><strong>Công Ty TNHH Giải Pháp Công Nghệ Thông Tin & Truyền Thông Hoàng Khang (Hoang Khang Incotech) xin gửi đến Quý khách hàng đã – đang và sẽ là niềm tự hào của công ty Hoàng Khang lời chúc sức khỏe và lời chào trân trọng.</strong></p>
+            <p>Công ty được thành lập theo tiêu chí cung cấp các giải pháp ứng dụng liên quan công nghệ thông tin và truyền thông tín hiệu cho khách hàng là doanh nghiệp, tổ chức, cá nhân. Công ty từng bước khẳng định là một nhà tích hợp hệ thống và cung cấp dịch vụ đầu cuối uy tính trong lĩnh vực Công nghệ thông tin (CNTT) và Truyền Thông (TT) theo hướng chuyên nghiệp đáp ứng đầy đủ nhu cầu khách hàng và đảm bảo chất lượng dịch vụ.</p>
+            <p>Sau nhiều năm nghiên cứu tìm hiểu thị trường, xây dựng đội ngũ nhân viên kỹ thuật tốt nghiệp chuyên ngành CNTT được đào tạo các khóa chuyên sâu về quản trị CNTT và đạt chứng chỉ, chứng nhận quốc tế về kỹ thuật, đến nay, Công ty Hoang Khang Incotech đã nhận được sự tín nhiệm của các Công ty trong và ngoài nước, các tổ chức phi chính phủ, thực hiện các công trình thuộc khối nhà nước như: Sở thanh tra xây dựng, Bệnh viện TW, Trường học, Bảo Hiểm Xã Hội, Viện Kiểm Sát, Ủy Ban Nhân Dân, Trung Tâm Dạy Nghề, Ban dự án cao tốc đường thủy, khối Ngân Hàng… Hoàng Khang được đánh giá cao khả năng hợp tác và làm việc qua các dự án hỗ trợ tư vấn kỹ thuật và cung cấp sản phẩm lĩnh vực CNTT, an ninh và thông tin liên lạc đúng tiêu chuẩn theo yêu cầu đơn hàng.</p>
+            <p>Là Công ty tích hợp, sẽ mang đến Quý Khách hàng sự hài lòng về Dịch vụ Tư vấn Thiết kế và cung cấp Giải pháp, Dịch vụ Triển khai Kỹ thuật, Dịch vụ Hậu mãi chăm sóc khách hàng, Dịch vụ Cung cấp Sản phẩm liên quan đến Công Nghệ Thông Tin và Truyền Thông:</p>
+            <p>
+                <strong>1. Hạ tầng mạng gồm dịch vụ tư vấn thiết kế, giám sát, triển khai, bảo dưỡng và chuyển giao công nghệ có quy mô khác nhau như:</strong>
+                <br>&nbsp;&nbsp; -&nbsp; Nâng cấp/cải tạo hệ thống mạng LAN –WAN.
+                <br>&nbsp;&nbsp; -&nbsp; Hệ thống tổng đài (call center, hệ thống SMS chăm sóc khách hàng,...).
+                <br>&nbsp;&nbsp; -&nbsp; Hệ thống kiểm soát an ninh (camera quan sát, chấm công,...).
+                <br>&nbsp;&nbsp; -&nbsp; Hệ thống hội thảo truyền hình (Voice, Video).
+                <br>&nbsp;&nbsp; -&nbsp; Hệ thống hạ tầng mạng (bao gồm mạng wireless indoor và outdoor) cho nhà cao tầng, khu du lịch-resort, khách sạn, trung tâm thương mại; thực hiện các dự án trên bản vẽ/ công trình hiện hữu theo tiêu chuẩn 25 năm bảo hành chính hãng.
+                <br>&nbsp;&nbsp; -&nbsp; Giải pháp cho trung tâm dữ liệu (datacenter), hardware firewall… theo tiêu chuẩn hệ thống mạng Cisco, Juniper, Blue Coat, Orion...
+                <br>&nbsp;&nbsp; -&nbsp; Dịch vụ Helpdesk: gởi kỹ thuật IT của chúng tôi đến quý Công ty.
+            </p>
+            <p>
+                <strong>2. Tư vấn và thiết kế website, phát triển phần mềm ứng dụng</strong>
+                <br>&nbsp;&nbsp; -&nbsp; Website: Website doanh nghiệp, website thanh toán trực tuyến,...
+                <br>&nbsp;&nbsp; -&nbsp; Phần mềm ứng dụng: Phần mềm ERP theo phân ngành quy mô vừa và nhỏ (Y tế, giáo dục, sức khỏe, sản xuất, dịch vụ thương mại,...)
+            </p>
+            <p>
+                <strong>3. Cung cấp thiết bị</strong>
+                <br>&nbsp;&nbsp; -&nbsp; Dịch vụ cung cấp thiết bị phần cứng của các hãng: IBM, HP, Juniper, Cisco, Linksys, INTEL, SONY, CANON, DELL, TOSHIBA, AXIOO, ACER, PANASONIC, SIEMENS, ORION, DELFI, ANEWTECH,…
+                <br>&nbsp;&nbsp; -&nbsp; Dịch vụ cung cấp các phần mềm có bản quyền cũng như các phần mềm mã nguồn mở đáp ứng theo nhu cầu, ngân sách của khách hàng và các dịch vụ đào tạo sử dụng, cài đặt... bao gồm: hệ điều hành (Feroda, Redhat,...), ứng dụng (Open Office, Domain Controller,...), phần mềm quét mã vạch quản lý hàng hóa, ERP mã nguồn mở dành cho doanh nghiệp quy mô vừa và nhỏ,...
+            </p>
+            <p>Quá trình hoạt động kinh doanh hiệu quả và ổn định của Công ty Hoàng Khang đạt được là nhờ sự ưu ái, sự quan tâm và tín nhiệm của Quý khách hàng dành cho Hoàng Khang trong thời gian vừa qua. Quý Khách hàng đã tạo điều kiện sẵn sàng hợp tác phát triển, chia sẽ và mang thuận lợi công việc đến tập thể Công ty Hoàng Khang. Bên cạnh đó, Hoàng Khang luôn luôn đặt mục tiêu cùng chung tay góp sức hoàn thành nhiệm vụ, đóng góp vào sự thành công chung trong hoạt động kinh doanh của Quý khách hàng.</p>
+            <p>Toàn thể Ban lãnh đạo và Tập thể nhân viên Công ty Hoang Khang Incotech xin chân thành cảm ơn Quý khách hàng đã tin tưởng và sử dụng dịch vụ của Chúng tôi trong thời gian qua.</p>
+            <p>
+                <strong>HOÀNG KHANG MANG ĐẾN GIẢI PHÁP TOÀN DIỆN</strong>
+                <br>Trân trọng kính chào!
+                <br><strong>CÔNG TY TNHH GIẢI PHÁP CNTT VÀ TT HOÀNG KHANG - HOANGKHANG INCOTECH</strong>
+            </p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="about-text-item">
+                    <h5 class="title-about-us">What we really do?</h5>
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,</p>
+                </div>
+                <div class="about-text-item">
+                    <h5 class="title-about-us">History of the Company</h5>
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="about-text-item">
+                    <h5 class="title-about-us">Our Vision</h5>
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,</p>
+                </div>
+                <div class="about-text-item">
+                    <h5 class="title-about-us">Cooperate with Us!</h5>
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="about-text-item">
+                    <h5 class="title-about-us">Our Vision</h5>
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,</p>
+                </div>
+                <div class="about-text-item">
+                    <h5 class="title-about-us">Cooperate with Us!</h5>
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock,</p>
+                </div>
+            </div>            
+        </div>
+    </div>
+</main>

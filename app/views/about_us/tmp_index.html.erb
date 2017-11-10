@@ -1,0 +1,145 @@
+<!-- - - - - - - - - - - - - - Main Wrapper - - - - - - - - - - - - - - - - -->
+
+<div class="wide_layout">
+
+    <!-- - - - - - - - - - - - - - Header - - - - - - - - - - - - - - - - -->
+
+    <%= render 'blog/header' %>
+    
+    <!-- - - - - - - - - - - - - - End Header - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Page Wrapper - - - - - - - - - - - - - - - - -->
+
+    <div class="secondary_page_wrapper">
+
+        <div class="container">
+
+            <!-- - - - - - - - - - - - - - Breadcrumbs - - - - - - - - - - - - - - - - -->
+
+            <ul class="breadcrumbs">
+
+                <li><%= link_to "Trang chủ", root_path %></li>
+                <li>Giới thiệu</li>
+
+            </ul>
+
+            <div class="row">
+
+                <aside class="col-md-3 col-sm-4">
+
+                    <!-- - - - - - - - - - - - - - Information - - - - - - - - - - - - - - - - -->
+
+                    <section class="section_offset">
+
+                        <h3>Thông tin</h3>
+
+                        <ul class="theme_menu">
+
+                            <li><%= link_to "Giới thiệu", {controller: "about_us", action: "index"} %></li>
+                            <li><%= link_to "Tin tức", {controller: "blog", action: "index"} %></li>
+                            <li><%= link_to "Đối tác", {controller: "manufacturer", action: "index"} %></li>
+                            <li><%= link_to "Liên hệ", {controller: "contact", action: "index"} %></li>
+
+                        </ul>
+
+                    </section><!--/ .section_offset -->
+
+                    <div class="section_offset">
+
+                        <div class="section_offset">
+
+                            <%= link_to image_tag("/images/logo-company.jpg"), { controller: "about_us", action: "index" }, class: "banner" %>
+    
+                        </div>
+
+                    </div>
+
+                    <!-- - - - - - - - - - - - - - End of information - - - - - - - - - - - - - - - - -->
+
+                    <!-- - - - - - - - - - - - - - Tags - - - - - - - - - - - - - - - - -->
+
+                    <section class="section_offset">
+
+                        <h3>Nhãn</h3>
+
+                        <div class="tags_container">
+
+                            <ul class="tags_cloud">
+                                
+                                <% @menu.each do |item| %>
+                            
+                                    <% if item.level == 1 %>
+                                        
+                                        <li><a class="button_grey" <%= (link_to item.title, {:controller => "category_page", :action => "index", id: item.id }).html_safe %></a></li>
+                                        
+                                    <% end %>
+                                
+                                <% end %>
+
+                            </ul><!--/ .tags_cloud-->
+                            
+                        </div><!--/ .tags_container-->
+
+                    </section>
+
+                    <!-- - - - - - - - - - - - - - End of tags - - - - - - - - - - - - - - - - -->
+                
+                </aside><!--/ [col]-->
+
+                <main class="col-md-9 col-sm-8">
+
+                    <h1>Giới thiệu</h1>
+
+                    <div class="theme_box clearfix">
+                        
+                        <% @about_us.each do |about| %>
+
+                        <img src="<%= about.image_url if about.image_url %>" class="alignleft" width="310" alt="">
+                        
+                        <%= about.content.html_safe %>
+                        
+                        <% end %>
+                    </div><!--/ .theme_box-->
+
+                </main><!--/ [col]-->
+
+            </div><!--/ .row-->
+
+        </div><!--/ .container-->
+
+    </div><!--/ .page_wrapper-->
+    
+    <!-- - - - - - - - - - - - - - End Page Wrapper - - - - - - - - - - - - - - - - -->
+
+    <!-- - - - - - - - - - - - - - Footer - - - - - - - - - - - - - - - - -->
+
+    <%= render 'blog/footer' %>
+    
+    <!-- - - - - - - - - - - - - - End Footer - - - - - - - - - - - - - - - - -->
+
+</div><!--/ [layout]-->
+
+<!-- - - - - - - - - - - - - - End Main Wrapper - - - - - - - - - - - - - - - - -->
+
+<!-- - - - - - - - - - - - - - Social feeds - - - - - - - - - - - - - - - - -->
+
+<%= render "home/social_feeds" %>
+
+<!-- - - - - - - - - - - - - - End Social feeds - - - - - - - - - - - - - - - - -->
+
+<!-- Include Libs & Plugins
+============================================ -->
+<%= javascript_include_tag '/frontend/js/jquery-2.1.1.min.js' %>
+<%= javascript_include_tag '/frontend/js/queryloader2.min.js' %>
+<%= javascript_include_tag '/frontend/js/jquery.appear.js' %>
+<%= javascript_include_tag '/frontend/js/owlcarousel/owl.carousel.min.js' %>
+<%= javascript_include_tag '/frontend/twitter/jquery.tweet.min.js' %>
+<%= javascript_include_tag '/frontend/js/arcticmodal/jquery.arcticmodal.js' %>
+<%= javascript_include_tag '/frontend/js/colorpicker/colorpicker.js' %>
+<%= javascript_include_tag '/frontend/js/retina.min.js' %>
+<%= javascript_include_tag 'http://s7.addthis.com/js/300/addthis_widget.js' %>
+
+<!-- Theme files
+============================================ -->
+<%= javascript_include_tag '/frontend/js/theme.plugins.js' %>
+<%= javascript_include_tag '/frontend/js/theme.core.js' %>

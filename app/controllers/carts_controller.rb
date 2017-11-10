@@ -45,7 +45,7 @@ class CartsController < ApplicationController
       li.update_attribute(:quantity, q[1])
     end
     
-    redirect_to controller: 'shopping_cart', action: 'index', notice: 'Cập nhật giỏ hàng thành công.'
+    redirect_to shopping_cart_path, notice: 'update-success'
   end
 
   # DELETE /carts/1
@@ -54,7 +54,7 @@ class CartsController < ApplicationController
     @cart.destroy if @cart.id == session[:cart_id]
     session[:cart_id] = nil
     respond_to do |format|
-      format.html { redirect_to controller: 'shopping_cart', action: 'index', notice: 'Xóa giỏ hàng thành công.' }
+      format.html { redirect_to shopping_cart_path, notice: 'delete-success' }
       format.json { head :no_content }
     end
   end

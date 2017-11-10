@@ -1,0 +1,19 @@
+<div class="main-slide slide-opt-1 full-width">
+    <div class="owl-carousel nav-style1" data-nav="true" data-autoplay="false" data-dots="true" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"600":{"items":1},"1000":{"items":1}}'>
+        <% SlideShow.get_slideshows.each do |slider| %>
+            <div class="item-slide " style="background-image: url('<%= slider.image_url %>');size: '1920x548'">
+                <div class="slide-desc slide-desc-1">
+                    <% if slider.title.present? %>
+                        <div class="p-primary"><%= slider.title.html_safe %></div>
+                    <% end %>
+                    <% if slider.description.present? %>
+                        <p class='text-justify'><%= slider.description.html_safe %></p>
+                    <% end %>
+                    <% if slider.link_to.present? %>
+                        <%= link_to 'Truy cập liên kết', slider.link_to, title: 'Truy cập liên kết', class: 'btn-shop-now' %>
+                    <% end %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
