@@ -7,9 +7,8 @@ Rails.application.routes.draw do
   get "hinh-anh(/:title)(/:id)/(:type)" => "product_images#image", as: :product_image
 
   get "tin-tuc.html" => "blog#index", as: :blog_listing
-  get "tin-tuc/chi-tiet.html" => "blog_detail#index", as: :blog_detail
+  get "tin-tuc/chi-tiet.html" => "blog#detail", as: :blog_detail
   get "blog_post" => "blog_post#index", as: :blog_post
-
   get "lien-he.html" => "contact#index", as: :contact
   get "gioi-thieu.html" => "about_us#index", as: :about_us
 
