@@ -30,7 +30,7 @@ body, .links li a, .title-login, .title-contact, .form-contact label, .title-of-
 	min-width: 150px;
 }
 .header-opt-1 .header-top a {
-	
+
 	font-weight: 400;
 }
 .header-content .nav-left {
@@ -47,7 +47,7 @@ body, .links li a, .title-login, .title-contact, .form-contact label, .title-of-
   margin-top: 20px;
 }
 .form-search .form-control {
-  width: 318.899px;  
+  width: 318.899px;
 }
 .box-group .btn-search {
   margin-top: -1px;
@@ -620,4 +620,64 @@ h1.post-name {
 }
 .product-grid .block-latest-roducts {
   padding-top: 0;
+}
+.autosearch {
+  position: relative;
+}
+.autosearch-result-box {
+    position: absolute;
+    background: #fff;
+    z-index: 100;
+    width: 100%;
+    border: solid 1px #eee;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+}
+.autosearch-result-box ul {
+
+}
+.autosearch-result-box ul li {
+    list-style: none;
+    text-align: left;
+}
+.autosearch-result-box ul li a {
+    padding: 10px 15px;
+    display: flex;
+    border-top: solid 1px #efefef;
+}
+.autosearch-result-box ul li.current a {
+    background: #f7f7f7;
+}
+.autosearch-result-box ul li a img {
+    height: 50px;
+    width: 50px;
+    margin-right: 15px;
+}
+.autosearch-result-box ul li a .title {
+    display: block;
+    font-weight: bold;
+}
+.autosearch-result-box ul li a .price {
+    margin: 0 0 0 0;
+    line-height: 24px;
+    color: #e74c3c;
+    font-size: 16px;
+    font-weight: 600;
+}
+.autosearch-result-box ul li a .old_price {
+    text-decoration: line-through;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #666 !important;
+}
+.autosearch-result-box ul li a .old_price_null {
+  display: none;
+}
+.autosearch-result-box ul li.autosearch-empty-line {
+    padding: 10px;
+    border-top: solid 1px #efefef;
+    text-align: center;
+    font-style: italic;
+    background: #f8f8f8;
+    /* font-weight: 600; */
+    color: #555;
 }
