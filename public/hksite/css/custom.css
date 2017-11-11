@@ -663,3 +663,12 @@ h1.post-name {
 .autosearch-result-box ul li a .old_price_null {
   display: none;
 }
+.autosearch-result-box ul li.autosearch-empty-line {
+    padding: 10px;
+    border-top: solid 1px #efefef;
+    text-align: center;
+    font-style: italic;
+    background: #f8f8f8;
+    /* font-weight: 600; */
+    color: #555;
+}
