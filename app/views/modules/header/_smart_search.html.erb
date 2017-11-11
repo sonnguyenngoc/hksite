@@ -1,6 +1,6 @@
 <div class="block-search">
-    <div class="block-content">
-        <%= form_tag(product_search_path, method: "get") do %>
+    <div class="block-content autosearch" data-url="<%= autosearch_path %>">
+        <%= form_tag(autosearch_path, method: "get") do %>
             <div class="categori-search  ">
                 <select name="category_id" data-placeholder="Tất cả chuyên mục" class="chosen-select categori-search-option">
                     <option value="">Chuyên mục</option>
@@ -9,11 +9,11 @@
                     <% end %>
                 </select>
             </div>
-            <div class="form-search">            
+            <div class="form-search">
                 <div class="box-group">
-                    <input name="search" type="text" class="form-control" placeholder="Nhập từ khóa tìm sản phẩm...">
+                    <input name="search" type="text" class="form-control autosearch-input" placeholder="Nhập từ khóa tìm sản phẩm...">
                     <button class="btn btn-search" type="button"><span>TÌM KIẾM</span></button>
-                </div>            
+                </div>
             </div>
         <% end %>
     </div>
