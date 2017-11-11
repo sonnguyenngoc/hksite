@@ -622,6 +622,13 @@ h1.post-name {
   padding-top: 0;
 }
 .autosearch-result-box {
+    position: absolute;
+    display: block !important;
+    background: #fff;
+    z-index: 100;
+    width: 100%;
+    border: solid 1px #eee;
+    box-shadow: 1px 2px 3px rgba(0,0,0,0.1);
 }
 .autosearch-result-box ul {
 
