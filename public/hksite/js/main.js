@@ -130,4 +130,41 @@ $(document).ready(function () {
         var box = $(this).parents('.autosearch');
         box.find('.autosearch-result-box').show();
     });
+
+    // Ajax box
+    $('.ajax-box').each(function() {
+        var box = $(this);
+        var url = box.attr('data-url');
+        var controls = $(box.attr('data-control'));
+
+        //controls.on('change keyup', function() {
+        //    str = box.attr('data-control');
+        //    //console.log(str);
+        //
+        //    var datas = [];
+        //    str.split(',').forEach(function(str) {
+        //        datas.push($(str).val());
+        //    });
+        //
+        //    $.ajax({
+        //        url: url,
+        //        method: 'GET',
+        //        data: {
+        //            datas: datas
+        //        }
+        //    }).done(function( result ) {
+        //        box.html(result);
+        //        // jsForAjaxContent(box);
+        //    });
+        //});
+        //
+        //// controls.eq(0).trigger('change');
+
+        $.ajax({
+            url: url,
+            method: 'GET',
+        }).done(function( result ) {
+            box.html(result);
+        });
+    });
 });
