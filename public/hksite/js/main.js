@@ -61,7 +61,7 @@ function autoSearch(box) {
     autosearch_xhr = $.ajax({
         url: url,
         data: {
-            keyword: keyword,
+            search: keyword,
             menu_id: menu_id
         }
     }).done(function( items ) {
