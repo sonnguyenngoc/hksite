@@ -174,13 +174,11 @@ $(document).ready(function () {
     $('.ajax-box').each(function() {
         // insert loading box
         $(this).html('<div class="ajax-box-loading"><div class="loader"><div class="ball-clip-rotate-pulse"><div></div><div></div></div></div></div>');
-
-        loadAjaxBox($(this));
     });
 
     // Ajax box
     setTimeout(function() {
-        // $('.ajax-box').appear();
+        $('.ajax-box').appear();
         $(document).on('appear', '.ajax-box:not(.loaded)', function() {
             // insert loading box
             // $(this).html('');
