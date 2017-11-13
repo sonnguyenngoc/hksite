@@ -1,3 +1,43 @@
+function loadAjaxBox(box) {
+    var url = box.attr('data-url');
+    var controls = $(box.attr('data-control'));
+
+    //// insert loading box
+    //box.html('<div class="ajax-box-loading"><div class="loader"><div class="ball-clip-rotate-pulse"><div></div><div></div></div></div></div>');
+
+    //controls.on('change keyup', function() {
+    //    str = box.attr('data-control');
+    //    //console.log(str);
+    //
+    //    var datas = [];
+    //    str.split(',').forEach(function(str) {
+    //        datas.push($(str).val());
+    //    });
+    //
+    //    $.ajax({
+    //        url: url,
+    //        method: 'GET',
+    //        data: {
+    //            datas: datas
+    //        }
+    //    }).done(function( result ) {
+    //        box.html(result);
+    //        // jsForAjaxContent(box);
+    //    });
+    //});
+    //
+    //// controls.eq(0).trigger('change');
+
+    box.addClass('loaded');
+
+    $.ajax({
+        url: url,
+        method: 'GET',
+    }).done(function( result ) {
+        box.html(result);
+    });
+}
+
 function autoSearchMoveUp(box) {
     var current_li = box.find('li.current');
     var prev;
@@ -131,40 +171,20 @@ $(document).ready(function () {
         box.find('.autosearch-result-box').show();
     });
 
-    // Ajax box
     $('.ajax-box').each(function() {
-        var box = $(this);
-        var url = box.attr('data-url');
-        var controls = $(box.attr('data-control'));
-
-        //controls.on('change keyup', function() {
-        //    str = box.attr('data-control');
-        //    //console.log(str);
-        //
-        //    var datas = [];
-        //    str.split(',').forEach(function(str) {
-        //        datas.push($(str).val());
-        //    });
-        //
-        //    $.ajax({
-        //        url: url,
-        //        method: 'GET',
-        //        data: {
-        //            datas: datas
-        //        }
-        //    }).done(function( result ) {
-        //        box.html(result);
-        //        // jsForAjaxContent(box);
-        //    });
-        //});
-        //
-        //// controls.eq(0).trigger('change');
-
-        $.ajax({
-            url: url,
-            method: 'GET',
-        }).done(function( result ) {
-            box.html(result);
-        });
+        // insert loading box
+        $(this).html('<div class="ajax-box-loading"><div class="loader"><div class="ball-clip-rotate-pulse"><div></div><div></div></div></div></div>');
     });
+
+    // Ajax box
+    setTimeout(function() {
+        $('.ajax-box').appear();
+        $(document).on('appear', '.ajax-box:not(.loaded)', function() {
+            // insert loading box
+            // $(this).html('');
+
+            loadAjaxBox($(this));
+        });
+    }, 2000);
+
 });
