@@ -4,6 +4,9 @@ class ProductController < ApplicationController
   def index
     @product = Product.find(params[:id])
   end
+  
+  def quickview
+  end
 
   def autosearch
     @products = Product.search(params).paginate(:page => params[:page], :per_page => 10)

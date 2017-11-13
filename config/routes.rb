@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   root 'home#index'
-
+  get "home_hot_products" => "home#hot_products", as: :home_hot_products
+  get "home_stock_inventory" => "home#stock_inventory", as: :home_stock_inventory
+  get "home_promotion_banner" => "home#promotion_banner", as: :home_promotion_banner
+  get "home_bestselling" => "home#bestselling", as: :home_bestselling
+  get "home_listing_brand" => "home#listing_brand", as: :home_listing_brand
+  
   get "tim-kiem-san-pham" => "product_search#index", as: :product_search
   get "san-pham(/:title)-:id.html" => "product#index", as: :product
   get "chuyen-muc(/:title)-:id.html" => "category_page#index", as: :category
   get "hinh-anh(/:title)(/:id)/(:type)" => "product_images#image", as: :product_image
+  get "xem-nhanh.html" => "product#quickview", as: :product_quickview
 
   get "tin-tuc.html" => "blog#index", as: :blog_listing
   get "tin-tuc/chi-tiet.html" => "blog#detail", as: :blog_detail

@@ -1,6 +1,5 @@
 <% if category.children.count > 0 %>
 <div class="filter-options-item filter-categori">
-    <div class="filter-options-title">Chuyên mục sản phẩm</div>
     <div class="filter-options-content">
         <ul>
             <% category.children.each do |cat| %>
@@ -16,7 +15,6 @@
 <% else %>
     <% if category.parent.present? %>
         <div class="filter-options-item filter-categori">
-            <div class="filter-options-title">Chuyên mục sản phẩm</div>
             <div class="filter-options-content">
                 <ul>
                     <% category.parent.first.children.each do |cat| %>
@@ -28,7 +26,7 @@
         </div>
     <% end %>
 <% end %>
-<% if manufacturers.count < 20 %>
+<% if (manufacturers.count < 20) && (manufacturers.count > 0) %>
 <div class="filter-options-item filter-brand">
     <div class="filter-options-title">Thương hiệu sản phẩm</div>
     <div class="filter-options-content">
