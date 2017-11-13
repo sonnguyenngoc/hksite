@@ -1,10 +1,10 @@
 # encoding: utf-8
 
-class PictureUploader < CarrierWave::Uploader::Base
+class MenuUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
-  include CarrierWave::MiniMagick
+  # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
   storage :file
@@ -35,22 +35,6 @@ class PictureUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :resize_to_fit => [50, 50]
   # end
-  
-  version :article_small do
-    process :resize_to_fit => [83, 83]
-  end
-  
-  version :article_home do
-    process :resize_to_fit => [244, 244]
-  end
-  
-  version :article_blog do
-    process :resize_to_fit => [510, 280]
-  end
-  
-  version :article_blog_post do
-    process :resize_to_fit => [810, 400]
-  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

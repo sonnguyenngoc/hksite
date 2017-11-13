@@ -4,7 +4,7 @@ class Admin::MenusController < ApplicationController
   # GET /menus
   # GET /menus.json
   def index
-    @menus = Menu.all
+    @menus = Menu.all.order("created_at ASC")
   end
 
   # GET /menus/1

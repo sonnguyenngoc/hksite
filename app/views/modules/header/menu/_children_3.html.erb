@@ -1,7 +1,11 @@
 <li class="menu-item-has-children arrow item-megamenu">
     <%= link_to menu.title, category_path(id: menu.id, title: url_friendly(strip_tags(menu.title))), title: menu.title, class: 'parent-menu' %>
     <span class="toggle-submenu hidden-md"></span>
-    <div class="submenu parent-megamenu megamenu" style="background-image: url('/hksite/images/home1/menu-banner-2.jpg');">
+    <% if menu.menu_image.present? %>
+    <div class="submenu parent-megamenu megamenu" style="background-image: url('<%= menu.menu_image %>');">
+    <% else %>
+    <div class="submenu parent-megamenu megamenu" style="background-image: url('/hksite/images/menu-02.png');">
+    <% end %>
         <div class="row">
             <div class="submenu-banner submenu-banner-menu-2">
                 <% menu.children.each do |child_1| %>

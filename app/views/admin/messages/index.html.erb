@@ -51,7 +51,7 @@
                     
                     <% @messages.each do |item| %>
                         <tr>
-                            <td><%= link_to item.name, [:admin, item] %></td>
+                            <td><strong><%= item.name %></strong></td>
                             <td><%= item.email %></td>
                             <td><%= item.phone %></td>
                             <td><%= item.messages %></td>
@@ -62,7 +62,6 @@
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                             <i class="icon-menu9"></i>
                                         </a>
-    
                                         <ul class="dropdown-menu dropdown-menu-right">
                                             <li><%= link_to '<i class="icon-cross2"></i> Xóa'.html_safe, [:admin, item], method: :delete, data: {confirm: 'Bạn có chắc muốn xóa dòng này?'} %></li>
                                         </ul>

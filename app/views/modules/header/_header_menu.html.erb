@@ -1,5 +1,7 @@
 <ul class="header-nav krystal-nav">
-    <li class="btn-close hidden-md"><i class="fa fa-times" aria-hidden="true"></i></li>
+    <li class="btn-close hidden-md">
+        <i class="fa fa-times" aria-hidden="true"></i>
+    </li>
     <% Menu.get_menus.each do |menu| %>
         <% menu_count = menu.children.count %>
         <% if menu_count == 1 %>
@@ -12,5 +14,5 @@
            <%= render '/modules/header/menu/children_4', menu: menu %>
         <% end %>
     <% end %>
-    <li><a href="" class="parent-menu">Thương Hiệu</a></li>
+    <li><%= link_to 'THÔNG TIN LIÊN HỆ', contact_path, title: 'Thông Tin Liên Hệ', class: 'parent-menu' %></li>
 </ul>

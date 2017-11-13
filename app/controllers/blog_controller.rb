@@ -4,5 +4,6 @@ class BlogController < ApplicationController
   end
   
   def detail
+    @blog = Article.find(params[:id])
   end
 end

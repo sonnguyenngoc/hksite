@@ -1,0 +1,36 @@
+<main class="site-main blog-single">
+    <div class="container">
+        <ol class="breadcrumb-page">
+            <li><%= link_to 'Trang Chủ', root_path %></li>
+            <li class="active"><%= link_to 'Hướng Dẫn Mua Hàng', 'javascript:void(0)' %></li>
+        </ol>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9 col-sm-8 float-none float-right">
+                <div class="main-content">
+                    <div class="post-detail">
+                        <div class="post-item post-detail-item">
+                            <div class="post-thumb">
+                                <%= image_tag '/hksite/images//policy/huong-dan-mua-hang.png', alt: 'Hướng Dẫn Mua Hàng' %>
+                            </div>
+                            <div class="post-item-info">
+                                <h1 class="post-name">Hướng Dẫn Mua Hàng</h1>
+                                <div class="post-metas">                                    
+                                    <span class="news">Chuyên mục: <span>Chăm Sóc Khách Hàng</span></span>
+                                    <span class="time">Ngày cập nhật: <span>07/11/2017</span></span>
+                                </div>
+                                <div class="post-content text-justify">
+                                    Nội dung đang được cập nhật.........
+                                </div>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-4">
+                <%= render '/modules/information/left_sidebar' %>
+            </div>
+        </div>
+    </div>
+</main>

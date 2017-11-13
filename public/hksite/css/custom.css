@@ -100,7 +100,7 @@ h1 {
 	padding-top: 0px;
 }
 .contacts-info .info-detail {
-	font-size: 14px;
+	font-size: 12px;
 	color: #000;
 	line-height: 20px;
 }
@@ -203,10 +203,11 @@ span.required {
 	line-height: 30px;
 }
 .block-recent-post-blog .block-title {
-	margin-top: 25px;
+	margin-top: 15px;
+  margin-bottom: 10px;
 }
 .post-detail-item {
-	margin-top: 50px;
+	margin-top: 20px;
 }
 h1.post-name {
 	margin-top: 20px;
@@ -277,7 +278,7 @@ h1.post-name {
   padding: 10px 0 0 0;
 }
 .blog-grid .breadcrumb-page {
-  padding: 15px 0 15px 0;
+  padding: 10px 0 10px 0;
 }
 .pagination {
   padding: 15px 0 0 0;
@@ -700,4 +701,49 @@ h1.post-name {
 .filter-options .filter-options-title {
   padding-bottom: 0;
   font-size: 16px;
+}
+.banner-about-us {
+  padding: 10px 0 10px 0;
+}
+.about-us .breadcrumb-page {
+  padding-top: 10px;
+}
+.about-us h1 {
+  font-size: 36px;
+}
+.about-text {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.contact-us .contact-map {
+  padding: 20px 0 0 0;
+}
+.contact-us .breadcrumb-page {
+  padding: 10px 0 15px 0;
+}
+.contact-us .title-contact {
+  font-size: 20px;
+  padding-bottom: 0;
+}
+.post-grid .post-item {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+.post-metas .author, .post-metas .news {
+  margin-right: 5px;
+}
+.form-contact .contact-info label.error {
+  display: none !important;
+}
+.form-contact .contact-info input.error, .form-contact .contact-info textarea.error {
+  border: 2px solid #cc181e;
+}
+.finish-contact .breadcrumb-page {
+  padding: 10px 0 0 0;
+}
+.finish-contact .contact-success {
+  padding: 10px 0 0 0;
+}
+.post-detail .post-item, .site-main.blog-single {
+  padding: 10px;
 }

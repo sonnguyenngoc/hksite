@@ -1,4 +1,7 @@
 class Menu < ActiveRecord::Base
+  mount_uploader :menu_image, MenuUploader
+  mount_uploader :image_url, MenuUploader
+  
   has_many :parent_menus, dependent: :destroy
   has_many :parent, through: :parent_menus, source: :parent
   has_many :child_menus, class_name: "ParentMenu", foreign_key: "parent_id", dependent: :destroy

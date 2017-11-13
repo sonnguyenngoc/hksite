@@ -52,7 +52,7 @@
                     <% @articles.each do |item| %>
                         <tr>
                             <td><div class="media-left">
-                                <img src="<%= item.image_url if item.image_url? %>" style="width: 82px; height: 56px;" class="img-rounded" alt="">
+                                <img src="<%= item.image_url.article_small if item.image_url? %>" style="width: 82px; height: 56px;" class="img-rounded" alt="">
                             </div></td>
                             <td>
                                 <%= link_to (truncate(strip_tags(item.title), length: 40)), [:admin, item] %>
