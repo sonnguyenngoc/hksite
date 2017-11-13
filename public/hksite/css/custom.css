@@ -701,3 +701,19 @@ h1.post-name {
   padding-bottom: 0;
   font-size: 16px;
 }
+.ajax-box-loading {
+    margin-top: 20px;
+    background: #efefef;
+    text-align: center;
+    padding: 230px;
+}
+.ajax-box-loading .loader {
+  display: inline-block;
+  margin: auto;
+}
+.ball-clip-rotate-pulse > div:first-child {
+    background: #aaa;
+}
+.ball-clip-rotate-pulse > div:last-child {
+  border-color: #aaa transparent #aaa transparent;
+}
