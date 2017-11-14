@@ -173,7 +173,7 @@ $(document).ready(function () {
 
     $('.ajax-box').each(function() {
         // insert loading box
-        $(this).html('<div class="ajax-box-loading"><div class="loader"><div class="ball-clip-rotate-pulse"><div></div><div></div></div></div></div>');
+        $(this).html('<div class="ajax-box-loading"><div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div></div>');
     });
 
     // Ajax box
@@ -183,7 +183,7 @@ $(document).ready(function () {
             // insert loading box
             // $(this).html('');
 
-            loadAjaxBox($(this));
+            // loadAjaxBox($(this));
         });
     }, 2000);
 
