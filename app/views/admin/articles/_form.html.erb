@@ -14,14 +14,35 @@
         <div class="col-lg-10">
           <%= f.file_field :image_url, class: "file-styled" %>
           <span class="help-block">Accepted formats: gif, png, jpg. Max file size 2Mb</span>
-          <%= image_tag(@article.image_url.article_home, size: "310x200",alt: "Picture/logo's Manufacturer", class: "img-rouded") %>
+          <%= image_tag(@article.image_url.article_home, size: "310x200", alt: "Hình ảnh cho bài viết", class: "img-rouded") %>
         </div>
     </div>
     
     <div class="form-group">
         <%= f.label "Tiêu đề: ", class: "col-lg-2 control-label" %>
         <div class="col-lg-10">
-            <%= f.text_field :title, placeholder: "Post's title (required)", class: "form-control" %>
+            <%= f.text_field :title, placeholder: "Tiêu đề bài viết", class: "form-control" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <%= f.label "Meta keywords: ", class: "col-lg-2 control-label" %>
+        <div class="col-lg-10">
+            <%= f.text_field :meta_keywords, placeholder: "Từ khóa thẻ meta keywords", class: "form-control" %>
+        </div>
+    </div>
+        
+    <div class="form-group">
+        <%= f.label "Meta desciprion: ", class: "col-lg-2 control-label" %>
+        <div class="col-lg-10">
+            <%= f.text_field :meta_description, placeholder: "Mô tả thẻ meta description", class: "form-control" %>
+        </div>
+    </div>
+        
+    <div class="form-group field">
+        <%= f.label "Mô tả ngắn: ", class: "col-lg-2 control-label" %>
+        <div class="col-lg-10">
+          <%= f.text_area :short_description, rows: "5", cols: "5", placeholder: "Mô tả ngắn cho bài viết...", class: "form-control" %>
         </div>
     </div>
         
@@ -33,7 +54,7 @@
     </div>
     
     <div class="form-group">
-        <%= f.label "Pupup?: ", class: "col-lg-2 control-label" %>
+        <%= f.label "Popup?: ", class: "col-lg-2 control-label" %>
         <div class="col-lg-10">
             <%= f.select(:popup, ['false', 'true'], {}, { :selected => :popup, :class => 'select' })%>
         </div>

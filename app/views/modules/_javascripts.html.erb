@@ -17,3 +17,11 @@
 <%= javascript_include_tag '/hksite/js/jquery.plugin.js' %>
 <%= javascript_include_tag '/hksite/js/jquery.countdown.js' %>
 <%= javascript_include_tag '/hksite/js/main.js' %>
+<% if params[:controller] == "contact" && params[:action] == "index" %>
+<%= javascript_include_tag '/hksite/js/jquery.validate.min.js' %>
+<script>
+    jQuery(document).ready(function($){
+        $("#new_message").validate();
+    });
+</script>
+<% end %>

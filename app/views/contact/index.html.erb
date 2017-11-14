@@ -8,41 +8,39 @@
 
     <div class="container">
         <div class="row">
-            <div class="contact-map full-width">
-                <a href=""><img src="/hksite/images/map.jpg" alt="map"></a>
-            </div>
+            <%= form_for @message, url: admin_messages_path,html: {class: "form-contact"} do |f| %>
             <form class="form-contact" action="#" method="post">
                 <div class="col-md-5">
                     <div class="contact-info">
                         <h5 class="title-contact">Gửi lời nhắn cho chúng tôi</h5>
                         <p class="form-row form-row-wide">
                             <label>Họ & Tên <span class="required">*</span></label>
-                            <input type="text" value="" name="text" placeholder="Vui lòng nhập họ & tên....." class="input-text">
+                            <%= f.text_field :name, placeholder: 'Vui lòng nhập họ & tên.....', required: true, class: 'input-text required' %>
                         </p>
                         <p class="form-row form-row-wide">
                             <label>Địa chỉ email <span class="required">*</span></label>
-                            <input type="email" value="" name="text" placeholder="Vui lòng nhập địa chỉ email....." class="input-text">
+                            <%= f.email_field :email, placeholder: 'Vui lòng nhập địa chỉ email.....', required: true, class: 'input-text required' %>                            
                         </p>
                         <p class="form-row form-row-wide">
                             <label>Số điện thoại </label>
-                            <input type="text" value="" name="text" placeholder="Vui lòng nhập số điện thoại....." class="input-text">
+                            <%= f.telephone_field :phone, placeholder: 'Vui lòng nhập số điện thoại.....', required: true, class: 'input-text required' %>                            
                         </p>
                             <p class="form-row form-row-wide form-text">
                             <label>Nội dung lời nhắn <span class="required">*</span></label>
-                            <textarea placeholder="Vui lòng nhập nội dung lời nhắn hoặc nội dung góp ý tại đây....." aria-invalid="false" class="textarea-control" rows="5" cols="40" name="message"></textarea>
+                            <%= f.text_area :messages, placeholder: 'Vui lòng nhập nội dung lời nhắn hoặc nội dung góp ý tại đây.....', rows: '6', cols: '40', required: true, class: 'textarea-control required' %>                            
                         </p>
                         <p class="form-row">
                             <input type="submit" value="Gửi lời nhắn" name="Gửi lời nhắn" class="button-submit">
                         </p>
                     </div>
                 </div>
-            </form>
+            <% end %>
             <div class="col-md-4 contact-detail">
                 <h5 class="title-contact">Thông tin công ty</h5>
                 <div class="contacts-info ">
                     <div class="contact-icon"><i class="fa fa-home" aria-hidden="true"></i></div>
                     <h4 class="title-info">Tên công ty</h4>
-                    <div class="info-detail">Chi nhánh Công Ty TNHH giải Pháp CNTT và TT Hoàng Khang</div>
+                    <div class="info-detail">Chi Nhánh Công Ty TNHH Giải Pháp CNTT và TT Hoàng Khang</div>
                 </div>
                 <div class="contacts-info ">
                     <div class="contact-icon"><i class="fa fa-globe" aria-hidden="true"></i></div>
@@ -92,7 +90,10 @@
                     <h4 class="title-info">Giờ làm việc</h4>
                     <div class="info-detail">Thứ 2 ~ Thứ 6: 7h30 - 17h00<br>Thứ 7: 7h30 - 12h00<br>Chủ nhật, Ngày lễ: Không làm việc</div>
                 </div>
-            </div>
+            </div>            
+        </div>
+        <div class="contact-map full-width">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1647.536813070871!2d106.65680766869292!3d10.847616221686392!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317529bc96bc2e27%3A0xff03fd6f844429f1!2sHoang+Khang+Incotech!5e0!3m2!1svi!2s!4v1510543693295" width="1366" height="400" frameborder="0" style="border:0" allowfullscreen></iframe>
         </div>
     </div>
 </main>
