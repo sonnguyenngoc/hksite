@@ -6,6 +6,8 @@ class ProductController < ApplicationController
   end
 
   def quickview
+    @product = Product.find(params[:id])
+    
     render layout: nil
   end
 

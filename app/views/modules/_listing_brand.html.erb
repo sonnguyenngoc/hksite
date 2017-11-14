@@ -2,7 +2,7 @@
     <div class="owl-carousel nav-style3" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="2" data-responsive='{"0":{"items":1},"480":{"items":2},"600":{"items":4},"1000":{"items":6}}'>
         <% Partner.get_partners.each do |partner| %>
             <%= link_to image_tag(partner.image_url.thumb196, alt: partner.get_name),
-            '', title: partner.get_name, class: 'item-brand' %>
+            'javascript:void(0)', title: partner.get_name, class: 'item-brand' %>
         <% end %>
     </div>
 </div>

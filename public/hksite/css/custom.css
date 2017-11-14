@@ -774,3 +774,6 @@ h1.post-name {
 .ajax-box-loading.popup {
   padding: 50px;
 }
+.quick-view-content .product-image {
+  margin-right: 20px;
+}

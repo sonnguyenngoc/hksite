@@ -1,29 +1,59 @@
 <!--<div id="block-quick-view-popup" class="block-quick-view-popup">
     <div class="quick-view-content">-->
-        <div class="product-items">
-            <div class="product-image">
-                <a href=""><img src="/hksite/images/popup-pro.jpg" alt="p1" width="200" height="200"></a>
-            </div>
-            <div class="product-info">
-                <div class="product-name"><a href="">Acer's Aspire S7 is a thin and portable laptop</a></div>
-                <span class="star-rating">
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                    <i class="fa fa-star" aria-hidden="true"></i>
-                </span>
-                <div class="product-infomation">
-                    Description Our new HPB12 / A12 battery is rated at 2000mAh and designed to power up Black and Decker FireStorm line of 12V tools allowing...
-                </div>
-            </div>
-            <div class="product-info-price">
-                <span class="price">
-                    <ins>$229.00</ins>
-                    <del>$259.00</del>
-                </span>
-                <a href="" class="btn-add-to-cart">Add to cart</a>
-            </div>
+<div class="product-items">
+    <div class="product-image">
+        <% if !@product.product_image.id.nil? %>
+            <%= link_to image_tag(@product.product_image.image(:thumb200), alt: @product.display_name),
+                product_path(id: @product.id, title: url_friendly(strip_tags(@product.display_name))),
+                title: @product.display_name %>
+        <% else %>
+            <%= link_to image_tag('/hksite/images/no-image/thumb-200.jpg', alt: @product.display_name),
+                product_path(id: @product.id, title: url_friendly(strip_tags(@product.display_name))),
+                title: @product.display_name %>
+        <% end %>
+    </div>
+    <div class="product-info">
+        <div class="product-name">
+            <%= link_to @product.display_name,
+                product_path(id: @product.id, title: url_friendly(strip_tags(@product.display_name))),
+                title: @product.display_name %>
         </div>
+        <span class="star-rating">
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+            <i class="fa fa-star" aria-hidden="true"></i>
+        </span>
+        <div class="product-infomation">
+            <% if @product.description.present? %>
+                <strong>Mô tả: </strong><%= @product.description %><br>
+            <% end %>
+            <% if @product.product_info.present? %>
+                <% if @product.product_info.bonus_product.present? %>
+                    <strong>Tặng kèm: </strong><%= @product.product_info.bonus_product %><br>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+    <div class="product-info-price">
+        <% if @product.has_price %>
+            <span class="price">
+                <% if @product.check_product_sale %>
+                    <ins><%= format_price(@product.display_price) %></ins>
+                    <del><%= format_price(@product.product_info.old_price) %></del>
+                <% else %>
+                    <ins><%= format_price(@product.display_price) %></ins>
+                <% end %>
+            </span>
+            <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: @product), class: "btn-add-to-cart custom-add-to-cart" %>
+        <% else %>
+            <span class="price">
+                <ins>Liên hệ:(028) 3984 7690</ins>
+            </span>
+        <% end %>
+        
+    </div>
+</div>
 <!--    </div>
 </div>-->

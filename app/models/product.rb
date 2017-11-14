@@ -77,7 +77,7 @@ class Product < ActiveRecord::Base
                   .where(product_infos: {product_sale: "on"})
                   .order("product_infos.updated_at DESC")
     
-    return records.limit(18)
+    return records.limit(10)
   end
   
   def self.get_bestseller_products
@@ -85,7 +85,7 @@ class Product < ActiveRecord::Base
                   .where(product_infos: {product_bestselled: "on"})
                   .order("product_infos.updated_at DESC")
     
-    return records.limit(20)
+    return records.limit(10)
   end
   
   def self.get_prominent_products
@@ -98,8 +98,8 @@ class Product < ActiveRecord::Base
   
   def self.get_stock_products
     records = self.get_all_stock_ready.joins(:categories)
-                  .where(categories: {id: [2, 14, 19, 54, 74, 127, 152]}).uniq.order("stock DESC")
-    return records.limit(40)
+                  .where(categories: {id: [2, 14, 127]}).uniq.order("stock DESC")
+    return records.limit(20)
   end
   
   def self.get_new_products_manual(params)
