@@ -321,13 +321,15 @@
                                                     <table cellspacing="0" cellpadding="0" width="100%" style="border-collapse:separate !important;">
                                                         <tr>
                                                             <td class="mini-block">
-                                                              <span class="header-sm">Thời gian gửi đơn hàng</span><br />
-                                                              <%= @customer_order.created_at.utc.in_time_zone("Hanoi").strftime("%H:%M") %> - <%= @customer_order.created_at.utc.in_time_zone("Hanoi").strftime("%d/%m/%Y") %> <br>
-                                                              <% if @customer_order.orderer_message.present? %>
-                                                              <br>
-                                                              <span class="header-sm">Lời nhắn</span><br>
-                                                              <%= @customer_order.orderer_message %>
-                                                              <% end %>
+                                                                <span class="header-sm">MÃ ĐƠN HÀNG</span><br />
+                                                                <%= @customer_order.created_at.utc.in_time_zone("Hanoi").strftime("%Y%m%d%H%M") %><br> 
+                                                                <span class="header-sm">Thời gian gửi đơn hàng</span><br />
+                                                                <%= @customer_order.created_at.utc.in_time_zone("Hanoi").strftime("%H:%M") %> - <%= @customer_order.created_at.utc.in_time_zone("Hanoi").strftime("%d/%m/%Y") %> <br>
+                                                                <% if @customer_order.orderer_message.present? %>
+                                                                <br>
+                                                                <span class="header-sm">Lời nhắn</span><br>
+                                                                <%= @customer_order.orderer_message %>
+                                                                <% end %>
                                                             </td>
                                                         </tr>
                                                     </table>

@@ -6,7 +6,7 @@
             <li class="cat-parent"><%= cat.title %></li>
                 <% cat.children.each do |child_1| %>
                     <li class="<%= 'active' if child_1.id == category.id %>">--- <%= link_to child_1.title,
-                        category_path(id: child_1.id, title: url_friendly(strip_tags(child_1.title))), title: child_1.title %></li>
+                        category_path(id: child_1.id, title: child_1.name_url), title: child_1.title %></li>
                 <% end %>
             <% end %>
         </ul>
@@ -19,7 +19,7 @@
                 <ul>
                     <% category.parent.first.children.each do |cat| %>
                     <li class="<%= 'active' if cat.id == category.id %>"><%= link_to cat.title,
-                        category_path(id: cat.id, title: url_friendly(strip_tags(cat.title))), title: cat.title %></li>
+                        category_path(id: cat.id, title: cat.name_url), title: cat.title %></li>
                     <% end %>
                 </ul>
             </div>

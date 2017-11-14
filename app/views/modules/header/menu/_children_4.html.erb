@@ -1,5 +1,5 @@
 <li class="menu-item-has-children arrow item-megamenu">
-    <%= link_to menu.title, category_path(id: menu.id, title: url_friendly(strip_tags(menu.title))), title: menu.title, class: 'parent-menu' %>
+    <%= link_to menu.title, category_path(id: menu.id, title: menu.name_url), title: menu.title, class: 'parent-menu' %>
     <span class="toggle-submenu hidden-md"></span>
     <% if menu.menu_image.present? %>
     <div class="submenu parent-megamenu megamenu" style="background-image: url('<%= menu.menu_image %>');">
@@ -17,7 +17,7 @@
                                     <ul class="menu">
                                         <% child_1.children[0..9].each do |child_2| %>
                                             <li class="menu-item">
-                                                <%= link_to child_2.title, category_path(id: child_2.id, title: url_friendly(strip_tags(child_2.title))), title: child_2.title %>
+                                                <%= link_to child_2.title, category_path(id: child_2.id, title: child_2.name_url), title: child_2.title %>
                                             </li>
                                         <% end %>
                                     </ul>
@@ -31,7 +31,7 @@
                                     <ul class="menu">
                                         <% child_1.children[10..20].each do |child_2| %>
                                             <li class="menu-item">
-                                                <%= link_to child_2.title, category_path(id: child_2.id, title: url_friendly(strip_tags(child_2.title))), title: child_2.title %>
+                                                <%= link_to child_2.title, category_path(id: child_2.id, title: child_2.name_url), title: child_2.title %>
                                             </li>
                                         <% end %>
                                     </ul>
@@ -46,7 +46,7 @@
                                     <ul class="menu">
                                         <% child_1.children.each do |child_2| %>
                                             <li class="menu-item">
-                                                <%= link_to child_2.title, category_path(id: child_2.id, title: url_friendly(strip_tags(child_2.title))), title: child_2.title %>
+                                                <%= link_to child_2.title, category_path(id: child_2.id, title: child_2.name_url), title: child_2.title %>
                                             </li>
                                         <% end %>
                                     </ul>

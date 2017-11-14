@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113040128) do
+ActiveRecord::Schema.define(version: 20171114073658) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -317,6 +317,7 @@ ActiveRecord::Schema.define(version: 20171113040128) do
     t.integer  "level"
     t.string   "image_url"
     t.string   "menu_image"
+    t.string   "name_url"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -541,7 +542,7 @@ ActiveRecord::Schema.define(version: 20171113040128) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.decimal  "price",             precision: 16, scale: 2
+    t.decimal  "price",              precision: 16, scale: 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "product_code"
@@ -550,21 +551,22 @@ ActiveRecord::Schema.define(version: 20171113040128) do
     t.string   "unit"
     t.integer  "user_id"
     t.integer  "tmpproduct"
-    t.integer  "stock",                                      default: 0
+    t.integer  "stock",                                       default: 0
     t.text     "serial_numbers"
-    t.integer  "status",                                     default: 1
+    t.integer  "status",                                      default: 1
     t.text     "note"
     t.text     "cache_search"
     t.text     "intro"
     t.integer  "tax_id"
     t.text     "short_intro"
     t.boolean  "no_price"
-    t.boolean  "erp_price_updated",                          default: false
-    t.boolean  "erp_imported",                               default: false
-    t.boolean  "suspended",                                  default: false
-    t.boolean  "erp_sold_out",                               default: false
-    t.text     "html_description"
-    t.decimal  "web_price",         precision: 16, scale: 2
+    t.boolean  "erp_price_updated",                           default: false
+    t.boolean  "erp_imported",                                default: false
+    t.boolean  "suspended",                                   default: false
+    t.boolean  "erp_sold_out",                                default: false
+    t.decimal  "web_price",          precision: 16, scale: 2
+    t.datetime "cache_last_ordered"
+    t.datetime "cache_last_priced"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -738,50 +740,6 @@ ActiveRecord::Schema.define(version: 20171113040128) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "users_worksheets", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "worksheet_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  create_table "worksheet_expenses", force: :cascade do |t|
-    t.string   "name"
-    t.decimal  "price"
-    t.string   "type_name"
-    t.text     "description"
-    t.integer  "creator_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.string   "status"
-  end
-
-  create_table "worksheet_intineraries", force: :cascade do |t|
-    t.string   "start_address"
-    t.string   "end_address"
-    t.datetime "start_at"
-    t.datetime "end_at"
-    t.decimal  "distance"
-    t.text     "description"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "worksheet_id"
-  end
-
-  create_table "worksheets", force: :cascade do |t|
-    t.integer  "creator_id"
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
-    t.string   "status",     default: "active"
-  end
-
-  create_table "worksheets_worksheet_expenses", force: :cascade do |t|
-    t.integer "worksheet_id"
-    t.integer "worksheet_expense_id"
-    t.decimal "price"
-    t.string  "description"
-  end
 
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"

@@ -12,10 +12,10 @@
                     <div class="promotion-banner style-3">
                     <% if @category.image_url.present? %>                        
                         <%= link_to image_tag(@category.image_url, alt: @category.title, class: 'category-main-banner'),
-                                    category_path(id: @category.id, title: url_friendly(strip_tags(@category.title))), title: @category.title %>
+                                    category_path(id: @category.id, title: @category.name_url), title: @category.title %>
                     <% else %>                        
                         <%= link_to image_tag('/hksite/images/banner-hkstore.png', alt: @category.title, class: 'category-main-banner'),
-                                    category_path(id: @category.id, title: url_friendly(strip_tags(@category.title))), title: @category.title %>
+                                    category_path(id: @category.id, title: @category.name_url), title: @category.title %>
                     <% end %>
                      </div>
                     <div class="toolbar-products">
