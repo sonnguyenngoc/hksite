@@ -183,7 +183,7 @@ $(document).ready(function () {
             // insert loading box
             // $(this).html('');
 
-            // loadAjaxBox($(this));
+            loadAjaxBox($(this));
         });
     }, 2000);
 

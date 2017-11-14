@@ -563,6 +563,7 @@ ActiveRecord::Schema.define(version: 20171113040128) do
     t.boolean  "erp_imported",                               default: false
     t.boolean  "suspended",                                  default: false
     t.boolean  "erp_sold_out",                               default: false
+    t.text     "html_description"
     t.decimal  "web_price",         precision: 16, scale: 2
   end
 
@@ -737,6 +738,50 @@ ActiveRecord::Schema.define(version: 20171113040128) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "users_worksheets", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "worksheet_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "worksheet_expenses", force: :cascade do |t|
+    t.string   "name"
+    t.decimal  "price"
+    t.string   "type_name"
+    t.text     "description"
+    t.integer  "creator_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.string   "status"
+  end
+
+  create_table "worksheet_intineraries", force: :cascade do |t|
+    t.string   "start_address"
+    t.string   "end_address"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.decimal  "distance"
+    t.text     "description"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "worksheet_id"
+  end
+
+  create_table "worksheets", force: :cascade do |t|
+    t.integer  "creator_id"
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.string   "status",     default: "active"
+  end
+
+  create_table "worksheets_worksheet_expenses", force: :cascade do |t|
+    t.integer "worksheet_id"
+    t.integer "worksheet_expense_id"
+    t.decimal "price"
+    t.string  "description"
+  end
 
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
