@@ -519,8 +519,10 @@
         //      return false;
         //});
         $('.block-quick-view-popup').on( 'click', function(){
-              $('.block-quick-view-popup').removeClass("open");
-              return false;
+              setTimeout(function() {
+                $('.block-quick-view-popup').removeClass("open");
+                return false;
+              }, 200);
         });
 
         $(".block-search-mobile .close-block-serach").on( 'click', function(){
