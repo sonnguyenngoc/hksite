@@ -10,7 +10,7 @@
                                 <div class="product-thumb style1">
                                     <div class="thumb-inner">
                                         <% if !product.product_image.id.nil? %>
-                                            <%= link_to image_tag(product.product_image.image(:thumb170), alt: product.display_name),
+                                            <%= link_to image_tag(product.product_image.image(:thumb100), alt: product.display_name),
                                                         product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
                                         <% else %>
                                             <%= link_to image_tag('/hksite/images/no-image/thumb-170.jpg', alt: product.display_name),

@@ -16,7 +16,7 @@
                                 <div class="post-thumb">
                                     <% if blog.image_url? %>
                                         <%= link_to image_tag(blog.image_url.article_blog, size: '550x280', alt: blog.title),
-                                            blog_detail_path(id: blog.id, title: url_friendly(strip_tags(blog.title))), title: blog.title %>
+                                            '', title: blog.title %>
                                     <% end %>
                                     <span class="date">
                                         <%= blog.created_at.strftime("%m") %>
@@ -26,7 +26,7 @@
                                 <div class="post-item-info">
                                     <h3 class="post-name">
                                         <%= link_to truncate(blog.title, length: 45),
-                                            blog_detail_path(id: blog.id, title: url_friendly(strip_tags(blog.title))), title: blog.title %></h3>
+                                            '', title: blog.title %></h3>
                                     <div class="post-metas">
                                         <span class="author">Đăng bởi: <span>Hoang Khang Incotech</span></span>
                                         <span class="news">Chuyên mục: <span>Tin Tức</span></span>
@@ -38,7 +38,7 @@
                                                 <%= truncate(strip_tags(blog.short_description.html_safe), length: 130) %>
                                             </p>
                                         <% end %>
-                                        <%= link_to 'Xem chi tiết', blog_detail_path(id: blog.id, title: url_friendly(strip_tags(blog.title))),
+                                        <%= link_to 'Xem chi tiết', '',
                                             title: 'Xem chi tiết', class: 'read-more' %>
                                     </div>
                                 </div>

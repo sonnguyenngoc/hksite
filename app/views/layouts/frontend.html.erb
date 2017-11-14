@@ -1,9 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="vi">
+<head>        
+    <title>
+		<% if @title.present? %>
+			<%= @title %> | Hoang Khang Incotech
+		<% else %>
+			Công Ty TNHH Giải Pháp CNTT Và TT Hoàng Khang | Hoang Khang Incotech
+		<% end %>
+	</title>
     <meta charset="UTF-8">
-    <title>Trang Chủ - Hoang Khang Incotech</title>
+    <% if @meta_keywords.present? %>
+        <meta name="keywords" content="<%= @meta_keywords %>">
+	<% else %>
+        <meta name="keywords" content="máy tính xách tay, máy tính để bàn, màn hình máy tính, máy chủ server, linh kiện máy vi tính, phụ kiện máy vi tính, máy in, phụ kiện máy in, camera quan sát, thiết bị mạng">
+	<% end %>
+	<% if @meta_description.present? %>
+        <meta name="description" content="<%= @meta_description %>">
+	<% else %>
+        <meta name="description" content="Công Ty TNHH Giải Pháp CNTT Và TT Hoàng Khang chuyên cung cấp đa dạng các sản phẩm, thiết bị công nghệ từ các hãng lớn thế giới với giá cả, chất lượng, dịch vụ tốt.">
+	<% end %>
+	<meta name="author" content="Công Ty TNHH Giải Pháp CNTT Và TT Hoàng Khang, Hoang Khang Incotech">
+    <meta http-equiv="content-language" content="vi">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <%= stylesheet_link_tag '/hksite/css/animate.css' %>
     <%= stylesheet_link_tag '/hksite/css/bootstrap.min.css' %>
     <%= stylesheet_link_tag '/hksite/css/font-awesome.css' %>
@@ -16,6 +35,15 @@
     <%= stylesheet_link_tag '/hksite/css/custom.css' %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i' %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700' %>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109179189-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'UA-109179189-1');
+    </script>
 </head>
 <body class="index-opt-1">
     <div class="wrapper">
