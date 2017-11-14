@@ -188,7 +188,7 @@ $(document).ready(function () {
     }, 2000);
 
     // quick-view
-    $(".quick-view").on( 'click', function(){
+    $(document).on('click', '.quick-view', function(){
         var box = $('.block-quick-view-popup');
         var url = $(this).attr('href');
         box.addClass('open');
