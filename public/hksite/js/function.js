@@ -1,7 +1,7 @@
 (function($){
     "use strict"; // Start of use strict
-   
-   
+
+
 
     //Owl carousel
     function init_carousel(){
@@ -98,7 +98,7 @@
               var austDay = new Date($(this).data('y'),$(this).data('m') - 1,$(this).data('d'),$(this).data('h'),$(this).data('i'),$(this).data('s'));
               $(this).countdown({
                   until: austDay,
-                  labels: labels, 
+                  labels: labels,
                   layout: layout
               });
           });
@@ -302,7 +302,7 @@
     //Scripts ready
     $(document).ready(function() {
         $('.header-menu-bar ').sticky({ topSpacing: 0 });
-        
+
         $(window).scroll(function () {
             var scroll = $(window).scrollTop();
             if($(window).width()>991){
@@ -328,7 +328,7 @@
                 afterOpen : function(obj){
 
                     var mw = $('.modal_window');
-                    
+
                     mw.find('.custom_select').customSelect();
 
                     mw.find('.product_preview .owl_carousel').owlCarousel({
@@ -342,11 +342,11 @@
                     Core.events.productPreview();
 
                     addthis.toolbox('.addthis_toolbox');
-                    
+
                 }
             });
         }
-            
+
         /* ------------------------------------------------
                 Fancybox
         ------------------------------------------------ */
@@ -404,7 +404,7 @@
                 lensFadeOut: 500
             });
 
-            $(".open_qv").on("click", function(e) { 
+            $(".open_qv").on("click", function(e) {
                 var ez = $(this).siblings('img').data('elevateZoom');
                 $.fancybox(ez.getGalleryList());
                 e.preventDefault();
@@ -476,19 +476,19 @@
             $( this ).parent().toggleClass('open-submenu');
             return false;
         }) ;
-        
+
         $("[data-action='toggle-nav']").on( 'click', function() {
             $( this ).toggleClass('active');
             $(".header-nav").toggleClass("has-open");
             $('body').toggleClass("menu-open");
             return false;
-            
+
         }) ;
         $(".header-menu .btn-close").on( 'click', function(){
                 $('.header-nav').removeClass('has-open');
                 return false;
         });
-        
+
         // vertical megamenu on mobile
         $(".box-vertical-megamenus .title").on( 'click', function() {
                 $( this ).toggleClass('active');
@@ -505,19 +505,19 @@
             $( this ).parent().toggleClass('open-submenu');
             return false;
         }) ;
-        
+
         // search on mobile
         $(".nav-right .search-hidden").on( 'click', function(){
               $('.block-search-mobile').addClass('open');
               return false;
         });
 
-        // quick-view
-        $(".quick-view").on( 'click', function(){
-              $('.block-quick-view-popup').addClass('open');
-              // $('body').removeClass("open");
-              return false;
-        });
+        //// quick-view
+        //$(".quick-view").on( 'click', function(){
+        //      $('.block-quick-view-popup').addClass('open');
+        //      // $('body').removeClass("open");
+        //      return false;
+        //});
         $('.block-quick-view-popup').on( 'click', function(){
               $('.block-quick-view-popup').removeClass("open");
               return false;
@@ -556,7 +556,7 @@
         krystal_resizeMegamenu();
         krystal_auto_width_vertical_menu();
         krystal_menu_reposive();
-        
+
 
 
         $(window).scroll(function () {

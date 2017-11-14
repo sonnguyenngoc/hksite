@@ -4,8 +4,9 @@ class ProductController < ApplicationController
   def index
     @product = Product.find(params[:id])
   end
-  
+
   def quickview
+    render layout: nil
   end
 
   def autosearch

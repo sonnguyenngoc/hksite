@@ -771,3 +771,6 @@ h1.post-name {
 .ball-clip-rotate-multiple > div:last-child {
   border-color: #aaa transparent #aaa transparent;
 }
+.ajax-box-loading.popup {
+  padding: 50px;
+}

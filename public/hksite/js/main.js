@@ -187,4 +187,21 @@ $(document).ready(function () {
         });
     }, 2000);
 
+    // quick-view
+    $(".quick-view").on( 'click', function(){
+        var box = $('.block-quick-view-popup');
+        var url = $(this).attr('href');
+        box.addClass('open');
+        box.find('.quick-view-content').html('<div class="ajax-box-loading popup"><div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div></div>');
+
+        $.ajax({
+            url: url,
+            method: 'GET',
+        }).done(function( result ) {
+            box.find('.quick-view-content').html(result);
+        });
+
+        return false;
+    });
+
 });
