@@ -102,7 +102,7 @@ function autoSearch(box) {
         url: url,
         data: {
             search: keyword,
-            menu_id: menu_id
+            category_id: menu_id
         }
     }).done(function( items ) {
         result_box.html('');

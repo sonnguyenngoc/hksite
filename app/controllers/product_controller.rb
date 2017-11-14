@@ -7,7 +7,7 @@ class ProductController < ApplicationController
 
   def quickview
     @product = Product.find(params[:id])
-    
+
     render layout: nil
   end
 
@@ -15,7 +15,7 @@ class ProductController < ApplicationController
     @products = Product.search(params).paginate(:page => params[:page], :per_page => 10)
 
     render json: @products.map { |product| {
-      name: product.name,
+      name: product.display_name,
       price: (!product.has_price ? 'Liên hệ' : (view_context.number_with_delimiter(product.display_price))) + "₫",
       #is_deal: product.is_deal,
       old_price: (!product.get_old_price.nil? ? view_context.number_with_delimiter(product.get_old_price.price.to_i) + "₫" : 'null'),
