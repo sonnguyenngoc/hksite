@@ -1,7 +1,7 @@
 <ul class="box-tabs nav-tab">
     <li class="active"><a data-animated="" data-toggle="tab" href="#tab-hot-all">Tất Cả Sản Phẩm</a></li>
     <% Menu.get_menus.each do |menu| %>    
-        <li><%= link_to menu.title, category_path(id: menu.id, title: url_friendly(strip_tags(menu.title))), title: menu.title, class: 'parent-menu' %></li>
+        <li><%= link_to menu.title, category_path(id: menu.id, title: menu.name_url), title: menu.title, class: 'parent-menu' %></li>
     <% end %>
 </ul>
 <div class="tab-content">

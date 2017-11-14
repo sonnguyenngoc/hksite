@@ -1,4 +1,6 @@
 class CustomerOrder < ActiveRecord::Base
+  validates :orderer_first_name, :orderer_last_name, :orderer_phone, :orderer_email, :orderer_address_1, :presence => true
+  
   has_many :customer_order_details, dependent: :destroy
   accepts_nested_attributes_for :customer_order_details, :reject_if => lambda { |a| a[:product_id].blank? }, :allow_destroy => true
   

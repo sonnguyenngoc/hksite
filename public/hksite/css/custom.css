@@ -738,6 +738,12 @@ h1.post-name {
 .form-contact .contact-info input.error, .form-contact .contact-info textarea.error {
   border: 2px solid #cc181e;
 }
+.checkout form.checkout label.error {
+  display: none !important;
+}
+.checkout form.checkout input.error, .checkout form.checkout textarea.error {
+  border: 2px solid #cc181e;
+}
 .finish-contact .breadcrumb-page {
   padding: 10px 0 0 0;
 }
@@ -776,4 +782,10 @@ h1.post-name {
 }
 .quick-view-content .product-image {
   margin-right: 20px;
+}
+.form-group input, .form-row .input-text {
+  color: #333;
+}
+.product-name a:hover {
+  color: #222;
 }

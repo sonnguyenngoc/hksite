@@ -10,6 +10,13 @@ class Menu < ActiveRecord::Base
   has_many :categories_menus
   has_and_belongs_to_many :categories
   
+  after_create :create_alias
+  
+  def create_alias
+    name = self.title
+    self.update_column(:name_url, name.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip)
+  end
+  
   def self.get_menus
     self.all.where(level: 1)
             .order("created_at ASC")
