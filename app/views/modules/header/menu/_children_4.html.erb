@@ -12,7 +12,9 @@
                     <% if child_1.children.count > 10 %>
                         <div class="col-md-2">
                             <div class="dropdown-menu-info">
-                                <h6 class="dropdown-menu-title"><%= child_1.title %></h6>
+                                <h6 class="dropdown-menu-title">
+                                    <%= link_to child_1.title, category_path(id: child_1.id, title: child_1.name_url), title: child_1.title %>
+                                </h6>
                                 <div class="dropdown-menu-content">
                                     <ul class="menu">
                                         <% child_1.children[0..9].each do |child_2| %>
@@ -26,7 +28,9 @@
                         </div>
                         <div class="col-md-2">
                             <div class="dropdown-menu-info">
-                                <h6 class="dropdown-menu-title"><%= child_1.title %></h6>
+                                <h6 class="dropdown-menu-title">
+                                    <%= link_to child_1.title, category_path(id: child_1.id, title: child_1.name_url), title: child_1.title %>
+                                </h6>
                                 <div class="dropdown-menu-content">
                                     <ul class="menu">
                                         <% child_1.children[10..20].each do |child_2| %>
@@ -41,7 +45,9 @@
                     <% else %>
                         <div class="col-md-2">
                             <div class="dropdown-menu-info">
-                                <h6 class="dropdown-menu-title"><%= child_1.title %></h6>
+                                <h6 class="dropdown-menu-title">
+                                    <%= link_to child_1.title, category_path(id: child_1.id, title: child_1.name_url), title: child_1.title %>
+                                </h6>
                                 <div class="dropdown-menu-content">
                                     <ul class="menu">
                                         <% child_1.children.each do |child_2| %>
