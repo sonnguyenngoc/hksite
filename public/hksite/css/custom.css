@@ -20,6 +20,9 @@ body, .links li a, .title-login, .title-contact, .form-contact label, .title-of-
 .menu-style-1 .header-nav .menu-item-has-children:nth-child(5) .submenu.parent-megamenu.megamenu{
   width: 1170px;
 }
+.submenu.parent-megamenu.megamenu {
+  padding: 20px 20px 40px 20px;
+}
 .header-nav > li a.parent-menu, .header-nav .menu-item-has-children a.parent-menu {
 	font-size: 15px;
 }
@@ -28,6 +31,7 @@ body, .links li a, .title-login, .title-contact, .form-contact label, .title-of-
 }
 .menu-item-has-children .parent-megamenu {
 	min-width: 150px;
+  padding: 7px 0 10px 0;
 }
 .box-tabs.nav-tab li a {
   color: #000;
@@ -262,9 +266,6 @@ h1.post-name {
 	font-weight: bold;
 	font-size: 16px;
 }
-.product-name a {
-	font-weight: 600;
-}
 .checkout .form-group.shipping .inline {
 	margin-bottom: 0px;
 }
@@ -427,10 +428,6 @@ h1.post-name {
   font-weight: bold;
   margin-bottom: 10px;
   font-size: 20px;
-}
-.footer-bottom .links li a.quick-links-second:hover {
-  color: #009688;
-  text-decoration: underline;
 }
 .footer-bottom .links li a.quick-links-first:hover {
   color: #cc181e;
@@ -805,9 +802,6 @@ h1.post-name {
 .form-group input, .form-row .input-text {
   color: #333;
 }
-.product-name a:hover {
-  color: #222;
-}
 .product-item.style1:hover {
   box-shadow: 0 0 20px rgba(0,0,0,0.15);
   cursor: pointer;
@@ -823,7 +817,7 @@ h1.post-name {
 .product-item.style1 .price ins {
   color: #f00;
   font-weight: 500;
-  font-size: 20px;
+  font-size: 18px;
 }
 .footer-opt-2 .footer-top {
   background-color: #0054A5;
@@ -831,4 +825,18 @@ h1.post-name {
 }
 .login input.button-submit, .register input.button-submit, .form-contact input.button-submit {
   background-color: #0054A5;
+}
+.product-name a {
+	font-weight: 600;
+  color: #212121;
+}
+.product-name a:hover {
+  color: #212121;
+}
+.links li a:hover, .contacts-info a:hover, .header-nav li a:hover {
+  color: #0054A5;
+}
+.footer-bottom .links li a.quick-links-second:hover {
+  color: #0054A5;
+  text-decoration: underline;
 }
