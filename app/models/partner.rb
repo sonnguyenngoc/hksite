@@ -4,7 +4,7 @@ class Partner < ActiveRecord::Base
   belongs_to :manufacturer
   
   def self.get_partners
-    self.all.limit(15).order("created_at DESC")
+    self.all.limit(15).order("created_at asc")
   end
   
   def get_name
