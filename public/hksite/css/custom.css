@@ -789,3 +789,20 @@ h1.post-name {
 .product-name a:hover {
   color: #222;
 }
+.product-item.style1:hover {
+  box-shadow: 0 0 20px rgba(0,0,0,0.15);
+  cursor: pointer;
+}
+.product-item.style1 .price .call-price {
+  color: #02a434;
+  font-weight: 500;
+  font-size: 16px;
+}
+.product-item.style1 .price {
+  margin: 5px 0;
+}
+.product-item.style1 .price ins {
+  color: #f00;
+  font-weight: 500;
+  font-size: 20px;
+}

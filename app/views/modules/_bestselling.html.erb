@@ -14,8 +14,7 @@
                 </div>
                 <% if product.check_product_sale %>
                     <span class="onsale">-<%= product.get_percent_sale.to_f.round(0) %>%</span>
-                <% end %>
-                <%= link_to 'Xem nhanh', product_quickview_path(id: product), title: product.display_name, class: 'quick-view' %>
+                <% end %>                
             </div>
             <div class="product-innfo">
                 <div class="product-name">
