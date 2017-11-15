@@ -38,7 +38,10 @@
                                     <strong>Tặng kèm: </strong><%= @product.product_info.bonus_product %><br>
                                 <% end %>
                             <% end %>
-                            <br><strong>Liên kết trang: </strong> <%= link_to 'Tìm Hàng Công Nghệ', 'http://timhangcongnghe.com/', title: @product.display_name, target: '_blank', class: 'connect-link-thcn' %>
+                            <br>
+                            <% if @product.cache_thcn_url.present? %>
+                                <strong>Liên kết trang: </strong> <%= link_to 'Tìm Hàng Công Nghệ', @product.cache_thcn_url, title: @product.display_name, target: '_blank', class: 'connect-link-thcn' %>
+                            <% end %>
                         </div>
                         <div class="product-description">
                             <strong>Liên hệ đặt mua: </strong><%= link_to '(028) 3984 7690', 'tel:02839847690', title: 'Liên hệ đặt hàng qua số điện thoại' %> hoặc <%= link_to '(028) 2212 9454', 'tel:02822129454', title: 'Liên hệ đặt hàng qua hotline' %>
