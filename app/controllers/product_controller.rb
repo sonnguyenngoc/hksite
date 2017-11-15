@@ -12,7 +12,7 @@ class ProductController < ApplicationController
   end
 
   def autosearch
-    @products = Product.search(params).paginate(:page => params[:page], :per_page => 10)
+    @products = Product.search(params).limit(10)
 
     render json: @products.map { |product| {
       name: product.display_name,
@@ -22,7 +22,7 @@ class ProductController < ApplicationController
       #deal_percent: (product.deal_percent if product.is_deal),
       link: view_context.url_for({controller: "product", action: "index", id: product.id, title: url_friendly(view_context.strip_tags(product.display_name))}),
       #is_sold_out: product.is_sold_out,
-      image: product.product_image.image,
+      image: product.product_image.image(:thumb60),
     }}
   end
 end
