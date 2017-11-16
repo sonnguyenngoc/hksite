@@ -930,7 +930,7 @@ h1.post-name {
   margin-top: 10px;
 }
 .autosearch-empty-line.loading {
-    height: 120px;
+    height: 60px;
     display: flex;
     align-items: center;
 }
