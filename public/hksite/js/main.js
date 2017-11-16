@@ -94,6 +94,9 @@ function autoSearch(box) {
         var result_box = box.find('.autosearch-result-box ul');
     }
 
+    result_box.html('<li class="autosearch-empty-line loading"><div class="loader"><div class="ball-clip-rotate-multiple"><div></div><div></div></div></div></li>');
+    result_box.parent().show();
+
     // ajax autosearch
 	if(autosearch_xhr && autosearch_xhr.readyState != 4){
 		autosearch_xhr.abort();
@@ -106,7 +109,6 @@ function autoSearch(box) {
         }
     }).done(function( items ) {
         result_box.html('');
-        result_box.parent().show();
         items.forEach(function(item) {
             result_box.append(
                 '<li><a title="' + item.name + '" href="' + item.link + '">' +
@@ -120,7 +122,7 @@ function autoSearch(box) {
         if (items.length) {
             // result_box.find('li').eq(0).addClass('current');
         } else {
-            result_box.append(
+            result_box.html(
                 '<li class="autosearch-empty-line">Không có sản phẩm phù hợp</li>'
             );
         }

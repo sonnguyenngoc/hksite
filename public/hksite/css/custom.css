@@ -930,3 +930,12 @@ h1.post-name {
   padding-top: 8px;
   margin-top: 10px;
 }
+.autosearch-empty-line.loading {
+    height: 60px;
+    display: flex;
+    align-items: center;
+}
+.autosearch-empty-line.loading .loader{
+    display: inline-block;
+    margin: auto;
+}

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>        
+<head>
     <title>
 		<% if @title.present? %>
 			<%= @title %> | Hoang Khang Incotech
@@ -39,7 +39,7 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="<%= url_for('/hksite/images/fav/favicon-16x16.png') %>">
 	<link rel="manifest" href="<%= url_for('/hksite/images/fav/manifest.json') %>">
 	<%= favicon_link_tag '/hksite/images/fav/favicon-32x32.png', rel: 'shortcut icon', type: 'image/png' %>
-    
+
     <%= stylesheet_link_tag '/hksite/css/animate.css' %>
     <%= stylesheet_link_tag '/hksite/css/bootstrap.min.css' %>
     <%= stylesheet_link_tag '/hksite/css/font-awesome.css' %>
@@ -58,7 +58,7 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-    
+
       gtag('config', 'UA-109179189-1');
     </script>
 </head>
