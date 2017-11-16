@@ -2,6 +2,7 @@ class ProductController < ApplicationController
   include ApplicationHelper
 
   def index
+    @menus = Menu.get_menus
     @product = Product.find(params[:id])
   end
 

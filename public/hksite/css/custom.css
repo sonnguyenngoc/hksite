@@ -285,6 +285,7 @@ h1.post-name {
 }
 .products.products-grid {
 	margin-top: 10px;
+  width: 100%;
 }
 .site-main.blog-single .main-content, .site-main.product-list .main-content {
 	margin-top: 0px;

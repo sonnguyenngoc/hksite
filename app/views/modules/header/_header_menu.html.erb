@@ -2,7 +2,7 @@
     <li class="btn-close hidden-md">
         <i class="fa fa-times" aria-hidden="true"></i>
     </li>
-    <% Menu.get_menus.each do |menu| %>
+    <% menus.each do |menu| %>
         <% menu_count = menu.children.count %>
         <% if menu_count == 1 %>
             <%= render '/modules/header/menu/children_1', menu: menu %>

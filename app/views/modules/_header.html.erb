@@ -21,7 +21,7 @@
                 </div>
                 <div class="col-md-6 nav-mind">
                     <!-- smart search -->
-                    <%= render '/modules/header/smart_search' %>
+                    <%= render '/modules/header/smart_search', menus: @menus %>
                     <!-- smart search -->
                 </div>
                 <div class="col-md-2 nav-right">
@@ -40,7 +40,7 @@
             <div class="container">
                 <div class="header-menu-nav-inner ">
                     <div class="header-menu header-menu-resize">
-                        <%= render '/modules/header/header_menu' %>
+                        <%= render '/modules/header/header_menu', menus: @menus %>
                     </div>
                 </div>
             </div>

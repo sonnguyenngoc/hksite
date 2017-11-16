@@ -4,7 +4,7 @@
             <div class="categori-search  ">
                 <select name="category_id" data-placeholder="Tất cả chuyên mục" class="chosen-select categori-search-option">
                     <option value="">Chuyên mục</option>
-                    <% Menu.get_menus.each do |menu| %>
+                    <% menus.each do |menu| %>
                     <option value="<%= menu.id %>"><%= menu.title %></option>
                     <% end %>
                 </select>

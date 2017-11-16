@@ -1,7 +1,7 @@
 <div class="container">
     <div class="links">
         <h3 class="quick-link">LIÊN KẾT NHANH</h3>
-        <% Menu.get_menus.each do |menu| %>
+        <% menus.each do |menu| %>
             <% menu.children.each do |child_1| %>
                 <ul>
                     <li><strong><%= link_to child_1.title, category_path(id: child_1.id, title: child_1.name_url), title: child_1.title, class: 'links-primary quick-links-first' %>:</strong></li>
