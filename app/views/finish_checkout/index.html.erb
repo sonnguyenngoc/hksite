@@ -1,16 +1,35 @@
-<main class="site-main contact-us finish-checkout">
+<main class="site-main contact-us shopping-cart">
     <div class="container">
         <ol class="breadcrumb-page">
-            <li><%= link_to 'Trang Chủ', root_path %></li>
+            <li><%= link_to '<i class="fa fa-home"></i>'.html_safe, root_path %></li>
             <li class="active"><%= link_to 'Đặt Hàng Thành Công', 'javascript:void(0)' %></li>
         </ol>
     </div>
 
     <div class="container">
-        <div class="row">
-            <div class="contact-map full-width">
-                <a href=""><img src="/hksite/images/map.jpg" alt="map"></a>
-            </div>            
+        <div class="row cart-no-items">            
+            <div class="col-md-12">
+                <%= link_to image_tag('/hksite/images/logo-hkstore.svg', alt: 'Quay về trang chủ', class: 'no-items'),
+                    root_path, alt: 'Quay về trang chủ' %>
+                <br><br>
+                <span class="notice">
+                    Cảm ơn Quý khách hàng đã đặt sản phẩm tại website của chúng tôi.<br>
+                    Đơn hàng của Quý khách hàng đã được gửi thành công.<br>
+                    Chúng tôi đã gửi 1 email thông tin đặt sản phẩm vào email của Quý khách hàng.
+                </span>
+                <br><%= link_to 'QUAY VỀ TRANG CHỦ', root_path, title: 'Quay về trang chủ', class: 'btn btn-default shopping-continue' %>
+            </div>         
+        </div>
+    </div>
+    <div class="block-recent-view">
+        <div class="container">
+            <div class="title-of-section">Sản Phẩm Bán Chạy</div>
+            <%= render '/modules/bestselling' %>
+        </div>
+    </div>
+    <div class="block-section-brand">
+        <div class="container">
+            <%= render '/modules/listing_brand' %>
         </div>
     </div>
 </main>
