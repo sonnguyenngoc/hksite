@@ -1,7 +1,7 @@
-<main class="site-main">
+<main class="site-main product-detail">
     <div class="container">
         <ol class="breadcrumb-page">
-            <li><%= link_to 'Trang Chủ', root_path %></li>
+            <li><%= link_to '<i class="fa fa-home"></i>'.html_safe, root_path %></li>
             <li class="active"><%= link_to @product.display_name, 'javascript:void(0)' %></li>
         </ol>
     </div>

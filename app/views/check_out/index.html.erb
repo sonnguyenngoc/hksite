@@ -1,7 +1,7 @@
 <main class="site-main checkout">
     <div class="container">
         <ol class="breadcrumb-page">
-            <li><%= link_to 'Trang Chủ', root_path %></li>
+            <li><%= link_to '<i class="fa fa-home"></i>'.html_safe, root_path %></li>
             <li class="active"><%= link_to 'Đặt Hàng', 'javascript:void(0)' %></li>
         </ol>
     </div>
@@ -55,7 +55,7 @@
                     <div class="row">
                         <div class="form-group col-md-12">
                             <label for="customer_order_orderer_address_2" class="title">Địa chỉ xuất hóa đơn</label>
-                            <%= f.text_field :orderer_address_2, placeholder: 'Vui lòng nhập địa chỉ xuất hóa đơn.....', class: 'form-control required' %>
+                            <%= f.text_field :orderer_address_2, placeholder: 'Vui lòng nhập địa chỉ xuất hóa đơn.....', class: 'form-control' %>
                         </div>
                     </div>
                     <div class="row">

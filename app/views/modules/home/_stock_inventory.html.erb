@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="product-innfo">
                                     <div class="product-name">
-                                        <%= link_to truncate(product.display_name, length: 55),
+                                        <%= link_to truncate(product.display_name, length: 30),
                                         product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
                                     </div>
                                     <% if product.has_price %>
@@ -36,7 +36,7 @@
                                         </span>                    
                                     <% else %>
                                         <span class="price">
-                                            <ins>Liên hệ: (028) 3984 7690</ins>
+                                            <ins><span>Liên hệ: (028) 3984 7690</span></ins>
                                         </span>
                                     <% end %>
                                     <span class="star-rating">

@@ -1,13 +1,13 @@
 <main class="site-main shopping-cart">
     <div class="container">
         <ol class="breadcrumb-page">
-            <li><%= link_to 'Trang Chủ', root_path %></li>
+            <li><%= link_to '<i class="fa fa-home"></i>'.html_safe, root_path %></li>
             <li class="active"><%= link_to 'Giỏ Hàng', 'javascript:void(0)' %></li>
         </ol>
     </div>
-    <div class="container">
-        <h1>GIỎ HÀNG</h1>
+    <div class="container">        
         <% if @cart.line_items.count > 0 %>
+            <h1>GIỎ HÀNG</h1>
             <div class="row">            
                 <div class="col-md-9">
                     <%= form_for(@cart, html: {class: 'form-cart'}) do |f| %>
@@ -78,9 +78,12 @@
                 </div>
             </div>
         <% else %>
-            <div class="row">            
+            <div class="row cart-no-items">            
                 <div class="col-md-12">
-                    <span>GIỎ HÀNG CỦA BẠN HIỆN TẠI ĐANG TRỐNG</span>
+                    <%= link_to image_tag('/hksite/images/logo-hkstore.svg', alt: '', class: 'no-items'),
+                        root_path, alt: '' %>
+                    <br><br><span class="notice">GIỎ HÀNG CỦA BẠN HIỆN TẠI ĐANG TRỐNG</span>
+                    <br><%= link_to 'TIẾP TỤC MUA HÀNG', root_path, title: 'Tiếp tục mua hàng', class: 'btn btn-default shopping-continue' %>
                 </div>
             </div>
         <% end %>

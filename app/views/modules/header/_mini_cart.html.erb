@@ -1,7 +1,9 @@
 <div class="block-minicart dropdown style2">                                
     <a class="minicart" href="javascript:void(0)">
         <span class="counter qty">
-            <span class="cart-icon"><i class="fa fa-shopping-bag" aria-hidden="true"></i></span>
+            <span class="cart-icon">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </span>
             <span class="counter-number">
                 <% if @cart.present? %><%= @cart.count_quantity %><% else %>0<% end %>
             </span>
@@ -27,10 +29,10 @@
                                 <div class="product-thumb style1">
                                     <div class="thumb-inner">
                                        <% if !line_item.product.product_image.id.nil? %>
-                                            <%= link_to image_tag(line_item.product.product_image.image(:thumb80), alt: line_item.product.display_name),
+                                            <%= link_to image_tag(line_item.product.product_image.image(:thumb60), alt: line_item.product.display_name),
                                                         product_path(id: line_item.product.id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.product.display_name %>
                                         <% else %>
-                                            <%= link_to image_tag('/hksite/images/no-image/thumb-80.jpg', alt: line_item.product.display_name),
+                                            <%= link_to image_tag('/hksite/images/no-image/thumb-60.jpg', alt: line_item.product.display_name),
                                                         product_path(id: line_item.product.id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.product.display_name %>
                                         <% end %>
                                     </div>
