@@ -14,7 +14,8 @@ class Product < ActiveRecord::Base
   def self.get_all
     # self.where("products.status=1").where("products.created_at > ? OR products.stock > 0", "2016-01-01".to_datetime)
     self.where("products.status=1")
-        .where("products.stock > 0 OR (products.cache_last_ordered IS NOT NULL AND products.cache_last_ordered >= ?) OR (products.cache_last_priced IS NOT NULL AND products.cache_last_priced >= ?)", Time.now - 6.months, Time.now - 6.months)    
+        .where("products.stock > 0 OR (products.cache_last_ordered IS NOT NULL AND products.cache_last_ordered >= ?) OR (products.cache_last_priced IS NOT NULL AND products.cache_last_priced >= ?)", Time.now - 6.months, Time.now - 6.months)
+        .order("products.created_at desc")
   end
 
   def self.get_all_stock_ready
