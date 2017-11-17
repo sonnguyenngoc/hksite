@@ -202,6 +202,7 @@ span.required {
 }
 .socials {
 	margin-top: 10px;
+  margin-right: 200px;
 }
 .socials .social {
 	margin-bottom: 10px;
@@ -590,12 +591,11 @@ h1.post-name {
   padding-top: 0;
 }
 .product-content-single .custom-add-to-cart {
-  background-color: #fd6e1d;
+  background-color: #ff3945;
   font-size: 18px;
   font-weight: 600;
 }
 .product-content-single .custom-add-to-cart:hover {
-  background-color: #fd6e1d;
   opacity: 0.8;
 }
 .product-content-single .transportation {
@@ -942,6 +942,6 @@ h1.post-name {
 .result-search .single-add-to-cart {
   text-align: center;
 }
-.result-search .product-item.style1 .info-product {
+.result-search .product-item.style1 .info-product, .products-grid .product-item.style1 .info-product {
   padding: 7px 0 10px 0;
 }
