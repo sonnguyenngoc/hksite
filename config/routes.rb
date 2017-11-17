@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "home_bestselling" => "home#bestselling", as: :home_bestselling
   get "home_listing_brand" => "home#listing_brand", as: :home_listing_brand
   
-  get "tim-kiem-san-pham" => "product_search#index", as: :product_search
+  get "tim-kiem-san-pham.html" => "product_search#index", as: :product_search
   get "san-pham(/:title)-:id.html" => "product#index", as: :product
   get "chuyen-muc(/:title)-:id.html" => "category_page#index", as: :category
   get "hinh-anh(/:title)(/:id)/(:type)" => "product_images#image", as: :product_image

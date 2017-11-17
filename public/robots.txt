@@ -3,3 +3,8 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-agent: *
 # Disallow: /
+Disallow: /tim-kiem-san-pham.html
+Disallow: /gio-hang.html
+Disallow: /dat-hang.html
+Disallow: /dat-hang/thanh-cong.html
+Disallow: /lien-he/gui-loi-nhan-thanh-cong.html

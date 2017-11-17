@@ -21,6 +21,10 @@ class Menu < ActiveRecord::Base
     self.all.where(level: 1)
             .order("created_at ASC")
   end
+  
+  def self.get_all_menus
+    self.all
+  end
 
   def update_level(lvl)
     self.level = lvl
