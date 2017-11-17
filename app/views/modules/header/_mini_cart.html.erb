@@ -32,7 +32,7 @@
                                             <%= link_to image_tag(line_item.product.product_image.image(:thumb60), alt: line_item.product.display_name),
                                                         product_path(id: line_item.product.id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.product.display_name %>
                                         <% else %>
-                                            <%= link_to image_tag('/hksite/images/no-image/thumb-60.jpg', alt: line_item.product.display_name),
+                                            <%= link_to image_tag('/hksite/images/no-image/thumb-60.png', alt: line_item.product.display_name),
                                                         product_path(id: line_item.product.id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.product.display_name %>
                                         <% end %>
                                     </div>

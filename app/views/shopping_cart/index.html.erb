@@ -31,7 +31,7 @@
                                                     <%= link_to image_tag(line_item.product.product_image.image(:thumb100), alt: line_item.get_product_name),
                                                                 product_path(id: line_item.product_id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.get_product_name %>
                                                 <% else %>
-                                                    <%= link_to image_tag('/hksite/images/no-image/thumb-100.jpg', alt: line_item.get_product_name),
+                                                    <%= link_to image_tag('/hksite/images/no-image/thumb-100.png', alt: line_item.get_product_name),
                                                                 product_path(id: line_item.product_id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.get_product_name %>
                                                 <% end %>
                                             </td>

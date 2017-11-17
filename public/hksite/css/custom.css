@@ -931,11 +931,17 @@ h1.post-name {
   margin-top: 10px;
 }
 .autosearch-empty-line.loading {
-    height: 60px;
-    display: flex;
-    align-items: center;
+  height: 60px;
+  display: flex;
+  align-items: center;
 }
 .autosearch-empty-line.loading .loader{
-    display: inline-block;
-    margin: auto;
+  display: inline-block;
+  margin: auto;
+}
+.result-search .single-add-to-cart {
+  text-align: center;
+}
+.result-search .product-item.style1 .info-product {
+  padding: 7px 0 10px 0;
 }

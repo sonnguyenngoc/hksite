@@ -14,7 +14,7 @@
                             <% if !@product.product_image.id.nil? %>
                                 <%= image_tag @product.product_image.image(:thumb400), alt: @product.display_name %>
                             <% else %>
-                                <%= image_tag '/hksite/images/no-image/thumb-400.jpg', alt: 'Hiện sản phẩm chưa có hình ảnh' %>
+                                <%= image_tag '/hksite/images/no-image/thumb-400.png', alt: 'Hiện sản phẩm chưa có hình ảnh' %>
                             <% end %>
                         </div>
                     </div>
