@@ -146,7 +146,7 @@ class Product < ActiveRecord::Base
     records = Product.get_all
     if params[:search].present?
       params[:search].split(" ").each do |k|
-        records = records.where("LOWER(CONCAT(products.name,' ',products.cache_search)) LIKE ?", "%#{k.strip.downcase}%") if k.strip.present?
+        records = records.where("LOWER(CONCAT(products.name,' ',products.cache_web_search)) LIKE ?", "%#{k.strip.downcase}%") if k.strip.present?
       end
       #records = records.where("LOWER(products.cache_search) LIKE ?", "%#{params[:search].strip.downcase}%") if params[:search].present?
     end
@@ -158,26 +158,6 @@ class Product < ActiveRecord::Base
     if params[:category_id].present?
       menu = Menu.find(params[:category_id])
       records = records.joins(:categories).where(categories: {id: menu.get_all_category_ids})
-    end
-
-    if params[:search_new_products].present?
-      records = records.get_new_products.where('LOWER(products.name) LIKE ?', "%#{params[:search_new_products].strip.downcase}%")
-    end
-
-    if params[:search_hot_products].present?
-      records = records.get_hot_products.where('LOWER(products.name) LIKE ?', "%#{params[:search_hot_products].strip.downcase}%")
-    end
-
-    if params[:search_prominent_products].present?
-      records = records.get_prominent.products.where('LOWER(products.name) LIKE ?', "%#{params[:search_prominent_products].strip.downcase}%")
-    end
-
-    if params[:search_bestseller_products].present?
-      records = records.get_bestseller_products.where('LOWER(products.name) LIKE ?', "%#{params[:search_bestseller_products].strip.downcase}%")
-    end
-
-    if params[:search_sale_products].present?
-      records = records.get_sale_products.where('LOWER(products.name) LIKE ?', "%#{params[:search_sale_products].strip.downcase}%")
     end
 
     if params[:sort_by].present? and params[:sort_order]
