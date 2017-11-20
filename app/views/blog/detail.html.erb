@@ -1,7 +1,7 @@
 <main class="site-main blog-single">
     <div class="container">
         <ol class="breadcrumb-page">
-            <li><%= link_to 'Trang Chủ', root_path %></li>
+            <li><%= link_to '<i class="fa fa-home"></i>'.html_safe, root_path %></li>
             <li><%= link_to 'Tin Tức', blog_listing_path %></li>
             <li class="active"><%= link_to @blog.title, 'javascript:void(0)' %></li>
         </ol>
@@ -13,43 +13,33 @@
                     <div class="post-detail">
                         <div class="post-item post-detail-item">
                             <div class="post-thumb">
-                                <img src="/hksite/images/blog/post-image.jpg" alt="post-image">
+                                <%= image_tag @blog.image_url.article_blog_post, alt: @blog.title %>
                             </div>
                             <div class="post-item-info">
-                                <h1 class="post-name">Tiêu đề bài viết</h1>
+                                <h1 class="post-name"><%= @blog.title %></h1>
                                 <div class="post-metas">
                                     <span class="author">Đăng bởi: <span>Hoang Khang Incotech</span></span>
                                     <span class="news">Chuyên mục: <span>Tin Tức</span></span>
-                                    <span class="time">Ngày đăng: <span>07/11/2017</span></span>
+                                    <span class="time">Ngày đăng: <span><%= @blog.created_at.strftime("%d/%m/%Y") %></span></span>
                                 </div>
                                 <div class="post-content text-justify">
-                                    Sau nhiều năm nghiên cứu tìm hiểu thị trường, xây dựng đội ngũ nhân viên kỹ thuật tốt nghiệp chuyên ngành CNTT được đào tạo các khóa chuyên sâu về quản trị CNTT và đạt chứng chỉ, chứng nhận quốc tế về kỹ thuật, đến nay, Công ty Hoang Khang Incotech đã nhận được sự tín nhiệm của các Công ty trong và ngoài nước, các tổ chức phi chính phủ, thực hiện các công trình thuộc khối nhà nước như: Sở thanh tra xây dựng, Bệnh viện TW, Trường học, Bảo Hiểm Xã Hội, Viện Kiểm Sát, Ủy Ban Nhân Dân, Trung Tâm Dạy Nghề, Ban dự án cao tốc đường thủy, khối Ngân Hàng… Hoàng Khang được đánh giá cao khả năng hợp tác và làm việc qua các dự án hỗ trợ tư vấn kỹ thuật và cung cấp sản phẩm lĩnh vực CNTT, an ninh và thông tin liên lạc đúng tiêu chuẩn theo yêu cầu đơn hàng.
+                                    <%= @blog.content.html_safe if @blog.content.present? %>
                                 </div>
                             </div>
                         </div>
-                        <div class="post-footer">
+                        <!--<div class="post-footer">
                             <div class="tag">
                                 <span>Nhãn:</span>
                                 <a href="">Best,</a>
                                 <a href="">Gaming,</a>
                                 <a href="">Laptop</a>  
                             </div>
-                        </div>
+                        </div>-->
                     </div>                    
                 </div>
             </div>
             <div class="col-md-3 col-sm-4">
                 <div class="sidebar-left">
-                    <div class="block-recent-post-blog">
-                        <div class="block-title">Bài viết mới nhất</div>
-                        <ul>
-                            <% (0..5).each do |blog| %>
-                                <li class="recent-post-item">
-                                    <%= link_to 'Ngày hội sinh viên 2017', blog_detail_path, title: '' %>
-                                </li>
-                            <% end %>
-                        </ul>
-                    </div>
                     <%= render '/modules/information/left_sidebar' %>
                     <div class="block-latest-roducts">
                         <div class="block-title">SẢN PHẨM NỔI BẬT</div>
