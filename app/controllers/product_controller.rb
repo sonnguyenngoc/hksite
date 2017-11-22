@@ -4,6 +4,7 @@ class ProductController < ApplicationController
   def index
     @menus = Menu.get_menus
     @product = Product.find(params[:id])
+    @title = @product.display_name
   end
 
   def quickview

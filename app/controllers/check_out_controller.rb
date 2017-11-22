@@ -7,5 +7,7 @@ class CheckOutController < ApplicationController
       redirect_to shopping_cart_path
       return
     end
+    
+    @title = 'Đặt hàng'
   end
 end

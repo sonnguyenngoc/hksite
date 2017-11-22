@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @menus = Menu.get_menus
+    @menus = Menu.get_menus    
   end
 
   def hot_products
