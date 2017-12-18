@@ -79,7 +79,7 @@
                         <%= label "", "Quà tặng: ", class: "control-label col-sm-2 text-semibold" %>
                         <div class="col-sm-10">
                             <%= content_tag(:p, class: "form-control-static ") do %>
-                              <%= @product_info.bonus_product %>
+                              <%= @product_info.bonus_product.html_safe if @product_info.present? %>
                             <% end %>
                         </div>
                     </div>

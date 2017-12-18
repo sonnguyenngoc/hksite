@@ -35,7 +35,7 @@
                             <% end %>
                             <% if @product.product_info.present? %>
                                 <% if @product.product_info.bonus_product.present? %>
-                                    <strong>Tặng kèm: </strong><%= @product.product_info.bonus_product %><br>
+                                    <strong>Tặng kèm: </strong><%= @product.product_info.bonus_product.html_safe %><br>
                                 <% end %>
                             <% end %>
                             <br>

@@ -145,15 +145,21 @@
                             <div class="col-lg-9">
                                 <%= f.text_field :old_price, value: @product_info.old_price.to_i, class: "form-control" %>
                             </div>
-                        </div>
-                        
+                        </div>                                            
+                    </fieldset>
+                </div>
+            </div>
+            
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="form-group">
                             <%= f.label "Nhập sản phẩm tặng kèm: ", class: "col-lg-3 control-label" %>
                             <div class="col-lg-9">
-                                <%= f.text_area :bonus_product, rows: "5", cols: "5", class: "form-control" %>
+                                <%= f.text_area :bonus_product, rows: "4", cols: "4", id: "editor-full" %>
                             </div>
                         </div>
-                    </fieldset>
+                    </div>
                 </div>
             </div>
 
