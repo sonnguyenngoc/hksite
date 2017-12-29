@@ -266,7 +266,11 @@ class Product < ActiveRecord::Base
     #  self.display_default_price
     #end
     self.product_price.price.to_i
-
+  end
+  
+  def display_custom_price
+    price = (product_price.price.to_f/1000).round*1000
+    return price
   end
 
   def display_default_price

@@ -18,7 +18,7 @@ class ProductController < ApplicationController
 
     render json: @products.map { |product| {
       name: product.display_name,
-      price: (!product.has_price ? 'Liên hệ' : (view_context.number_with_delimiter(product.display_price) + "₫")),
+      price: (!product.has_price ? 'Liên hệ' : (view_context.number_to_currency(product.display_custom_price, precision: 0, format: "%n₫", separator: ',', unit: '', delimiter: "."))),
       #is_deal: product.is_deal,
       old_price: (!product.get_old_price.nil? ? view_context.number_with_delimiter(product.get_old_price.price.to_i) + "₫" : 'null'),
       #deal_percent: (product.deal_percent if product.is_deal),
