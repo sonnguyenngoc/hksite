@@ -81,23 +81,7 @@
                 </div>
             </div>
         </div>
-    </div>
-    <% if @product.short_intro.present? %>
-    <div class="container">
-        <div class="tab-details-product">
-            <ul class="box-tab nav-tab">
-                <li class="active"><a data-toggle="tab" href="#tab-1">Mô tả chi tiết</a></li>
-            </ul>
-            <div class="tab-container">
-                <div id="tab-1" class="tab-panel active">
-                    <div class="box-content text-justify">
-                        <%= @product.short_intro.html_safe %>
-                    </div>
-                </div>
-            </div>  
-        </div> 
-    </div>
-    <% end %>
+    </div>    
     <div class="block-recent-view">
         <div class="container">
             <div class="title-of-section">Sản Phẩm Bán Chạy</div>
