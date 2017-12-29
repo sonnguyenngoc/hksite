@@ -369,8 +369,8 @@ h1.post-name {
 	text-decoration: none;
 }
 .product-name h1.title-name {
-	text-transform: uppercase;
-	font-size: 28px;
+	text-transform: none;
+	font-size: 22px;
 }
 .product-info-main .product-description a.connect-link-thcn, .product-info-main .product-infomation a.connect-link-thcn {
 	color: #c30c0c;

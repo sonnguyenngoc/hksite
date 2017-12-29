@@ -17,7 +17,7 @@
                                 </h6>
                                 <div class="dropdown-menu-content">
                                     <ul class="menu">
-                                        <% child_1.children[0..11].each do |child_2| %>
+                                        <% child_1.children[0..10].each do |child_2| %>
                                             <li class="menu-item">
                                                 <%= link_to child_2.title, category_path(id: child_2.id, title: child_2.name_url), title: child_2.title %>
                                             </li>
@@ -33,7 +33,7 @@
                                 </h6>
                                 <div class="dropdown-menu-content">
                                     <ul class="menu">
-                                        <% child_1.children[12..23].each do |child_2| %>
+                                        <% child_1.children[11..23].each do |child_2| %>
                                             <li class="menu-item">
                                                 <%= link_to child_2.title, category_path(id: child_2.id, title: child_2.name_url), title: child_2.title %>
                                             </li>
