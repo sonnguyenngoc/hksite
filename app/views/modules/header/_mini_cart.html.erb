@@ -30,17 +30,17 @@
                                     <div class="thumb-inner">
                                        <% if !line_item.product.product_image.id.nil? %>
                                             <%= link_to image_tag(line_item.product.product_image.image(:thumb60), alt: line_item.product.display_name),
-                                                        product_path(id: line_item.product.id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.product.display_name %>
+                                                        product_path(id: line_item.product.id, title: line_item.product.alias), title: line_item.product.display_name %>
                                         <% else %>
                                             <%= link_to image_tag('/hksite/images/no-image/thumb-60.png', alt: line_item.product.display_name),
-                                                        product_path(id: line_item.product.id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.product.display_name %>
+                                                        product_path(id: line_item.product.id, title: line_item.product.alias), title: line_item.product.display_name %>
                                         <% end %>
                                     </div>
                                 </div>
                                 <div class="product-innfo">
                                     <div class="product-name">
                                         <%= line_item.quantity %> x <%= link_to truncate(line_item.get_product_name, length: 35),
-                                        product_path(id: line_item.product_id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.get_product_name %>
+                                        product_path(id: line_item.product_id, title: line_item.product.alias), title: line_item.get_product_name %>
                                     </div>
                                     <span class="price">
                                         <% if line_item.product.check_product_sale %>

@@ -108,7 +108,9 @@ h1 {
 	opacity: 0.8;
 }
 .product-info-main .product-infomation {
-	padding: 10px 0 0px 0;
+	padding: 5px 0 0px 0;
+  text-align: justify;
+  font-size: 13px;
 }
 .contact-detail .contact-icon > i {
 	font-size: 25px;
@@ -944,4 +946,19 @@ h1.post-name {
 }
 .result-search .product-item.style1 .info-product, .products-grid .product-item.style1 .info-product {
   padding: 7px 0 10px 0;
+}
+.tab-details-product h5.property-group-name {
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.tab-details-product .property-property-name {
+  font-weight: 600;
+}
+.tab-details-product hr {
+  margin-top: 10px;
+  margin-bottom: 10px;  
+}
+.tab-details-product hr:last-child {
+  display: none;
 }

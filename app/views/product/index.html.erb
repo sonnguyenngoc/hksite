@@ -2,6 +2,9 @@
     <div class="container">
         <ol class="breadcrumb-page">
             <li><%= link_to '<i class="fa fa-home"></i>'.html_safe, root_path %></li>
+            <% if @product.find_menu.present? %>
+                <li><%= link_to @menu.title, category_path(id: @menu.id, title: @menu.name_url), title: @menu.title %></li>
+            <% end %>
             <li class="active"><%= link_to @product.display_name, 'javascript:void(0)' %></li>
         </ol>
     </div>
@@ -30,8 +33,14 @@
                             <% end %>
                             <strong>Thương hiệu: </strong><%= @product.get_manufacturer_name %><br>
                             <strong>Bảo hành: </strong><%= @product.get_warranty %> tháng<br>
-                            <% if @product.description.present? %>
-                                <strong>Mô tả: </strong><%= @product.description %><br>
+                            <% if !@product.cache_thcn_properties.present? %>
+                                <% if @product.description.present? %>
+                                    <strong>Mô tả: </strong><%= @product.description %><br>
+                                <% end %>
+                            <% else %>
+                                <% @product.display_thcn_short_properties.each do |property| %>
+                                    <strong><%= property["name"] %>: </strong><%= property["values"].join(", ") %><br>                       
+                                <% end %>
                             <% end %>
                             <% if @product.product_info.present? %>
                                 <% if @product.product_info.bonus_product.present? %>
@@ -81,7 +90,36 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
+    <% if @product.cache_thcn_properties.present? %>
+    <div class="container">
+        <div class="tab-details-product">
+            <ul class="box-tab nav-tab">
+                <li class="active"><a data-toggle="tab" href="#tab-1">THÔNG SỐ CHI TIẾT SẢN PHẨM</a></li>
+            </ul>
+            <div class="tab-container">
+                <div id="tab-1" class="tab-panel active">
+                    <div class="box-content text-justify">
+                        <% @product.display_thcn_long_properties.each do |group| %>
+                            <h5 class="property-group-name"><%= group["group"] %></h5>
+                            <% group["properties"].each do |property| %>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <span class="property-property-name"><%= property["property"]["name"] %></span>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span><%= property["values"].join(", ") %></span>
+                                    </div>
+                                </div>
+                            <% end %>
+                            <hr>                           
+                        <% end %>
+                    </div>
+                </div>
+            </div>  
+        </div> 
+    </div>
+    <% end %>
     <div class="block-recent-view">
         <div class="container">
             <div class="title-of-section">Sản Phẩm Bán Chạy</div>

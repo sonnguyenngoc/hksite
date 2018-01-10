@@ -61,7 +61,12 @@
                                     <% end %>
                                 </td>
                                 <td><%= item.created_at.strftime("%d/%m/%Y") %></td>
-                                <td><span class="label label-info">Active</span></td>
+                                <td>
+                                    <% if item.meta_keywords.present? && item.meta_description.present? %>
+                                        <span class="label label-danger">ĐÃ SEO</span>
+                                    <% end %>
+                                    <span class="label label-info">ĐANG SỬ DỤNG</span>
+                                </td>
                                 <td class="text-center">
                                     <ul class="icons-list">
                                         <li class="dropdown">
@@ -92,7 +97,12 @@
                                     <% end %>
                                 </td>
                                 <td><%= child_1.created_at.strftime("%d/%m/%Y") %></td>
-                                <td><span class="label label-info">Active</span></td>
+                                <td>
+                                    <% if child_1.meta_keywords.present? && child_1.meta_description.present? %>
+                                        <span class="label label-danger">ĐÃ SEO</span>
+                                    <% end %>
+                                    <span class="label label-info">ĐANG SỬ DỤNG</span>
+                                </td>
                                 <td class="text-center">
                                     <ul class="icons-list">
                                         <li class="dropdown">
@@ -123,7 +133,12 @@
                                         <% end %>
                                     </td>
                                     <td><%= child_2.created_at.strftime("%d/%m/%Y") %></td>
-                                    <td><span class="label label-info">Active</span></td>
+                                    <td>
+                                        <% if child_2.meta_keywords.present? && child_2.meta_description.present? %>
+                                            <span class="label label-danger">ĐÃ SEO</span>
+                                        <% end %>
+                                        <span class="label label-info">ĐANG SỬ DỤNG</span>
+                                    </td>
                                     <td class="text-center">
                                         <ul class="icons-list">
                                             <li class="dropdown">

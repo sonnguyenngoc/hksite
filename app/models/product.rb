@@ -10,6 +10,32 @@ class Product < ActiveRecord::Base
   has_many :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
   has_and_belongs_to_many :categories
+  
+  def find_menus
+		self.categories.nil? ? [] : self.categories.first.menus
+	end
+  
+  def find_menu
+    all_menus = self.find_menus
+    all_menus.first
+  end
+  
+  def self.get_diff_warranty
+    arr = []
+    self.get_all.each do |pro|
+      if pro.cache_thcn_properties.present? && !pro.cache_thcn_properties.include?("#{pro.get_warranty.to_s} tháng") && pro.cache_thcn_properties.include?(" tháng")
+        arr << "#{pro.id.to_s} #{pro.name.to_s}"
+      end
+    end
+    arr
+  end
+  
+  after_create :create_alias
+  
+  def create_alias
+    name = self.display_name
+    self.update_column(:alias, name.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip)
+  end
 
   def self.get_all
     # self.where("products.status=1").where("products.created_at > ? OR products.stock > 0", "2016-01-01".to_datetime)
@@ -355,6 +381,14 @@ class Product < ActiveRecord::Base
     #return false if self.categories.map(&:id).include?(8) || self.suspended == true
     return false if self.suspended == true
     !self.product_price.price.nil? and !self.no_price
+  end
+  
+  def display_thcn_long_properties
+    JSON.parse(cache_thcn_properties)["long"]
+  end
+  
+  def display_thcn_short_properties
+    JSON.parse(cache_thcn_properties)["short"]
   end
 
   private

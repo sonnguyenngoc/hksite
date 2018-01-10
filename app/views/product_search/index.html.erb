@@ -21,10 +21,10 @@
                                               <div class="thumb-inner">
                                                   <% if !product.product_image.id.nil? %>
                                                       <%= link_to image_tag(product.product_image.image(:thumb214), alt: product.display_name),
-                                                                  product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+                                                                  product_path(id: product.id, title: product.alias), title: product.display_name %>
                                                   <% else %>
                                                       <%= link_to image_tag('/hksite/images/no-image/thumb-214.png', alt: product.display_name),
-                                                                  product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+                                                                  product_path(id: product.id, title: product.alias), title: product.display_name %>
                                                   <% end %>
                                               </div>
                                               <% if product.check_product_sale %>
@@ -36,7 +36,7 @@
                                           <div class="product-innfo">
                                               <div class="product-name">
                                                   <%= link_to truncate(product.display_name, length: 45),
-                                                  product_path(id: product.id, title: url_friendly(strip_tags(product.display_name))), title: product.display_name %>
+                                                  product_path(id: product.id, title: product.alias), title: product.display_name %>
                                               </div>
                                               <% if product.has_price %>
                                                   <span class="price">

@@ -43,6 +43,18 @@
             </div>
         </div>
         <div class="form-group field">
+            <%= f.label "META KEYWORDS: ", class: "col-lg-3 control-label" %>
+            <div class="col-lg-9">
+              <%= f.text_area :meta_keywords, rows: "5", cols: "5", placeholder: "Từ khóa thẻ meta cho SEO...", class: "form-control" %>
+            </div>
+        </div>
+            <div class="form-group field">
+            <%= f.label "META DESCRIPTION: ", class: "col-lg-3 control-label" %>
+            <div class="col-lg-9">
+              <%= f.text_area :meta_description, rows: "5", cols: "5", placeholder: "Mô tả thẻ meta cho SEO...", class: "form-control" %>
+            </div>
+        </div>
+        <div class="form-group field">
             <%= f.label "Mô tả: ", class: "col-lg-3 control-label" %>
             <div class="col-lg-9">
               <%= f.text_area :description, rows: "5", cols: "5", placeholder: "Mô tả loại bài viết...", class: "form-control" %>

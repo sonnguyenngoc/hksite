@@ -22,7 +22,7 @@ SitemapGenerator::Sitemap.create do
   end
   
   Product.get_all.each do |product|
-    add product_path(id: product.id, title: url_friendly(product.display_name))
+    add product_path(id: product.id, title: product.alias)
   end
   
 end

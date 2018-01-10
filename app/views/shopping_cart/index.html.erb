@@ -29,16 +29,16 @@
                                             <td class="tb-image">
                                                 <% if !line_item.product.product_image.id.nil? %>
                                                     <%= link_to image_tag(line_item.product.product_image.image(:thumb100), alt: line_item.get_product_name),
-                                                                product_path(id: line_item.product_id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.get_product_name %>
+                                                                product_path(id: line_item.product_id, title: line_item.product.alias), title: line_item.get_product_name %>
                                                 <% else %>
                                                     <%= link_to image_tag('/hksite/images/no-image/thumb-100.png', alt: line_item.get_product_name),
-                                                                product_path(id: line_item.product_id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.get_product_name %>
+                                                                product_path(id: line_item.product_id, title: line_item.product.alias), title: line_item.get_product_name %>
                                                 <% end %>
                                             </td>
                                             <td class="tb-product">
                                                 <div class="product-name">
                                                     <%= link_to truncate(line_item.get_product_name, length: 60),
-                                                    product_path(id: line_item.product_id, title: url_friendly(strip_tags(line_item.product.display_name))), title: line_item.get_product_name %>
+                                                    product_path(id: line_item.product_id, title: line_item.product.alias), title: line_item.get_product_name %>
                                                 </div>
                                             </td>
                                             <td class="tb-price"><%= format_price(line_item.product.display_price) %></td>
