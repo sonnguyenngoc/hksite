@@ -10,16 +10,16 @@ class Product < ActiveRecord::Base
   has_many :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
   has_and_belongs_to_many :categories
-  
+
   def find_menus
 		self.categories.nil? ? [] : self.categories.first.menus
 	end
-  
+
   def find_menu
     all_menus = self.find_menus
     all_menus.first
   end
-  
+
   def self.get_diff_warranty
     arr = []
     self.get_all.each do |pro|
@@ -29,9 +29,9 @@ class Product < ActiveRecord::Base
     end
     arr
   end
-  
+
   after_create :create_alias
-  
+
   def create_alias
     name = self.display_name
     self.update_column(:alias, name.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip)
@@ -293,7 +293,7 @@ class Product < ActiveRecord::Base
     #end
     self.product_price.price.to_i
   end
-  
+
   def display_custom_price
     price = (product_price.price.to_f/1000).round*1000
     return price
@@ -313,11 +313,11 @@ class Product < ActiveRecord::Base
 
   def display_name
     result = ''
-    if !categories.first.nil? and categories.first.name != 'none'
+    if !categories.first.nil? and categories.first.name.downcase != 'none'
       result += categories.first.name + " "
     end
 
-    if !manufacturer.nil? and manufacturer.name != 'none'
+    if !manufacturer.nil? and manufacturer.name.downcase != 'none'
       result += manufacturer.name + " "
     end
 
@@ -382,11 +382,11 @@ class Product < ActiveRecord::Base
     return false if self.suspended == true
     !self.product_price.price.nil? and !self.no_price
   end
-  
+
   def display_thcn_long_properties
     JSON.parse(cache_thcn_properties)["long"]
   end
-  
+
   def display_thcn_short_properties
     JSON.parse(cache_thcn_properties)["short"]
   end
