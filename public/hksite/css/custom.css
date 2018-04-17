@@ -387,7 +387,7 @@ h1.post-name {
 }
 .product-info-price .custom-call {
 	display: block;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
 	color: #c30c0c;
 	text-decoration: none;
@@ -596,6 +596,7 @@ h1.post-name {
   background-color: #ff3945;
   font-size: 18px;
   font-weight: 600;
+  width: 100%;
 }
 .product-content-single .custom-add-to-cart:hover {
   opacity: 0.8;
@@ -810,7 +811,7 @@ h1.post-name {
   cursor: pointer;
 }
 .product-item.style1 .price .call-price {
-  color: #02a434;
+  color: #c30c0c;
   font-weight: 500;
   font-size: 16px;
 }
@@ -961,4 +962,21 @@ h1.post-name {
 }
 .tab-details-product hr:last-child {
   display: none;
+}
+.tab-details-product li {
+  width: 100%;
+}
+.tab-details-product li.active > a, .tab-details-product li:hover > a {
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+  cursor: default;
+}
+ul.property-value-list li {
+  list-style: disc;
+  margin-left: 15px;
+  display: list-item !important;
+}
+.box-content .property-row {
+  line-height: 2.2;
 }

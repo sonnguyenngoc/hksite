@@ -43,6 +43,11 @@ class Product < ActiveRecord::Base
         .where("products.stock > 0 OR (products.cache_last_ordered IS NOT NULL AND products.cache_last_ordered >= ?) OR (products.cache_last_priced IS NOT NULL AND products.cache_last_priced >= ?)", Time.now - 6.months, Time.now - 6.months)
         .order("products.created_at desc")
   end
+  
+  def self.get_product_listing    
+    self.where("products.status=1")        
+        .order("products.created_at desc")
+  end
 
   def self.get_all_stock_ready
     self.where('stock > 1')
@@ -170,12 +175,11 @@ class Product < ActiveRecord::Base
   end
 
   def self.search(params)
-    records = Product.get_all
+    records = Product.get_product_listing
     if params[:search].present?
       params[:search].split(" ").each do |k|
         records = records.where("LOWER(CONCAT(products.name,' ',products.cache_web_search)) LIKE ?", "%#{k.strip.downcase}%") if k.strip.present?
-      end
-      #records = records.where("LOWER(products.cache_search) LIKE ?", "%#{params[:search].strip.downcase}%") if params[:search].present?
+      end      
     end
 
     if params[:manufacturer_id].present?
@@ -201,7 +205,7 @@ class Product < ActiveRecord::Base
   end
 
   def self.admin_search(params)
-    records = Product.get_all
+    records = Product.get_product_listing
 
     if params[:search_product_infos].present?
       records = records.where('LOWER(products.name) LIKE ?', "%#{params[:search_product_infos].strip.downcase}%")
@@ -265,32 +269,7 @@ class Product < ActiveRecord::Base
     end
   end
 
- # def get_amount_sale_prices
- #   if !self.product_info.sale_off_price.present? and self.product_info.sale_price.present?
- #     product_price.price.to_f*(1 - (self.product_info.sale_off_price/100))
- #   elsif !self.product_info.sale_off_price.present? and !self.product_info.sale_price.present?
- #     self.product_info.sale_price.to_i
- #   end
- # end
-
- # def get_amount_sale_off_prices
- #   if !self.product_info.sale_price.nil? or self.product_info.sale_off_price.nil?
- #     ((product_price.price.to_f - product_info.sale_off_price.to_f)*100)/(product_price.price.to_f)
- #   elsif !self.product_info.sale_price.nil? and !self.product_info.sale_off_price.nil?
- #     self.product_info.sale_off_price.to_f
- #   end
- # end
-
   def display_price
-    #if !self.product_info.nil?
-    #  if (self.product_info.product_sale == "on") && (self.product_info.old_price > 0)
-    #    self.product_info.old_price.to_i
-    #  else
-    #    self.display_default_price
-    #  end
-    #else
-    #  self.display_default_price
-    #end
     self.product_price.price.to_i
   end
 

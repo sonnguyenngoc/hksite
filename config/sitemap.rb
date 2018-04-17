@@ -21,7 +21,7 @@ SitemapGenerator::Sitemap.create do
     add category_path(id: menu.id, title: menu.name_url)
   end
   
-  Product.all.where(status: 1).each do |product|
+  Product.where("products.status=1").each do |product|
     add product_path(id: product.id, title: product.alias)
   end
   
