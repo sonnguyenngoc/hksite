@@ -1,0 +1,9 @@
+/usr/local/rvm/gems/ruby-2.3.3/gems/activerecord-4.2.5/lib/active_record/associations.rb:1694: warning: already initialized constant Product::HABTM_Categories
+/usr/local/rvm/gems/ruby-2.3.3/gems/activerecord-4.2.5/lib/active_record/associations.rb:1694: warning: previous definition of HABTM_Categories was here
+In '/home/hkerp/hksite/public/':
++ sitemap.xml.gz                                        7738 links /     156 KB
+Sitemap stats: 7,738 links / 1 sitemaps / 0m04s
+
+Pinging with URL 'http://store.hoangkhang.com.vn/sitemap.xml.gz':
+  Successful ping of Google
+  Successful ping of Bing

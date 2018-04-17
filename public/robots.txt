@@ -3,8 +3,17 @@
 # To ban all spiders from the entire site uncomment the next two lines:
 # User-agent: *
 # Disallow: /
+Sitemap: http://store.hoangkhang.com.vn/sitemap.xml.gz
+
+User-agent: *
+
 Disallow: /tim-kiem-san-pham.html
 Disallow: /gio-hang.html
 Disallow: /dat-hang.html
 Disallow: /dat-hang/thanh-cong.html
 Disallow: /lien-he/gui-loi-nhan-thanh-cong.html
+Disallow: /manufacturer_page
+Disallow: /all_new_product
+Disallow: /category_page
+Disallow: /blog_post
+Disallow: /blog_detail
