@@ -5,7 +5,7 @@
             <% if @product.find_menu.present? %>
                 <li><%= link_to @menu.title, category_path(id: @menu.id, title: @menu.name_url), title: @menu.title %></li>
             <% end %>
-            <li class="active"><%= link_to @product.display_name, 'javascript:void(0)' %></li>
+            <li class="active"><%= link_to truncate(@product.display_name, length: 80), 'javascript:void(0)' %></li>
         </ol>
     </div>
     <div class="container">
@@ -47,26 +47,26 @@
                                     <strong>Tặng kèm: </strong><%= @product.product_info.bonus_product.html_safe %><br>
                                 <% end %>
                             <% end %>
-                            <br>
-                            <% if @product.cache_thcn_url.present? %>
-                                <strong>Liên kết trang: </strong> <%= link_to 'Tìm Hàng Công Nghệ', @product.cache_thcn_url, title: @product.display_name, target: '_blank', class: 'connect-link-thcn' %>
-                            <% end %>
+                            <br>                            
                         </div>
                         <div class="product-description">
-                            <strong>Liên hệ đặt mua: </strong><%= link_to '(028) 3984 7690', 'tel:02839847690', title: 'Liên hệ đặt hàng qua số điện thoại' %> hoặc <%= link_to '(028) 2212 9454', 'tel:02822129454', title: 'Liên hệ đặt hàng qua hotline' %>
+                            <% if @product.cache_thcn_url.present? %>
+                                <strong>Liên kết trang: </strong> <%= link_to 'Tìm Hàng Công Nghệ', @product.cache_thcn_url, title: @product.display_name, target: '_blank', class: 'connect-link-thcn' %><br>
+                            <% end %>
+                            <strong>SĐT liên hệ: </strong><%= link_to '(028) 3984 7690', 'tel:02839847690', title: 'Liên hệ đặt hàng qua số điện thoại' %>
                             <br><strong>Email liên hệ: </strong><%= mail_to 'kinhdoanh@hoangkhang.com.vn', 'kinhdoanh@hoangkhang.com.vn', title: 'Liên hệ đặt hàng qua email' %>
-                            <br><strong>Skype: </strong><%= link_to image_tag('/hksite/images/skype.png', alt: 'Ms. Thủy'), 'skype:thuy.dophuong?chat', title: 'thuy.dophuong', class: 'chat-skype' %>                            
+                            <br><strong>Phòng kinh doanh: </strong><%= link_to image_tag('/hksite/images/skype.png', alt: 'Kinh Doanh Hoàng Khang - Tìm Hàng Công Nghệ'), 'skype:info_854929?chat', title: 'Kinh Doanh Hoàng Khang - Tìm Hàng Công Nghệ', class: 'chat-skype' %>                            
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3 col-sm-6">
                     <div class="product-info-price">
                         <% if @product.has_price %>
-                        <div class="product-info-stock-sku">
-                            <div class="stock available">
-                                <span class="label-stock">Trạng thái: </span> Đang kinh doanh
-                            </div>
-                        </div>
+                            <div class="product-info-stock-sku">
+                                <div class="stock available">
+                                    <span class="label-stock">Trạng thái: </span> Đang kinh doanh
+                                </div>
+                            </div> 
                         <% end %>
                         <a href="<%= policy_3_path %>">
                             <div class="transportation">
@@ -84,7 +84,7 @@
                                 <%= button_to 'Thêm vào giỏ hàng', line_items_path(product_id: @product), class: "btn-add-to-cart custom-add-to-cart" %>
                             </div>
                         <% else %>                            
-                            <p class="custom-call">Liên hệ: (028) 3984 7690</p>
+                            <p class="custom-call">LIÊN HỆ: (028) 3984 7690</p>
                         <% end %>                        
                     </div>
                 </div>
@@ -103,13 +103,21 @@
                         <% @product.display_thcn_long_properties.each do |group| %>
                             <h5 class="property-group-name"><%= group["group"] %></h5>
                             <% group["properties"].each do |property| %>
-                                <div class="row">
+                                <div class="row property-row">
                                     <div class="col-md-4">
-                                        <span class="property-property-name"><%= property["property"]["name"] %></span>
+                                        <span class="property-property-name"><%= property["property"]["name"] %>:</span>
                                     </div>
                                     <div class="col-md-6">
-                                        <span><%= property["values"].join(", ") %></span>
-                                    </div>
+                                        <% if property["values"].count > 4 %>
+                                            <ul class="property-value-list">
+                                                <% property["values"].each do |value| %>
+                                                    <li><%= value %></li>
+                                                <% end %>
+                                            </ul>                                            
+                                        <% else %>
+                                            <span><%= property["values"].join(", ") %></span>
+                                        <% end %>
+                                    </div>                                    
                                 </div>
                             <% end %>
                             <hr>                           

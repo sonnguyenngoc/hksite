@@ -23,7 +23,7 @@ class ProductController < ApplicationController
 
     render json: @products.map { |product| {
       name: product.display_name,
-      price: (!product.has_price ? 'Liên hệ: (028) 2212 9454' : (view_context.format_price(product.display_custom_price))),
+      price: (!product.has_price ? 'Liên hệ: (028) 3984 7690' : (view_context.format_price(product.display_custom_price))),
       #is_deal: product.is_deal,
       old_price: (product.check_product_sale ? view_context.format_price(product.product_info.old_price) : 'null'),
       #deal_percent: (product.deal_percent if product.is_deal),
