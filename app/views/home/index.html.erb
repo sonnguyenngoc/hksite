@@ -3,6 +3,7 @@
     <div class="block-section-1">
         <%= render '/modules/home/slider' %>
     </div>
+    <% if Product.get_sale_products.count > 0 %>
     <div class="block-daily-deals style1">
         <div class="container">
             <div class="title-of-section">SẢN PHẨM GIẢM GIÁ</div>
@@ -14,5 +15,6 @@
             <%= render '/modules/home/deal_banners' %>
         </div>
     </div>-->
+    <% end %>
     <%= render '/home/not_using_ajax' %>
 </main>
