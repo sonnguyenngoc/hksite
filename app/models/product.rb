@@ -201,7 +201,6 @@ class Product < ActiveRecord::Base
     end
 
     return records
-
   end
 
   def self.admin_search(params)
