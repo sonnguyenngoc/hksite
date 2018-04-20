@@ -52,11 +52,15 @@
     <%= stylesheet_link_tag '/hksite/css/res-tablet.css' %>
     <%= stylesheet_link_tag '/hksite/css/res-phone.css' %>
     <!--<%= stylesheet_link_tag '/hksite/css/custom.css?v=4.0' %>-->
-    <%= stylesheet_link_tag '/hksite/css/custom.css?v=4.1' %>
+    <%= stylesheet_link_tag '/hksite/css/custom.css?v=4.2' %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i' %>
     <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,500i,700' %>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109179189-1"></script>
+    <%= yield(:metas) %>
+	<meta property="og:image:width" content="1000" />
+	<meta property="og:image:height" content="660" />
+    
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}

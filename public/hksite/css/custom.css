@@ -110,7 +110,7 @@ h1 {
 .product-info-main .product-infomation {
 	padding: 5px 0 0px 0;
   text-align: justify;
-  font-size: 13px;
+  font-size: 14px;
 }
 .contact-detail .contact-icon > i {
 	font-size: 25px;
@@ -372,7 +372,7 @@ h1.post-name {
 }
 .product-name h1.title-name {
 	text-transform: none;
-	font-size: 22px;
+	font-size: 24px;
 }
 .product-info-main .product-description a.connect-link-thcn, .product-info-main .product-infomation a.connect-link-thcn {
 	color: #c30c0c;
@@ -594,8 +594,8 @@ h1.post-name {
 }
 .product-content-single .custom-add-to-cart {
   background-color: #ff3945;
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
   width: 100%;
 }
 .product-content-single .custom-add-to-cart:hover {
@@ -879,8 +879,8 @@ h1.post-name {
 .header-menu-nav.menu-style-1 {
   background-color: #0054A5;
 }
-.breadcrumb-page li:hover a, .breadcrumb-page li.active a {
-  font-weight: 600;
+.breadcrumb-page li:hover a {
+  opacity: 0.8;
 }
 .breadcrumb-page li.active a {
   cursor: default;
@@ -949,7 +949,7 @@ h1.post-name {
   padding: 7px 0 10px 0;
 }
 .tab-details-product h5.property-group-name {
-  font-size: 18px;
+  font-size: 20px;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -978,5 +978,12 @@ ul.property-value-list li {
   display: list-item !important;
 }
 .box-content .property-row {
-  line-height: 2.2;
+  line-height: 2;
+  font-size: 15px;
+}
+.copyright-right span a {
+  color: #fff;
+}
+.copyright-right span a:hover {
+  opacity: 0.8;
 }
