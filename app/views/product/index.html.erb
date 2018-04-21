@@ -5,9 +5,9 @@
     <meta property="og:title" content="<%= @product.display_name %>"/>
     <meta property="og:description" content="Công Ty TNHH Giải Pháp CNTT Và TT Hoàng Khang chuyên cung cấp đa dạng các sản phẩm, thiết bị công nghệ từ các hãng lớn thế giới với giá cả, chất lượng, dịch vụ tốt."/>
     <% if !@product.product_image.id.nil? %>
-        <meta property="og:image" content="http://timhangcongnghe.com<%= @product.product_image.image(:thumb400) %>" />
+        <meta property="og:image" content="http://store.hoangkhang.com.vn<%= @product.product_image.image(:thumb400) %>" />
     <% else %>
-        <%= image_tag '/hksite/images/no-image/thumb-400.png', alt: 'Hiện sản phẩm chưa có hình ảnh' %>
+        <meta property="og:image" content="http://timhangcongnghe.com/frontend/image/thcn-web-share.png" />
     <% end %>
 <% end %>
 
