@@ -45,7 +45,6 @@
                             <strong>Mã sản phẩm: </strong><%= @product.product_code %><br>
                             <% end %>
                             <strong>Thương hiệu: </strong><%= @product.get_manufacturer_name %><br>
-                            <strong>Bảo hành: </strong><%= @product.get_warranty %> tháng<br>
                             <% if !@product.cache_thcn_properties.present? %>
                                 <% if @product.description.present? %>
                                     <strong>Mô tả: </strong><%= @product.description %><br>
