@@ -5,7 +5,53 @@
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    
+    body, .header-opt-1 .header-top a, .product-info-main .product-infomation {
+       font-size: 13px;
+    }
+    .block-minicart {
+        margin-top: 0px;
+        margin-right: 0px;
+    }
+    .header-nav > li a.parent-menu, .header-nav .menu-item-has-children a.parent-menu {
+      color: #333;
+    }
+    .header-nav li a.parent-menu:hover {
+      color: #333;
+      opacity: 0.8;
+    }
+    .main-slide .item-slide:before {
+      background-color: transparent;
+    }
+    .footer-opt-2 .newsletter-title .h3-email, .footer-opt-2 .newsletter-title .h3-call {
+      font-size: 13px;
+      text-align: center;
+    }    
+    .single-add-to-cart .category-add-to-cart {
+      width: 100%;
+    }
+    .product-content-single .custom-add-to-cart, .tab-details-product li.active > a, .tab-details-product li:hover > a,
+    .contact-us .title-contact {
+      font-size: 15px;
+    }
+    p.btn-submit {
+      text-align: center;
+    }
+    .contact-map {
+      display: none;
+    }
+    .form-contact input.button-submit {
+      width: 100%;
+    }
+    #scrollup {
+      margin-bottom: 50px;
+    }
+    .product-item.style2 .newest-add-to-cart {
+      font-size: 11px;
+      padding: 3px 5px;
+    }
+    .footer-opt-2 .newsletter-title {
+      text-align: center;
+    }    
 }
 
 /* Portrait */
@@ -13,8 +59,25 @@
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2)
-  and (orientation: portrait) {
-    
+  and (orientation: portrait) {    
+    .main-logo {
+      max-width: 100%;
+    }
+    .shopping-cart .form-cart .btn-update, .shopping-cart .form-cart .btn-clean {
+      padding: 9px 9px;
+      font-size: 11px;
+    }
+    .shopping-cart .form-cart a.btn-continue {
+      padding: 9px 9px;
+      font-size: 11px;
+    }
+    .checkout .form-group.shipping button, .checkout .form-group.payment button, .shopping-cart .checkout-element-content .btn-checkout,
+    .checkout a.btn-view-cart {
+      width: 100%;
+    }
+    .product-name a, .checkout .table-cart.check-my-order tr th {
+      font-size: 9px;
+    }
 }
 
 /* Landscape */
@@ -23,7 +86,15 @@
   and (max-device-width: 480px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) {
-    
+    .tab-details-product .tab-container {
+      font-size: 13px;
+    }
+    .product-info-stock-sku, .transportation {
+      max-width: 500px;
+    }
+    .product-content-single .transportation {
+      width: 100%;
+    }
 }
 
 /* ----------- iPhone 5 and 5S ----------- */
@@ -33,7 +104,13 @@
   and (min-device-width: 320px) 
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2) {
-    
+    body {
+       font-size: 12px;
+    }
+    .block-minicart {
+        margin-top: 0px;
+        margin-right: 0px;
+    }
 }
 
 /* Portrait */
@@ -51,10 +128,29 @@
   and (max-device-width: 568px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) {
-    
+    .header-nav > li a.parent-menu, .header-nav .menu-item-has-children a.parent-menu {
+      color: #333;
+    }
+    .header-nav li a.parent-menu:hover {
+      color: #333;
+      opacity: 0.8;
+    }
+    #scrollup {
+      margin-bottom: 50px;
+    }
+    .checkout .form-group.shipping button, .checkout .form-group.payment button, .shopping-cart .checkout-element-content .btn-checkout,
+    .checkout a.btn-view-cart {
+      width: 100%;
+    }
+    .footer-opt-2 .newsletter-title {
+      text-align: center;
+    }
+    .main-slide .item-slide:before {
+      background-color: transparent;
+    }
 }
 
-/* ----------- iPhone 6 ----------- */
+/* ----------- iPhone 6 and 7 and 8 ----------- */
 
 /* Portrait and Landscape */
 @media only screen 
@@ -70,7 +166,12 @@
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: portrait) { 
-    
+    .product-info-stock-sku, .transportation {
+      max-width: 500px;
+    }
+    .product-content-single .transportation {
+      width: 100%;
+    }
 }
 
 /* Landscape */
@@ -79,10 +180,40 @@
   and (max-device-width: 667px) 
   and (-webkit-min-device-pixel-ratio: 2)
   and (orientation: landscape) { 
-    
+    .block-minicart {
+        margin-top: 0px;
+        margin-right: 0px;
+    }
+    .header-nav > li a.parent-menu, .header-nav .menu-item-has-children a.parent-menu {
+      color: #333;
+    }
+    .header-nav li a.parent-menu:hover {
+      color: #333;
+      opacity: 0.8;
+    }
+    #scrollup {
+      margin-bottom: 50px;
+    }
+    .product-info-stock-sku, .transportation {
+      max-width: 1000px;
+    }
+    .product-content-single .transportation {
+      width: 100%;
+    }
+    .footer-opt-2 .newsletter-title {
+      text-align: center;
+    }
+    .checkout .form-group.shipping button, .checkout .form-group.payment button, .shopping-cart .checkout-element-content .btn-checkout,
+    .checkout a.btn-view-cart {
+      width: 100%;
+      font-size: 15px;
+    }
+    .main-slide .item-slide:before {
+      background-color: transparent;
+    }
 }
 
-/* ----------- iPhone 6+ ----------- */
+/* ----------- iPhone 6+ and 7+ and 8+ ----------- */
 
 /* Portrait and Landscape */
 @media only screen 
@@ -106,118 +237,97 @@
   and (min-device-width: 414px) 
   and (max-device-width: 736px) 
   and (-webkit-min-device-pixel-ratio: 3)
-  and (orientation: landscape) {
-    
+  and (orientation: landscape) {    
+    .block-minicart {
+        margin-top: 0px;
+        margin-right: 0px;
+    }
+    .header-nav > li a.parent-menu, .header-nav .menu-item-has-children a.parent-menu {
+      color: #333;
+    }
+    .header-nav li a.parent-menu:hover {
+      color: #333;
+      opacity: 0.8;
+    }
+    #scrollup {
+      margin-bottom: 10px;
+    }    
+    .product-info-stock-sku, .transportation {
+      max-width: 1000px;
+    }
+    .product-content-single .transportation {
+      width: 100%;
+    }
+    .footer-opt-2 .newsletter-title {
+      text-align: center;
+    }
+    .checkout .form-group.shipping button, .checkout .form-group.payment button, .shopping-cart .checkout-element-content .btn-checkout,
+    .checkout a.btn-view-cart {
+      width: 100%;
+      font-size: 15px;
+    }
+    .main-slide .item-slide:before {
+      background-color: transparent;
+    }
 }
 
-/* ----------- Galaxy S3 ----------- */
+/* ----------- iPhone X ----------- */
 
 /* Portrait and Landscape */
-@media screen 
-  and (device-width: 320px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 2) {
-
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 812px)
+and (-webkit-device-pixel-ratio : 3) {
+  
 }
 
 /* Portrait */
-@media screen 
-  and (device-width: 320px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 2) 
-  and (orientation: portrait) {
-
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 812px) 
+and (-webkit-device-pixel-ratio : 3)
+and (orientation : portrait) {
+  
 }
 
 /* Landscape */
-@media screen 
-  and (device-width: 320px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 2) 
-  and (orientation: landscape) {
-
-}
-
-/* ----------- Galaxy S4 ----------- */
-
-/* Portrait and Landscape */
-@media screen 
-  and (device-width: 320px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) {
-
-}
-
-/* Portrait */
-@media screen 
-  and (device-width: 320px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) 
-  and (orientation: portrait) {
-
-}
-
-/* Landscape */
-@media screen 
-  and (device-width: 320px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) 
-  and (orientation: landscape) {
-
-}
-
-/* ----------- Galaxy S5 ----------- */
-
-/* Portrait and Landscape */
-@media screen 
-  and (device-width: 360px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) {
-
-}
-
-/* Portrait */
-@media screen 
-  and (device-width: 360px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) 
-  and (orientation: portrait) {
-
-}
-
-/* Landscape */
-@media screen 
-  and (device-width: 360px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) 
-  and (orientation: landscape) {
-
-}
-
-/* ----------- HTC One ----------- */
-
-/* Portrait and Landscape */
-@media screen 
-  and (device-width: 360px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) {
-
-}
-
-/* Portrait */
-@media screen 
-  and (device-width: 360px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) 
-  and (orientation: portrait) {
-
-}
-
-/* Landscape */
-@media screen 
-  and (device-width: 360px) 
-  and (device-height: 640px) 
-  and (-webkit-device-pixel-ratio: 3) 
-  and (orientation: landscape) {
-
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 812px) 
+and (-webkit-device-pixel-ratio : 3)
+and (orientation : landscape) {
+    .block-minicart {
+        margin-top: 0px;
+        margin-right: 0px;
+    }
+    .header-nav > li a.parent-menu, .header-nav .menu-item-has-children a.parent-menu {
+      color: #333;
+    }
+    .header-nav li a.parent-menu:hover {
+      color: #333;
+      opacity: 0.8;
+    }
+    #scrollup {
+      margin-bottom: 10px;
+    }    
+    .product-info-stock-sku, .transportation {
+      max-width: 1000px;
+    }
+    .product-content-single .transportation {
+      width: 100%;
+    }
+    .footer-opt-2 .newsletter-title {
+      text-align: center;
+    }
+    .checkout .form-group.shipping button, .checkout .form-group.payment button, .shopping-cart .checkout-element-content .btn-checkout,
+    .checkout a.btn-view-cart {
+      width: 100%;
+      font-size: 15px;
+    }
+    .main-slide .item-slide:before {
+      background-color: transparent;
+    }
+    .checkout .form-group.shipping, .checkout .form-group.payment {
+      padding-right: 0px;
+    }
 }

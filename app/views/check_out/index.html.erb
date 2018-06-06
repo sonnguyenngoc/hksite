@@ -11,55 +11,55 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-xs-6">
                             <label for="customer_order_orderer_first_name" class="title">Họ <span class="required">*</span></label>
                             <%= f.text_field :orderer_first_name, required: true, placeholder: 'Vui lòng nhập họ tại đây.....', class: 'form-control required' %>
                         </div>
-                        <div class="form-group col-md-6">   
+                        <div class="form-group col-md-6 col-xs-6">   
                             <label for="customer_order_orderer_last_name" class="title">Tên <span class="required">*</span></label>
                             <%= f.text_field :orderer_last_name, required: true, placeholder: 'Vui lòng nhập tên tại đây.....', class: 'form-control required' %>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-xs-6">
                             <label for="customer_order_orderer_phone" class="title">Số điện thoại <span class="required">*</span></label>
                             <%= f.text_field :orderer_phone, required: true, placeholder: 'Vui lòng nhập số điện thoại.....', class: 'form-control required' %>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-xs-6">
                             <label for="customer_order_orderer_email" class="title">Địa chỉ email <span class="required">*</span></label>
                             <%= f.text_field :orderer_email, required: true, placeholder: 'Vui lòng nhập địa chỉ email.....', class: 'form-control required email' %>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-12 col-xs-12">
                             <label for="customer_order_orderer_address_1" class="title">Địa chỉ giao hàng <span class="required">*</span></label>
                             <%= f.text_field :orderer_address_1, required: true, placeholder: 'Vui lòng nhập địa chỉ giao hàng.....', class: 'form-control required' %>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-12 col-xs-12">
                             <label for="customer_order_orderer_company_name" class="title">Tên công ty</label>
                             <%= f.text_field :orderer_company_name, placeholder: 'Vui lòng nhập tên công ty.....', class: 'form-control' %>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-xs-6">
                             <label for="customer_order_orderer_tax" class="title">Mã số thuế</label>
                             <%= f.text_field :orderer_tax, placeholder: 'Vui lòng nhập mã số thuế.....', class: 'form-control' %>
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-6 col-xs-6">
                             <label for="customer_order_orderer_fax" class="title">Mã fax</label>
                             <%= f.text_field :orderer_fax, placeholder: 'Vui lòng nhập mã fax.....', class: 'form-control' %>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-12 col-xs-12">
                             <label for="customer_order_orderer_address_2" class="title">Địa chỉ xuất hóa đơn</label>
                             <%= f.text_field :orderer_address_2, placeholder: 'Vui lòng nhập địa chỉ xuất hóa đơn.....', class: 'form-control' %>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="form-group col-md-12">
+                        <div class="form-group col-md-12 col-xs-12">
                             <label for="customer_order_orderer_message" class="title">Lời nhắn</label>
                             <%= f.text_area :orderer_message, placeholder: 'Vui lòng nhập lời nhắn (nếu có).....', class: 'form-control' %>
                         </div>
@@ -109,7 +109,7 @@
                         </table>
                         <span class="total-order"><strong>TỔNG TIỀN: </strong><%= format_price(@cart.total_order) %></span>
                     </div>                    
-                    <%= link_to 'Xem lại giỏ hàng', shopping_cart_path, title: '', class: 'btn btn-view-cart' %>
+                    <%= link_to 'XEM LẠI GIỎ HÀNG', shopping_cart_path, title: '', class: 'btn btn-view-cart' %>
                 </div>
             </div>
         <% end %>

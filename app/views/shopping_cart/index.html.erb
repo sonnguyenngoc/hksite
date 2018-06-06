@@ -62,8 +62,8 @@
                             </table>
                         </div>
                         <div class=cart-actions">
-                            <%= link_to 'Tiếp tục mua hàng', root_path, title: '', class: 'btn btn-continue' %>
-                            <%= button_to 'Cập nhật giỏ hàng', "#", class: "btn btn-clean" %>
+                            <%= link_to 'TIẾP TỤC MUA HÀNG', root_path, title: '', class: 'btn btn-continue' %>
+                            <%= button_to 'CẬP NHẬT GIỎ HÀNG', "#", class: "btn btn-clean" %>
                         </div>
                     <% end %>
                 </div>
@@ -71,7 +71,7 @@
                     <div class="order-summary">
                         <h4 class="title-shopping-cart">Thông tin thanh toán</h4>
                         <div class="checkout-element-content">                        
-                            <span class="order-left">Tổng tiền:<%= format_price(@cart.total_order) %></span>
+                            <span class="order-left">TỔNG TIỀN:<%= format_price(@cart.total_order) %></span>
                             <%= link_to 'ĐẶT HÀNG', check_out_path, title: 'Đặt hàng', class: 'btn btn-checkout' %>
                         </div>
                     </div>
