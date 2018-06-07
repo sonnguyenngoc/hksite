@@ -1,0 +1,6 @@
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .content-table-cell h1 .animation-text {
+        background-image: none;
+        text-shadow: 0 0 80px rgba(255, 255, 255, 0);
+    }
+}

@@ -1,0 +1,38 @@
+.main-menu ul li a:hover {
+    background-color: #ffbf3b;
+}
+.content-table-cell h1 {
+    color: #ffbf3b;
+}
+.content-table-cell h1 .error:after {
+    background-color: #ffbf3b;
+}
+.content-table-cell h3 {
+    color: #ffbf3b;
+}
+.content-table-cell form {
+    border: 1px solid #ffbf3b;
+}
+.content-table-cell form button {
+    background-color: #ffbf3b;
+}
+ul.return-menu li a:hover  {
+    color: #ffbf3b;
+}
+ul.social-menu li a:hover  {
+    color: #ffbf3b;
+}
+.footer-menu ul li a:hover {
+    color: #ffbf3b;
+}
+.content-table-cell h1 .animation-text {
+    /* Clip Background Image */
+    background: url(../../img/text-animation/yellow.png) repeat-y;
+    -webkit-background-clip: text;
+    /* Animate Background Image */
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 80s linear infinite;
+    /* Activate hardware acceleration for smoother animations */
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+}

@@ -1,0 +1,79 @@
+@media (min-width: 992px) and (max-width: 1200px) {
+    
+}
+@media only screen and (max-width: 991px) {
+    
+
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+    
+}
+
+@media only screen and (max-width: 767px) {
+    body {
+        overflow-y: auto;
+    }
+    .content-table {
+        display: block;
+        margin-top: 130px;
+        height: auto !important;
+    }
+    .content-table-cell h1 {
+        font-size: 100px;
+    }
+    .content-table-cell h1 .error {
+        display: block;
+        top: -5px;
+    }
+    .content-table-cell h1 .error:after {
+        right: inherit;
+    }
+    .content-table-cell {
+        display: block;
+    }
+    .content-table-cell h3 {
+        font-size: 24px;
+        min-height: 82px;
+        margin-top: 10px;
+    }
+    .content-table-cell form {
+        width: 100%;
+        display: block;
+        font-size: 14px;
+        overflow: hidden;
+    }
+    .content-table-cell form input {
+        width: 71.8%;
+        float: left;
+    }
+    .content-table-cell form button {
+        padding: 12px 15px;
+        margin-right: 0;
+        float: right;
+    }
+    .main-footer {
+        position: static;
+        padding: 30px 0;
+    }
+    .bgslider-wrrapar .vegas-wrapper {
+        overflow: auto !important;
+    }
+    .map-wrrapar .main-footer{
+        position: relative;
+        padding: 30px 0;
+    }
+    .bgslider-wrrapar .main-footer {
+        position: relative;
+        padding: 0;
+    }
+    .footer-menu ul li {
+        display: block;
+    }
+    
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    .content-table-cell h1 {
+        font-size: 150px;
+    }
+}

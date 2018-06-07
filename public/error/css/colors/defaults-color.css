@@ -1,0 +1,52 @@
+.main-menu ul li a:hover {
+    background-color: #00acc1;
+}
+.slicknav_btn {
+    background-color: #00acc1;
+}
+.slicknav_nav {
+    background-color: #00acc1;
+}
+.slicknav_nav ul li {
+    border-top: 1px solid #01c8e0;
+    border-bottom: 1px solid #028a9b;
+}
+.slicknav_nav a:hover {
+    color: #00acc1;
+}
+.content-table-cell h1 {
+    color: #00acc1;
+}
+.content-table-cell h1 .error:after {
+    background-color: #00acc1;
+}
+.content-table-cell h3 {
+    color: #00acc1;
+}
+.content-table-cell form {
+    border: 1px solid #00acc1;
+}
+.content-table-cell form button {
+    background-color: #00acc1;
+}
+ul.return-menu li a:hover  {
+    color: #00acc1;
+}
+ul.social-menu li a:hover  {
+    color: #00acc1;
+}
+.footer-menu ul li a:hover {
+    color: #00acc1;
+}
+
+.content-table-cell h1 .animation-text {
+    /* Clip Background Image */
+    background: url(../../img/text-animation/defaults.png) repeat-y;
+    -webkit-background-clip: text;
+    /* Animate Background Image */
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: aitf 80s linear infinite;
+    /* Activate hardware acceleration for smoother animations */
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-backface-visibility: hidden;
+}
