@@ -300,7 +300,7 @@ class Product < ActiveRecord::Base
     end
 
     result += name
-    result += " " + product_code if !product_code.nil?
+    result += " (" + product_code + ")" if !product_code.nil?
 
     return result.strip
   end
