@@ -10,6 +10,9 @@ class Product < ActiveRecord::Base
   has_many :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
   has_and_belongs_to_many :categories
+  
+  has_many :parent_parts, :class_name => "ProductPart", :foreign_key => "part_id"
+  has_many :parent, :through => :parent_parts, :source => :part
 
   def find_menus
 		self.categories.nil? ? [] : self.categories.first.menus
@@ -367,6 +370,10 @@ class Product < ActiveRecord::Base
 
   def display_thcn_short_properties
     JSON.parse(cache_thcn_properties)["short"]
+  end
+  
+  def has_parts?
+    parts.count > 0
   end
 
   private
