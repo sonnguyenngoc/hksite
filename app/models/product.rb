@@ -11,9 +11,9 @@ class Product < ActiveRecord::Base
   before_destroy :ensure_not_referenced_by_any_line_item
   has_and_belongs_to_many :categories
   
-  has_many :parent_parts, :class_name => "ProductPart", :foreign_key => "part_id"
-  has_many :parent, :through => :parent_parts, :source => :part
-
+  has_many :product_parts, :dependent => :destroy
+  has_many :parts, :through => :product_parts, :source => :part
+  
   def find_menus
 		self.categories.nil? ? [] : self.categories.first.menus
 	end
