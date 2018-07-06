@@ -122,15 +122,15 @@ class Product < ActiveRecord::Base
                   .where(product_infos: {product_bestselled: "on"})
                   .order("product_infos.updated_at DESC")
 
-    return records.limit(10)
+    return records.limit(7)
   end
 
-  def self.get_prominent_products
+  def self.get_prominent_products(limit = 20)
     records = self.get_all.joins(:product_info)
                   .where(product_infos: {product_prominent: "on"})
                   .order("product_infos.updated_at DESC")
 
-    return records.limit(20)
+    return records.limit(limit)
   end
 
   def self.get_stock_products
