@@ -272,7 +272,7 @@ class Product < ActiveRecord::Base
   end
 
   def display_price
-    self.product_price.price.to_i
+    self.cache_price.to_i
   end
 
   def display_custom_price
@@ -349,7 +349,7 @@ class Product < ActiveRecord::Base
   def has_price
     #return false if self.categories.map(&:id).include?(8) || self.suspended == true
     return false if self.suspended == true
-    !self.product_price.price.nil? and !self.no_price
+    self.cache_price.to_i != 0 and !self.no_price
   end
 
   def display_thcn_long_properties
