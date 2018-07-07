@@ -293,19 +293,7 @@ class Product < ActiveRecord::Base
   end
 
   def display_name
-    result = ''
-    if !categories.first.nil? and categories.first.name.downcase != 'none'
-      result += categories.first.name + " "
-    end
-
-    if !manufacturer.nil? and manufacturer.name.downcase != 'none'
-      result += manufacturer.name + " "
-    end
-
-    result += name
-    result += " (#{product_code.to_s.strip})" if product_code.present? and product_code.to_s.strip.present?
-
-    return result.strip
+    return self.cache_display_name.to_s
   end
 
   def get_manufacturer_name
