@@ -1,5 +1,6 @@
+<% products = Product.get_prominent_products(10) %>
 <div class="owl-ones-row">
-    <% Product.get_prominent_products[0..5].each do |product| %>
+    <% products[0..4].each do |product| %>
     <div class="product-item style1">
         <div class="product-inner">
             <div class="product-thumb">
@@ -45,7 +46,7 @@
     <% end %>
 </div>
 <div class="owl-ones-row">
-    <% Product.get_prominent_products[6..11].each do |product| %>
+    <% products[5..9].each do |product| %>
     <div class="product-item style1">
         <div class="product-inner">
             <div class="product-thumb">

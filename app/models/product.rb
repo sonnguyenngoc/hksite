@@ -10,7 +10,10 @@ class Product < ActiveRecord::Base
   has_many :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
   has_and_belongs_to_many :categories
-
+  
+  has_many :product_parts, :dependent => :destroy
+  has_many :parts, :through => :product_parts, :source => :part
+  
   def find_menus
 		self.categories.nil? ? [] : self.categories.first.menus
 	end
@@ -119,15 +122,15 @@ class Product < ActiveRecord::Base
                   .where(product_infos: {product_bestselled: "on"})
                   .order("product_infos.updated_at DESC")
 
-    return records.limit(10)
+    return records.limit(7)
   end
 
-  def self.get_prominent_products
+  def self.get_prominent_products(limit = 20)
     records = self.get_all.joins(:product_info)
                   .where(product_infos: {product_prominent: "on"})
                   .order("product_infos.updated_at DESC")
 
-    return records.limit(20)
+    return records.limit(limit)
   end
 
   def self.get_stock_products
@@ -269,7 +272,7 @@ class Product < ActiveRecord::Base
   end
 
   def display_price
-    self.product_price.price.to_i
+    self.cache_price.to_i
   end
 
   def display_custom_price
@@ -290,19 +293,7 @@ class Product < ActiveRecord::Base
   end
 
   def display_name
-    result = ''
-    if !categories.first.nil? and categories.first.name.downcase != 'none'
-      result += categories.first.name + " "
-    end
-
-    if !manufacturer.nil? and manufacturer.name.downcase != 'none'
-      result += manufacturer.name + " "
-    end
-
-    result += name
-    result += " " + product_code if !product_code.nil?
-
-    return result.strip
+    return self.cache_display_name.to_s
   end
 
   def get_manufacturer_name
@@ -358,7 +349,33 @@ class Product < ActiveRecord::Base
   def has_price
     #return false if self.categories.map(&:id).include?(8) || self.suspended == true
     return false if self.suspended == true
-    !self.product_price.price.nil? and !self.no_price
+    return true if self.is_price_outdated
+    self.cache_price.to_i != 0 and !self.no_price
+  end
+  
+  def is_price_outdated
+    if product_price.nil?
+       return true
+    end
+
+    if product_price.price.nil? || product_price.price.to_f == 0.00
+       return true
+    end
+
+    if product_price.supplier_price.nil? || product_price.supplier_price.to_f == 0.00
+       return true
+    end
+
+    if product_price.supplier_id.nil?
+       return true
+    end
+
+    # if empty stock for 30 days
+    if (stock <= 0 && !product_price.updated_at.nil? && (Time.now.to_date - product_price.updated_at.to_date).to_i >= 180)
+      return true
+    end
+
+    return false
   end
 
   def display_thcn_long_properties
@@ -367,6 +384,10 @@ class Product < ActiveRecord::Base
 
   def display_thcn_short_properties
     JSON.parse(cache_thcn_properties)["short"]
+  end
+  
+  def has_parts?
+    parts.count > 0
   end
 
   private

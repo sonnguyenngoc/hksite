@@ -12,6 +12,8 @@ class Menu < ActiveRecord::Base
   
   after_create :create_alias
   
+  after_save :update_cache_category_ids
+  
   def create_alias
     name = self.title
     self.update_column(:name_url, name.unaccent.downcase.to_s.gsub(/[^0-9a-z ]/i, '').gsub(/ +/i, '-').strip)
@@ -47,13 +49,16 @@ class Menu < ActiveRecord::Base
     return records
   end
   
-  def get_all_category_ids
+  def get_all_category_ids      
+      return cache_category_ids.present? ? JSON.parse(self.cache_category_ids) : []
+  end
+  
+  def update_cache_category_ids
       arr = []
       self.categories.each do |i|
           arr += i.get_all_related_ids
       end
-      
-      return arr
+      self.update_column(:cache_category_ids, arr.to_json)
   end
   
 end

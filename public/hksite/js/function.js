@@ -180,10 +180,12 @@
             // On Desktop
         }else{
             $(document).on('mousemove','.krystal-nav .menu-item-has-children',function(){
-                $(this).addClass('show-submenu');
-                if( $(this).closest('.krystal-nav').hasClass('main-menu')){
-                    $('body').addClass('is-show-menu');
-                }
+                setTimeout(function() {
+                    $(this).addClass('show-submenu');
+                    if( $(this).closest('.krystal-nav').hasClass('main-menu')){
+                        $('body').addClass('is-show-menu');
+                    }
+                }, 1500);                    
             })
 
             $(document).on('mouseout','.krystal-nav .menu-item-has-children',function(){
