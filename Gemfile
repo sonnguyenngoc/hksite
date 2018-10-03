@@ -52,3 +52,4 @@ gem 'devise'
 gem 'will_paginate-bootstrap'
 gem "sixarm_ruby_unaccent", ">= 1.1.1", "< 2"
 gem "sitemap_generator"
+gem "lazyload-rails"

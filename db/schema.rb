@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180110072056) do
+ActiveRecord::Schema.define(version: 20180707030916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 20180110072056) do
     t.integer  "contact_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
+    t.string   "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "articles", force: :cascade do |t|
@@ -256,6 +262,57 @@ ActiveRecord::Schema.define(version: 20180110072056) do
     t.integer  "product_id"
   end
 
+  create_table "erp_editor_uploads", force: :cascade do |t|
+    t.string   "image_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "erp_user_groups", id: :bigserial, force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "permissions"
+  end
+
+  create_table "erp_users", force: :cascade do |t|
+    t.string   "email",                            default: "",      null: false
+    t.string   "encrypted_password",               default: "",      null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                    default: 0,       null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "provider"
+    t.string   "uid"
+    t.boolean  "backend_access",                   default: false
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+    t.string   "name"
+    t.string   "avatar"
+    t.string   "timezone"
+    t.boolean  "active",                           default: false
+    t.integer  "creator_id"
+    t.text     "permissions"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at",                     default: "now()"
+    t.datetime "confirmation_sent_at"
+    t.integer  "user_group_id",          limit: 8
+    t.string   "address"
+    t.text     "data"
+    t.text     "cache_search"
+  end
+
+  add_index "erp_users", ["confirmation_token"], name: "index_erp_users_on_confirmation_token", unique: true, using: :btree
+  add_index "erp_users", ["creator_id"], name: "index_erp_users_on_creator_id", using: :btree
+  add_index "erp_users", ["email"], name: "index_erp_users_on_email", unique: true, using: :btree
+  add_index "erp_users", ["reset_password_token"], name: "index_erp_users_on_reset_password_token", unique: true, using: :btree
+  add_index "erp_users", ["user_group_id"], name: "index_erp_users_on_user_group_id", using: :btree
+
   create_table "feedbacks", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -312,14 +369,15 @@ ActiveRecord::Schema.define(version: 20180110072056) do
   create_table "menus", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.integer  "level"
     t.string   "image_url"
     t.string   "menu_image"
     t.string   "name_url"
     t.string   "meta_keywords"
     t.text     "meta_description"
+    t.text     "cache_category_ids"
   end
 
   create_table "messages", force: :cascade do |t|
@@ -574,6 +632,8 @@ ActiveRecord::Schema.define(version: 20180110072056) do
     t.boolean  "is_manual_price_update",                          default: false
     t.text     "cache_thcn_properties"
     t.string   "alias"
+    t.string   "cache_display_name"
+    t.decimal  "cache_price"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -747,6 +807,28 @@ ActiveRecord::Schema.define(version: 20180110072056) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "version_associations", id: :bigserial, force: :cascade do |t|
+    t.integer "version_id"
+    t.string  "foreign_key_name", null: false
+    t.integer "foreign_key_id"
+  end
+
+  add_index "version_associations", ["foreign_key_name", "foreign_key_id"], name: "index_version_associations_on_foreign_key", using: :btree
+  add_index "version_associations", ["version_id"], name: "index_version_associations_on_version_id", using: :btree
+
+  create_table "versions", id: :bigserial, force: :cascade do |t|
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.integer  "transaction_id"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
+  add_index "versions", ["transaction_id"], name: "index_versions_on_transaction_id", using: :btree
 
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"

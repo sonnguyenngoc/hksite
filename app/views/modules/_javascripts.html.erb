@@ -16,7 +16,18 @@
 <%= javascript_include_tag '/hksite/js/Modernizr.js' %>
 <%= javascript_include_tag '/hksite/js/jquery.plugin.js' %>
 <%= javascript_include_tag '/hksite/js/jquery.countdown.js' %>
+<%= javascript_include_tag '/hksite/js/jquery.lazyload.js' %>
 <%= javascript_include_tag '/hksite/js/main.js?v=3.4' %>
+<script>
+      $(function() {
+        $("img").lazyload({
+            effect: "fadeIn",
+            effectTime: 2000,
+            threshold: 0
+        });
+    });
+</script>
+
 <% if (params[:controller] == "contact" && params[:action] == "index") ||
       (params[:controller] == "check_out" && params[:action] == "index") %>
 <%= javascript_include_tag '/hksite/js/jquery.validate.min.js' %>
@@ -26,7 +37,7 @@
     });
     jQuery(document).ready(function($){
         $("#new_customer_order").validate();
-    });
+    });    
 </script>
 <% end %>
 <script type="text/javascript">
