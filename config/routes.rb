@@ -1,6 +1,7 @@
 Rails.application.routes.draw do  
   root 'home#index'
   match "/404", :to => "error#not_found", :via => :all
+  match "/500", :to => "error#not_found", :via => :all
   
   get "home_hot_products" => "home#hot_products", as: :home_hot_products
   get "home_stock_inventory" => "home#stock_inventory", as: :home_stock_inventory

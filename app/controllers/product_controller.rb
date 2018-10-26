@@ -4,6 +4,7 @@ class ProductController < ApplicationController
   def index    
     @product = Product.find(params[:id])
     if @product.status == 0 || @product.in_use == false
+      render layout: 'error_page'
       render(:status => 404)
     else
       @menus = Menu.get_menus
