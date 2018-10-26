@@ -1,15 +1,19 @@
 class ProductController < ApplicationController
   include ApplicationHelper
 
-  def index
-    @menus = Menu.get_menus
+  def index    
     @product = Product.find(params[:id])
-    @title = @product.display_name
-    if @product.find_menu.present?
-      @menu = Menu.find(@product.find_menu)
-      @meta_keywords = @menu.meta_keywords
-      @meta_description = @menu.meta_description
-    end
+    if @product.status == 0 || @product.in_use == false
+      render(:status => 404)
+    else
+      @menus = Menu.get_menus
+      @title = @product.display_name
+      if @product.find_menu.present?
+        @menu = Menu.find(@product.find_menu)
+        @meta_keywords = @menu.meta_keywords
+        @meta_description = @menu.meta_description
+      end
+    end    
   end
 
   def quickview

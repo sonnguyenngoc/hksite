@@ -55,7 +55,7 @@ class Product < ActiveRecord::Base
   def self.get_all_stock_ready
     self.where('stock > 1')
   end
-
+  
   def product_price
     price = product_prices.order("created_at DESC").first
 
